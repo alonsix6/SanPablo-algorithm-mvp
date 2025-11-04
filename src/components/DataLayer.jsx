@@ -241,11 +241,11 @@ export default function DataLayer() {
               </table>
             </div>
 
-            {/* Regional Distribution Charts */}
+            {/* Regional Distribution Charts - Top 5 Keywords Only */}
             <div className="mt-6">
-              <h4 className="text-sm font-semibold text-gray-700 mb-4">Distribución Regional por Keyword</h4>
+              <h4 className="text-sm font-semibold text-gray-700 mb-4">Distribución Regional por Keyword (Top 5)</h4>
               <div className="space-y-6">
-                {trendsData?.keywords?.map((kw, idx) => (
+                {trendsData?.keywords?.slice(0, 5).map((kw, idx) => (
                   kw.top_regions && Object.keys(kw.top_regions).length > 0 && (
                     <div key={idx} className="bg-gray-50 rounded-lg p-4">
                       <h5 className="text-sm font-medium text-gray-900 mb-3">{kw.keyword}</h5>
