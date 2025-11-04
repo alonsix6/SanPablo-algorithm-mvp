@@ -248,7 +248,7 @@ export default function DataLayer() {
             <p className="text-sm text-gray-600">Análisis automático multi-fuente</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {insights.map((insight, idx) => {
             // Definir colores por fuente
             const colorScheme =
@@ -264,8 +264,11 @@ export default function DataLayer() {
               insight.source === 'Meta' ? scores.social :
               insight.source === 'GA4' ? scores.intent : null;
 
+            // El último insight (Conexión Multi-fuente) abarca 2 columnas
+            const isMultiSource = insight.source === 'Conexión Multi-fuente';
+
             return (
-              <div key={idx} className={`relative ${colorScheme.bg} rounded-xl p-5 border-2 border-transparent hover:border-gray-200 transition-all duration-300 hover:shadow-lg group`}>
+              <div key={idx} className={`relative ${colorScheme.bg} rounded-xl p-5 border-2 border-transparent hover:border-gray-200 transition-all duration-300 hover:shadow-lg group ${isMultiSource ? 'md:col-span-2' : ''}`}>
                 <div className="flex items-start gap-4">
                   <div className={`w-14 h-14 bg-gradient-to-br ${colorScheme.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     <span className="text-3xl">{insight.icon}</span>
