@@ -479,6 +479,20 @@ export const COMPETITOR_INSIGHTS = [
     threat_level: 'medium',
   },
   {
+    brand: 'Geely Okavango Híbrida',
+    sentiment: 70,
+    share_of_voice: 12,
+    trending_topics: ['Precio accesible', 'Mild Hybrid 48V', '3 filas'],
+    threat_level: 'medium',
+  },
+  {
+    brand: 'Haval H6 Híbrida',
+    sentiment: 68,
+    share_of_voice: 10,
+    trending_topics: ['Sistema HEV', 'Seguridad 360°', 'Equipamiento'],
+    threat_level: 'medium',
+  },
+  {
     brand: 'Toyota RAV4',
     sentiment: 85,
     share_of_voice: 17,
