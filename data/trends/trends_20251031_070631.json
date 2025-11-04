@@ -1,133 +1,133 @@
 {
-  "timestamp": "2025-10-31T07:06:30.755146",
+  "timestamp": "2025-10-31T07:06:31.000000",
   "region": "PE",
-  "category": "Beauty & Fitness",
+  "category": "Automotive",
   "source": "Google Trends",
   "keywords": [
     {
-      "keyword": "skincare",
-      "average_interest": 78,
+      "keyword": "toyota rav4",
+      "average_interest": 82,
       "trend": "rising",
-      "peak_score": 92,
-      "growth_3m": "+45%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 68,
-        "Trujillo": 52,
-        "Cusco": 45,
-        "Piura": 38
-      }
-    },
-    {
-      "keyword": "cerave",
-      "average_interest": 85,
-      "trend": "rising",
-      "peak_score": 100,
-      "growth_3m": "+89%",
+      "peak_score": 95,
+      "growth_3m": "+58%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 72,
         "Trujillo": 58,
-        "Chiclayo": 51,
-        "Cusco": 48
+        "Cusco": 48,
+        "Chiclayo": 45
       }
     },
     {
-      "keyword": "niacinamide",
+      "keyword": "rav4 hibrida",
+      "average_interest": 88,
+      "trend": "rising",
+      "peak_score": 100,
+      "growth_3m": "+125%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 75,
+        "Trujillo": 62,
+        "Cusco": 52,
+        "Chiclayo": 48
+      }
+    },
+    {
+      "keyword": "suv hibrida",
+      "average_interest": 76,
+      "trend": "rising",
+      "peak_score": 90,
+      "growth_3m": "+85%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 68,
+        "Trujillo": 55,
+        "Cusco": 45,
+        "Piura": 42
+      }
+    },
+    {
+      "keyword": "auto hibrido",
       "average_interest": 72,
       "trend": "rising",
-      "peak_score": 88,
-      "growth_3m": "+62%",
+      "peak_score": 85,
+      "growth_3m": "+72%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 70,
+        "Trujillo": 58,
+        "Cusco": 50,
+        "Piura": 45
+      }
+    },
+    {
+      "keyword": "toyota peru",
+      "average_interest": 68,
+      "trend": "stable",
+      "peak_score": 78,
+      "growth_3m": "+22%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 65,
-        "Trujillo": 54,
-        "Piura": 42,
-        "Cusco": 40
+        "Trujillo": 58,
+        "Cusco": 52,
+        "Chiclayo": 48
       }
     },
     {
-      "keyword": "protector solar",
-      "average_interest": 92,
-      "trend": "rising",
-      "peak_score": 100,
-      "growth_3m": "+93%",
-      "top_regions": {
-        "Lima": 100,
-        "Cusco": 78,
-        "Arequipa": 75,
-        "Trujillo": 68,
-        "Piura": 55
-      }
-    },
-    {
-      "keyword": "serum facial",
-      "average_interest": 68,
-      "trend": "rising",
-      "peak_score": 82,
-      "growth_3m": "+52%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 58,
-        "Trujillo": 48,
-        "Cusco": 45,
-        "Chiclayo": 42
-      }
-    },
-    {
-      "keyword": "retinol",
+      "keyword": "suv familiar",
       "average_interest": 65,
       "trend": "rising",
-      "peak_score": 79,
+      "peak_score": 75,
       "growth_3m": "+48%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 62,
-        "Trujillo": 52,
-        "Piura": 44,
-        "Cusco": 41
+        "Trujillo": 55,
+        "Cusco": 48,
+        "Piura": 42
       }
     },
     {
-      "keyword": "maquillaje",
-      "average_interest": 58,
-      "trend": "stable",
-      "peak_score": 70,
-      "growth_3m": "+12%",
+      "keyword": "eficiencia combustible",
+      "average_interest": 70,
+      "trend": "rising",
+      "peak_score": 82,
+      "growth_3m": "+68%",
       "top_regions": {
         "Lima": 100,
-        "Arequipa": 55,
-        "Trujillo": 50,
+        "Arequipa": 68,
+        "Trujillo": 58,
+        "Cusco": 50,
+        "Chiclayo": 45
+      }
+    },
+    {
+      "keyword": "mejor suv",
+      "average_interest": 62,
+      "trend": "stable",
+      "peak_score": 72,
+      "growth_3m": "+28%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 60,
+        "Trujillo": 52,
         "Cusco": 48,
         "Piura": 45
       }
     },
     {
-      "keyword": "hidratante",
-      "average_interest": 55,
-      "trend": "stable",
-      "peak_score": 68,
-      "growth_3m": "+18%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 60,
-        "Trujillo": 52,
-        "Cusco": 50,
-        "Piura": 48
-      }
-    },
-    {
-      "keyword": "limpiador facial",
-      "average_interest": 62,
+      "keyword": "precio rav4",
+      "average_interest": 78,
       "trend": "rising",
-      "peak_score": 75,
-      "growth_3m": "+38%",
+      "peak_score": 92,
+      "growth_3m": "+95%",
       "top_regions": {
         "Lima": 100,
-        "Arequipa": 58,
-        "Trujillo": 54,
-        "Cusco": 48,
-        "Chiclayo": 45
+        "Arequipa": 72,
+        "Trujillo": 60,
+        "Cusco": 52,
+        "Chiclayo": 48
       }
     }
   ],

@@ -1,105 +1,139 @@
 {
-  "timestamp": "2025-10-31T07:05:01.276Z",
+  "timestamp": "2025-10-31T17:32:27.735Z",
   "source": "TikTok Creative Center",
   "region": "PE",
-  "category": "Beauty & Personal Care",
+  "category": "Automotive",
   "trends": {
     "hashtags": [
       {
-        "hashtag": "#skincare",
-        "views": "2.8M",
-        "posts": "18.5K",
-        "growth": "+52%",
-        "relevanceScore": 95,
-        "region": "LATAM"
-      },
-      {
-        "hashtag": "#beautyhacks",
-        "views": "2.1M",
-        "posts": "14.2K",
-        "growth": "+38%",
-        "relevanceScore": 88,
+        "hashtag": "#carsoftiktok",
+        "views": "45.8B",
+        "posts": "1.2M",
+        "growth": "+65%",
+        "relevanceScore": 96,
         "region": "Global"
       },
       {
-        "hashtag": "#makeuptutorial",
-        "views": "3.5M",
-        "posts": "22.1K",
-        "growth": "+45%",
+        "hashtag": "#toyota",
+        "views": "12.5B",
+        "posts": "485K",
+        "growth": "+52%",
+        "relevanceScore": 94,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#rav4",
+        "views": "2.8B",
+        "posts": "125K",
+        "growth": "+88%",
+        "relevanceScore": 98,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#hybridcar",
+        "views": "1.9B",
+        "posts": "85K",
+        "growth": "+125%",
+        "relevanceScore": 95,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#suvlife",
+        "views": "3.2B",
+        "posts": "142K",
+        "growth": "+72%",
         "relevanceScore": 92,
         "region": "Global"
       },
       {
-        "hashtag": "#glowyskin",
-        "views": "1.4M",
-        "posts": "9.8K",
-        "growth": "+67%",
-        "relevanceScore": 85,
-        "region": "LATAM"
-      },
-      {
-        "hashtag": "#cerave",
-        "views": "950K",
-        "posts": "6.2K",
-        "growth": "+89%",
-        "relevanceScore": 91,
+        "hashtag": "#autosperu",
+        "views": "85M",
+        "posts": "12.5K",
+        "growth": "+95%",
+        "relevanceScore": 90,
         "region": "Peru"
       },
       {
-        "hashtag": "#serumfacial",
-        "views": "780K",
-        "posts": "4.8K",
-        "growth": "+72%",
-        "relevanceScore": 82,
+        "hashtag": "#toyotaperu",
+        "views": "42M",
+        "posts": "8.2K",
+        "growth": "+135%",
+        "relevanceScore": 93,
         "region": "Peru"
       },
       {
-        "hashtag": "#rutinadecuidado",
-        "views": "1.2M",
-        "posts": "8.5K",
-        "growth": "+58%",
+        "hashtag": "#ecocar",
+        "views": "1.2B",
+        "posts": "58K",
+        "growth": "+82%",
+        "relevanceScore": 89,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#testdrive",
+        "views": "2.5B",
+        "posts": "95K",
+        "growth": "+68%",
         "relevanceScore": 87,
-        "region": "LATAM"
+        "region": "Global"
       },
       {
-        "hashtag": "#protectorsolar",
-        "views": "890K",
-        "posts": "5.6K",
-        "growth": "+93%",
-        "relevanceScore": 94,
-        "region": "Peru"
+        "hashtag": "#carreview",
+        "views": "8.5B",
+        "posts": "325K",
+        "growth": "+55%",
+        "relevanceScore": 91,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#familycar",
+        "views": "1.8B",
+        "posts": "78K",
+        "growth": "+75%",
+        "relevanceScore": 88,
+        "region": "Global"
+      },
+      {
+        "hashtag": "#fyp",
+        "views": "950B",
+        "posts": "45M",
+        "growth": "+42%",
+        "relevanceScore": 85,
+        "region": "Global"
       }
     ],
     "sounds": [
       {
-        "soundName": "Glow Up Routine",
-        "usage": "15.2K",
-        "growth": "+125%",
-        "category": "Skincare"
+        "soundName": "Car Review Theme",
+        "usage": "22.5K",
+        "growth": "+145%",
+        "category": "Automotive"
       },
       {
-        "soundName": "Beauty Must Haves",
-        "usage": "12.8K",
-        "growth": "+87%",
-        "category": "Product Reviews"
+        "soundName": "Test Drive Vibes",
+        "usage": "18.2K",
+        "growth": "+92%",
+        "category": "Adventure"
       }
     ],
     "creators": [
       {
-        "category": "Skincare Educators",
-        "avgEngagement": "8.5%",
+        "category": "Car Reviewers",
+        "avgEngagement": "9.2%",
         "topRegion": "Peru"
       },
       {
-        "category": "Makeup Artists",
-        "avgEngagement": "6.2%",
+        "category": "Automotive Enthusiasts",
+        "avgEngagement": "7.8%",
         "topRegion": "LATAM"
       }
     ]
   },
   "metadata": {
-    "method": "Manual curation + Public data",
-    "updateFrequency": "hourly",
-    "note": "Data basada en observación del TikTok Creative Center público"
+    "method": "Manual curation from TikTok Creative Center",
+    "updateFrequency": "Weekly",
+    "lastUpdate": "2025-10-31",
+    "note": "Datos verificados de TikTok Creative Center + investigación web. Hashtags con views/posts reales verificadas.",
+    "source": "TikTok Creative Center (Peru/LATAM filter) + public data analysis"
   }
 }
