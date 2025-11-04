@@ -21,7 +21,7 @@ export default function OptimizationLayer() {
     { name: 'Meta Ads', value: 30, leads: 364, color: '#1D4ED8' }, // Azul más oscuro para diferenciar
     { name: 'YouTube', value: 20, leads: 242, color: '#EF4444' }, // Rojo
     { name: 'Display', value: 10, leads: 121, color: '#10B981' }, // Verde
-    { name: 'TikTok', value: 5, leads: 95, color: '#374151' } // Gris oscuro
+    { name: 'TikTok', value: 5, leads: 95, color: '#06B6D4' } // Turquesa TikTok
   ];
 
   // Funnel de conversión
