@@ -58,7 +58,7 @@ export default function OptimizationLayer() {
       {/* KPIs Principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Leads */}
-        <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-2xl p-6 shadow-toyota-lg">
+        <div className="bg-gradient-to-br from-gray-900 to-black text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Target className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -82,7 +82,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Alcance */}
-        <div className="bg-gradient-to-br from-toyota-gray to-toyota-black text-white rounded-2xl p-6 shadow-lg">
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Users className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -105,7 +105,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Engagement */}
-        <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl p-6 shadow-lg">
+        <div className="bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Heart className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -129,7 +129,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Budget */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
+        <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Award className="w-8 h-8" />
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-400">

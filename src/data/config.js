@@ -48,7 +48,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Resultados en tiempo real y ajustes automáticos',
     description: 'Evaluación y redistribución',
     icon: 'TrendingUp',
-    color: 'from-toyota-green to-toyota-red',
+    color: 'from-toyota-red to-toyota-black',
   },
 };
 
