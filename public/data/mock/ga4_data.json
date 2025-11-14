@@ -1,7 +1,7 @@
 {
   "timestamp": "2025-01-30T15:30:00Z",
   "source": "Google Analytics 4 (Mock)",
-  "property": "Toyota Perú - RAV4 Microsite",
+  "property": "Honda Perú - CR-V & HR-V Microsite",
   "dateRange": {
     "start": "2024-12-01",
     "end": "2025-01-30"
@@ -18,7 +18,7 @@
   },
   "topPages": [
     {
-      "page": "/rav4-hibrida",
+      "page": "/cr-v-advanced-hybrid",
       "views": 48500,
       "uniquePageviews": 35200,
       "avgTimeOnPage": "3m 45s",
@@ -26,7 +26,7 @@
       "conversionRate": 0.085
     },
     {
-      "page": "/rav4-hibrida/especificaciones",
+      "page": "/cr-v-advanced-hybrid/especificaciones",
       "views": 32800,
       "uniquePageviews": 24600,
       "avgTimeOnPage": "4m 18s",
@@ -34,7 +34,7 @@
       "conversionRate": 0.095
     },
     {
-      "page": "/rav4-hibrida/cotizar",
+      "page": "/hr-v-2026/cotizar",
       "views": 28200,
       "uniquePageviews": 21900,
       "avgTimeOnPage": "5m 12s",
@@ -42,7 +42,7 @@
       "conversionRate": 0.152
     },
     {
-      "page": "/rav4-hibrida/comparar",
+      "page": "/comparador-suv",
       "views": 19500,
       "uniquePageviews": 14200,
       "avgTimeOnPage": "3m 28s",
@@ -52,35 +52,35 @@
   ],
   "searchTerms": [
     {
-      "term": "rav4 precio peru",
+      "term": "honda cr-v precio peru",
       "searches": 5450,
       "resultClicks": 4890,
       "conversionRate": 0.095,
       "trend": "rising"
     },
     {
-      "term": "suv hibrida",
+      "term": "suv hibrida honda",
       "searches": 4280,
       "resultClicks": 3650,
       "conversionRate": 0.088,
       "trend": "rising"
     },
     {
-      "term": "consumo combustible rav4",
+      "term": "honda e:hev",
       "searches": 3850,
       "resultClicks": 3420,
       "conversionRate": 0.072,
-      "trend": "stable"
+      "trend": "rising"
     },
     {
-      "term": "financiamiento toyota",
+      "term": "financiamiento honda",
       "searches": 3150,
       "resultClicks": 2680,
       "conversionRate": 0.125,
       "trend": "rising"
     },
     {
-      "term": "test drive rav4",
+      "term": "test drive honda cr-v",
       "searches": 2820,
       "resultClicks": 2520,
       "conversionRate": 0.185,
@@ -178,7 +178,7 @@
   },
   "metadata": {
     "note": "Mock data for MVP demonstration",
-    "actualIntegration": "Requires Toyota Peru GA4 property access",
+    "actualIntegration": "Requires Honda Peru GA4 property access",
     "updateFrequency": "Daily automatic once integrated"
   }
 }

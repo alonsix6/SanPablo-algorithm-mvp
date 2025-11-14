@@ -5,7 +5,7 @@
   "source": "Google Trends",
   "keywords": [
     {
-      "keyword": "toyota rav4",
+      "keyword": "honda cr-v",
       "average_interest": 82,
       "trend": "rising",
       "peak_score": 95,
@@ -19,7 +19,7 @@
       }
     },
     {
-      "keyword": "rav4 hibrida",
+      "keyword": "cr-v advanced hybrid",
       "average_interest": 88,
       "trend": "rising",
       "peak_score": 100,
@@ -61,7 +61,7 @@
       }
     },
     {
-      "keyword": "toyota peru",
+      "keyword": "honda peru",
       "average_interest": 68,
       "trend": "stable",
       "peak_score": 78,
@@ -117,7 +117,7 @@
       }
     },
     {
-      "keyword": "precio rav4",
+      "keyword": "precio cr-v",
       "average_interest": 78,
       "trend": "rising",
       "peak_score": 92,
