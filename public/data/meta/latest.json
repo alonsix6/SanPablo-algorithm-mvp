@@ -102,13 +102,13 @@
       ],
       "metadata": {
         "pages_monitored": [
+          "Toyota del Perú (1.1M likes - Verified Leader)",
           "Honda Autos Perú (286K likes - Verified)",
           "Pana Autos Honda (120K likes - Official Dealer)",
+          "Derco Perú (285K likes - Toyota Official Dealer)",
           "Autofact Perú (180K likes)",
-          "V Motor Center (68K likes - Official Dealer)",
           "Neoauto Perú (95K likes)",
-          "AutoLand Perú (68K likes)",
-          "Honda Motos Perú (150K likes - Official)"
+          "V Motor Center (68K likes - Honda Official Dealer)"
         ],
         "influencers_verified": [
           "José Orihuela - Auto Blog Perú",
@@ -206,8 +206,8 @@
       "growth": "+88%",
       "sentiment": "very positive",
       "top_brands": [
-        "Honda",
         "Toyota",
+        "Honda",
         "Mazda"
       ],
       "avg_reactions": 520,
@@ -222,9 +222,9 @@
       "sentiment": "very positive",
       "discussion_volume": "very high",
       "top_brands": [
-        "Honda",
         "Toyota",
-        "BYD"
+        "Honda",
+        "Hyundai"
       ],
       "avg_reactions": 425,
       "avg_comments": 98,
@@ -242,9 +242,9 @@
       "growth": "+72%",
       "sentiment": "positive",
       "top_brands": [
-        "Honda",
         "Toyota",
-        "Nissan"
+        "Honda",
+        "Hyundai"
       ],
       "avg_reactions": 485,
       "avg_comments": 95,
@@ -257,9 +257,9 @@
       "growth": "+95%",
       "sentiment": "very positive",
       "top_brands": [
+        "Toyota",
         "Honda",
-        "Mazda",
-        "Toyota"
+        "Mazda"
       ],
       "avg_reactions": 450,
       "avg_comments": 88,
@@ -272,9 +272,9 @@
       "growth": "+58%",
       "sentiment": "neutral",
       "top_brands": [
-        "Honda",
         "Toyota",
-        "Nissan"
+        "Honda",
+        "Hyundai"
       ],
       "avg_reactions": 420,
       "avg_comments": 92,
@@ -288,8 +288,8 @@
       "sentiment": "positive",
       "discussion_volume": "high",
       "top_brands": [
-        "Honda",
         "Toyota",
+        "Honda",
         "Mazda"
       ],
       "avg_reactions": 385,
@@ -308,8 +308,8 @@
       "growth": "+45%",
       "sentiment": "positive",
       "top_brands": [
-        "Honda",
         "Toyota",
+        "Honda",
         "Mazda"
       ],
       "avg_reactions": 380,
@@ -322,7 +322,7 @@
     "dataType": "Public engagement analysis from verified sources",
     "updateFrequency": "Weekly",
     "lastUpdate": "2025-11-04",
-    "note": "Fuentes verificadas: Honda Autos Perú (286K likes), Pana Autos Honda, páginas automotrices, influencers verificados. No requiere API tokens.",
+    "note": "Fuentes verificadas: Toyota del Perú (1.1M likes - líder de mercado 21.5%), Honda Autos Perú (286K likes), Derco, Pana Autos, páginas automotrices e influencers verificados. Datos basados en engagement público.",
     "verification": "Páginas y grupos verificados vía web search 04/11/2025"
   }
 }

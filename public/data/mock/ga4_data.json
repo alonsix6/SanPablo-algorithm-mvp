@@ -13,8 +13,8 @@
     "sessions": 198750,
     "averageSessionDuration": "4m 28s",
     "bounceRate": 0.31,
-    "conversions": 1247,
-    "conversionRate": 0.063
+    "conversions": 795,
+    "conversionRate": 0.004
   },
   "topPages": [
     {
@@ -23,7 +23,7 @@
       "uniquePageviews": 35200,
       "avgTimeOnPage": "3m 45s",
       "exitRate": 0.28,
-      "conversionRate": 0.085
+      "conversionRate": 0.0055
     },
     {
       "page": "/cr-v-advanced-hybrid/especificaciones",
@@ -31,7 +31,7 @@
       "uniquePageviews": 24600,
       "avgTimeOnPage": "4m 18s",
       "exitRate": 0.22,
-      "conversionRate": 0.095
+      "conversionRate": 0.0062
     },
     {
       "page": "/hr-v-2026/cotizar",
@@ -39,7 +39,7 @@
       "uniquePageviews": 21900,
       "avgTimeOnPage": "5m 12s",
       "exitRate": 0.18,
-      "conversionRate": 0.152
+      "conversionRate": 0.0095
     },
     {
       "page": "/comparador-suv",
@@ -47,7 +47,7 @@
       "uniquePageviews": 14200,
       "avgTimeOnPage": "3m 28s",
       "exitRate": 0.35,
-      "conversionRate": 0.068
+      "conversionRate": 0.0042
     }
   ],
   "searchTerms": [
@@ -55,35 +55,35 @@
       "term": "honda cr-v precio peru",
       "searches": 5450,
       "resultClicks": 4890,
-      "conversionRate": 0.095,
+      "conversionRate": 0.0058,
       "trend": "rising"
     },
     {
       "term": "suv hibrida honda",
       "searches": 4280,
       "resultClicks": 3650,
-      "conversionRate": 0.088,
+      "conversionRate": 0.0052,
       "trend": "rising"
     },
     {
       "term": "honda e:hev",
       "searches": 3850,
       "resultClicks": 3420,
-      "conversionRate": 0.072,
+      "conversionRate": 0.0045,
       "trend": "rising"
     },
     {
       "term": "financiamiento honda",
       "searches": 3150,
       "resultClicks": 2680,
-      "conversionRate": 0.125,
+      "conversionRate": 0.0082,
       "trend": "rising"
     },
     {
       "term": "test drive honda cr-v",
       "searches": 2820,
       "resultClicks": 2520,
-      "conversionRate": 0.185,
+      "conversionRate": 0.0118,
       "trend": "rising"
     }
   ],
@@ -115,41 +115,41 @@
     "tablet": 0.07
   },
   "leadGeneration": {
-    "totalLeads": 1247,
-    "qualifiedLeads": 856,
-    "qualificationRate": 0.686,
-    "testDriveRequests": 342,
-    "quotationRequests": 514,
-    "brochureDownloads": 1850,
+    "totalLeads": 795,
+    "qualifiedLeads": 517,
+    "qualificationRate": 0.65,
+    "testDriveRequests": 223,
+    "quotationRequests": 334,
+    "brochureDownloads": 1113,
     "leadsBySource": [
       {
         "source": "google_search",
-        "leads": 456,
-        "qualified": 328,
+        "leads": 318,
+        "qualified": 227,
         "avgLeadScore": 78
       },
       {
         "source": "facebook",
-        "leads": 325,
-        "qualified": 218,
+        "leads": 223,
+        "qualified": 145,
         "avgLeadScore": 72
       },
       {
         "source": "instagram",
-        "leads": 248,
-        "qualified": 165,
+        "leads": 143,
+        "qualified": 89,
         "avgLeadScore": 69
       },
       {
         "source": "youtube",
-        "leads": 142,
-        "qualified": 98,
+        "leads": 80,
+        "qualified": 52,
         "avgLeadScore": 75
       },
       {
         "source": "tiktok",
-        "leads": 76,
-        "qualified": 47,
+        "leads": 31,
+        "qualified": 18,
         "avgLeadScore": 64
       }
     ]

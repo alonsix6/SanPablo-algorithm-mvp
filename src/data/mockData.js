@@ -56,12 +56,12 @@ export const MOCK_GA4_DATA = {
 
   // Conversiones (KPIs principales)
   conversions: {
-    form_submissions: 1247,
-    test_drive_requests: 342,
-    brochure_downloads: 2890,
-    whatsapp_clicks: 4560,
-    phone_calls: 876,
-    newsletter_signups: 1920,
+    form_submissions: 795,
+    test_drive_requests: 223,
+    brochure_downloads: 1820,
+    whatsapp_clicks: 2850,
+    phone_calls: 545,
+    newsletter_signups: 1210,
   },
 
   // Fuentes de tráfico
@@ -98,15 +98,15 @@ export const MOCK_GA4_DATA = {
 export const PERFORMANCE_KPIS = {
   // Leads calificados
   leads: {
-    total: 1247,
-    qualified: 856, // 68.6%
-    qualification_rate: 68.6,
-    cost_per_lead: 12.50, // USD
-    trend: '+15%',
-    trend_value: 15,
-    previous_period: 1084,
-    monthly_target: 1500,
-    target_completion: 83.1, // porcentaje
+    total: 795,
+    qualified: 517, // 65%
+    qualification_rate: 65.0,
+    cost_per_lead: 19.60, // USD (más realista para automotive)
+    trend: '+12%',
+    trend_value: 12,
+    previous_period: 710,
+    monthly_target: 1200,
+    target_completion: 66.3, // porcentaje
   },
 
   // Alcance
@@ -140,10 +140,10 @@ export const PERFORMANCE_KPIS = {
     ctr: 3.0,
     landing_page_visits: 89250, // 85% del tráfico
     landing_page_rate: 85,
-    form_submissions: 1247, // 1.4% conversion
-    conversion_rate: 1.4,
-    test_drive_bookings: 342, // 27% de leads
-    booking_rate: 27.4,
+    form_submissions: 795, // 0.9% conversion (realista automotive)
+    conversion_rate: 0.9,
+    test_drive_bookings: 223, // 28% de leads
+    booking_rate: 28.1,
   },
 
   // Budget & ROI
@@ -186,7 +186,7 @@ export const OPPORTUNITY_SCORE = {
         { name: 'Búsquedas precio', value: 52, unit: '%', status: 'up' },
         { name: 'Búsquedas concesionario', value: 28, unit: '%', status: 'up' },
         { name: 'Búsquedas financiamiento', value: 33, unit: '%', status: 'up' },
-        { name: 'Solicitudes test drive', value: 342, unit: 'leads', status: 'up' },
+        { name: 'Solicitudes test drive', value: 223, unit: 'leads', status: 'up' },
       ],
     },
     engagement: {

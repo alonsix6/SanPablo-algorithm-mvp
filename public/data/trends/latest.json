@@ -6,10 +6,10 @@
   "keywords": [
     {
       "keyword": "honda cr-v",
-      "average_interest": 82,
+      "average_interest": 68,
       "trend": "rising",
-      "peak_score": 95,
-      "growth_3m": "+58%",
+      "peak_score": 82,
+      "growth_3m": "+52%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 72,
@@ -20,10 +20,10 @@
     },
     {
       "keyword": "cr-v advanced hybrid",
-      "average_interest": 88,
+      "average_interest": 75,
       "trend": "rising",
-      "peak_score": 100,
-      "growth_3m": "+125%",
+      "peak_score": 88,
+      "growth_3m": "+95%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 75,
@@ -118,10 +118,10 @@
     },
     {
       "keyword": "precio cr-v",
-      "average_interest": 78,
+      "average_interest": 72,
       "trend": "rising",
-      "peak_score": 92,
-      "growth_3m": "+95%",
+      "peak_score": 85,
+      "growth_3m": "+72%",
       "top_regions": {
         "Lima": 100,
         "Arequipa": 72,
@@ -133,6 +133,6 @@
   ],
   "metadata": {
     "method": "Curated data (pytrends unavailable)",
-    "note": "Real-time Google Trends data"
+    "note": "Google Trends data estimada para keywords de Honda CR-V en Perú. Datos conservadores basados en benchmarks de mercado donde Toyota lidera con 21.5% share."
   }
 }
