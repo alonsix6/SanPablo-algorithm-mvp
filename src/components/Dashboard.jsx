@@ -63,7 +63,7 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-toyota flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-honda flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white text-lg font-medium">{UI_TEXT.loading}</p>
@@ -75,12 +75,12 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="bg-gradient-toyota text-white shadow-toyota-lg">
+      <header className="bg-gradient-honda text-white shadow-honda-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                <Car className="w-7 h-7 sm:w-8 sm:h-8 text-toyota-red" />
+                <Car className="w-7 h-7 sm:w-8 sm:h-8 text-honda-red" />
               </div>
               <div className="min-w-0">
                 <h1 className="text-xl sm:text-2xl font-bold truncate">{BRAND_CONFIG.name}</h1>
@@ -167,10 +167,10 @@ export default function Dashboard() {
             </p>
             <div className="flex items-center gap-3 sm:gap-4">
               <span className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-2 h-2 bg-toyota-red rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-honda-red rounded-full animate-pulse"></div>
                 {UI_TEXT.systemActive}
               </span>
-              <span className="text-toyota-red font-semibold text-xs sm:text-sm">{UI_TEXT.footer.version}</span>
+              <span className="text-honda-red font-semibold text-xs sm:text-sm">{UI_TEXT.footer.version}</span>
             </div>
           </div>
         </div>

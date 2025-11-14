@@ -182,7 +182,7 @@ export default function DataLayer() {
   return (
     <div className="space-y-6">
       {/* Header & Score Summary */}
-      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-2xl shadow-toyota-lg p-8 text-white">
+      <div className="bg-gradient-to-br from-honda-red to-honda-darkRed rounded-2xl shadow-honda-lg p-8 text-white">
         <div className="flex items-start justify-between mb-6">
           <div className="flex-1">
             <h2 className="text-xl font-bold mb-2">
@@ -238,9 +238,9 @@ export default function DataLayer() {
       </div>
 
       {/* Insights Clave del Mercado */}
-      <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-toyota-lg p-8 border border-gray-100">
+      <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-honda-lg p-8 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 bg-gradient-to-br from-honda-red to-honda-darkRed rounded-xl flex items-center justify-center shadow-lg">
             <span className="text-2xl">📊</span>
           </div>
           <div>
@@ -316,7 +316,7 @@ export default function DataLayer() {
               <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-blue-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
-                <p>Promedio del "interés de búsqueda" (0-100) de todas las keywords automotrices monitoreadas en Perú. Score alto indica fuerte demanda de información sobre RAV4 y SUVs híbridas.</p>
+                <p>Promedio del "interés de búsqueda" (0-100) de todas las keywords automotrices monitoreadas en Perú. Score alto indica fuerte demanda de información sobre CR-V y SUVs híbridas.</p>
                 <p className="mt-2 text-xs text-blue-700">
                   <strong>Fuente:</strong> Google Trends API (Perú) • <strong>Actualización:</strong> Semanal • <strong>Categoría:</strong> Automotive
                 </p>
@@ -419,7 +419,7 @@ export default function DataLayer() {
               <Info className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-cyan-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
-                <p>Promedio del "relevance score" (0-100) de los hashtags automotrices más virales. Score alto indica alto potencial de viralidad para contenido de RAV4 y SUVs.</p>
+                <p>Promedio del "relevance score" (0-100) de los hashtags automotrices más virales. Score alto indica alto potencial de viralidad para contenido de CR-V y SUVs.</p>
                 <p className="mt-2 text-xs text-cyan-700">
                   <strong>Fuente:</strong> TikTok Creative Center (datos públicos) • <strong>Actualización:</strong> Semanal • <strong>Región:</strong> Peru + Global
                 </p>
@@ -494,9 +494,9 @@ export default function DataLayer() {
               <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-blue-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
-                <p>Promedio del "engagement score" (0-10) de los temas automotrices más discutidos en Facebook e Instagram. Score alto indica fuerte conversación social sobre RAV4.</p>
+                <p>Promedio del "engagement score" (0-10) de los temas automotrices más discutidos en Facebook e Instagram. Score alto indica fuerte conversación social sobre CR-V.</p>
                 <p className="mt-2 text-xs text-blue-700">
-                  <strong>Fuente:</strong> Páginas públicas verificadas (Toyota Perú 450K likes, Derco Perú 285K, etc.) • <strong>Actualización:</strong> Semanal • <strong>Método:</strong> Análisis manual de engagement público
+                  <strong>Fuente:</strong> Páginas públicas verificadas (Honda Perú 286K likes, Pana Autos 285K, etc.) • <strong>Actualización:</strong> Semanal • <strong>Método:</strong> Análisis manual de engagement público
                 </p>
               </div>
             </div>
@@ -573,9 +573,9 @@ export default function DataLayer() {
               <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-amber-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
-                <p>Basado en tasa de conversión (leads calificados / sesiones totales) multiplicado por factor 150. Score alto indica fuerte intención de compra de visitantes del micrositio RAV4.</p>
+                <p>Basado en tasa de conversión (leads calificados / sesiones totales) multiplicado por factor 150. Score alto indica fuerte intención de compra de visitantes del micrositio CR-V.</p>
                 <p className="mt-2 text-xs text-amber-700">
-                  <strong>Fuente:</strong> Google Analytics 4 • <strong>Actualización:</strong> Diario • <strong>Property:</strong> Toyota Perú - RAV4 Microsite
+                  <strong>Fuente:</strong> Google Analytics 4 • <strong>Actualización:</strong> Diario • <strong>Property:</strong> Honda Perú - CR-V Microsite
                 </p>
               </div>
             </div>
@@ -682,24 +682,24 @@ export default function DataLayer() {
       </div>
 
       {/* Keywords Reference */}
-      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-xl p-6 text-white">
+      <div className="bg-gradient-to-br from-honda-red to-honda-darkRed rounded-xl p-6 text-white">
         <h3 className="text-base font-bold mb-4 flex items-center gap-2">
           <Car className="w-6 h-6" />
-          Keywords Monitoreadas - Toyota RAV4 Híbrida
+          Keywords Monitoreadas - Honda CR-V Híbrida
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <p className="text-sm text-white/70 mb-2 font-semibold">Principales:</p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Toyota RAV4</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">RAV4 Híbrida</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Honda CR-V</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">CR-V Híbrida</span>
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">SUV Híbrida</span>
             </div>
           </div>
           <div>
             <p className="text-sm text-white/70 mb-2 font-semibold">Intención:</p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Precio RAV4</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Precio CR-V</span>
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Test Drive</span>
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Financiamiento</span>
             </div>

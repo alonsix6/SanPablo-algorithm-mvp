@@ -4,7 +4,7 @@ import { PERFORMANCE_KPIS, ALERTS, AB_TESTS, COMPETITOR_INSIGHTS } from '../data
 import { LAYER_CONFIG, METRIC_CARDS_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
-  // Performance últimos 7 días - Toyota RAV4
+  // Performance últimos 7 días - Honda CR-V
   const performanceData = [
     { date: '28 Oct', leads: 156, reach: 420000, engagement: 11200, spent: 2100 },
     { date: '29 Oct', leads: 168, reach: 435000, engagement: 12500, spent: 2250 },
@@ -64,7 +64,7 @@ export default function OptimizationLayer() {
       conversionRate: null,
       conversionLabel: null,
       icon: '🚗',
-      color: 'from-toyota-red to-toyota-darkRed'
+      color: 'from-honda-red to-honda-darkRed'
     }
   ];
 
@@ -82,7 +82,7 @@ export default function OptimizationLayer() {
             </p>
           </div>
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-toyota-green text-white rounded-full text-sm font-medium flex items-center gap-1">
+            <span className="px-3 py-1 bg-honda-blue text-white rounded-full text-sm font-medium flex items-center gap-1">
               <RefreshCw className="w-4 h-4" />
               Auto-optimización activa
             </span>
@@ -164,7 +164,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Budget */}
-        <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl p-6 shadow-lg">
+        <div className="bg-gradient-to-br from-honda-blue to-success text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Award className="w-8 h-8" />
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-400">
@@ -194,11 +194,11 @@ export default function OptimizationLayer() {
           </div>
           <div className="flex gap-4 text-sm">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-toyota-red"></div>
+              <div className="w-3 h-3 rounded-full bg-honda-red"></div>
               <span>Leads</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-toyota-green"></div>
+              <div className="w-3 h-3 rounded-full bg-honda-blue"></div>
               <span>Engagement (K)</span>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function OptimizationLayer() {
         {/* Alertas Automáticas */}
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center gap-3 mb-4">
-            <AlertCircle className="w-6 h-6 text-toyota-red" />
+            <AlertCircle className="w-6 h-6 text-honda-red" />
             <h3 className="text-base font-bold text-gray-900">Alertas Automáticas</h3>
           </div>
           <div className="space-y-3">
@@ -339,7 +339,7 @@ export default function OptimizationLayer() {
                   </span>
                 </div>
                 <p className="text-xs text-gray-700 mb-2">{alert.message}</p>
-                <p className="text-xs font-semibold text-toyota-green">
+                <p className="text-xs font-semibold text-honda-blue">
                   Acción: {alert.action}
                 </p>
               </div>
@@ -350,7 +350,7 @@ export default function OptimizationLayer() {
         {/* A/B Tests */}
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center gap-3 mb-4">
-            <BarChart3 className="w-6 h-6 text-toyota-green" />
+            <BarChart3 className="w-6 h-6 text-honda-blue" />
             <h3 className="text-base font-bold text-gray-900">A/B Tests Activos</h3>
           </div>
           <div className="space-y-4">
@@ -379,7 +379,7 @@ export default function OptimizationLayer() {
                 </div>
 
                 {test.recommendation && (
-                  <p className="text-xs font-semibold text-toyota-green bg-green-50 p-2 rounded">
+                  <p className="text-xs font-semibold text-honda-blue bg-green-50 p-2 rounded">
                     ✓ {test.recommendation}
                   </p>
                 )}
@@ -393,8 +393,8 @@ export default function OptimizationLayer() {
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <h3 className="text-base font-bold text-gray-900 mb-4">Análisis de Competencia</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Toyota RAV4').map((comp, idx) => (
-            <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-toyota-red transition-colors">
+          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Honda CR-V').map((comp, idx) => (
+            <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-honda-red transition-colors">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-gray-900">{comp.brand}</h4>
                 <span className={`px-2 py-1 rounded text-xs font-bold ${
@@ -411,7 +411,7 @@ export default function OptimizationLayer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Sentimiento</p>
-                  <p className="text-base font-bold text-toyota-green">{comp.sentiment}%</p>
+                  <p className="text-base font-bold text-honda-blue">{comp.sentiment}%</p>
                 </div>
               </div>
 
@@ -429,11 +429,11 @@ export default function OptimizationLayer() {
           ))}
         </div>
 
-        {/* Toyota Comparison */}
-        <div className="mt-4 p-5 bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-xl">
+        {/* Honda Comparison */}
+        <div className="mt-4 p-5 bg-gradient-to-br from-honda-red to-honda-darkRed text-white rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-base mb-1">Toyota RAV4</h4>
+              <h4 className="font-bold text-base mb-1">Honda CR-V</h4>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>

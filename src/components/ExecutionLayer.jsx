@@ -32,7 +32,7 @@ export default function ExecutionLayer() {
             </p>
           </div>
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-toyota-green text-white rounded-full text-sm font-medium flex items-center gap-1">
+            <span className="px-3 py-1 bg-honda-blue text-white rounded-full text-sm font-medium flex items-center gap-1">
               <PlayCircle className="w-4 h-4" />
               Live
             </span>
@@ -41,7 +41,7 @@ export default function ExecutionLayer() {
       </div>
 
       {/* Budget Overview */}
-      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-2xl shadow-toyota-lg p-8">
+      <div className="bg-gradient-to-br from-honda-red to-honda-darkRed text-white rounded-2xl shadow-honda-lg p-8">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
@@ -80,7 +80,7 @@ export default function ExecutionLayer() {
       {/* Budget Allocation by Channel */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-toyota-green to-success rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-honda-blue to-success rounded-xl flex items-center justify-center">
             <Target className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -210,11 +210,11 @@ export default function ExecutionLayer() {
       {/* Content Pillars */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-toyota-gray to-toyota-black rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-honda-gray to-honda-black rounded-xl flex items-center justify-center">
             <Zap className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-gray-900">Pilares de Contenido RAV4</h3>
+            <h3 className="text-base font-bold text-gray-900">Pilares de Contenido CR-V</h3>
             <p className="text-sm text-gray-600">Performance y distribución recomendada</p>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function ExecutionLayer() {
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Conversiones</span>
-                    <span className="font-semibold text-toyota-green">{pillar.performance.conversions}</span>
+                    <span className="font-semibold text-honda-blue">{pillar.performance.conversions}</span>
                   </div>
                 </div>
 
@@ -272,7 +272,7 @@ export default function ExecutionLayer() {
       </div>
 
       {/* Timing Recommendations */}
-      <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl shadow-lg p-8">
+      <div className="bg-gradient-to-br from-honda-blue to-success text-white rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-6">
           <Calendar className="w-8 h-8" />
           <h3 className="text-lg font-bold">Timing Óptimo de Pauta</h3>

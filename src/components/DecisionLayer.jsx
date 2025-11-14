@@ -105,22 +105,22 @@ export default function DecisionLayer() {
             </p>
           </div>
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-toyota-green text-white rounded-full text-sm font-medium">
+            <span className="px-3 py-1 bg-honda-blue text-white rounded-full text-sm font-medium">
               IA Activa
             </span>
           </div>
         </div>
       </div>
 
-      {/* Toyota Opportunity Score */}
-      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-2xl shadow-toyota-lg p-8">
+      {/* Honda Opportunity Score */}
+      <div className="bg-gradient-to-br from-honda-red to-honda-darkRed text-white rounded-2xl shadow-honda-lg p-8">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
               <Zap className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">Toyota Opportunity Score</h3>
+              <h3 className="text-xl font-bold">Honda Opportunity Score</h3>
               <p className="text-white/90 mt-1 text-sm">Índice de oportunidad para inversión publicitaria</p>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function DecisionLayer() {
       {/* Recomendaciones Estratégicas */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-honda-red to-honda-darkRed rounded-xl flex items-center justify-center">
             <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -233,21 +233,21 @@ export default function DecisionLayer() {
         </div>
       </div>
 
-      {/* Audiencias RAV4 */}
+      {/* Audiencias CR-V */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-toyota-green to-success rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-honda-blue to-success rounded-xl flex items-center justify-center">
             <Users className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-gray-900">Audiencias Objetivo RAV4</h3>
+            <h3 className="text-base font-bold text-gray-900">Audiencias Objetivo CR-V</h3>
             <p className="text-sm text-gray-600">Segmentación inteligente para lanzamiento</p>
           </div>
         </div>
 
         <div className="grid gap-4">
           {audiences.map((aud, idx) => (
-            <div key={idx} className="p-5 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border-2 border-gray-200 hover:border-toyota-red transition-colors">
+            <div key={idx} className="p-5 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border-2 border-gray-200 hover:border-honda-red transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
@@ -269,7 +269,7 @@ export default function DecisionLayer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Engagement Rate</p>
-                  <p className="text-xl font-bold text-toyota-green">{aud.engagement}</p>
+                  <p className="text-xl font-bold text-honda-blue">{aud.engagement}</p>
                 </div>
               </div>
 
@@ -283,7 +283,7 @@ export default function DecisionLayer() {
       </div>
 
       {/* Pilares de Contenido */}
-      <div className="bg-gradient-to-br from-toyota-gray to-toyota-black text-white rounded-2xl shadow-lg p-8">
+      <div className="bg-gradient-to-br from-honda-gray to-honda-black text-white rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-6">
           <MessageSquare className="w-8 h-8" />
           <h3 className="text-lg font-bold">Pilares de Contenido Sugeridos</h3>
@@ -292,7 +292,7 @@ export default function DecisionLayer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Zap className="w-5 h-5 text-toyota-green" />
+              <Zap className="w-5 h-5 text-honda-blue" />
               <p className="text-white/80 text-sm font-semibold">Pilar 1: Tecnología Híbrida</p>
             </div>
             <p className="text-base font-bold mb-2">"{KEY_MESSAGES.hybrid.message}"</p>
@@ -305,7 +305,7 @@ export default function DecisionLayer() {
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-5 h-5 text-toyota-green" />
+              <Users className="w-5 h-5 text-honda-blue" />
               <p className="text-white/80 text-sm font-semibold">Pilar 2: Seguridad Familiar</p>
             </div>
             <p className="text-base font-bold mb-2">"{KEY_MESSAGES.family.message}"</p>
@@ -318,7 +318,7 @@ export default function DecisionLayer() {
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Car className="w-5 h-5 text-toyota-green" />
+              <Car className="w-5 h-5 text-honda-blue" />
               <p className="text-white/80 text-sm font-semibold">Pilar 3: Aventura 4x4</p>
             </div>
             <p className="text-base font-bold mb-2">"{KEY_MESSAGES.adventure.message}"</p>
@@ -331,7 +331,7 @@ export default function DecisionLayer() {
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <AlertCircle className="w-5 h-5 text-toyota-green" />
+              <AlertCircle className="w-5 h-5 text-honda-blue" />
               <p className="text-white/80 text-sm font-semibold">Pilar 4: Sostenibilidad</p>
             </div>
             <p className="text-base font-bold mb-2">"{KEY_MESSAGES.sustainability.message}"</p>
