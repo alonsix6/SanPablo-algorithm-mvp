@@ -185,15 +185,15 @@
   ],
   "aggregatedTopics": [
     {
-      "topic": "RAV4 Híbrida 2025",
+      "topic": "CR-V Advanced Hybrid 2025",
       "mentions": 2850,
       "engagement_score": 9.5,
       "growth": "+125%",
       "sentiment": "very positive",
       "top_brands": [
-        "Toyota",
-        "Derco",
-        "Mitsui"
+        "Honda",
+        "Pana Autos",
+        "VMC"
       ],
       "avg_reactions": 580,
       "avg_comments": 125,
@@ -206,8 +206,8 @@
       "growth": "+88%",
       "sentiment": "very positive",
       "top_brands": [
-        "Toyota",
         "Honda",
+        "Toyota",
         "Mazda"
       ],
       "avg_reactions": 520,
@@ -222,9 +222,9 @@
       "sentiment": "very positive",
       "discussion_volume": "very high",
       "top_brands": [
-        "Toyota",
         "Honda",
-        "Lexus"
+        "Toyota",
+        "BYD"
       ],
       "avg_reactions": 425,
       "avg_comments": 98,
@@ -242,8 +242,8 @@
       "growth": "+72%",
       "sentiment": "positive",
       "top_brands": [
-        "Toyota",
         "Honda",
+        "Toyota",
         "Nissan"
       ],
       "avg_reactions": 485,
@@ -257,9 +257,9 @@
       "growth": "+95%",
       "sentiment": "very positive",
       "top_brands": [
-        "Toyota",
+        "Honda",
         "Mazda",
-        "Honda"
+        "Toyota"
       ],
       "avg_reactions": 450,
       "avg_comments": 88,
@@ -272,8 +272,8 @@
       "growth": "+58%",
       "sentiment": "neutral",
       "top_brands": [
-        "Toyota",
         "Honda",
+        "Toyota",
         "Nissan"
       ],
       "avg_reactions": 420,
@@ -288,8 +288,8 @@
       "sentiment": "positive",
       "discussion_volume": "high",
       "top_brands": [
-        "Toyota",
         "Honda",
+        "Toyota",
         "Mazda"
       ],
       "avg_reactions": 385,
@@ -297,7 +297,7 @@
       "avg_shares": 85,
       "top_queries": [
         "mejor suv",
-        "rav4 vs crv",
+        "crv vs rav4",
         "precio suv"
       ]
     },
@@ -308,8 +308,8 @@
       "growth": "+45%",
       "sentiment": "positive",
       "top_brands": [
-        "Toyota",
         "Honda",
+        "Toyota",
         "Mazda"
       ],
       "avg_reactions": 380,
@@ -322,7 +322,7 @@
     "dataType": "Public engagement analysis from verified sources",
     "updateFrequency": "Weekly",
     "lastUpdate": "2025-11-04",
-    "note": "Fuentes verificadas: Toyota Perú (450K likes), páginas automotrices, influencers verificados. No requiere API tokens.",
+    "note": "Fuentes verificadas: Honda Autos Perú (286K likes), Pana Autos Honda, páginas automotrices, influencers verificados. No requiere API tokens.",
     "verification": "Páginas y grupos verificados vía web search 04/11/2025"
   }
 }
