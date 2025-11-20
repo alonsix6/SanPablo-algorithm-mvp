@@ -693,7 +693,7 @@ export default function DataLayer() {
       <div className="bg-gradient-to-br from-ucsp-burgundy to-ucsp-darkBurgundy rounded-xl p-6 text-white">
         <h3 className="text-base font-bold mb-4 flex items-center gap-2">
           <GraduationCap className="w-6 h-6" />
-          Keywords Monitoreadas - UCSP (Admisiones 2025)
+          Keywords Monitoreadas - UCSP (Admisiones 2026)
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

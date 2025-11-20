@@ -7,9 +7,9 @@
 export const MOCK_GA4_DATA = {
   // Sesiones web
   sessions: {
-    total: 42500,
-    new_users: 38250,
-    returning: 4250,
+    total: 42200,
+    new_users: 25650,
+    returning: 2850,
     avg_session_duration: '4:15', // Mayor que autos (más tiempo investigando carreras)
     pages_per_session: 5.8,
     bounce_rate: 32.5, // porcentaje
@@ -19,65 +19,65 @@ export const MOCK_GA4_DATA = {
   top_pages: [
     {
       page: '/admision',
-      title: 'Admisión UCSP 2025',
-      views: 18500,
-      bounce_rate: 28,
-      avg_time: '5:30',
+      title: 'Admisión UCSP 2026',
+      views: 11200,
+      bounce_rate: 32,
+      avg_time: '3:45',
     },
     {
       page: '/carreras/ingenieria-industrial',
       title: 'Ingeniería Industrial',
-      views: 12800,
-      bounce_rate: 35,
-      avg_time: '4:20',
-    },
-    {
-      page: '/carreras/derecho',
-      title: 'Derecho',
-      views: 10200,
-      bounce_rate: 32,
-      avg_time: '4:45',
-    },
-    {
-      page: '/becas',
-      title: 'Becas y Financiamiento',
-      views: 8900,
-      bounce_rate: 18,
-      avg_time: '6:10',
+      views: 7500,
+      bounce_rate: 28,
+      avg_time: '4:12',
     },
     {
       page: '/carreras/medicina',
       title: 'Medicina Humana',
-      views: 7650,
-      bounce_rate: 30,
-      avg_time: '5:00',
+      views: 7200,
+      bounce_rate: 25,
+      avg_time: '5:05',
+    },
+    {
+      page: '/becas',
+      title: 'Becas y Financiamiento',
+      views: 9500,
+      bounce_rate: 42,
+      avg_time: '2:52',
+    },
+    {
+      page: '/carreras/derecho',
+      title: 'Derecho',
+      views: 5800,
+      bounce_rate: 35,
+      avg_time: '3:28',
     },
   ],
 
   // Conversiones (KPIs principales)
   conversions: {
-    form_submissions: 3200,
-    charla_requests: 485,
-    brochure_downloads: 2850,
-    whatsapp_clicks: 4200,
-    phone_calls: 720,
-    newsletter_signups: 1580,
+    form_submissions: 980,
+    charla_requests: 185,
+    brochure_downloads: 420,
+    whatsapp_clicks: 1250,
+    phone_calls: 220,
+    newsletter_signups: 380,
   },
 
   // Fuentes de tráfico
   traffic_sources: {
-    organic_search: { percentage: 32, sessions: 13600, label: 'Búsqueda Orgánica' },
-    paid_search: { percentage: 30, sessions: 12750, label: 'Google Ads' },
-    social_media: { percentage: 28, sessions: 11900, label: 'Meta Ads' },
-    direct: { percentage: 7, sessions: 2975, label: 'Directo' },
-    referral: { percentage: 3, sessions: 1275, label: 'Referencias' },
+    organic_search: { percentage: 32, sessions: 13504, label: 'Búsqueda Orgánica' },
+    paid_search: { percentage: 30, sessions: 12660, label: 'Google Ads' },
+    social_media: { percentage: 28, sessions: 11816, label: 'Meta Ads' },
+    direct: { percentage: 7, sessions: 2954, label: 'Directo' },
+    referral: { percentage: 3, sessions: 1266, label: 'Referencias' },
   },
 
   // Dispositivos
   devices: {
-    mobile: { percentage: 72, sessions: 30600, label: 'Mobile' },
-    desktop: { percentage: 23, sessions: 9775, label: 'Desktop' },
-    tablet: { percentage: 5, sessions: 2125, label: 'Tablet' },
+    mobile: { percentage: 72, sessions: 30384, label: 'Mobile' },
+    desktop: { percentage: 23, sessions: 9706, label: 'Desktop' },
+    tablet: { percentage: 5, sessions: 2110, label: 'Tablet' },
   },
 
   // Ubicaciones (zonas objetivo)
@@ -96,9 +96,9 @@ export const MOCK_GA4_DATA = {
 export const PERFORMANCE_KPIS = {
   // Postulaciones completadas (reemplazo de leads)
   postulaciones: {
-    current: 1256,
-    previous: 1092,
-    change: '+15.0',
+    current: 780,
+    previous: 680,
+    change: '+14.7',
     trend: 'up',
     label: 'Postulaciones Completadas',
     description: 'Total de postulaciones válidas en periodo',
@@ -106,19 +106,19 @@ export const PERFORMANCE_KPIS = {
 
   // Alias para compatibilidad con OptimizationLayer.jsx
   leads: {
-    qualified: 1256,
-    total: 1580,
-    qualification_rate: 79.5,
-    cost_per_lead: 10.40,
-    trend: '+15.0%',
-    trend_value: 15.0,
+    qualified: 780,
+    total: 980,
+    qualification_rate: 79.6,
+    cost_per_lead: 16.80,
+    trend: '+14.7%',
+    trend_value: 14.7,
   },
 
   // Alcance total
   alcance: {
-    current: 875000,
-    previous: 718000,
-    change: '+21.9',
+    current: 540000,
+    previous: 445000,
+    change: '+21.3',
     trend: 'up',
     label: 'Alcance Total',
     description: 'Usuarios únicos impactados',
@@ -126,18 +126,18 @@ export const PERFORMANCE_KPIS = {
 
   // Alias para compatibilidad
   reach: {
-    unique_reach: 875000,
-    impressions: 2450000,
+    unique_reach: 540000,
+    impressions: 1500000,
     frequency: 2.8,
-    trend: '+21.9%',
-    trend_value: 21.9,
+    trend: '+21.3%',
+    trend_value: 21.3,
   },
 
   // Engagement/Interacciones
   engagement: {
-    total_interactions: 142500,
+    total_interactions: 88000,
     engagement_rate: 16.3,
-    shares: 18500,
+    shares: 11400,
     trend: '+8.1%',
     trend_value: 8.1,
   },
@@ -153,9 +153,9 @@ export const PERFORMANCE_KPIS = {
 
   // CPP (Costo por Postulación) - reemplazo de CPL
   cpp: {
-    current: 10.40,
-    previous: 11.30,
-    change: '-7.9',
+    current: 16.80,
+    previous: 18.50,
+    change: '-9.2',
     trend: 'down', // Reducción es positivo
     label: 'Costo por Postulación',
     description: '$ invertido por cada postulación válida',
@@ -164,9 +164,9 @@ export const PERFORMANCE_KPIS = {
 
   // Charlas informativas asistidas (reemplazo de test drives)
   charlas: {
-    current: 485,
-    previous: 412,
-    change: '+17.7',
+    current: 185,
+    previous: 165,
+    change: '+12.1',
     trend: 'up',
     label: 'Charlas Asistidas',
     description: 'Asistentes a charlas informativas',
@@ -174,9 +174,9 @@ export const PERFORMANCE_KPIS = {
 
   // WhatsApp conversaciones
   whatsapp: {
-    current: 1420,
-    previous: 1108,
-    change: '+28.2',
+    current: 1250,
+    previous: 980,
+    change: '+27.6',
     trend: 'up',
     label: 'Conversaciones WhatsApp',
     description: 'Conversaciones iniciadas vía Meta Ads',
@@ -187,39 +187,34 @@ export const PERFORMANCE_KPIS = {
 // UCSP OPPORTUNITY SCORE - Reemplazo de Honda Opportunity Score
 // ============================================================================
 export const OPPORTUNITY_SCORE = {
-  current_score: 82,
-  trend: '+5.2%',
+  current_score: 67,
+  trend: '+3.8%',
   components: {
     search_interest: {
-      score: 85,
-      weight: 0.25,
-      contribution: 21.25,
+      score: 52,
+      weight: 0.28,
+      contribution: 14.56,
     },
     social_engagement: {
-      score: 78,
-      weight: 0.20,
-      contribution: 15.6,
+      score: 54,
+      weight: 0.22,
+      contribution: 11.88,
     },
     conversion_intent: {
-      score: 88,
-      weight: 0.30,
-      contribution: 26.4,
+      score: 87,
+      weight: 0.33,
+      contribution: 28.71,
     },
     lead_quality: {
-      score: 75,
-      weight: 0.15,
-      contribution: 11.25,
-    },
-    competitiveness: {
-      score: 80,
-      weight: 0.10,
-      contribution: 8.0,
+      score: 68,
+      weight: 0.17,
+      contribution: 11.56,
     },
   },
   recommendation: {
-    message: 'Momento óptimo para escalar inversión en Google Search y Meta Ads enfocados en Ingeniería Industrial y Medicina. Score superior a 80 indica alta receptividad del mercado educativo en Arequipa.',
-    confidence: '95%',
-    priority: 'high',
+    message: 'Oportunidad moderada para inversión focalizada en canales digitales. Priorizar Google Search y Meta Ads con foco en Medicina (alta conversión) y optimizar presencia en TikTok. Score de 67 indica receptividad media del mercado con margen de mejora.',
+    confidence: '82%',
+    priority: 'medium',
   },
 };
 
@@ -231,24 +226,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 1,
     nombre: 'Ingeniería Industrial',
     demanda: 'Alta',
-    postulaciones: 285,
-    cpp: 10.40,
+    postulaciones: 115,
+    cpp: 16.85,
     conversion: 24,
     vacantes: 80,
     tendencia: 'rising',
     hashtags: ['#IngenieriaIndustrial', '#IngenieriaUCSP'],
     leadAds: {
-      formularios: 420,
+      formularios: 170,
       conversion_rate: 32,
-      cpl: 7.55,
+      cpl: 12.15,
     },
     whatsapp: {
-      conversaciones: 185,
-      respondidas: 142,
+      conversaciones: 75,
+      respondidas: 58,
       tasa_respuesta: 77,
     },
     landing: {
-      visitas: 2850,
+      visitas: 1150,
       conversion_rate: 18.5,
     },
   },
@@ -256,24 +251,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 2,
     nombre: 'Derecho',
     demanda: 'Alta',
-    postulaciones: 240,
-    cpp: 12.20,
+    postulaciones: 97,
+    cpp: 19.65,
     conversion: 22,
     vacantes: 60,
-    tendencia: 'stable',
+    tendencia: 'declining',
     hashtags: ['#DerechoUCSP', '#Derecho'],
     leadAds: {
-      formularios: 380,
+      formularios: 153,
       conversion_rate: 28,
-      cpl: 8.80,
+      cpl: 14.15,
     },
     whatsapp: {
-      conversaciones: 156,
-      respondidas: 98,
+      conversaciones: 63,
+      respondidas: 40,
       tasa_respuesta: 63,
     },
     landing: {
-      visitas: 2420,
+      visitas: 975,
       conversion_rate: 16.2,
     },
   },
@@ -281,24 +276,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 3,
     nombre: 'Medicina Humana',
     demanda: 'Muy Alta',
-    postulaciones: 320,
-    cpp: 14.05,
+    postulaciones: 129,
+    cpp: 22.60,
     conversion: 18,
     vacantes: 40,
     tendencia: 'rising',
     hashtags: ['#MedicinaUCSP', '#Medicina'],
     leadAds: {
-      formularios: 485,
+      formularios: 195,
       conversion_rate: 35,
-      cpl: 10.25,
+      cpl: 16.50,
     },
     whatsapp: {
-      conversaciones: 220,
-      respondidas: 175,
+      conversaciones: 89,
+      respondidas: 71,
       tasa_respuesta: 80,
     },
     landing: {
-      visitas: 3200,
+      visitas: 1290,
       conversion_rate: 22.0,
     },
   },
@@ -306,24 +301,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 4,
     nombre: 'Administración',
     demanda: 'Alta',
-    postulaciones: 195,
-    cpp: 11.40,
+    postulaciones: 79,
+    cpp: 18.35,
     conversion: 20,
     vacantes: 70,
     tendencia: 'stable',
     hashtags: ['#AdministracionUCSP', '#Negocios'],
     leadAds: {
-      formularios: 320,
+      formularios: 129,
       conversion_rate: 26,
-      cpl: 30.50,
+      cpl: 49.00,
     },
     whatsapp: {
-      conversaciones: 128,
-      respondidas: 85,
+      conversaciones: 52,
+      respondidas: 34,
       tasa_respuesta: 66,
     },
     landing: {
-      visitas: 1950,
+      visitas: 787,
       conversion_rate: 15.8,
     },
   },
@@ -331,24 +326,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 5,
     nombre: 'Arquitectura y Urbanismo',
     demanda: 'Media-Alta',
-    postulaciones: 165,
-    cpp: 13.20,
+    postulaciones: 67,
+    cpp: 21.25,
     conversion: 19,
     vacantes: 50,
-    tendencia: 'rising',
+    tendencia: 'stable',
     hashtags: ['#ArquitecturaUCSP', '#Arquitectura'],
     leadAds: {
-      formularios: 280,
+      formularios: 113,
       conversion_rate: 25,
-      cpl: 34.00,
+      cpl: 54.70,
     },
     whatsapp: {
-      conversaciones: 112,
-      respondidas: 72,
+      conversaciones: 45,
+      respondidas: 29,
       tasa_respuesta: 64,
     },
     landing: {
-      visitas: 1820,
+      visitas: 735,
       conversion_rate: 14.5,
     },
   },
@@ -356,24 +351,24 @@ export const CARRERAS_PERFORMANCE = [
     id: 6,
     nombre: 'Psicología',
     demanda: 'Alta',
-    postulaciones: 175,
-    cpp: 10.95,
+    postulaciones: 71,
+    cpp: 17.60,
     conversion: 21,
     vacantes: 60,
     tendencia: 'stable',
     hashtags: ['#PsicologiaUCSP', '#Psicologia'],
     leadAds: {
-      formularios: 295,
+      formularios: 119,
       conversion_rate: 27,
-      cpl: 29.00,
+      cpl: 46.65,
     },
     whatsapp: {
-      conversaciones: 125,
-      respondidas: 88,
+      conversaciones: 50,
+      respondidas: 35,
       tasa_respuesta: 70,
     },
     landing: {
-      visitas: 1980,
+      visitas: 798,
       conversion_rate: 16.0,
     },
   },
@@ -617,7 +612,7 @@ export const HUBSPOT_MOCKUP = {
   campaigns: [
     {
       id: 'camp_001',
-      name: 'Admisión 2025-I Pregrado',
+      name: 'Admisión 2026-I Pregrado',
       status: 'active',
       budget: 25000,
       spent: 18750,
@@ -692,7 +687,7 @@ export const HUBSPOT_MOCKUP = {
 // BUDGET ALLOCATION - Distribución de presupuesto por canal
 // ============================================================================
 export const BUDGET_ALLOCATION = {
-  total_budget: 23000, // USD mensual para Admisiones 2025-I
+  total_budget: 23000, // USD mensual para Admisiones 2026-I
   distribution: {
     google_search: {
       amount: 8050, // 35%
@@ -870,7 +865,7 @@ export const COMPETITOR_INSIGHTS = [
     sentiment: 72,
     threat_level: 'high',
     trending_topics: ['Universidad pública', 'Tradición', 'Ingeniería'],
-    description: 'Principal universidad pública del sur, 2da en ranking nacional Sunedu 2025',
+    description: 'Principal universidad pública del sur, 2da en ranking nacional Sunedu 2026',
   },
   {
     brand: 'UCSM',

@@ -87,7 +87,7 @@ export default function ExecutionLayer() {
           </div>
           <div>
             <h3 className="text-base font-bold text-gray-900">Distribución por Canal Digital</h3>
-            <p className="text-sm text-gray-600">Performance y asignación para Admisiones 2025-I</p>
+            <p className="text-sm text-gray-600">Performance y asignación para Admisiones 2026-I</p>
           </div>
         </div>
 

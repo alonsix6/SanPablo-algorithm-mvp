@@ -8,7 +8,7 @@ export const BRAND_CONFIG = {
   name: 'UCSP Algorithm',
   tagline: 'Social Intelligence para Universidad Católica San Pablo',
   subtitle: 'Optimización automática de inversión digital en admisiones',
-  product: 'Pregrado y Posgrado 2025-I',
+  product: 'Pregrado y Posgrado 2026-I',
   market: 'Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)',
   client: 'Universidad Católica San Pablo',
   version: '1.0.0',
@@ -396,7 +396,7 @@ export const UI_TEXT = {
 
   // Footer
   footer: {
-    copyright: '© 2025 UCSP Algorithm - Universidad Católica San Pablo',
+    copyright: '© 2026 UCSP Algorithm - Universidad Católica San Pablo',
     version: 'v1.0.0',
   },
 

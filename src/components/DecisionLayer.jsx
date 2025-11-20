@@ -61,10 +61,10 @@ export default function DecisionLayer() {
   };
 
   const getScoreGrade = (score) => {
-    if (score >= 90) return 'A+';
-    if (score >= 85) return 'A';
-    if (score >= 80) return 'B+';
-    if (score >= 70) return 'B';
+    if (score >= 85) return 'A+';
+    if (score >= 75) return 'A';
+    if (score >= 65) return 'B+';
+    if (score >= 55) return 'B';
     return 'C';
   };
 
@@ -109,8 +109,8 @@ export default function DecisionLayer() {
             </div>
             <div className="flex items-center justify-center lg:justify-end gap-3 mt-2">
               <span className={`px-4 py-2 rounded-lg text-base font-bold ${
-                OPPORTUNITY_SCORE.current_score >= 85 ? 'bg-green-500' :
-                OPPORTUNITY_SCORE.current_score >= 70 ? 'bg-yellow-500' : 'bg-red-500'
+                OPPORTUNITY_SCORE.current_score >= 75 ? 'bg-green-500' :
+                OPPORTUNITY_SCORE.current_score >= 60 ? 'bg-yellow-500' : 'bg-red-500'
               }`}>
                 Grado {getScoreGrade(OPPORTUNITY_SCORE.current_score)}
               </span>
@@ -221,7 +221,7 @@ export default function DecisionLayer() {
           </div>
           <div>
             <h3 className="text-base font-bold text-gray-900">Audiencias Objetivo UCSP</h3>
-            <p className="text-sm text-gray-600">Segmentación inteligente para Admisiones 2025-I</p>
+            <p className="text-sm text-gray-600">Segmentación inteligente para Admisiones 2026-I</p>
           </div>
         </div>
 

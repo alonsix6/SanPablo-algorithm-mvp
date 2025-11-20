@@ -8,12 +8,12 @@ export const KEYWORDS_UCSP = {
     'Universidad Católica San Pablo',
     'San Pablo Arequipa',
     'UCSP admisión',
-    'admisión UCSP 2025',
+    'admisión UCSP 2026',
     'examen UCSP',
     'UCSP Perú',
     'Universidad San Pablo',
     'Católica San Pablo',
-    'UCSP 2025',
+    'UCSP 2026',
   ],
 
   // Carreras principales (top 5 más demandadas)
@@ -38,7 +38,7 @@ export const KEYWORDS_UCSP = {
     'costo universidad UCSP',
     'pensiones UCSP',
     'becas UCSP',
-    'admisión 2025 Arequipa',
+    'admisión 2026 Arequipa',
     'examen de admisión UCSP',
     'requisitos UCSP',
     'cronograma admisión UCSP',
@@ -71,7 +71,7 @@ export const KEYWORDS_UCSP = {
   // Proceso de admisión
   admision: [
     'postular UCSP',
-    'examen UCSP 2025',
+    'examen UCSP 2026',
     'inscripción UCSP',
     'vacantes UCSP',
     'modalidades admisión UCSP',
@@ -110,7 +110,7 @@ export const HASHTAGS_UCSP = {
     '#UniversidadCatolicaSanPablo',
     '#SanPabloArequipa',
     '#AdmisionUCSP',
-    '#UCSP2025',
+    '#UCSP2026',
     '#SomosUCSP',
   ],
 
@@ -129,13 +129,13 @@ export const HASHTAGS_UCSP = {
 
   // Admisión y postulantes
   admision: [
-    '#Postulantes2025',
-    '#Admision2025',
+    '#Postulantes2026',
+    '#Admision2026',
     '#ExamenDeAdmision',
     '#Preuniversitario',
     '#PostulaUCSP',
     '#VacantesUCSP',
-    '#AdmisionUCSP2025',
+    '#AdmisionUCSP2026',
   ],
 
   // Vida universitaria
