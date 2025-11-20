@@ -5,143 +5,143 @@
   "source": "Google Trends",
   "keywords": [
     {
-      "keyword": "admisión ucsp 2025",
-      "average_interest": 82,
+      "keyword": "admisión ucsp 2026",
+      "average_interest": 52,
       "trend": "rising",
-      "peak_score": 95,
-      "growth_3m": "+125%",
+      "peak_score": 68,
+      "growth_3m": "+18%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 68,
-        "Cusco": 55,
+        "Puno": 45,
+        "Cusco": 38,
+        "Moquegua": 28,
+        "Tacna": 22
+      }
+    },
+    {
+      "keyword": "universidad católica san pablo",
+      "average_interest": 48,
+      "trend": "stable",
+      "peak_score": 55,
+      "growth_3m": "+5%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 42,
+        "Cusco": 35,
+        "Moquegua": 30,
+        "Tacna": 25
+      }
+    },
+    {
+      "keyword": "ingeniería industrial arequipa",
+      "average_interest": 65,
+      "trend": "rising",
+      "peak_score": 78,
+      "growth_3m": "+22%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 58,
+        "Cusco": 62,
+        "Moquegua": 35,
+        "Tacna": 28
+      }
+    },
+    {
+      "keyword": "derecho ucsp",
+      "average_interest": 38,
+      "trend": "declining",
+      "peak_score": 52,
+      "growth_3m": "-8%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 48,
+        "Cusco": 40,
+        "Moquegua": 25,
+        "Tacna": 30
+      }
+    },
+    {
+      "keyword": "medicina ucsp requisitos",
+      "average_interest": 72,
+      "trend": "rising",
+      "peak_score": 85,
+      "growth_3m": "+28%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 65,
+        "Cusco": 52,
         "Moquegua": 42,
         "Tacna": 38
       }
     },
     {
-      "keyword": "universidad católica san pablo",
-      "average_interest": 78,
-      "trend": "rising",
-      "peak_score": 88,
-      "growth_3m": "+98%",
+      "keyword": "ciencia de datos ucsp",
+      "average_interest": 42,
+      "trend": "stable",
+      "peak_score": 58,
+      "growth_3m": "+3%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 72,
-        "Cusco": 58,
-        "Moquegua": 45,
-        "Tacna": 40
+        "Puno": 38,
+        "Cusco": 32,
+        "Moquegua": 22,
+        "Tacna": 18
       }
     },
     {
-      "keyword": "ingeniería industrial arequipa",
-      "average_interest": 76,
-      "trend": "rising",
-      "peak_score": 90,
-      "growth_3m": "+110%",
+      "keyword": "maestrías ucsp 2026",
+      "average_interest": 35,
+      "trend": "stable",
+      "peak_score": 48,
+      "growth_3m": "+2%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 65,
-        "Cusco": 52,
-        "Moquegua": 38,
-        "Tacna": 35
+        "Puno": 40,
+        "Cusco": 45,
+        "Moquegua": 25,
+        "Tacna": 28
       }
     },
     {
-      "keyword": "derecho ucsp",
-      "average_interest": 71,
+      "keyword": "becas ucsp arequipa",
+      "average_interest": 58,
       "trend": "rising",
-      "peak_score": 85,
-      "growth_3m": "+88%",
+      "peak_score": 70,
+      "growth_3m": "+15%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 70,
-        "Cusco": 60,
-        "Moquegua": 40,
+        "Puno": 68,
+        "Cusco": 55,
+        "Moquegua": 48,
         "Tacna": 42
       }
     },
     {
-      "keyword": "medicina ucsp requisitos",
-      "average_interest": 85,
-      "trend": "rising",
-      "peak_score": 98,
-      "growth_3m": "+142%",
+      "keyword": "universidad licenciada arequipa",
+      "average_interest": 44,
+      "trend": "declining",
+      "peak_score": 58,
+      "growth_3m": "-5%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 75,
-        "Cusco": 62,
-        "Moquegua": 48,
-        "Tacna": 45
-      }
-    },
-    {
-      "keyword": "ciencia de datos ucsp",
-      "average_interest": 68,
-      "trend": "rising",
-      "peak_score": 80,
-      "growth_3m": "+156%",
-      "top_regions": {
-        "Arequipa": 100,
-        "Puno": 58,
+        "Puno": 52,
         "Cusco": 48,
         "Moquegua": 35,
         "Tacna": 32
       }
     },
     {
-      "keyword": "maestrías ucsp 2025",
-      "average_interest": 64,
-      "trend": "rising",
-      "peak_score": 76,
-      "growth_3m": "+78%",
-      "top_regions": {
-        "Arequipa": 100,
-        "Puno": 62,
-        "Cusco": 55,
-        "Moquegua": 38,
-        "Tacna": 40
-      }
-    },
-    {
-      "keyword": "becas ucsp arequipa",
-      "average_interest": 72,
-      "trend": "rising",
-      "peak_score": 87,
-      "growth_3m": "+105%",
-      "top_regions": {
-        "Arequipa": 100,
-        "Puno": 78,
-        "Cusco": 65,
-        "Moquegua": 52,
-        "Tacna": 48
-      }
-    },
-    {
-      "keyword": "universidad licenciada arequipa",
-      "average_interest": 66,
-      "trend": "rising",
-      "peak_score": 78,
-      "growth_3m": "+92%",
-      "top_regions": {
-        "Arequipa": 100,
-        "Puno": 70,
-        "Cusco": 58,
-        "Moquegua": 45,
-        "Tacna": 42
-      }
-    },
-    {
       "keyword": "carreras universitarias arequipa",
-      "average_interest": 70,
+      "average_interest": 68,
       "trend": "rising",
-      "peak_score": 82,
-      "growth_3m": "+85%",
+      "peak_score": 75,
+      "growth_3m": "+12%",
       "top_regions": {
         "Arequipa": 100,
-        "Puno": 68,
-        "Cusco": 60,
-        "Moquegua": 40,
-        "Tacna": 38
+        "Puno": 60,
+        "Cusco": 65,
+        "Moquegua": 38,
+        "Tacna": 35
       }
     }
   ]

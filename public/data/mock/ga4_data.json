@@ -3,124 +3,124 @@
   "property": "UCSP Perú - Admisiones",
   "source": "Google Analytics 4",
   "overview": {
-    "totalUsers": 45800,
-    "sessions": 68500,
-    "conversions": 1580,
-    "conversionRate": 0.063
+    "totalUsers": 28500,
+    "sessions": 42200,
+    "conversions": 980,
+    "conversionRate": 0.058
   },
   "topPages": [
     {
       "page": "/admision/pregrado",
-      "views": 18500,
+      "views": 11200,
       "avgTimeOnPage": "3m 45s",
       "exitRate": 0.32,
-      "conversionRate": 0.085
+      "conversionRate": 0.078
     },
     {
       "page": "/carreras/ingenieria-industrial",
-      "views": 12200,
+      "views": 7500,
       "avgTimeOnPage": "4m 12s",
       "exitRate": 0.28,
-      "conversionRate": 0.092
+      "conversionRate": 0.085
     },
     {
       "page": "/carreras/medicina",
-      "views": 11800,
+      "views": 7200,
       "avgTimeOnPage": "5m 05s",
       "exitRate": 0.25,
-      "conversionRate": 0.098
+      "conversionRate": 0.092
     },
     {
       "page": "/carreras/derecho",
-      "views": 9500,
+      "views": 5800,
       "avgTimeOnPage": "3m 28s",
       "exitRate": 0.35,
-      "conversionRate": 0.075
-    },
-    {
-      "page": "/becas-y-financiamiento",
-      "views": 15600,
-      "avgTimeOnPage": "2m 52s",
-      "exitRate": 0.42,
       "conversionRate": 0.068
     },
     {
+      "page": "/becas-y-financiamiento",
+      "views": 9500,
+      "avgTimeOnPage": "2m 52s",
+      "exitRate": 0.42,
+      "conversionRate": 0.062
+    },
+    {
       "page": "/carreras/ciencia-datos",
-      "views": 8900,
+      "views": 5400,
       "avgTimeOnPage": "4m 38s",
       "exitRate": 0.30,
-      "conversionRate": 0.088
+      "conversionRate": 0.080
     },
     {
       "page": "/admision/posgrado",
-      "views": 7200,
+      "views": 4400,
       "avgTimeOnPage": "3m 15s",
       "exitRate": 0.38,
-      "conversionRate": 0.072
+      "conversionRate": 0.065
     },
     {
       "page": "/acreditacion-calidad",
-      "views": 6800,
+      "views": 4100,
       "avgTimeOnPage": "2m 38s",
       "exitRate": 0.45,
-      "conversionRate": 0.058
+      "conversionRate": 0.052
     }
   ],
   "searchTerms": [
     {
-      "term": "admisión 2025",
-      "searches": 3500,
-      "resultClicks": 2950,
-      "conversionRate": 0.095,
-      "trend": "rising"
-    },
-    {
-      "term": "ingeniería industrial",
-      "searches": 2800,
-      "resultClicks": 2400,
+      "term": "admisión 2026",
+      "searches": 2100,
+      "resultClicks": 1780,
       "conversionRate": 0.088,
       "trend": "rising"
     },
     {
-      "term": "medicina requisitos",
-      "searches": 2600,
-      "resultClicks": 2200,
-      "conversionRate": 0.092,
-      "trend": "rising"
-    },
-    {
-      "term": "becas pregrado",
-      "searches": 3200,
-      "resultClicks": 2700,
-      "conversionRate": 0.078,
-      "trend": "rising"
-    },
-    {
-      "term": "ciencia de datos",
-      "searches": 1900,
-      "resultClicks": 1650,
-      "conversionRate": 0.085,
-      "trend": "rising"
-    },
-    {
-      "term": "maestrías",
-      "searches": 1500,
-      "resultClicks": 1280,
-      "conversionRate": 0.072,
-      "trend": "rising"
-    },
-    {
-      "term": "derecho ucsp",
-      "searches": 1800,
-      "resultClicks": 1520,
+      "term": "ingeniería industrial",
+      "searches": 1700,
+      "resultClicks": 1450,
       "conversionRate": 0.080,
       "trend": "rising"
     },
     {
-      "term": "acreditación",
-      "searches": 1200,
+      "term": "medicina requisitos",
+      "searches": 1600,
+      "resultClicks": 1350,
+      "conversionRate": 0.085,
+      "trend": "rising"
+    },
+    {
+      "term": "becas pregrado",
+      "searches": 1950,
+      "resultClicks": 1650,
+      "conversionRate": 0.072,
+      "trend": "rising"
+    },
+    {
+      "term": "ciencia de datos",
+      "searches": 1150,
       "resultClicks": 980,
+      "conversionRate": 0.078,
+      "trend": "stable"
+    },
+    {
+      "term": "maestrías",
+      "searches": 900,
+      "resultClicks": 750,
       "conversionRate": 0.065,
+      "trend": "stable"
+    },
+    {
+      "term": "derecho ucsp",
+      "searches": 1100,
+      "resultClicks": 920,
+      "conversionRate": 0.070,
+      "trend": "declining"
+    },
+    {
+      "term": "acreditación",
+      "searches": 720,
+      "resultClicks": 590,
+      "conversionRate": 0.058,
       "trend": "stable"
     }
   ]

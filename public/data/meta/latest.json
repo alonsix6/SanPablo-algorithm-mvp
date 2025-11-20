@@ -4,84 +4,84 @@
   "source": "Meta Platforms (Facebook + Instagram)",
   "aggregatedTopics": [
     {
-      "topic": "Admisión UCSP 2025-I",
-      "mentions": 12500,
-      "engagement_score": 8.8,
-      "growth": "+145%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Perú", "UCSP Oficial", "UCSP Admisión"]
+      "topic": "Admisión Universidades 2026-I",
+      "mentions": 8200,
+      "engagement_score": 5.2,
+      "growth": "+12%",
+      "sentiment": "mixed",
+      "top_brands": ["UNSA Admisión", "UCSM Oficial", "UCSP Perú"]
     },
     {
       "topic": "Universidad Licenciada",
-      "mentions": 9800,
-      "engagement_score": 8.2,
-      "growth": "+125%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Perú", "SUNEDU Oficial", "UCSP Calidad"]
+      "mentions": 5400,
+      "engagement_score": 4.8,
+      "growth": "+8%",
+      "sentiment": "positive",
+      "top_brands": ["SUNEDU Oficial", "UCSP Perú", "UCSM Arequipa"]
     },
     {
-      "topic": "Ingeniería Industrial UCSP",
-      "mentions": 8900,
-      "engagement_score": 8.5,
-      "growth": "+138%",
+      "topic": "Ingeniería Industrial Arequipa",
+      "mentions": 6100,
+      "engagement_score": 5.5,
+      "growth": "+15%",
       "sentiment": "positive",
-      "top_brands": ["UCSP Ingenierías", "UCSP Perú", "Ingenieros UCSP"]
+      "top_brands": ["UNSA Ingenierías", "UTP Tecnológica", "UCSP Perú"]
     },
     {
       "topic": "Medicina y Salud",
-      "mentions": 11200,
-      "engagement_score": 9.1,
-      "growth": "+162%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Medicina", "UCSP Perú", "UCSP Ciencias Salud"]
+      "mentions": 9800,
+      "engagement_score": 6.2,
+      "growth": "+18%",
+      "sentiment": "positive",
+      "top_brands": ["UNSA Medicina", "UCSM Medicina", "UCSP Perú"]
     },
     {
       "topic": "Derecho y Ciencias Políticas",
-      "mentions": 7600,
-      "engagement_score": 8.0,
-      "growth": "+115%",
-      "sentiment": "positive",
-      "top_brands": ["UCSP Derecho", "UCSP Perú", "Abogados UCSP"]
+      "mentions": 4200,
+      "engagement_score": 4.5,
+      "growth": "-3%",
+      "sentiment": "neutral",
+      "top_brands": ["UNSA Derecho", "UCSM Derecho", "UCSP Perú"]
     },
     {
       "topic": "Ciencia de Datos e IA",
-      "mentions": 10500,
-      "engagement_score": 9.3,
-      "growth": "+198%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Tecnología", "UCSP Perú", "UCSP Innovación"]
+      "mentions": 7500,
+      "engagement_score": 6.8,
+      "growth": "+25%",
+      "sentiment": "positive",
+      "top_brands": ["UTP Tecnológica", "UCSP Perú", "UNSA Sistemas"]
     },
     {
       "topic": "Becas y Apoyo Financiero",
-      "mentions": 14800,
-      "engagement_score": 8.9,
-      "growth": "+172%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Becas", "UCSP Perú", "UCSP Admisión"]
+      "mentions": 11200,
+      "engagement_score": 6.5,
+      "growth": "+22%",
+      "sentiment": "positive",
+      "top_brands": ["Pronabec Oficial", "UNSA Becas", "UCSP Perú"]
     },
     {
       "topic": "Acreditación Internacional",
-      "mentions": 6500,
-      "engagement_score": 7.8,
-      "growth": "+105%",
-      "sentiment": "positive",
-      "top_brands": ["UCSP Calidad", "UCSP Perú", "ICACIT Perú"]
+      "mentions": 3800,
+      "engagement_score": 4.2,
+      "growth": "+5%",
+      "sentiment": "neutral",
+      "top_brands": ["ICACIT Perú", "UCSM Calidad", "UNSA Oficial"]
     },
     {
       "topic": "Maestrías y Posgrado",
-      "mentions": 5800,
-      "engagement_score": 7.5,
-      "growth": "+92%",
-      "sentiment": "positive",
-      "top_brands": ["UCSP Posgrado", "UCSP Perú", "Maestrías UCSP"]
+      "mentions": 4500,
+      "engagement_score": 4.8,
+      "growth": "+7%",
+      "sentiment": "mixed",
+      "top_brands": ["UNSA Posgrado", "UCSM Maestrías", "UCSP Perú"]
     },
     {
-      "topic": "Vida Universitaria UCSP",
-      "mentions": 9200,
-      "engagement_score": 8.4,
-      "growth": "+128%",
-      "sentiment": "very positive",
-      "top_brands": ["UCSP Perú", "UCSP Campus", "UCSP Comunidad"]
+      "topic": "Vida Universitaria Arequipa",
+      "mentions": 12500,
+      "engagement_score": 5.8,
+      "growth": "+10%",
+      "sentiment": "positive",
+      "top_brands": ["UNSA Campus", "UCSM Comunidad", "UCSP Perú"]
     }
   ]
 }
