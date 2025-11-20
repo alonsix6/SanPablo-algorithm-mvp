@@ -24,7 +24,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Monitoreo en tiempo real del ecosistema digital educativo',
     description: 'Búsqueda, Tendencia, Intención, Emoción',
     icon: 'Search',
-    color: 'from-ucsp-blue to-ucsp-lightBlue',
+    color: 'from-ucsp-darkBlue to-ucsp-blue', // #002453 → #003B7A
   },
   decision: {
     id: 'decision',
@@ -32,7 +32,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Insights automáticos para optimizar inversión en admisiones',
     description: 'Análisis y definición de estrategia',
     icon: 'Target',
-    color: 'from-ucsp-blue via-ucsp-burgundy to-ucsp-gold',
+    color: 'from-ucsp-blue to-ucsp-lightBlue', // #003B7A → #0056A3 (conecta con data)
   },
   execution: {
     id: 'execution',
@@ -40,7 +40,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Distribución inteligente de presupuesto y contenidos',
     description: 'Implementación en tiempo real',
     icon: 'Zap',
-    color: 'from-ucsp-burgundy to-ucsp-darkBurgundy',
+    color: 'from-ucsp-lightBlue to-ucsp-burgundy', // #0056A3 → #6B1B3D (conecta con decision)
   },
   optimization: {
     id: 'optimization',
@@ -48,7 +48,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Resultados en tiempo real y ajustes automáticos',
     description: 'Evaluación y redistribución',
     icon: 'TrendingUp',
-    color: 'from-ucsp-darkBlue to-ucsp-blue',
+    color: 'from-ucsp-burgundy to-ucsp-gold', // #6B1B3D → #C5A572 (conecta con execution)
   },
 };
 

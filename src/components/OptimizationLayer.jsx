@@ -220,13 +220,13 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Channel Distribution */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <h3 className="text-base font-bold text-gray-900 mb-4">Distribución de Postulaciones por Canal</h3>
+      <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+        <h3 className="text-base font-bold text-gray-900 mb-8 text-center md:text-left">Distribución de Postulaciones por Canal</h3>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Pie Chart */}
           <div className="flex-shrink-0">
-            <ResponsiveContainer width={280} height={280}>
+            <ResponsiveContainer width={320} height={320}>
               <PieChart>
                 <Pie
                   data={channelData}
@@ -234,7 +234,7 @@ export default function OptimizationLayer() {
                   cy="50%"
                   labelLine={false}
                   label={false}
-                  outerRadius={110}
+                  outerRadius={120}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -247,17 +247,22 @@ export default function OptimizationLayer() {
             </ResponsiveContainer>
           </div>
 
-          {/* Legend - Right side, compact */}
-          <div className="flex-1 max-w-xs space-y-1.5">
+          {/* Divider - only visible on desktop */}
+          <div className="hidden md:block w-px h-64 bg-gray-200"></div>
+
+          {/* Legend */}
+          <div className="flex-1 max-w-md space-y-3">
             {channelData.map((channel, idx) => (
-              <div key={idx} className="flex items-center justify-between px-3 py-1.5 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: channel.color }}></div>
-                  <span className="text-xs font-medium text-gray-700 truncate">{channel.name}</span>
+              <div key={idx} className="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-sm">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-3.5 h-3.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: channel.color }}></div>
+                  <span className="text-sm font-medium text-gray-900 truncate">{channel.name}</span>
                 </div>
-                <div className="flex items-center gap-2 flex-shrink-0 ml-2">
-                  <span className="text-xs font-bold text-gray-900">{channel.postulaciones}</span>
-                  <span className="text-xs font-bold text-gray-600 bg-gray-200 px-1.5 py-0.5 rounded">{channel.value}%</span>
+                <div className="flex items-center gap-3 flex-shrink-0 ml-4">
+                  <span className="text-sm font-bold text-gray-900">{channel.postulaciones}</span>
+                  <span className="text-sm font-bold text-gray-700 bg-gray-200 px-2.5 py-1 rounded-md min-w-[48px] text-center">
+                    {channel.value}%
+                  </span>
                 </div>
               </div>
             ))}
