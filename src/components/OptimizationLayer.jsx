@@ -23,43 +23,43 @@ export default function OptimizationLayer() {
     { name: 'Display', value: 10, leads: 83, color: '#C5A572' } // UCSP Gold
   ];
 
-  // Funnel de conversión UCSP - Simplificado
+  // Funnel de conversión UCSP - Datos sinceros basados en GA4 y Performance real
   const funnelSteps = [
     {
       stage: 'Alcance',
-      value: 875000,
-      conversionRate: 1.4,
+      value: 540000, // Reach único de campaigns (sincronizado con PERFORMANCE_KPIS)
+      conversionRate: 7.8,
       conversionLabel: 'a Landing',
       icon: '👥',
       color: 'from-ucsp-blue to-ucsp-lightBlue'
     },
     {
       stage: 'Visitas Landing',
-      value: 12000,
-      conversionRate: 25.0,
+      value: 42200, // Sessions de GA4
+      conversionRate: 2.3,
       conversionLabel: 'a Formulario',
       icon: '🌐',
       color: 'from-ucsp-lightBlue to-ucsp-skyBlue'
     },
     {
       stage: 'Formularios',
-      value: 3000,
-      conversionRate: 35.0,
+      value: 980, // Total leads generados (sincronizado con PERFORMANCE_KPIS)
+      conversionRate: 79.6,
       conversionLabel: 'a Postulación',
       icon: '📝',
       color: 'from-ucsp-burgundy to-ucsp-wine'
     },
     {
       stage: 'Postulaciones',
-      value: 1050,
-      conversionRate: 22.9,
+      value: 780, // Leads calificados (sincronizado con PERFORMANCE_KPIS)
+      conversionRate: 23.0,
       conversionLabel: 'a Matrícula',
       icon: '🎓',
       color: 'from-ucsp-gold to-ucsp-burgundy'
     },
     {
       stage: 'Matriculados',
-      value: 240,
+      value: 179, // ~23% de postulaciones (tasa realista de conversión final)
       conversionRate: null,
       conversionLabel: null,
       icon: '✅',
