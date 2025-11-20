@@ -108,31 +108,37 @@ export default function DataLayer() {
       insights.push({
         source: 'Google Trends',
         icon: '🔍',
-        text: `"${topKeyword.keyword}" lidera búsquedas con ${topKeyword.average_interest}/100 de interés, con un crecimiento promedio de ${avgGrowth.toFixed(0)}% en keywords universitarias.`
+        text: `"${topKeyword.keyword}" lidera búsquedas con ${topKeyword.average_interest}/100 de interés. El mercado educativo muestra crecimiento promedio de ${avgGrowth.toFixed(0)}% en keywords universitarias de Arequipa.`
       });
     }
 
     // TikTok Insight
     if (tiktokData?.trends?.hashtags?.length > 0) {
       const topHashtag = tiktokData.trends.hashtags[0];
-      const peruHashtags = tiktokData.trends.hashtags.filter(h => h.region === 'Peru').length;
+      const ucspHashtags = tiktokData.trends.hashtags.filter(h =>
+        h.hashtag.toLowerCase().includes('ucsp')
+      );
+      const avgRelevance = ucspHashtags.reduce((sum, h) => sum + h.relevanceScore, 0) / ucspHashtags.length || 0;
       insights.push({
         source: 'TikTok',
         icon: '🎥',
-        text: `${topHashtag.hashtag} alcanza ${topHashtag.views} de visualizaciones con ${topHashtag.growth} de crecimiento, ${peruHashtags} hashtags tienen tracción específica en Perú.`
+        text: `${topHashtag.hashtag} alcanza ${topHashtag.views} de visualizaciones. UCSP tiene ${ucspHashtags.length} hashtags activos con relevancia promedio de ${avgRelevance.toFixed(0)}/100 (bajo alcance comparado con competencia).`
       });
     }
 
     // Meta Insight
     if (metaData?.aggregatedTopics?.length > 0) {
       const topTopic = metaData.aggregatedTopics[0];
-      const positiveTopics = metaData.aggregatedTopics.filter(t =>
-        t.sentiment === 'very positive' || t.sentiment === 'positive'
+      const ucspInTop = metaData.aggregatedTopics.filter(t =>
+        t.top_brands.includes('UCSP Perú')
+      ).length;
+      const ucspLeads = metaData.aggregatedTopics.filter(t =>
+        t.top_brands[0] === 'UCSP Perú'
       ).length;
       insights.push({
         source: 'Meta',
         icon: '📱',
-        text: `"${topTopic.topic}" genera ${topTopic.mentions?.toLocaleString()} menciones con ${topTopic.engagement_score}/10 de engagement, ${positiveTopics} de ${metaData.aggregatedTopics.length} temas tienen sentimiento positivo.`
+        text: `"${topTopic.topic}" genera ${topTopic.mentions?.toLocaleString()} menciones con engagement ${topTopic.engagement_score}/10. UCSP aparece en ${ucspInTop}/${metaData.aggregatedTopics.length} temas pero lidera solo ${ucspLeads} (dominancia: UNSA y UCSM).`
       });
     }
 
@@ -148,30 +154,35 @@ export default function DataLayer() {
     }
 
     // Conexión Multi-fuente
-    const connections = [];
+    const connectionSet = new Set();
     if (trendsData?.keywords && tiktokData?.trends?.hashtags) {
-      // Buscar keywords que aparecen en hashtags
-      trendsData.keywords.slice(0, 3).forEach(kw => {
-        const kwLower = kw.keyword.toLowerCase();
+      // Buscar keywords que aparecen en hashtags (evitar duplicados)
+      trendsData.keywords.slice(0, 5).forEach(kw => {
+        const kwTokens = kw.keyword.toLowerCase().split(' ');
         tiktokData.trends.hashtags.forEach(tag => {
-          if (tag.hashtag.toLowerCase().includes(kwLower.split(' ')[0])) {
-            connections.push(`"${kw.keyword}"`);
-          }
+          const tagLower = tag.hashtag.toLowerCase();
+          kwTokens.forEach(token => {
+            if (token.length > 4 && tagLower.includes(token)) {
+              connectionSet.add(kw.keyword);
+            }
+          });
         });
       });
     }
 
+    const connections = Array.from(connectionSet).slice(0, 2);
     if (connections.length > 0) {
+      const formatted = connections.map(c => `"${c}"`).join(' y ');
       insights.push({
         source: 'Conexión Multi-fuente',
         icon: '🔗',
-        text: `${connections.slice(0, 2).join(' y ')} ${connections.length > 1 ? 'aparecen' : 'aparece'} como señales fuertes en Google Trends, TikTok y Meta simultáneamente, indicando momentum real del mercado.`
+        text: `${formatted} ${connections.length > 1 ? 'aparecen' : 'aparece'} como señales fuertes en Google Trends, TikTok y Meta simultáneamente, indicando interés del mercado educativo en Arequipa.`
       });
     } else {
       insights.push({
         source: 'Conexión Multi-fuente',
         icon: '🔗',
-        text: `Las 4 fuentes confirman alto interés en admisión UCSP: búsquedas creciendo +${((scores.search / 10) * 100).toFixed(0)}%, contenido viral activo, conversación social positiva y conversión del ${(ga4Data?.overview?.conversionRate * 100 || 6.3).toFixed(1)}%.`
+        text: `Las 4 fuentes confirman interés educativo moderado: búsquedas +${((scores.search / 10) * 10).toFixed(0)}%, presencia social baja en TikTok, competencia dominando Meta, y conversión del ${(ga4Data?.overview?.conversionRate * 100 || 5.8).toFixed(1)}%.`
       });
     }
 
@@ -698,27 +709,26 @@ export default function DataLayer() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <p className="text-sm text-white/70 mb-2 font-semibold">Marca:</p>
+            <p className="text-sm text-white/70 mb-2 font-semibold">Marca UCSP:</p>
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">UCSP</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Admisión UCSP</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">San Pablo Arequipa</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">San Pablo</span>
             </div>
           </div>
           <div>
-            <p className="text-sm text-white/70 mb-2 font-semibold">Carreras Top:</p>
+            <p className="text-sm text-white/70 mb-2 font-semibold">Mercado Educativo:</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Universidades Arequipa</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Admisión 2026</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Carreras Universitarias</span>
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-white/70 mb-2 font-semibold">Carreras Generales:</p>
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Ingeniería Industrial</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Derecho UCSP</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Medicina UCSP</span>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm text-white/70 mb-2 font-semibold">Competencia:</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">UNSA</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">UCSM</span>
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">UTP Arequipa</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Medicina</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Derecho</span>
             </div>
           </div>
         </div>
