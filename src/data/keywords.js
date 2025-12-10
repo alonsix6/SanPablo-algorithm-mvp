@@ -221,7 +221,7 @@ export const GOOGLE_TRENDS_CONFIG = {
     moquegua: 'PE-MOQ',
     tacna: 'PE-TAC',
   },
-  category: 67, // Education (en lugar de Autos)
+  category: 67, // Education
   timeframe: 'now 7-d', // Últimos 7 días
   refreshInterval: 3600000, // 1 hora en ms
 };
@@ -231,7 +231,7 @@ export const TIKTOK_CONFIG = {
   hashtags: HASHTAGS_UCSP.principales,
   region: 'PE',
   metrics: ['views', 'likes', 'shares', 'comments'],
-  trending_threshold: 5000, // Menor que autos (nicho educación)
+  trending_threshold: 5000, // Threshold para nicho educación
 };
 
 // Configuración para Meta (Facebook/Instagram)
