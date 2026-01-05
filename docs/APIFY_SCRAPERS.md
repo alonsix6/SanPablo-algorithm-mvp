@@ -253,16 +253,152 @@ GET https://api.apify.com/v2/acts/{actorId}?token={token}
 
 ---
 
-## 3. Facebook/Meta Scraper
+## 3. Facebook/Meta Social Listening Scraper
 
-### Actor
+### Actor Custom (Recomendado)
+- **ID**: `TU_USERNAME/social-listening-meta`
+- **Ubicación**: `apify-actors/social-listening-meta/`
+- **Funcionalidad**: Social listening completo con topics, sentimiento, engagement
+
+### Actor Genérico (Fallback)
 - **ID**: `apify/facebook-posts-scraper`
 - **URL**: https://apify.com/apify/facebook-posts-scraper
 
 ### Archivo
 `scrapers/meta_apify.js`
 
-### Input del Actor
+---
+
+### Opción A: Usar Actor Custom (Social Listening Completo)
+
+El actor custom proporciona análisis avanzado de social listening:
+- Análisis por topics configurables
+- Engagement score (0-10)
+- Análisis de sentimiento en español
+- Cálculo de crecimiento
+- Top brands por topic
+
+#### Paso 1: Subir el actor a Apify
+
+```bash
+# Instalar Apify CLI
+npm install -g apify-cli
+
+# Login
+apify login
+
+# Subir actor
+cd apify-actors/social-listening-meta
+apify push
+```
+
+#### Paso 2: Configurar variable de entorno
+
+```bash
+# En .env
+APIFY_ACTOR_META=tu-username/social-listening-meta
+
+# En GitHub Secrets
+APIFY_ACTOR_META=tu-username/social-listening-meta
+```
+
+#### Input del Actor Custom
+
+```json
+{
+  "clientName": "UCSP",
+  "clientFullName": "Universidad Católica San Pablo",
+  "facebookPages": [
+    "https://www.facebook.com/UCSPoficial"
+  ],
+  "topics": [
+    {
+      "name": "Admisión 2026",
+      "keywords": ["admisión", "postular", "examen de admisión"],
+      "brands": ["UCSP", "UNSA", "UCSM"]
+    },
+    {
+      "name": "Becas",
+      "keywords": ["beca", "becas", "descuento"],
+      "brands": ["PRONABEC", "Beca 18"]
+    }
+  ],
+  "maxPostsPerPage": 50,
+  "includeComments": true,
+  "maxCommentsPerPost": 20,
+  "timeframeDays": 30,
+  "language": "es"
+}
+```
+
+#### Configuración en config/[cliente].json
+
+```json
+{
+  "facebook_pages": [
+    "https://www.facebook.com/UCSPoficial"
+  ],
+
+  "social_listening_topics": [
+    {
+      "name": "Admisión 2026",
+      "keywords": ["admisión", "admision", "postular", "examen de admisión"],
+      "brands": ["UCSP", "UNSA", "UCSM"]
+    },
+    {
+      "name": "Becas y Financiamiento",
+      "keywords": ["beca", "becas", "descuento", "financiamiento"],
+      "brands": ["PRONABEC", "Beca 18"]
+    }
+  ],
+
+  "meta": {
+    "maxPostsPerPage": 50,
+    "includeComments": true,
+    "maxCommentsPerPost": 20,
+    "timeframeDays": 30,
+    "language": "es"
+  }
+}
+```
+
+#### Output del Actor Custom
+
+```json
+{
+  "timestamp": "2026-01-05T10:00:00.000Z",
+  "source": "Meta/Facebook Social Listening",
+  "region": "LATAM",
+  "category": "Social Listening",
+  "client": "UCSP - Universidad Católica San Pablo",
+  "aggregatedTopics": [
+    {
+      "topic": "Admisión 2026",
+      "mentions": 45,
+      "engagement_score": 8.5,
+      "growth": "+25%",
+      "sentiment": "muy_positivo",
+      "top_brands": ["UCSP", "UNSA"],
+      "avg_reactions": 120,
+      "avg_comments": 15,
+      "avg_shares": 8
+    }
+  ],
+  "metadata": {
+    "method": "Apify Social Listening Actor",
+    "posts_analyzed": 150,
+    "comments_analyzed": 500
+  }
+}
+```
+
+---
+
+### Opción B: Usar Actor Genérico (Facebook Posts)
+
+Si no tienes el actor custom, el scraper usa automáticamente el actor genérico de Apify.
+
+#### Input del Actor Genérico
 
 ```json
 {
@@ -275,7 +411,7 @@ GET https://api.apify.com/v2/acts/{actorId}?token={token}
 }
 ```
 
-### Parámetros Configurables
+#### Parámetros del Actor Genérico
 
 | Parámetro | Descripción | Valores |
 |-----------|-------------|---------|
@@ -284,18 +420,7 @@ GET https://api.apify.com/v2/acts/{actorId}?token={token}
 | `maxComments` | Comentarios por post | 0-50 |
 | `commentsMode` | Modo de comentarios | `RANKED_UNFILTERED`, `RANKED_FILTERED` |
 
-### Configuración en config/[cliente].json
-
-```json
-{
-  "facebook_pages": [
-    "https://www.facebook.com/UCSPoficial",
-    "https://www.facebook.com/AdmisionUCSP"
-  ]
-}
-```
-
-### Output Esperado
+#### Output del Actor Genérico
 
 ```json
 {
@@ -306,6 +431,31 @@ GET https://api.apify.com/v2/acts/{actorId}?token={token}
   "comments": 25,
   "shares": 10
 }
+```
+
+---
+
+### Análisis de Sentimiento (Actor Custom)
+
+El actor custom analiza sentimiento en español:
+
+**Muy Positivo**: palabras positivas > palabras negativas × 2
+**Positivo**: palabras positivas > palabras negativas
+**Neutral**: balance entre ambas
+**Negativo**: palabras negativas > palabras positivas
+**Muy Negativo**: palabras negativas > palabras positivas × 2
+
+**Palabras Positivas**: excelente, increíble, genial, fantástico, bueno, mejor, feliz, gracias, recomiendo, etc.
+**Palabras Negativas**: malo, terrible, horrible, pésimo, odio, decepción, frustrado, problema, queja, estafa, etc.
+
+---
+
+### Engagement Score (Actor Custom)
+
+```
+totalEngagement = reactions + (comments × 2) + (shares × 3)
+avgEngagement = totalEngagement / mentions
+engagementScore = min(10, round(avgEngagement / 100 × 10))
 ```
 
 ---

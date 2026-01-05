@@ -1,12 +1,21 @@
 #!/usr/bin/env node
 /**
- * Meta/Facebook Scraper - Apify
+ * Meta/Facebook Social Listening Scraper - Apify
  *
- * Obtiene posts y engagement de páginas públicas de Facebook via Apify.
- * Actor: apify/facebook-posts-scraper
+ * Ejecuta el actor custom social-listening-meta para obtener:
+ * - Menciones por topic
+ * - Engagement scores
+ * - Sentimiento
+ * - Crecimiento
  *
  * Uso:
  *   node meta_apify.js --client=ucsp
+ *
+ * Requisitos:
+ *   1. Subir el actor a Apify: cd apify-actors/social-listening-meta && apify push
+ *   2. Configurar APIFY_ACTOR_META en .env con tu username/actor-name
+ *
+ * Documentación completa: docs/APIFY_SCRAPERS.md
  */
 
 import { ApifyClient } from 'apify-client';
@@ -21,7 +30,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
-const ACTOR_ID = 'apify/facebook-posts-scraper';
+
+// Actor ID - cambiar por tu username de Apify después de hacer push
+// Formato: "tu-username/social-listening-meta"
+const ACTOR_ID = process.env.APIFY_ACTOR_META || 'apify/facebook-posts-scraper';
 
 // ============================================================================
 // ARGUMENTOS
@@ -52,8 +64,8 @@ async function loadClientConfig(clientName) {
 // ============================================================================
 // SCRAPER PRINCIPAL
 // ============================================================================
-async function scrapeMetaPosts(clientConfig) {
-  console.log(`\n📘 Meta/Facebook Scraper - ${clientConfig.client}`);
+async function scrapeMetaSocialListening(clientConfig) {
+  console.log(`\n📘 Meta/Facebook Social Listening - ${clientConfig.client}`);
   console.log('='.repeat(50));
 
   if (!APIFY_TOKEN) {
@@ -61,16 +73,17 @@ async function scrapeMetaPosts(clientConfig) {
     process.exit(1);
   }
 
-  // Páginas a scrapear (configurables por cliente)
-  const facebookPages = clientConfig.facebook_pages || [
-    'https://www.facebook.com/ucaborequipa',  // UCSP oficial (si existe)
-  ];
+  // Verificar si estamos usando el actor custom o el genérico
+  const isCustomActor = ACTOR_ID.includes('social-listening-meta');
+  console.log(`🎯 Actor: ${ACTOR_ID}`);
+  console.log(`   Tipo: ${isCustomActor ? 'Custom Social Listening' : 'Facebook Posts Scraper'}`);
+
+  // Páginas de Facebook del config
+  const facebookPages = clientConfig.facebook_pages || [];
 
   if (facebookPages.length === 0) {
-    console.log('⚠️ No hay páginas de Facebook configuradas');
+    console.log('\n⚠️ No hay páginas de Facebook configuradas');
     console.log('   Agrega "facebook_pages" al config del cliente');
-
-    // Guardar datos vacíos
     const emptyData = createEmptyData(clientConfig);
     await saveResults(emptyData);
     return emptyData;
@@ -81,12 +94,31 @@ async function scrapeMetaPosts(clientConfig) {
 
   const client = new ApifyClient({ token: APIFY_TOKEN });
 
-  const input = {
-    startUrls: facebookPages.map(url => ({ url })),
-    maxPosts: 30,  // Posts por página
-    maxComments: 10,  // Comentarios por post
-    commentsMode: 'RANKED_UNFILTERED'
-  };
+  // Input dependiendo del tipo de actor
+  let input;
+
+  if (isCustomActor) {
+    // Input para actor custom social-listening-meta
+    input = {
+      clientName: clientConfig.client,
+      clientFullName: clientConfig.clientFullName,
+      facebookPages: facebookPages,
+      topics: clientConfig.social_listening_topics || getDefaultTopics(clientConfig),
+      maxPostsPerPage: clientConfig.meta?.maxPostsPerPage || 50,
+      includeComments: clientConfig.meta?.includeComments !== false,
+      maxCommentsPerPost: clientConfig.meta?.maxCommentsPerPost || 20,
+      timeframeDays: clientConfig.meta?.timeframeDays || 30,
+      language: clientConfig.meta?.language || 'es'
+    };
+  } else {
+    // Input para actor genérico apify/facebook-posts-scraper
+    input = {
+      startUrls: facebookPages.map(url => ({ url })),
+      maxPosts: 30,
+      maxComments: 10,
+      commentsMode: 'RANKED_UNFILTERED'
+    };
+  }
 
   console.log(`\n📤 Input para Apify:`);
   console.log(JSON.stringify(input, null, 2));
@@ -96,9 +128,9 @@ async function scrapeMetaPosts(clientConfig) {
     const run = await client.actor(ACTOR_ID).start(input);
     console.log(`   Run ID: ${run.id}`);
 
-    console.log('\n⏳ Esperando que termine (máx 5 min)...');
+    console.log('\n⏳ Esperando que termine (máx 10 min)...');
     const finishedRun = await client.run(run.id).waitForFinish({
-      waitSecs: 300
+      waitSecs: 600
     });
 
     if (finishedRun.status !== 'SUCCEEDED') {
@@ -108,11 +140,20 @@ async function scrapeMetaPosts(clientConfig) {
     console.log(`\n✅ Actor completado`);
 
     const { items } = await client.dataset(finishedRun.defaultDatasetId).listItems();
-    console.log(`📊 Posts obtenidos: ${items.length}`);
+    console.log(`📊 Items obtenidos: ${items.length}`);
 
-    const data = transformData(items, clientConfig);
+    // El actor custom ya retorna el formato correcto
+    let data;
+    if (isCustomActor && items.length > 0) {
+      // El actor custom retorna un solo objeto con toda la data
+      data = items[0];
+      console.log(`   Topics analizados: ${data.aggregatedTopics?.length || 0}`);
+    } else {
+      // Transformar datos del actor genérico
+      data = transformGenericData(items, clientConfig);
+    }
+
     await saveResults(data);
-
     return data;
 
   } catch (error) {
@@ -122,10 +163,44 @@ async function scrapeMetaPosts(clientConfig) {
 }
 
 // ============================================================================
-// TRANSFORMAR DATOS
+// TOPICS DEFAULT PARA EDUCACIÓN
 // ============================================================================
-function transformData(items, clientConfig) {
-  console.log('\n🔄 Transformando datos...');
+function getDefaultTopics(clientConfig) {
+  // Topics default si no están configurados
+  return [
+    {
+      name: "Admisión",
+      keywords: ["admisión", "admision", "postular", "postulación", "examen de admisión", "ingreso", "vacantes"],
+      brands: []
+    },
+    {
+      name: "Becas y Financiamiento",
+      keywords: ["beca", "becas", "descuento", "financiamiento", "apoyo económico", "pensión"],
+      brands: ["PRONABEC", "Beca 18"]
+    },
+    {
+      name: "Carreras",
+      keywords: ["carrera", "carreras", "ingeniería", "medicina", "derecho", "arquitectura", "psicología"],
+      brands: []
+    },
+    {
+      name: "Vida Universitaria",
+      keywords: ["campus", "estudiante", "universitario", "universidad", "clases", "semestre"],
+      brands: []
+    },
+    {
+      name: "Investigación",
+      keywords: ["investigación", "proyecto", "tesis", "publicación", "congreso", "ciencia"],
+      brands: []
+    }
+  ];
+}
+
+// ============================================================================
+// TRANSFORMAR DATOS DEL ACTOR GENÉRICO
+// ============================================================================
+function transformGenericData(items, clientConfig) {
+  console.log('\n🔄 Transformando datos del actor genérico...');
 
   const pages = [];
   const topicCounts = {};
@@ -143,7 +218,7 @@ function transformData(items, clientConfig) {
 
     // Extraer topics de los textos
     const text = (post.text || post.message || '').toLowerCase();
-    const topics = extractTopics(text);
+    const topics = extractTopicsFromText(text);
     topics.forEach(topic => {
       topicCounts[topic] = (topicCounts[topic] || 0) + 1;
     });
@@ -179,7 +254,11 @@ function transformData(items, clientConfig) {
       mentions: count,
       engagement_score: Math.min(10, count / 2),
       growth: '+0%',
-      sentiment: 'positive'
+      sentiment: 'neutral',
+      top_brands: [],
+      avg_reactions: 0,
+      avg_comments: 0,
+      avg_shares: 0
     }))
     .sort((a, b) => b.mentions - a.mentions)
     .slice(0, 10);
@@ -191,30 +270,32 @@ function transformData(items, clientConfig) {
     timestamp: new Date().toISOString(),
     source: 'Meta/Facebook via Apify',
     region: clientConfig.region,
-    category: 'Education',
+    category: 'Social Listening',
     client: `${clientConfig.client} - ${clientConfig.clientFullName}`,
     pages,
     aggregatedTopics,
     metadata: {
-      method: 'Apify apify/facebook-posts-scraper',
-      note: 'Datos reales de páginas públicas de Facebook',
+      method: `Apify ${ACTOR_ID}`,
+      note: 'Datos de páginas públicas de Facebook',
       timeframe: 'Last 30 days',
       posts_fetched: items.length
     }
   };
 }
 
-function extractTopics(text) {
+function extractTopicsFromText(text) {
   const topics = [];
-  const keywords = [
-    'admisión', 'admision', 'becas', 'carreras', 'ingeniería', 'ingenieria',
-    'medicina', 'derecho', 'examen', 'postulantes', 'universidad', 'ucsp',
-    'matricula', 'matrícula', 'pregrado', 'posgrado', 'diplomado'
-  ];
+  const keywords = {
+    'Admisión': ['admisión', 'admision', 'postular', 'examen'],
+    'Becas': ['beca', 'becas', 'descuento'],
+    'Carreras': ['carrera', 'ingeniería', 'medicina', 'derecho'],
+    'Universidad': ['universidad', 'campus', 'estudiante'],
+    'Matrícula': ['matricula', 'matrícula', 'pregrado', 'posgrado']
+  };
 
-  keywords.forEach(kw => {
-    if (text.includes(kw)) {
-      topics.push(kw.charAt(0).toUpperCase() + kw.slice(1));
+  Object.entries(keywords).forEach(([topic, kws]) => {
+    if (kws.some(kw => text.includes(kw))) {
+      topics.push(topic);
     }
   });
 
@@ -224,14 +305,14 @@ function extractTopics(text) {
 function createEmptyData(clientConfig) {
   return {
     timestamp: new Date().toISOString(),
-    source: 'Meta/Facebook via Apify',
+    source: 'Meta/Facebook Social Listening',
     region: clientConfig.region,
-    category: 'Education',
+    category: 'Social Listening',
     client: `${clientConfig.client} - ${clientConfig.clientFullName}`,
     pages: [],
     aggregatedTopics: [],
     metadata: {
-      method: 'Apify apify/facebook-posts-scraper',
+      method: `Apify ${ACTOR_ID}`,
       note: 'No hay páginas de Facebook configuradas. Agrega facebook_pages al config.',
       posts_fetched: 0
     }
@@ -260,10 +341,11 @@ async function saveResults(data) {
   console.log(`   📁 data/meta/latest.json`);
   console.log(`   📁 public/data/meta/latest.json`);
 
-  if (data.aggregatedTopics.length > 0) {
-    console.log('\n🔥 Top Topics:');
+  if (data.aggregatedTopics && data.aggregatedTopics.length > 0) {
+    console.log('\n📊 Resultados por Topic:');
     data.aggregatedTopics.slice(0, 5).forEach((t, i) => {
-      console.log(`   ${i + 1}. ${t.topic}: ${t.mentions} menciones`);
+      const sentiment = t.sentiment || 'neutral';
+      console.log(`   ${i + 1}. ${t.topic}: ${t.mentions} menciones, ${t.engagement_score}/10 eng, ${sentiment}`);
     });
   }
 }
@@ -274,12 +356,12 @@ async function saveResults(data) {
 async function main() {
   const options = parseArgs();
 
-  console.log('📘 Meta/Facebook Scraper (Apify)');
+  console.log('📘 Meta/Facebook Social Listening (Apify)');
   console.log(`   Cliente: ${options.client}`);
 
   try {
     const clientConfig = await loadClientConfig(options.client);
-    await scrapeMetaPosts(clientConfig);
+    await scrapeMetaSocialListening(clientConfig);
     console.log('\n✅ Scraping completado');
     process.exit(0);
   } catch (error) {

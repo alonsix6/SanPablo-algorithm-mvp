@@ -26,6 +26,42 @@
     "https://www.facebook.com/UCSPoficial"
   ],
 
+  "social_listening_topics": [
+    {
+      "name": "Admisión 2026",
+      "keywords": ["admisión", "admision", "postular", "postulación", "examen de admisión", "ingreso", "vacantes", "inscripción"],
+      "brands": ["UCSP", "UNSA", "UCSM", "UTP"]
+    },
+    {
+      "name": "Becas y Financiamiento",
+      "keywords": ["beca", "becas", "descuento", "financiamiento", "apoyo económico", "pensión", "crédito educativo"],
+      "brands": ["PRONABEC", "Beca 18", "Beca Continuidad"]
+    },
+    {
+      "name": "Carreras Universitarias",
+      "keywords": ["carrera", "carreras", "ingeniería", "medicina", "derecho", "arquitectura", "psicología", "administración"],
+      "brands": []
+    },
+    {
+      "name": "Vida Universitaria",
+      "keywords": ["campus", "estudiante", "universitario", "clases", "semestre", "actividades", "intercambio"],
+      "brands": []
+    },
+    {
+      "name": "Investigación y Posgrado",
+      "keywords": ["investigación", "proyecto", "tesis", "maestría", "doctorado", "posgrado", "publicación"],
+      "brands": []
+    }
+  ],
+
+  "meta": {
+    "maxPostsPerPage": 50,
+    "includeComments": true,
+    "maxCommentsPerPost": 20,
+    "timeframeDays": 30,
+    "language": "es"
+  },
+
   "metadata": {
     "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
     "product": "Pregrado y Posgrado 2026-I"

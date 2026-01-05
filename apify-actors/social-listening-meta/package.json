@@ -1,0 +1,21 @@
+{
+    "name": "social-listening-meta",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Actor de Apify para social listening en Facebook - Analiza menciones, engagement y sentimiento por topics",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node src/main.js",
+        "test": "echo \"No tests yet\" && exit 0"
+    },
+    "author": "Reset Agency",
+    "license": "MIT",
+    "dependencies": {
+        "apify": "^3.1.0",
+        "crawlee": "^3.5.0",
+        "puppeteer": "^21.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
