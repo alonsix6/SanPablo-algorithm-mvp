@@ -7,6 +7,8 @@
  *
  * Uso:
  *   node tiktok_apify.js --client=ucsp
+ *
+ * Documentación completa: docs/APIFY_SCRAPERS.md
  */
 
 import { ApifyClient } from 'apify-client';
@@ -55,7 +57,8 @@ async function loadClientConfig(clientName) {
 async function scrapeTikTokTrends(clientConfig) {
   console.log(`\n🎵 TikTok Trends Scraper - ${clientConfig.client}`);
   console.log('='.repeat(50));
-  console.log(`📍 Región: ${clientConfig.region}`);
+  console.log(`📍 País: ${clientConfig.region}`);
+  console.log(`📊 Industria: ${clientConfig.tiktok?.industry || 'Education'}`);
   console.log('='.repeat(50));
 
   if (!APIFY_TOKEN) {
@@ -65,14 +68,35 @@ async function scrapeTikTokTrends(clientConfig) {
 
   const client = new ApifyClient({ token: APIFY_TOKEN });
 
-  // Input para TikTok Trends Scraper
+  // Input para TikTok Trends Scraper (formato correcto del actor)
   const input = {
-    country: clientConfig.region || 'PE',  // Peru
-    hashtags: true,      // Obtener hashtags trending
-    songs: true,         // Obtener canciones trending
-    creators: true,      // Obtener creadores trending
-    videos: false,       // No necesitamos videos individuales
-    maxItems: 50
+    // Configuración general
+    adsCountryCode: clientConfig.region || 'PE',
+    adsTimeRange: clientConfig.tiktok?.timeRange || '30',  // 7, 30, 120 días
+    resultsPerPage: clientConfig.tiktok?.resultsPerPage || 20,
+
+    // Qué scrapear
+    adsScrapeHashtags: true,
+    adsScrapeSounds: true,
+    adsScrapeCreators: false,
+    adsScrapeVideos: false,
+
+    // Filtros de industria (para hashtags)
+    adsHashtagIndustry: clientConfig.tiktok?.industry || 'Education',
+
+    // Configuración de países para cada tipo
+    adsSoundsCountryCode: clientConfig.region || 'PE',
+    adsCreatorsCountryCode: clientConfig.region || 'PE',
+    adsVideosCountryCode: clientConfig.region || 'PE',
+
+    // Ordenamiento
+    adsRankType: 'popular',
+    adsSortCreatorsBy: 'follower',
+    adsSortVideosBy: 'vv',
+
+    // Otros
+    adsApprovedForBusinessUse: false,
+    adsNewOnBoard: false
   };
 
   console.log(`\n📤 Input para Apify:`);
@@ -121,54 +145,73 @@ function transformData(items, clientConfig) {
   };
 
   items.forEach(item => {
-    // Hashtags
-    if (item.type === 'hashtag' || item.hashtag || item.challengeId) {
+    // El actor retorna items con un campo "type" o estructura específica
+
+    // Hashtags (tienen hashtagName o similar)
+    if (item.hashtagName || item.hashtag || (item.type === 'hashtag')) {
       trends.hashtags.push({
-        hashtag: item.hashtag || item.title || item.name || 'Unknown',
-        views: formatNumber(item.views || item.videoCount || 0),
-        posts: formatNumber(item.postsCount || item.videoCount || 0),
-        growth: item.growth || '+0%',
-        relevanceScore: item.rank ? 100 - item.rank : 85,
+        hashtag: `#${(item.hashtagName || item.hashtag || item.name || '').replace(/^#/, '')}`,
+        views: formatNumber(item.videoViews || item.views || 0),
+        posts: formatNumber(item.publishCnt || item.posts || item.videoCount || 0),
+        growth: item.trend || '+0%',
+        relevanceScore: item.rank ? Math.max(100 - item.rank * 2, 50) : 85,
         region: clientConfig.region,
-        category: item.category || 'General'
+        category: item.industry || clientConfig.tiktok?.industry || 'Education',
+        isPromoted: item.isPromoted || false
       });
     }
 
-    // Sonidos/Música
-    if (item.type === 'song' || item.music || item.soundId) {
-      trends.sounds.push({
-        soundName: item.title || item.musicTitle || item.name || 'Unknown',
-        author: item.author || item.musicAuthor || 'Unknown',
-        usage: formatNumber(item.videoCount || item.usage || 0),
-        growth: item.growth || '+0%',
-        category: 'Music'
-      });
+    // Sonidos/Música (tienen soundName o musicTitle)
+    if (item.soundName || item.musicTitle || item.title || (item.type === 'sound')) {
+      // Solo agregar si parece ser un sonido (no un hashtag)
+      if (!item.hashtagName && !item.hashtag) {
+        trends.sounds.push({
+          soundName: item.soundName || item.musicTitle || item.title || 'Unknown',
+          author: item.authorName || item.artist || item.author || 'Unknown',
+          usage: formatNumber(item.useCnt || item.videoCount || item.usage || 0),
+          growth: item.trend || '+0%',
+          duration: item.duration || 0,
+          category: 'Music'
+        });
+      }
     }
 
-    // Creadores
-    if (item.type === 'creator' || item.uniqueId || item.creatorId) {
+    // Creadores (tienen uniqueId o creatorName)
+    if (item.uniqueId || item.creatorName || (item.type === 'creator')) {
       trends.creators.push({
-        username: item.uniqueId || item.username || item.name || 'Unknown',
-        followers: formatNumber(item.followers || item.followerCount || 0),
+        username: `@${(item.uniqueId || item.creatorName || item.name || '').replace(/^@/, '')}`,
+        followers: formatNumber(item.followerCnt || item.followers || 0),
+        likes: formatNumber(item.likeCnt || item.likes || 0),
         engagement: item.engagementRate || '0%',
-        category: item.category || 'General'
+        category: item.industry || 'General'
       });
     }
   });
 
-  // Si no se categorizaron los items, intentar extraer de estructura genérica
-  if (trends.hashtags.length === 0 && items.length > 0) {
-    // Asumir que son hashtags si tienen ciertos campos
+  // Si no se categorizaron bien, intentar inferir del contenido
+  if (trends.hashtags.length === 0 && trends.sounds.length === 0 && items.length > 0) {
+    console.log('   ⚠️ Intentando inferir tipos de items...');
     items.forEach((item, idx) => {
-      if (item.title || item.name) {
+      // Si tiene videoViews alto, probablemente es hashtag
+      if (item.videoViews || item.publishCnt) {
         trends.hashtags.push({
-          hashtag: `#${(item.title || item.name).replace(/^#/, '')}`,
-          views: formatNumber(item.views || item.viewCount || 0),
-          posts: formatNumber(item.videoCount || item.postCount || 0),
+          hashtag: `#${(item.hashtagName || item.name || `trend${idx}`).replace(/^#/, '')}`,
+          views: formatNumber(item.videoViews || 0),
+          posts: formatNumber(item.publishCnt || 0),
           growth: '+0%',
-          relevanceScore: 100 - idx,
+          relevanceScore: 100 - idx * 5,
           region: clientConfig.region,
-          category: 'Trending'
+          category: 'Education'
+        });
+      }
+      // Si tiene useCnt, probablemente es sonido
+      else if (item.useCnt || item.duration) {
+        trends.sounds.push({
+          soundName: item.soundName || item.title || `Sound ${idx}`,
+          author: item.authorName || 'Unknown',
+          usage: formatNumber(item.useCnt || 0),
+          growth: '+0%',
+          category: 'Music'
         });
       }
     });
@@ -182,13 +225,14 @@ function transformData(items, clientConfig) {
     timestamp: new Date().toISOString(),
     source: 'TikTok Trends via Apify',
     region: clientConfig.region,
-    category: 'Education',
+    category: clientConfig.tiktok?.industry || 'Education',
     client: `${clientConfig.client} - ${clientConfig.clientFullName}`,
     trends,
     metadata: {
       method: 'Apify clockworks/tiktok-trends-scraper',
-      note: 'Datos reales de TikTok Trends Discovery',
-      timeframe: 'Last 30 days',
+      note: 'Datos reales de TikTok Creative Center',
+      timeframe: `Last ${clientConfig.tiktok?.timeRange || 30} days`,
+      industry: clientConfig.tiktok?.industry || 'Education',
       items_fetched: items.length
     }
   };
@@ -231,6 +275,14 @@ async function saveResults(data) {
     console.log('\n🔥 Top Hashtags:');
     data.trends.hashtags.slice(0, 5).forEach((h, i) => {
       console.log(`   ${i + 1}. ${h.hashtag}: ${h.views} views`);
+    });
+  }
+
+  // Top sounds
+  if (data.trends.sounds.length > 0) {
+    console.log('\n🎵 Top Sounds:');
+    data.trends.sounds.slice(0, 3).forEach((s, i) => {
+      console.log(`   ${i + 1}. ${s.soundName}: ${s.usage} uses`);
     });
   }
 }

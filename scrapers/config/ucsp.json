@@ -16,6 +16,12 @@
     "derecho peru"
   ],
 
+  "tiktok": {
+    "industry": "Education",
+    "timeRange": "30",
+    "resultsPerPage": 20
+  },
+
   "facebook_pages": [
     "https://www.facebook.com/UCSPoficial"
   ],
