@@ -1,0 +1,10 @@
+{
+    "actorSpecification": 1,
+    "name": "social-listening-meta",
+    "title": "Social Listening - Meta/Facebook",
+    "description": "Analiza menciones, engagement y sentimiento de páginas de Facebook por topics configurables. Ideal para universidades, marcas y empresas.",
+    "version": "1.0.0",
+    "buildTag": "latest",
+    "dockerfile": "./Dockerfile",
+    "input": "./INPUT_SCHEMA.json"
+}

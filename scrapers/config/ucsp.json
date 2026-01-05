@@ -1,0 +1,69 @@
+{
+  "client": "UCSP",
+  "clientFullName": "Universidad Católica San Pablo",
+  "region": "PE",
+  "geo": "PE",
+  "category": "Education",
+  "timeRange": "today 1-m",
+  "outputDir": "ucsp",
+
+  "keywords": [
+    "universidad arequipa",
+    "estudiar en arequipa",
+    "carreras universitarias peru",
+    "ingenieria industrial peru",
+    "medicina peru",
+    "derecho peru"
+  ],
+
+  "tiktok": {
+    "industry": "Education",
+    "timeRange": "30",
+    "resultsPerPage": 20
+  },
+
+  "facebook_pages": [
+    "https://www.facebook.com/UCSPoficial"
+  ],
+
+  "social_listening_topics": [
+    {
+      "name": "Admisión 2026",
+      "keywords": ["admisión", "admision", "postular", "postulación", "examen de admisión", "ingreso", "vacantes", "inscripción"],
+      "brands": ["UCSP", "UNSA", "UCSM", "UTP"]
+    },
+    {
+      "name": "Becas y Financiamiento",
+      "keywords": ["beca", "becas", "descuento", "financiamiento", "apoyo económico", "pensión", "crédito educativo"],
+      "brands": ["PRONABEC", "Beca 18", "Beca Continuidad"]
+    },
+    {
+      "name": "Carreras Universitarias",
+      "keywords": ["carrera", "carreras", "ingeniería", "medicina", "derecho", "arquitectura", "psicología", "administración"],
+      "brands": []
+    },
+    {
+      "name": "Vida Universitaria",
+      "keywords": ["campus", "estudiante", "universitario", "clases", "semestre", "actividades", "intercambio"],
+      "brands": []
+    },
+    {
+      "name": "Investigación y Posgrado",
+      "keywords": ["investigación", "proyecto", "tesis", "maestría", "doctorado", "posgrado", "publicación"],
+      "brands": []
+    }
+  ],
+
+  "meta": {
+    "maxPostsPerPage": 50,
+    "includeComments": true,
+    "maxCommentsPerPost": 20,
+    "timeframeDays": 30,
+    "language": "es"
+  },
+
+  "metadata": {
+    "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
+    "product": "Pregrado y Posgrado 2026-I"
+  }
+}

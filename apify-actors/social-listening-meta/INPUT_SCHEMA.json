@@ -1,0 +1,95 @@
+{
+    "title": "Social Listening Meta - Input",
+    "description": "Configuración para análisis de social listening en Facebook",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "clientName": {
+            "title": "Nombre del Cliente",
+            "type": "string",
+            "description": "Nombre corto del cliente (ej: UCSP)",
+            "editor": "textfield",
+            "default": "UCSP"
+        },
+        "clientFullName": {
+            "title": "Nombre Completo del Cliente",
+            "type": "string",
+            "description": "Nombre completo para reportes",
+            "editor": "textfield",
+            "default": "Universidad Católica San Pablo"
+        },
+        "facebookPages": {
+            "title": "Páginas de Facebook",
+            "type": "array",
+            "description": "URLs de páginas de Facebook a analizar",
+            "editor": "stringList",
+            "default": ["https://www.facebook.com/UCSPoficial"]
+        },
+        "topics": {
+            "title": "Topics a Analizar",
+            "type": "array",
+            "description": "Lista de topics con sus keywords",
+            "editor": "json",
+            "default": [
+                {
+                    "name": "Admisión 2026",
+                    "keywords": ["admisión", "admision", "postular", "ingreso", "examen de admisión"],
+                    "brands": ["UCSP", "Admisión UCSP"]
+                },
+                {
+                    "name": "Carreras con mayor demanda",
+                    "keywords": ["carrera", "carreras", "ingeniería", "medicina", "derecho", "administración"],
+                    "brands": ["UCSP", "Ingeniería Industrial"]
+                },
+                {
+                    "name": "Becas y Financiamiento",
+                    "keywords": ["beca", "becas", "financiamiento", "descuento", "pensión"],
+                    "brands": ["UCSP", "Becas UCSP"]
+                },
+                {
+                    "name": "Vida Universitaria",
+                    "keywords": ["campus", "vida universitaria", "estudiantes", "actividades"],
+                    "brands": ["UCSP", "Campus UCSP"]
+                }
+            ]
+        },
+        "maxPostsPerPage": {
+            "title": "Posts por Página",
+            "type": "integer",
+            "description": "Número máximo de posts a analizar por página",
+            "default": 50,
+            "minimum": 10,
+            "maximum": 200
+        },
+        "includeComments": {
+            "title": "Incluir Comentarios",
+            "type": "boolean",
+            "description": "Analizar también los comentarios de los posts",
+            "default": true
+        },
+        "maxCommentsPerPost": {
+            "title": "Comentarios por Post",
+            "type": "integer",
+            "description": "Número máximo de comentarios por post",
+            "default": 20,
+            "minimum": 0,
+            "maximum": 100
+        },
+        "timeframeDays": {
+            "title": "Días a Analizar",
+            "type": "integer",
+            "description": "Analizar posts de los últimos X días",
+            "default": 30,
+            "minimum": 7,
+            "maximum": 90
+        },
+        "language": {
+            "title": "Idioma",
+            "type": "string",
+            "description": "Idioma para análisis de sentimiento",
+            "enum": ["es", "en", "pt"],
+            "default": "es"
+        }
+    },
+    "required": ["clientName", "facebookPages", "topics"]
+}
