@@ -5,12 +5,12 @@
   "description": "Data scrapers for UCSP Algorithm - Social Intelligence para Universidad Católica San Pablo",
   "main": "index.js",
   "scripts": {
-    "scrape:all": "node tiktok_scraper.js && node meta_scraper.js",
+    "scrape:all": "npm run scrape:trends && node tiktok_scraper.js && node meta_scraper.js",
     "scrape:tiktok": "node tiktok_scraper.js",
     "scrape:meta": "node meta_scraper.js",
-    "scrape:trends": "python google_trends.py",
-    "scrape:trends:apify": "node google_trends_apify.js",
-    "scrape:trends:ucsp": "node google_trends_apify.js --client=ucsp",
+    "scrape:trends": "node google_trends_hybrid.js --client=ucsp",
+    "scrape:trends:apify": "node google_trends_apify.js --client=ucsp",
+    "scrape:trends:hybrid": "node google_trends_hybrid.js --client=ucsp",
     "scrape:apify": "node examples/apify_integration_example.js",
     "validate": "node validate_data.js"
   },

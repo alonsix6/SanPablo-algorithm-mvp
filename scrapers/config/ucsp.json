@@ -7,18 +7,20 @@
   "timeRange": "today 1-m",
   "outputDir": "ucsp",
   "keywords": [
+    "universidad arequipa",
+    "estudiar en arequipa",
+    "carreras universitarias peru",
+    "ingenieria industrial peru",
+    "medicina peru",
+    "derecho peru"
+  ],
+  "brand_keywords": [
     "UCSP",
-    "Universidad Católica San Pablo",
-    "admisión UCSP 2026",
-    "ingeniería industrial arequipa",
-    "derecho arequipa",
-    "medicina arequipa",
-    "universidades arequipa",
-    "becas UCSP",
-    "examen admisión UCSP"
+    "Universidad Católica San Pablo"
   ],
   "metadata": {
     "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
-    "product": "Pregrado y Posgrado 2026-I"
+    "product": "Pregrado y Posgrado 2026-I",
+    "note": "Keywords genéricos de alto volumen. Los brand_keywords son opcionales para scraping separado."
   }
 }
