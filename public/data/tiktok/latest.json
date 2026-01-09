@@ -1,152 +1,180 @@
 {
-  "timestamp": "2025-12-04T22:54:29.718Z",
-  "source": "TikTok Creative Center",
+  "timestamp": "2026-01-05T21:45:34.998Z",
+  "source": "TikTok Trends via Apify",
   "region": "PE",
   "category": "Education",
   "client": "UCSP - Universidad Católica San Pablo",
   "trends": {
-    "hashtags": [
-      {
-        "hashtag": "#universidad",
-        "views": "15.2B",
-        "posts": "2.8M",
-        "growth": "+45%",
-        "relevanceScore": 92,
-        "region": "LATAM",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#vidauniversitaria",
-        "views": "8.5B",
-        "posts": "1.2M",
-        "growth": "+68%",
-        "relevanceScore": 95,
-        "region": "LATAM",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#admision2026",
-        "views": "125M",
-        "posts": "45K",
-        "growth": "+185%",
-        "relevanceScore": 98,
-        "region": "Peru",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#ucsp",
-        "views": "2.8M",
-        "posts": "1.2K",
-        "growth": "+95%",
-        "relevanceScore": 100,
-        "region": "Peru",
-        "category": "UCSP"
-      },
-      {
-        "hashtag": "#arequipa",
-        "views": "1.8B",
-        "posts": "520K",
-        "growth": "+52%",
-        "relevanceScore": 88,
-        "region": "Peru",
-        "category": "Location"
-      },
-      {
-        "hashtag": "#estudiaenperu",
-        "views": "85M",
-        "posts": "28K",
-        "growth": "+72%",
-        "relevanceScore": 90,
-        "region": "Peru",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#postulantes",
-        "views": "45M",
-        "posts": "18K",
-        "growth": "+145%",
-        "relevanceScore": 94,
-        "region": "Peru",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#ingenieria",
-        "views": "2.5B",
-        "posts": "680K",
-        "growth": "+38%",
-        "relevanceScore": 86,
-        "region": "LATAM",
-        "category": "Career"
-      },
-      {
-        "hashtag": "#medicina",
-        "views": "5.2B",
-        "posts": "1.5M",
-        "growth": "+42%",
-        "relevanceScore": 89,
-        "region": "LATAM",
-        "category": "Career"
-      },
-      {
-        "hashtag": "#derecho",
-        "views": "1.2B",
-        "posts": "320K",
-        "growth": "+35%",
-        "relevanceScore": 84,
-        "region": "LATAM",
-        "category": "Career"
-      },
-      {
-        "hashtag": "#becas",
-        "views": "520M",
-        "posts": "125K",
-        "growth": "+88%",
-        "relevanceScore": 91,
-        "region": "LATAM",
-        "category": "Education"
-      },
-      {
-        "hashtag": "#fyp",
-        "views": "950B",
-        "posts": "45M",
-        "growth": "+42%",
-        "relevanceScore": 75,
-        "region": "Global",
-        "category": "General"
-      }
-    ],
+    "hashtags": [],
     "sounds": [
       {
-        "soundName": "Estudio Motivation",
-        "usage": "85K",
-        "growth": "+125%",
-        "category": "Study"
+        "soundName": "Unknown",
+        "author": "Ice Spice",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
       },
       {
-        "soundName": "University Life Soundtrack",
-        "usage": "42K",
-        "growth": "+92%",
-        "category": "Lifestyle"
+        "soundName": "Unknown",
+        "author": "Darlene Love",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Mariah Carey",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Geaux Teezy",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Goji Georgie",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Sounds Reel",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Ekkstacy",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "O.T. Genasis",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "José Feliciano",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Ariana Grande",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "John Lennon & Yoko Ono",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Laufey",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Moby",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "The Stylistics",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "H3adband",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "YoungBoy Never Broke Again",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Cahill",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Diana Ross",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "ilyTOMMY",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Auni",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music"
       }
     ],
-    "creators": [
-      {
-        "category": "Student Life",
-        "avgEngagement": "8.5%",
-        "topRegion": "Peru"
-      },
-      {
-        "category": "Education Tips",
-        "avgEngagement": "7.2%",
-        "topRegion": "LATAM"
-      }
-    ]
+    "creators": []
   },
   "metadata": {
-    "method": "Manual curation from TikTok Creative Center",
-    "updateFrequency": "Weekly",
-    "lastUpdate": "2025-12-04",
-    "note": "Datos verificados de TikTok Creative Center + investigación web. Hashtags educativos con views/posts reales.",
-    "source": "TikTok Creative Center (Peru/LATAM filter) + public data analysis"
+    "method": "Apify clockworks/tiktok-trends-scraper",
+    "note": "Datos reales de TikTok Creative Center",
+    "timeframe": "Last 30 days",
+    "industry": "Education",
+    "items_fetched": 21
   }
 }

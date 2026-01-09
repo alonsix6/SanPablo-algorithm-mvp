@@ -71,15 +71,23 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         continue-on-error: true
 
-      # 8. Verificar archivos generados
+      # 8. Ejecutar ML Pipeline
+      - name: Run ML Pipeline
+        run: |
+          echo "🧠 Ejecutando ML Pipeline..."
+          node ml/pipeline/weekly_pipeline.js
+        continue-on-error: true
+
+      # 9. Verificar archivos generados
       - name: Check generated files
         run: |
           echo "📊 Verificando archivos generados..."
           echo "=== Google Trends ===" && ls -lah data/trends/ || echo "No data"
           echo "=== TikTok ===" && ls -lah data/tiktok/ || echo "No data"
           echo "=== Meta ===" && ls -lah data/meta/ || echo "No data"
+          echo "=== ML ===" && ls -lah public/data/ml/ || echo "No ML data"
 
-      # 9. Commit y push de los datos
+      # 10. Commit y push de los datos
       - name: Commit and push data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -91,12 +99,12 @@ jobs:
             echo "No hay cambios en los datos"
           else
             TIMESTAMP=$(date +'%Y-%m-%d %H:%M UTC')
-            git commit -m "🔄 Update UCSP data via Apify - $TIMESTAMP"
+            git commit -m "🔄 Update UCSP data + ML predictions - $TIMESTAMP"
             git push
             echo "✅ Datos UCSP actualizados y pusheados"
           fi
 
-      # 10. Notificación
+      # 11. Notificación
       - name: Status notification
         run: |
           if [ "${{ job.status }}" == "success" ]; then

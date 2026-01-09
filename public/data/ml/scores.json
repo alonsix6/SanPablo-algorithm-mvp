@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-01-05T22:12:57.576Z",
+  "individual": {
+    "search": {
+      "base": 7.716666666666667,
+      "momentum": 0.6666666666666666,
+      "final": 8.745555555555555
+    },
+    "trend": {
+      "base": 5,
+      "final": 5
+    },
+    "social": {
+      "sentiment": 5,
+      "engagement": 5,
+      "final": 5
+    },
+    "intent": {
+      "conversion_rate": 0.058,
+      "final": 8.700000000000001
+    }
+  },
+  "overall": 7.343755555555555,
+  "weights": {
+    "search": 0.28,
+    "trend": 0.15,
+    "social": 0.22,
+    "intent": 0.35
+  }
+}

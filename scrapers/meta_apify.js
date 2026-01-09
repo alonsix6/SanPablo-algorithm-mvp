@@ -74,7 +74,10 @@ async function scrapeMetaSocialListening(clientConfig) {
   }
 
   // Verificar si estamos usando el actor custom o el genérico
-  const isCustomActor = ACTOR_ID.includes('social-listening-meta');
+  // El actor custom puede ser social-listening-meta o globular_cinema/my-actor
+  const isCustomActor = ACTOR_ID.includes('social-listening-meta') ||
+                        ACTOR_ID.includes('globular_cinema/my-actor') ||
+                        ACTOR_ID.includes('globular_cinema~my-actor');
   console.log(`🎯 Actor: ${ACTOR_ID}`);
   console.log(`   Tipo: ${isCustomActor ? 'Custom Social Listening' : 'Facebook Posts Scraper'}`);
 

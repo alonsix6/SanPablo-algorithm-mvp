@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-01-05T22:12:57.590Z",
+  "insights": [
+    {
+      "id": "ml_trend_momentum",
+      "type": "multi_source",
+      "priority": "high",
+      "title": "Alto momentum en tendencias de búsqueda",
+      "description": "67% de keywords están en tendencia alcista",
+      "action": "Aprovechar momento para escalar inversión en Search",
+      "confidence": 0.85,
+      "impact_score": 8.5,
+      "source": "ML Trend Analysis"
+    },
+    {
+      "id": "trend_rising",
+      "type": "trend",
+      "priority": "high",
+      "title": "4 keywords en tendencia alcista",
+      "description": "Crecimiento promedio de +40% en los últimos 3 meses",
+      "action": "Crear contenido targeting estos keywords emergentes",
+      "keywords": [
+        "universidad arequipa",
+        "estudiar en arequipa",
+        "carreras universitarias peru"
+      ],
+      "confidence": 0.8,
+      "impact_score": 8,
+      "source": "Google Trends"
+    },
+    {
+      "id": "social_sentiment_warning",
+      "type": "social",
+      "priority": "high",
+      "title": "Sentimiento social requiere atención",
+      "description": "Solo 0% de los topics tienen sentimiento positivo",
+      "action": "Investigar causas de percepción negativa y activar PR",
+      "confidence": 0.7,
+      "impact_score": 8,
+      "source": "Meta Social Listening"
+    },
+    {
+      "id": "cross_source_alignment",
+      "type": "multi_source",
+      "priority": "high",
+      "title": "Alineación entre búsquedas y conversación social",
+      "description": "1 temas aparecen tanto en Google Trends como en redes sociales",
+      "action": "Priorizar estos temas en la estrategia de contenido",
+      "keywords": [
+        "carreras universitarias peru"
+      ],
+      "confidence": 0.85,
+      "impact_score": 8,
+      "source": "Multi-Source Analysis"
+    },
+    {
+      "id": "trend_top_keyword",
+      "type": "trend",
+      "priority": "high",
+      "title": "\"universidad arequipa\" lidera las búsquedas",
+      "description": "Con un interés de 78/100 y +35% de crecimiento",
+      "action": "Aumentar inversión en este keyword en Google Ads",
+      "metric": 78,
+      "change": "+35%",
+      "confidence": 0.85,
+      "impact_score": 7.800000000000001,
+      "source": "Google Trends"
+    },
+    {
+      "id": "budget_optimization",
+      "type": "budget",
+      "priority": "medium",
+      "title": "Optimización detectada: display",
+      "description": "Aumentar de 10% a 25%",
+      "action": "display muestra ROI superior (50.0%)",
+      "recommendations": [
+        {
+          "channel": "display",
+          "type": "increase",
+          "from": 10,
+          "to": 25,
+          "change": "+15.0%",
+          "impact": 3450,
+          "confidence": "low",
+          "reason": "display muestra ROI superior (50.0%)"
+        },
+        {
+          "channel": "google_search",
+          "type": "decrease",
+          "from": 35,
+          "to": 25,
+          "change": "-10.0%",
+          "impact": 2300,
+          "confidence": "low",
+          "reason": "google_search muestra menor efectividad"
+        },
+        {
+          "channel": "meta_ads",
+          "type": "decrease",
+          "from": 35,
+          "to": 25,
+          "change": "-10.0%",
+          "impact": 2300,
+          "confidence": "low",
+          "reason": "meta_ads muestra menor efectividad"
+        }
+      ],
+      "confidence": 0.7,
+      "impact_score": 7.5,
+      "source": "ML Budget Optimizer"
+    },
+    {
+      "id": "ga4_conversion_rate",
+      "type": "intent",
+      "priority": "medium",
+      "title": "Tasa de conversión: 5.8%",
+      "description": "980 conversiones de 28,500 usuarios",
+      "action": "Mantener estrategia actual y escalar tráfico",
+      "metric": 5.800000000000001,
+      "confidence": 0.85,
+      "impact_score": 7,
+      "source": "Google Analytics 4"
+    },
+    {
+      "id": "trend_regional",
+      "type": "trend",
+      "priority": "medium",
+      "title": "Concentración regional en Arequipa",
+      "description": "100% del interés viene de Arequipa",
+      "action": "Considerar campañas geo-segmentadas",
+      "regions": [
+        {
+          "region": "Arequipa",
+          "score": 100
+        },
+        {
+          "region": "Puno",
+          "score": 58
+        },
+        {
+          "region": "Cusco",
+          "score": 50
+        }
+      ],
+      "confidence": 0.75,
+      "impact_score": 6,
+      "source": "Google Trends"
+    },
+    {
+      "id": "ga4_top_page",
+      "type": "intent",
+      "priority": "medium",
+      "title": "/admision/pregrado es la página más visitada",
+      "description": "11,200 vistas con 7.8% conversión",
+      "action": "Analizar qué hace exitosa esta página y replicar",
+      "confidence": 0.8,
+      "impact_score": 6,
+      "source": "Google Analytics 4"
+    },
+    {
+      "id": "social_brand_presence",
+      "type": "social",
+      "priority": "medium",
+      "title": "UCSP presente en 1/5 conversaciones",
+      "description": "La marca aparece en 20% de los temas monitoreados",
+      "action": "Aumentar share of voice en temas donde no aparece UCSP",
+      "confidence": 0.8,
+      "impact_score": 5,
+      "source": "Meta Social Listening"
+    }
+  ],
+  "total_count": 10
+}

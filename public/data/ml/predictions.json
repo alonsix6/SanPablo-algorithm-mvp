@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-01-05T22:12:57.588Z",
+  "model_versions": {
+    "sentiment_analyzer": "1.0.0",
+    "budget_optimizer": "1.0.0",
+    "insight_generator": "1.0.0"
+  },
+  "sentiment_analysis": {
+    "overall": {
+      "score": 0.5,
+      "category": "neutral",
+      "topics_analyzed": 5
+    },
+    "by_topic": {
+      "Admisión 2026": {
+        "score": 0.5,
+        "category": "neutral",
+        "mentions": 0,
+        "engagement": 5
+      },
+      "Becas y Financiamiento": {
+        "score": 0.5,
+        "category": "neutral",
+        "mentions": 0,
+        "engagement": 5
+      },
+      "Carreras Universitarias": {
+        "score": 0.5,
+        "category": "neutral",
+        "mentions": 0,
+        "engagement": 5
+      },
+      "Vida Universitaria": {
+        "score": 0.5,
+        "category": "neutral",
+        "mentions": 0,
+        "engagement": 5
+      },
+      "Investigación y Posgrado": {
+        "score": 0.5,
+        "category": "neutral",
+        "mentions": 0,
+        "engagement": 5
+      }
+    },
+    "timestamp": "2026-01-05T22:12:57.575Z"
+  },
+  "scores": {
+    "timestamp": "2026-01-05T22:12:57.576Z",
+    "individual": {
+      "search": {
+        "base": 7.716666666666667,
+        "momentum": 0.6666666666666666,
+        "final": 8.745555555555555
+      },
+      "trend": {
+        "base": 5,
+        "final": 5
+      },
+      "social": {
+        "sentiment": 5,
+        "engagement": 5,
+        "final": 5
+      },
+      "intent": {
+        "conversion_rate": 0.058,
+        "final": 8.700000000000001
+      }
+    },
+    "overall": 7.343755555555555,
+    "weights": {
+      "search": 0.28,
+      "trend": 0.15,
+      "social": 0.22,
+      "intent": 0.35
+    }
+  },
+  "budget_optimization": {
+    "current": {
+      "google_search": 35,
+      "meta_ads": 35,
+      "youtube": 20,
+      "display": 10
+    },
+    "recommended": {
+      "google_search": {
+        "percentage": 29,
+        "amount": 6667,
+        "expected_roi": "43.6%",
+        "confidence": "high"
+      },
+      "meta_ads": {
+        "percentage": 25,
+        "amount": 5741,
+        "expected_roi": "37.6%",
+        "confidence": "high"
+      },
+      "youtube": {
+        "percentage": 22.1,
+        "amount": 5093,
+        "expected_roi": "33.3%",
+        "confidence": "high"
+      },
+      "display": {
+        "percentage": 23.9,
+        "amount": 5500,
+        "expected_roi": "36.0%",
+        "confidence": "high"
+      }
+    },
+    "recommendations": [
+      {
+        "channel": "display",
+        "type": "increase",
+        "from": 10,
+        "to": 23.9,
+        "change": "+13.9%",
+        "impact": 3196.9999999999995,
+        "confidence": "high",
+        "reason": "display muestra ROI superior (36.0%)"
+      },
+      {
+        "channel": "meta_ads",
+        "type": "decrease",
+        "from": 35,
+        "to": 25,
+        "change": "-10.0%",
+        "impact": 2300,
+        "confidence": "high",
+        "reason": "meta_ads muestra menor efectividad"
+      },
+      {
+        "channel": "google_search",
+        "type": "decrease",
+        "from": 35,
+        "to": 29,
+        "change": "-6.0%",
+        "impact": 1380,
+        "confidence": "high",
+        "reason": "google_search muestra menor efectividad"
+      }
+    ],
+    "simulation": {
+      "allocations": [],
+      "best_channel_wins": {
+        "google_search": "60.1%",
+        "meta_ads": "15.5%",
+        "youtube": "6.2%",
+        "display": "18.2%"
+      }
+    },
+    "timestamp": "2026-01-05T22:12:57.586Z"
+  }
+}

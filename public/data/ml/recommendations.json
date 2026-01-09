@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-01-05T22:12:57.591Z",
+  "budget": [
+    {
+      "channel": "display",
+      "type": "increase",
+      "from": 10,
+      "to": 23.9,
+      "change": "+13.9%",
+      "impact": 3196.9999999999995,
+      "confidence": "high",
+      "reason": "display muestra ROI superior (36.0%)"
+    },
+    {
+      "channel": "meta_ads",
+      "type": "decrease",
+      "from": 35,
+      "to": 25,
+      "change": "-10.0%",
+      "impact": 2300,
+      "confidence": "high",
+      "reason": "meta_ads muestra menor efectividad"
+    },
+    {
+      "channel": "google_search",
+      "type": "decrease",
+      "from": 35,
+      "to": 29,
+      "change": "-6.0%",
+      "impact": 1380,
+      "confidence": "high",
+      "reason": "google_search muestra menor efectividad"
+    }
+  ],
+  "actions": [
+    {
+      "priority": "high",
+      "action": "Aprovechar momento para escalar inversión en Search",
+      "source": "ML Trend Analysis"
+    },
+    {
+      "priority": "high",
+      "action": "Crear contenido targeting estos keywords emergentes",
+      "source": "Google Trends"
+    },
+    {
+      "priority": "high",
+      "action": "Investigar causas de percepción negativa y activar PR",
+      "source": "Meta Social Listening"
+    },
+    {
+      "priority": "high",
+      "action": "Priorizar estos temas en la estrategia de contenido",
+      "source": "Multi-Source Analysis"
+    },
+    {
+      "priority": "high",
+      "action": "Aumentar inversión en este keyword en Google Ads",
+      "source": "Google Trends"
+    },
+    {
+      "priority": "medium",
+      "action": "display muestra ROI superior (50.0%)",
+      "source": "ML Budget Optimizer"
+    },
+    {
+      "priority": "medium",
+      "action": "Mantener estrategia actual y escalar tráfico",
+      "source": "Google Analytics 4"
+    },
+    {
+      "priority": "medium",
+      "action": "Considerar campañas geo-segmentadas",
+      "source": "Google Trends"
+    },
+    {
+      "priority": "medium",
+      "action": "Analizar qué hace exitosa esta página y replicar",
+      "source": "Google Analytics 4"
+    },
+    {
+      "priority": "medium",
+      "action": "Aumentar share of voice en temas donde no aparece UCSP",
+      "source": "Meta Social Listening"
+    }
+  ]
+}

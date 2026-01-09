@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, GraduationCap, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
+import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, GraduationCap, ChevronDown, ChevronUp, MessageCircle, Rocket, CheckCircle, ArrowRight, AlertCircle, FileText, Globe, Star, Lightbulb } from 'lucide-react';
 import { BUDGET_ALLOCATION, CONTENT_PILLARS, CARRERAS_PERFORMANCE } from '../data/mockData';
 import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
 
@@ -14,10 +14,10 @@ export default function ExecutionLayer() {
   };
 
   const getStatusIcon = (status) => {
-    if (status === 'overperforming') return '🚀';
-    if (status === 'performing') return '✓';
-    if (status === 'ontrack') return '→';
-    return '⚠';
+    if (status === 'overperforming') return <Rocket className="w-3 h-3" />;
+    if (status === 'performing') return <CheckCircle className="w-3 h-3" />;
+    if (status === 'ontrack') return <ArrowRight className="w-3 h-3" />;
+    return <AlertCircle className="w-3 h-3" />;
   };
 
   return (
@@ -107,7 +107,7 @@ export default function ExecutionLayer() {
                          key === 'youtube' ? 'YouTube Ads' :
                          key === 'display' ? 'Display Network' : key}
                       </h4>
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${colors.badge} ${colors.text}`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 ${colors.badge} ${colors.text}`}>
                         {getStatusIcon(channel.status)} {channel.status.toUpperCase()}
                       </span>
                     </div>
@@ -272,8 +272,8 @@ export default function ExecutionLayer() {
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold text-gray-900 text-base">{carrera.nombre}</h4>
                   {idx < 5 && (
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-ucsp-gold/20 text-ucsp-burgundy">
-                      ⭐ TOP 5
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-ucsp-gold/20 text-ucsp-burgundy flex items-center gap-1">
+                      <Star className="w-3 h-3" /> TOP 5
                     </span>
                   )}
                 </div>
@@ -291,7 +291,9 @@ export default function ExecutionLayer() {
 
                 {/* Lead Ads Metrics */}
                 <div className="pt-3 border-t border-gray-300 mb-3">
-                  <p className="text-xs font-semibold text-gray-700 mb-2">📋 Lead Ads (Meta)</p>
+                  <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                    <FileText className="w-3 h-3" /> Lead Ads (Meta)
+                  </p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
                       <p className="text-gray-500">Formularios</p>
@@ -324,7 +326,9 @@ export default function ExecutionLayer() {
 
                 {/* Landing Page Metrics */}
                 <div className="pt-3 border-t border-gray-300">
-                  <p className="text-xs font-semibold text-gray-700 mb-2">🌐 Landing Page</p>
+                  <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                    <Globe className="w-3 h-3" /> Landing Page
+                  </p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
                       <p className="text-gray-500">Visitas</p>
@@ -393,7 +397,9 @@ export default function ExecutionLayer() {
         </div>
 
         <div className="mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl">
-          <p className="text-sm font-semibold mb-2">💡 Eventos clave admisiones:</p>
+          <p className="text-sm font-semibold mb-2 flex items-center gap-2">
+            <Lightbulb className="w-4 h-4" /> Eventos clave admisiones:
+          </p>
           <p className="text-sm">Inicio campaña (Ene-Feb), Exámenes (Mar-Abr), Fiestas Patrias (Jul), Campaña II (Ago-Sep), Charlas vocacionales (continuo)</p>
         </div>
       </div>

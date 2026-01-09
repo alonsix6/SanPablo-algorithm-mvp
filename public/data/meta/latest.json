@@ -1,279 +1,164 @@
 {
-  "timestamp": "2025-12-04T22:54:14.258Z",
-  "source": "Meta/Facebook Public Trends",
-  "region": "Peru",
-  "category": "Education",
+  "timestamp": "2026-01-05T21:47:43.352Z",
+  "source": "Meta/Facebook Social Listening",
+  "region": "LATAM",
+  "category": "Social Listening",
   "client": "UCSP - Universidad Católica San Pablo",
   "pages": [
     {
       "name": "UCSP Official Pages - Public",
       "source": "Facebook Public Pages",
-      "period": "2025-11-27 to 2025-12-04",
+      "period": "Last 30 days",
       "topics": [
         {
-          "topic": "Admisión UCSP 2026",
-          "mentions": 2850,
-          "engagement_score": 9.5,
-          "growth": "+125%",
-          "sentiment": "very positive",
-          "top_brands": [
-            "UCSP",
-            "Admisión UCSP"
-          ],
-          "avg_reactions": 580,
-          "avg_comments": 125,
-          "avg_shares": 185
-        },
-        {
-          "topic": "Carreras con mayor demanda",
-          "mentions": 1950,
-          "engagement_score": 9.2,
-          "growth": "+88%",
-          "sentiment": "very positive",
-          "top_brands": [
-            "UCSP",
-            "Ingeniería Industrial",
-            "Medicina"
-          ],
-          "avg_reactions": 520,
-          "avg_comments": 108,
-          "avg_shares": 152
-        },
-        {
-          "topic": "Becas y financiamiento",
-          "mentions": 1650,
-          "engagement_score": 8.8,
-          "growth": "+95%",
-          "sentiment": "positive",
-          "top_brands": [
-            "UCSP",
-            "Becas UCSP"
-          ],
-          "avg_reactions": 485,
-          "avg_comments": 145,
-          "avg_shares": 128
-        },
-        {
-          "topic": "Vida universitaria UCSP",
-          "mentions": 1420,
-          "engagement_score": 8.5,
-          "growth": "+65%",
-          "sentiment": "very positive",
-          "top_brands": [
-            "UCSP",
-            "Campus UCSP"
-          ],
-          "avg_reactions": 450,
-          "avg_comments": 88,
-          "avg_shares": 112
-        },
-        {
-          "topic": "Examen de admisión",
-          "mentions": 1280,
-          "engagement_score": 8.9,
-          "growth": "+145%",
+          "topic": "Admisión 2026",
+          "mentions": 0,
+          "engagement_score": 5,
+          "growth": "-80%",
           "sentiment": "neutral",
           "top_brands": [
             "UCSP",
-            "Admisión"
+            "UNSA",
+            "UCSM",
+            "UTP"
           ],
-          "avg_reactions": 420,
-          "avg_comments": 192,
-          "avg_shares": 85
+          "avg_reactions": 0,
+          "avg_comments": 0,
+          "avg_shares": 0
         },
         {
-          "topic": "Acreditación y calidad",
-          "mentions": 980,
-          "engagement_score": 8.2,
-          "growth": "+45%",
-          "sentiment": "positive",
+          "topic": "Becas y Financiamiento",
+          "mentions": 0,
+          "engagement_score": 5,
+          "growth": "-97%",
+          "sentiment": "neutral",
           "top_brands": [
-            "UCSP",
-            "SUNEDU",
-            "Acreditación"
+            "PRONABEC",
+            "Beca 18",
+            "Beca Continuidad"
           ],
-          "avg_reactions": 380,
-          "avg_comments": 72,
-          "avg_shares": 95
+          "avg_reactions": 0,
+          "avg_comments": 0,
+          "avg_shares": 0
+        },
+        {
+          "topic": "Carreras Universitarias",
+          "mentions": 0,
+          "engagement_score": 5,
+          "growth": "-88%",
+          "sentiment": "neutral",
+          "top_brands": [],
+          "avg_reactions": 0,
+          "avg_comments": 0,
+          "avg_shares": 0
+        },
+        {
+          "topic": "Vida Universitaria",
+          "mentions": 0,
+          "engagement_score": 5,
+          "growth": "-82%",
+          "sentiment": "neutral",
+          "top_brands": [],
+          "avg_reactions": 0,
+          "avg_comments": 0,
+          "avg_shares": 0
+        },
+        {
+          "topic": "Investigación y Posgrado",
+          "mentions": 0,
+          "engagement_score": 5,
+          "growth": "-81%",
+          "sentiment": "neutral",
+          "top_brands": [],
+          "avg_reactions": 0,
+          "avg_comments": 0,
+          "avg_shares": 0
         }
       ],
       "metadata": {
         "pages_monitored": [
-          "Universidad Católica San Pablo (Oficial)",
-          "Admisión UCSP",
-          "UCSP Noticias",
-          "Facultades UCSP"
+          "https://www.facebook.com/UCSPoficial"
         ],
-        "instagram_hashtags": [
-          "#ucsp",
-          "#admisionucsp",
-          "#universidadcatolicasanpablo",
-          "#arequipa"
-        ],
-        "total_posts_analyzed": 1800,
-        "timeframe": "Last 30 days",
-        "update_method": "Weekly manual review"
-      }
-    },
-    {
-      "name": "Education Groups Peru - Public Communities",
-      "source": "Facebook Public Groups",
-      "period": "2025-11-27 to 2025-12-04",
-      "topics": [
-        {
-          "topic": "Postulantes UCSP 2026",
-          "mentions": 1250,
-          "engagement_score": 9,
-          "growth": "+165%",
-          "sentiment": "very positive",
-          "discussion_volume": "very high",
-          "top_queries": [
-            "cronograma",
-            "requisitos",
-            "preparación"
-          ]
-        },
-        {
-          "topic": "Comparativa universidades Arequipa",
-          "mentions": 850,
-          "engagement_score": 8.4,
-          "growth": "+72%",
-          "sentiment": "positive",
-          "discussion_volume": "high",
-          "top_queries": [
-            "UCSP vs UNSA",
-            "UCSP vs UCSM",
-            "ranking"
-          ]
-        }
-      ],
-      "metadata": {
-        "groups_analyzed": 8,
-        "members_total": 45000,
-        "posts_analyzed": 650
+        "total_posts_analyzed": 1,
+        "total_comments_analyzed": 0,
+        "timeframe": "Last 30 days"
       }
     }
   ],
   "aggregatedTopics": [
     {
-      "topic": "Admisión UCSP 2026",
-      "mentions": 2850,
-      "engagement_score": 9.5,
-      "growth": "+125%",
-      "sentiment": "very positive",
-      "top_brands": [
-        "UCSP",
-        "Admisión UCSP"
-      ],
-      "avg_reactions": 580,
-      "avg_comments": 125,
-      "avg_shares": 185
-    },
-    {
-      "topic": "Carreras con mayor demanda",
-      "mentions": 1950,
-      "engagement_score": 9.2,
-      "growth": "+88%",
-      "sentiment": "very positive",
-      "top_brands": [
-        "UCSP",
-        "Ingeniería Industrial",
-        "Medicina"
-      ],
-      "avg_reactions": 520,
-      "avg_comments": 108,
-      "avg_shares": 152
-    },
-    {
-      "topic": "Postulantes UCSP 2026",
-      "mentions": 1250,
-      "engagement_score": 9,
-      "growth": "+165%",
-      "sentiment": "very positive",
-      "discussion_volume": "very high",
-      "top_queries": [
-        "cronograma",
-        "requisitos",
-        "preparación"
-      ]
-    },
-    {
-      "topic": "Examen de admisión",
-      "mentions": 1280,
-      "engagement_score": 8.9,
-      "growth": "+145%",
+      "topic": "Admisión 2026",
+      "mentions": 0,
+      "engagement_score": 5,
+      "growth": "-80%",
       "sentiment": "neutral",
       "top_brands": [
         "UCSP",
-        "Admisión"
+        "UNSA",
+        "UCSM",
+        "UTP"
       ],
-      "avg_reactions": 420,
-      "avg_comments": 192,
-      "avg_shares": 85
+      "avg_reactions": 0,
+      "avg_comments": 0,
+      "avg_shares": 0
     },
     {
-      "topic": "Becas y financiamiento",
-      "mentions": 1650,
-      "engagement_score": 8.8,
-      "growth": "+95%",
-      "sentiment": "positive",
+      "topic": "Becas y Financiamiento",
+      "mentions": 0,
+      "engagement_score": 5,
+      "growth": "-97%",
+      "sentiment": "neutral",
       "top_brands": [
-        "UCSP",
-        "Becas UCSP"
+        "PRONABEC",
+        "Beca 18",
+        "Beca Continuidad"
       ],
-      "avg_reactions": 485,
-      "avg_comments": 145,
-      "avg_shares": 128
+      "avg_reactions": 0,
+      "avg_comments": 0,
+      "avg_shares": 0
     },
     {
-      "topic": "Vida universitaria UCSP",
-      "mentions": 1420,
-      "engagement_score": 8.5,
-      "growth": "+65%",
-      "sentiment": "very positive",
-      "top_brands": [
-        "UCSP",
-        "Campus UCSP"
-      ],
-      "avg_reactions": 450,
-      "avg_comments": 88,
-      "avg_shares": 112
+      "topic": "Carreras Universitarias",
+      "mentions": 0,
+      "engagement_score": 5,
+      "growth": "-88%",
+      "sentiment": "neutral",
+      "top_brands": [],
+      "avg_reactions": 0,
+      "avg_comments": 0,
+      "avg_shares": 0
     },
     {
-      "topic": "Comparativa universidades Arequipa",
-      "mentions": 850,
-      "engagement_score": 8.4,
-      "growth": "+72%",
-      "sentiment": "positive",
-      "discussion_volume": "high",
-      "top_queries": [
-        "UCSP vs UNSA",
-        "UCSP vs UCSM",
-        "ranking"
-      ]
+      "topic": "Vida Universitaria",
+      "mentions": 0,
+      "engagement_score": 5,
+      "growth": "-82%",
+      "sentiment": "neutral",
+      "top_brands": [],
+      "avg_reactions": 0,
+      "avg_comments": 0,
+      "avg_shares": 0
     },
     {
-      "topic": "Acreditación y calidad",
-      "mentions": 980,
-      "engagement_score": 8.2,
-      "growth": "+45%",
-      "sentiment": "positive",
-      "top_brands": [
-        "UCSP",
-        "SUNEDU",
-        "Acreditación"
-      ],
-      "avg_reactions": 380,
-      "avg_comments": 72,
-      "avg_shares": 95
+      "topic": "Investigación y Posgrado",
+      "mentions": 0,
+      "engagement_score": 5,
+      "growth": "-81%",
+      "sentiment": "neutral",
+      "top_brands": [],
+      "avg_reactions": 0,
+      "avg_comments": 0,
+      "avg_shares": 0
     }
   ],
   "metadata": {
-    "method": "Manual curation from verified public pages",
-    "dataType": "Public engagement analysis from verified sources",
-    "updateFrequency": "Weekly",
-    "lastUpdate": "2025-12-04",
-    "note": "Fuentes verificadas: Universidad Católica San Pablo (página oficial), grupos de postulantes, páginas educativas. No requiere API tokens.",
-    "verification": "Páginas y grupos verificados de UCSP"
+    "method": "Apify Social Listening Actor",
+    "actor": "social-listening-meta",
+    "note": "Datos reales de Facebook via scraping",
+    "timeframe": "Last 30 days",
+    "posts_analyzed": 1,
+    "comments_analyzed": 0,
+    "pages_analyzed": 1,
+    "topics_configured": 5
   }
 }

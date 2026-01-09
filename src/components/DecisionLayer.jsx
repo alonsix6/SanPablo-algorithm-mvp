@@ -1,4 +1,4 @@
-import { Target, Users, MessageSquare, TrendingUp, Lightbulb, Zap, AlertCircle, GraduationCap } from 'lucide-react';
+import { Target, Users, MessageSquare, TrendingUp, Lightbulb, Zap, AlertCircle, GraduationCap, Flame, BarChart3, CheckCircle, FlaskConical } from 'lucide-react';
 import { OPPORTUNITY_SCORE } from '../data/mockData';
 import { LAYER_CONFIG, KEY_MESSAGES, TARGET_AUDIENCES } from '../data/config';
 
@@ -185,15 +185,15 @@ export default function DecisionLayer() {
             }`}>
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 ${
                     rec.priority === 'high'
                       ? 'bg-red-200 text-red-800'
                       : rec.priority === 'medium'
                       ? 'bg-yellow-200 text-yellow-800'
                       : 'bg-blue-200 text-blue-800'
                   }`}>
-                    {rec.priority === 'high' ? '🔥 ALTA' :
-                     rec.priority === 'medium' ? '⚡ MEDIA' : '📊 BAJA'}
+                    {rec.priority === 'high' ? <><Flame className="w-3 h-3" /> ALTA</> :
+                     rec.priority === 'medium' ? <><Zap className="w-3 h-3" /> MEDIA</> : <><BarChart3 className="w-3 h-3" /> BAJA</>}
                   </span>
                   <span className="text-xs font-semibold text-gray-600 uppercase">{rec.category}</span>
                 </div>
@@ -232,10 +232,10 @@ export default function DecisionLayer() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h4 className="font-bold text-gray-900 text-base">{aud.name}</h4>
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 ${
                       aud.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
                     }`}>
-                      {aud.status === 'active' ? '✓ ACTIVA' : '🧪 TESTING'}
+                      {aud.status === 'active' ? <><CheckCircle className="w-3 h-3" /> ACTIVA</> : <><FlaskConical className="w-3 h-3" /> TESTING</>}
                     </span>
                   </div>
                   <p className="text-sm text-gray-600">{aud.description}</p>

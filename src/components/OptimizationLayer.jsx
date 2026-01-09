@@ -1,4 +1,4 @@
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, HUBSPOT_MOCKUP } from '../data/mockData';
 import { LAYER_CONFIG, METRIC_CARDS_CONFIG, HUBSPOT_CONFIG } from '../data/config';
@@ -30,7 +30,7 @@ export default function OptimizationLayer() {
       value: 540000, // Reach único de campaigns (sincronizado con PERFORMANCE_KPIS)
       conversionRate: 7.8,
       conversionLabel: 'a Landing',
-      icon: '👥',
+      IconComponent: Users,
       color: 'from-ucsp-blue to-ucsp-lightBlue'
     },
     {
@@ -38,7 +38,7 @@ export default function OptimizationLayer() {
       value: 42200, // Sessions de GA4
       conversionRate: 2.3,
       conversionLabel: 'a Formulario',
-      icon: '🌐',
+      IconComponent: Globe,
       color: 'from-ucsp-lightBlue to-ucsp-skyBlue'
     },
     {
@@ -46,7 +46,7 @@ export default function OptimizationLayer() {
       value: 980, // Total leads generados (sincronizado con PERFORMANCE_KPIS)
       conversionRate: 79.6,
       conversionLabel: 'a Postulación',
-      icon: '📝',
+      IconComponent: FileText,
       color: 'from-ucsp-burgundy to-ucsp-wine'
     },
     {
@@ -54,7 +54,7 @@ export default function OptimizationLayer() {
       value: 780, // Leads calificados (sincronizado con PERFORMANCE_KPIS)
       conversionRate: 23.0,
       conversionLabel: 'a Matrícula',
-      icon: '🎓',
+      IconComponent: GraduationCap,
       color: 'from-ucsp-gold to-ucsp-burgundy'
     },
     {
@@ -62,7 +62,7 @@ export default function OptimizationLayer() {
       value: 179, // ~23% de postulaciones (tasa realista de conversión final)
       conversionRate: null,
       conversionLabel: null,
-      icon: '✅',
+      IconComponent: CheckCircle,
       color: 'from-green-500 to-green-600'
     }
   ];
@@ -281,7 +281,9 @@ export default function OptimizationLayer() {
               {/* Step Card */}
               <div className={`bg-gradient-to-br ${step.color} rounded-xl p-4 text-white shadow-md min-w-[140px]`}>
                 <div className="text-center">
-                  <div className="text-3xl mb-2">{step.icon}</div>
+                  <div className="flex justify-center mb-2">
+                    <step.IconComponent className="w-8 h-8" />
+                  </div>
                   <p className="text-xs font-medium text-white/80 uppercase tracking-wide mb-1">{step.stage}</p>
                   <p className="text-lg font-bold">{step.value.toLocaleString()}</p>
                 </div>
@@ -399,8 +401,8 @@ export default function OptimizationLayer() {
         )}
 
         <div className="mt-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
-          <p className="text-xs">
-            💡 <strong>Nota:</strong> Sistema de monitoreo de HubSpot configurado y listo para activación.
+          <p className="text-xs flex items-center gap-1">
+            <Lightbulb className="w-4 h-4" /> <strong>Nota:</strong> Sistema de monitoreo de HubSpot configurado y listo para activación.
           </p>
         </div>
       </div>
