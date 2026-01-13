@@ -1,6 +1,6 @@
 # 🎓 UCSP Algorithm
 
-**Social Intelligence para Universidad Católica San Pablo - Admisiones 2025**
+**Social Intelligence para Universidad Católica San Pablo - Admisiones 2026**
 
 ![Version](https://img.shields.io/badge/version-1.0.0-003B7A)
 ![Status](https://img.shields.io/badge/status-MVP-0056A3)
@@ -18,7 +18,7 @@ Identifica microcomportamientos, emociones e intenciones de postulación en el e
 
 - **Cliente**: Universidad Católica San Pablo (UCSP)
 - **Mercado**: Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)
-- **Objetivo**: Sistema automatizado de Social Intelligence para optimizar campañas de admisión 2025-I
+- **Objetivo**: Sistema automatizado de Social Intelligence para optimizar campañas de admisión 2026-I
 - **Enfoque**: Postulaciones calificadas, alcance geográfico e interacciones (lead ads, WhatsApp, landing pages)
 
 ---
@@ -85,13 +85,21 @@ Performance y ajustes automáticos:
 - **Lucide React** para iconografía
 
 ### Scrapers & Data
-- **Python 3.10** con `pytrends` para Google Trends
-- **Node.js 18** con `axios` + `cheerio` para TikTok y Meta
-- **Mock Data GA4** para demostración
+- **Node.js 20** con **Apify Client** para scraping automatizado
+- **Google Trends**: Via Apify `apify/google-trends-scraper`
+- **TikTok**: Via Apify scrapers
+- **Meta/Facebook**: Via Apify scrapers
+- **Mock Data GA4** para demostración (pendiente integración API real)
+
+### Machine Learning
+- **Budget Optimizer**: Multi-Armed Bandit con Thompson Sampling
+- **Sentiment Analyzer**: Análisis de sentimiento en español (rule-based)
+- **Insight Generator**: Generación automática de insights priorizados
+- **Weekly Pipeline**: Pipeline ML automatizado en GitHub Actions
 
 ### Infraestructura
 - **GitHub** (repositorio + versionado)
-- **GitHub Actions** (CI/CD automático - scrapers semanales)
+- **GitHub Actions** (CI/CD automático - scrapers + ML pipeline semanales)
 - **Netlify** (hosting + deploy continuo)
 
 ---
@@ -246,15 +254,48 @@ SanPablo-algorithm-mvp/
 │       ├── COMPETITOR_INSIGHTS # UNSA, UCSM, UNSAAC, UTP, UAC, ULASALLE
 │       └── HUBSPOT_MOCKUP      # Alertas de HubSpot (mockup)
 │
-└── public/data/                # Datos JSON dinámicos (runtime)
-    ├── trends/
-    │   └── latest.json         # Google Trends - 10 keywords educativas
-    ├── tiktok/
-    │   └── latest.json         # TikTok - 12 hashtags educativos
-    ├── meta/
-    │   └── latest.json         # Meta - 10 temas con engagement
-    └── mock/
-        └── ga4_data.json       # Google Analytics 4 - métricas web
+├── public/data/                # Datos JSON dinámicos (runtime)
+│   ├── trends/
+│   │   └── latest.json         # Google Trends - keywords educativas
+│   ├── tiktok/
+│   │   └── latest.json         # TikTok - hashtags educativos
+│   ├── meta/
+│   │   └── latest.json         # Meta - temas con engagement
+│   ├── ml/                     # Outputs del ML Pipeline (generado automáticamente)
+│   │   ├── predictions.json    # Predicciones de tendencias y sentimiento
+│   │   ├── scores.json         # Scores ML-calculados (overall, por fuente)
+│   │   ├── insights.json       # Insights generados priorizados
+│   │   └── recommendations.json # Recomendaciones de presupuesto
+│   └── mock/
+│       └── ga4_data.json       # Google Analytics 4 - métricas web
+│
+├── ml/                         # Machine Learning Models
+│   ├── models/
+│   │   ├── budget_optimizer.js # Multi-Armed Bandit (Thompson Sampling)
+│   │   └── sentiment_analyzer.js # Análisis de sentimiento español
+│   ├── insights/
+│   │   └── generator.js        # Generador de insights priorizados
+│   ├── pipeline/
+│   │   └── weekly_pipeline.js  # Pipeline semanal (ejecutado por GitHub Actions)
+│   └── config/
+│       └── model_config.json   # Configuración de modelos
+│
+├── scrapers/                   # Scrapers de datos (Apify)
+│   ├── google_trends_apify.js  # Google Trends via Apify
+│   ├── tiktok_apify.js         # TikTok via Apify
+│   ├── meta_apify.js           # Meta/Facebook via Apify
+│   ├── validate_data.js        # Validación de datos scrapeados
+│   ├── config/
+│   │   └── ucsp.json           # Configuración del cliente UCSP
+│   └── package.json            # Dependencias de scrapers
+│
+└── docs/                       # Documentación adicional
+    ├── ML_ARCHITECTURE_PLAN.md # Plan completo de ML (850 líneas)
+    ├── PRODUCTION_AUDIT.md     # Auditoría para producción
+    ├── API_SETUP_GUIDE.md      # Guía paso a paso de APIs
+    ├── API_REQUIREMENTS.md     # Requisitos de APIs
+    ├── APIFY_SCRAPERS.md       # Documentación de Apify
+    └── SCRAPERS_GUIDE.md       # Guía de scrapers
 ```
 
 ### 🔧 Cómo Editar Datos Mockup
@@ -275,6 +316,10 @@ SanPablo-algorithm-mvp/
 | Hashtags de TikTok                     | `tiktok/latest.json`            | `public/data/tiktok/`           |
 | Temas de Meta (Facebook/Instagram)     | `meta/latest.json`              | `public/data/meta/`             |
 | Métricas de Google Analytics           | `ga4_data.json`                 | `public/data/mock/`             |
+| Predicciones ML (auto-generado)        | `predictions.json`              | `public/data/ml/`               |
+| Scores ML (auto-generado)              | `scores.json`                   | `public/data/ml/`               |
+| Insights ML (auto-generado)            | `insights.json`                 | `public/data/ml/`               |
+| Configuración de scrapers              | `ucsp.json`                     | `scrapers/config/`              |
 
 ### ⚙️ Reglas de Edición (CRÍTICO)
 
@@ -551,6 +596,55 @@ Score propietario 0-100 que evalúa 5 componentes:
 
 ---
 
+## 🤖 Machine Learning Pipeline
+
+El sistema incluye un pipeline ML completo que se ejecuta semanalmente después del scraping de datos.
+
+### Componentes ML
+
+| Modelo | Descripción | Ubicación |
+|--------|-------------|-----------|
+| **Sentiment Analyzer** | Análisis de sentimiento en español (rule-based) | `ml/models/sentiment_analyzer.js` |
+| **Budget Optimizer** | Multi-Armed Bandit con Thompson Sampling | `ml/models/budget_optimizer.js` |
+| **Insight Generator** | Generación automática de insights priorizados | `ml/insights/generator.js` |
+| **Weekly Pipeline** | Orquestador del pipeline ML | `ml/pipeline/weekly_pipeline.js` |
+
+### Outputs del ML Pipeline
+
+Los resultados se guardan en `public/data/ml/`:
+
+```json
+// predictions.json - Scores calculados por ML
+{
+  "scores": {
+    "overall": 7.34,
+    "individual": {
+      "search": { "base": 7.7, "momentum": 0.67, "final": 8.74 },
+      "trend": { "final": 5 },
+      "social": { "sentiment": 5, "engagement": 5, "final": 5 },
+      "intent": { "conversion_rate": 0.058, "final": 8.7 }
+    }
+  },
+  "budget_optimization": {
+    "recommendations": [
+      { "channel": "display", "from": 10, "to": 23.9, "change": "+13.9%" }
+    ]
+  }
+}
+```
+
+### Ejecución del Pipeline
+
+```bash
+# El pipeline se ejecuta automáticamente cada lunes via GitHub Actions
+# Para ejecutar manualmente:
+node ml/pipeline/weekly_pipeline.js
+```
+
+Para más detalles técnicos, consulta `docs/ML_ARCHITECTURE_PLAN.md`.
+
+---
+
 ## 🎯 KPIs Principales
 
 ### Métricas de Éxito
@@ -622,20 +716,47 @@ Principales universidades competidoras en el sur del Perú (Arequipa y Cusco):
 
 ## 📝 Notas Importantes
 
-### Datos Actuales
+### Estado Actual del Sistema
 
-⚠️ **Importante**: Actualmente el sistema usa **datos mock/curados** para demostración. Los scrapers están implementados pero no ejecutan scraping en tiempo real.
+El sistema cuenta con:
+
+✅ **Scrapers funcionales** (Apify):
+- `scrapers/google_trends_apify.js` - Google Trends via Apify
+- `scrapers/tiktok_apify.js` - TikTok via Apify
+- `scrapers/meta_apify.js` - Meta/Facebook via Apify
+
+✅ **Pipeline ML funcional**:
+- Análisis de sentimiento (español)
+- Optimización de presupuesto (Multi-Armed Bandit)
+- Generación automática de insights
+- Ejecutado semanalmente por GitHub Actions
+
+✅ **GitHub Actions configurado**:
+- Scraping semanal (Lunes 8 AM Perú)
+- ML Pipeline post-scraping
+- Commit automático de datos
+
+⚠️ **Pendiente**:
+- Integración GA4 API (actualmente usa datos mock)
+- Integración HubSpot (opcional)
 
 ### Próximos Pasos
 
-Para implementación en producción:
+Para implementación completa en producción:
 
-1. **Fase 1 (Obligatoria)**: Activar scrapers automáticos con Apify (GitHub Actions cada lunes)
-2. **Fase 2 (Opcional)**: Conectar con GA4 real (si el cliente tiene GA4)
-3. **Fase 3 (Opcional - Solo UCSP)**: Configurar API keys de HubSpot para monitoreo CPL
-4. **Fase 4 (Opcional)**: Integrar Meta Ads API y Google Ads API para pausado automático
+1. **Configurar APIFY_TOKEN** en GitHub Secrets
+2. **(Opcional)** Conectar con GA4 real si el cliente tiene GA4
+3. **(Opcional - Solo UCSP)** Configurar API keys de HubSpot para monitoreo CPL
 
 > **Nota**: HubSpot fue solicitado específicamente por UCSP. Otros clientes pueden no necesitar esta integración.
+
+### Documentación Adicional
+
+Para información más detallada, consulta los documentos en `/docs/`:
+- `ML_ARCHITECTURE_PLAN.md` - Plan completo de arquitectura ML
+- `PRODUCTION_AUDIT.md` - Auditoría de producción
+- `API_SETUP_GUIDE.md` - Guía paso a paso para configurar APIs
+- `SCRAPERS_GUIDE.md` - Guía detallada de scrapers
 
 ---
 
@@ -655,20 +776,23 @@ Esta sección documenta cómo llevar el sistema a **producción 100% funcional**
 
 **Costo**: ~$49/mes para múltiples clientes (modelo basado en créditos)
 
-### Arquitectura Code-First (Recomendada)
+### Arquitectura Actual
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Tu Repositorio (GitHub)                                        │
 │                                                                 │
-│  configs/clients/           scrapers/                           │
-│  ├── ucsp.js        ───────▶ apify_runner.js ────┐              │
-│  ├── powerpay.js                                 │              │
-│  └── [nuevo-cliente].js                          │              │
+│  scrapers/config/           scrapers/                           │
+│  └── ucsp.json      ───────▶ google_trends_apify.js ───┐        │
+│                              tiktok_apify.js     ──────┤        │
+│                              meta_apify.js       ──────┘        │
 │                                                  │              │
 │  .github/workflows/                              │              │
 │  └── scrape-data.yml  ◀──────────────────────────┘              │
 │       (Lunes 8 AM Perú)                                         │
+│                                                                 │
+│  ml/pipeline/                                                   │
+│  └── weekly_pipeline.js  ◀── Ejecutado post-scraping            │
 └──────────────────────────────────────────────────│──────────────┘
                                                    │
                           API call con parámetros  │
@@ -677,12 +801,10 @@ Esta sección documenta cómo llevar el sistema a **producción 100% funcional**
                       │  Apify Cloud                            │
                       │  ┌─────────────────────────────────┐    │
                       │  │ Actors (scrapers pre-hechos):   │    │
-                      │  │ • clockworks/tiktok-scraper     │    │
                       │  │ • apify/google-trends-scraper   │    │
-                      │  │ • apify/facebook-posts-scraper  │    │
-                      │  │ • apify/instagram-scraper       │    │
+                      │  │ • TikTok scraper                │    │
+                      │  │ • Meta/Facebook scraper         │    │
                       │  └─────────────────────────────────┘    │
-                      │  (Solo ejecuta, no guarda configs)      │
                       └─────────────────────────────────────────┘
                                                    │
                                 Resultados JSON    │
@@ -690,9 +812,10 @@ Esta sección documenta cómo llevar el sistema a **producción 100% funcional**
                       ┌─────────────────────────────────────────┐
                       │  GitHub Actions:                        │
                       │  1. Recibe datos de Apify               │
-                      │  2. Guarda en public/data/              │
-                      │  3. Commit + Push automático            │
-                      │  4. Netlify detecta cambio → Deploy     │
+                      │  2. Ejecuta ML Pipeline                 │
+                      │  3. Guarda en public/data/ + data/      │
+                      │  4. Commit + Push automático            │
+                      │  5. Netlify detecta cambio → Deploy     │
                       └─────────────────────────────────────────┘
 ```
 
@@ -705,435 +828,114 @@ Esta sección documenta cómo llevar el sistema a **producción 100% funcional**
    - GitHub → Settings → Secrets and variables → Actions
    - New repository secret: `APIFY_TOKEN`
 
-### Paso 2: Estructura de configuración multi-cliente
+### Paso 2: Configuración de cliente
 
-Crear carpeta `configs/clients/` con un archivo por cliente:
+La configuración del cliente está en `scrapers/config/ucsp.json`:
 
-```javascript
-// configs/clients/ucsp.js
-export default {
-  id: 'ucsp',
-  name: 'Universidad Católica San Pablo',
-  industry: 'education',
-  region: 'PE',  // Perú
+```json
+// scrapers/config/ucsp.json
+{
+  "client": "UCSP",
+  "clientFullName": "Universidad Católica San Pablo",
+  "region": "PE",
+  "geo": "PE",
+  "category": "Education",
+  "timeRange": "today 1-m",
 
-  // Configuración TikTok
-  tiktok: {
-    hashtags: [
-      '#ucsp', '#admision2026', '#universidadarequipa',
-      '#vidauniversitaria', '#carreras2026', '#becasuniversitarias',
-      '#ingenieriaIndustrial', '#medicina', '#derecho'
-    ],
-    maxResults: 50,
-    language: 'es'
+  "keywords": [
+    "universidad arequipa",
+    "estudiar en arequipa",
+    "carreras universitarias peru",
+    "ingenieria industrial peru",
+    "medicina peru",
+    "derecho peru"
+  ],
+
+  "tiktok": {
+    "industry": "Education",
+    "timeRange": "30",
+    "resultsPerPage": 20
   },
 
-  // Configuración Google Trends
-  trends: {
-    keywords: [
-      'UCSP', 'Universidad Católica San Pablo', 'admisión UCSP 2026',
-      'ingeniería industrial arequipa', 'medicina arequipa',
-      'universidades arequipa', 'becas UCSP'
-    ],
-    geo: 'PE',  // Perú
-    timeframe: 'today 1-m'  // Último mes
-  },
+  "facebook_pages": [
+    "https://www.facebook.com/UCSPoficial"
+  ],
 
-  // Configuración Meta (Facebook/Instagram)
-  meta: {
-    pages: ['UCatolicaSanPablo'],
-    hashtags: ['#ucsp', '#sanpablo', '#arequipa'],
-    keywords: ['admisión', 'becas', 'carreras', 'matrícula']
-  },
-
-  // Configuración de salida
-  output: {
-    dataPath: 'public/data',
-    timezone: 'America/Lima'
-  }
-};
-```
-
-```javascript
-// configs/clients/powerpay.js (ejemplo otro cliente)
-export default {
-  id: 'powerpay',
-  name: 'PowerPay',
-  industry: 'fintech',
-  region: 'PE',
-
-  tiktok: {
-    hashtags: [
-      '#pagosdigitales', '#ecommerce', '#fintech',
-      '#emprendimiento', '#ventasonline', '#pasareladepago'
-    ],
-    maxResults: 50,
-    language: 'es'
-  },
-
-  trends: {
-    keywords: [
-      'pasarela de pago', 'pagos online peru',
-      'ecommerce peru', 'cobrar con tarjeta'
-    ],
-    geo: 'PE',
-    timeframe: 'today 1-m'
-  },
-
-  meta: {
-    pages: ['PowerPayPE'],
-    hashtags: ['#powerpay', '#pagosdigitales'],
-    keywords: ['pago', 'tarjeta', 'ecommerce']
-  },
-
-  output: {
-    dataPath: 'public/data',
-    timezone: 'America/Lima'
-  }
-};
-```
-
-### Paso 3: Runner de Apify
-
-```javascript
-// scrapers/apify_runner.js
-import { ApifyClient } from 'apify-client';
-import fs from 'fs';
-import path from 'path';
-
-// Inicializar cliente
-const client = new ApifyClient({
-  token: process.env.APIFY_TOKEN,
-});
-
-/**
- * Scrape TikTok usando Apify Actor
- */
-export async function scrapeTikTok(config) {
-  console.log(`🎵 Scraping TikTok para ${config.name}...`);
-
-  const run = await client.actor("clockworks/tiktok-scraper").call({
-    hashtags: config.tiktok.hashtags,
-    resultsPerPage: config.tiktok.maxResults,
-    shouldDownloadVideos: false,
-    shouldDownloadCovers: false,
-  });
-
-  const { items } = await client.dataset(run.defaultDatasetId).listItems();
-
-  return {
-    source: 'tiktok',
-    client: config.id,
-    timestamp: new Date().toISOString(),
-    hashtags_searched: config.tiktok.hashtags,
-    results_count: items.length,
-    trends: {
-      hashtags: processHashtags(items),
-      top_videos: processVideos(items)
+  "social_listening_topics": [
+    {
+      "name": "Admisión 2026",
+      "keywords": ["admisión", "postular", "examen de admisión", "vacantes"],
+      "brands": ["UCSP", "UNSA", "UCSM", "UTP"]
     }
-  };
-}
+  ],
 
-/**
- * Scrape Google Trends usando Apify Actor
- */
-export async function scrapeGoogleTrends(config) {
-  console.log(`📈 Scraping Google Trends para ${config.name}...`);
+  "meta": {
+    "maxPostsPerPage": 50,
+    "includeComments": true,
+    "language": "es"
+  },
 
-  const run = await client.actor("apify/google-trends-scraper").call({
-    searchTerms: config.trends.keywords,
-    geo: config.trends.geo,
-    timeRange: config.trends.timeframe,
-    isMultiple: true,
-  });
-
-  const { items } = await client.dataset(run.defaultDatasetId).listItems();
-
-  return {
-    source: 'google_trends',
-    client: config.id,
-    timestamp: new Date().toISOString(),
-    keywords_searched: config.trends.keywords,
-    region: config.trends.geo,
-    timeframe: config.trends.timeframe,
-    trends: processGoogleTrends(items)
-  };
-}
-
-/**
- * Scrape Meta (Facebook/Instagram) usando Apify Actor
- */
-export async function scrapeMeta(config) {
-  console.log(`📘 Scraping Meta para ${config.name}...`);
-
-  // Facebook Posts
-  const fbRun = await client.actor("apify/facebook-posts-scraper").call({
-    startUrls: config.meta.pages.map(page => ({
-      url: `https://www.facebook.com/${page}`
-    })),
-    resultsLimit: 50,
-  });
-
-  const { items: fbItems } = await client.dataset(fbRun.defaultDatasetId).listItems();
-
-  return {
-    source: 'meta',
-    client: config.id,
-    timestamp: new Date().toISOString(),
-    pages_scraped: config.meta.pages,
-    trends: {
-      topics: processMetaTopics(fbItems, config.meta.keywords),
-      engagement: calculateEngagement(fbItems)
-    }
-  };
-}
-
-/**
- * Ejecutar todos los scrapers para un cliente
- */
-export async function scrapeAll(config) {
-  const results = {};
-
-  try {
-    results.tiktok = await scrapeTikTok(config);
-  } catch (error) {
-    console.error(`❌ Error TikTok: ${error.message}`);
-    results.tiktok = { error: error.message };
+  "metadata": {
+    "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
+    "product": "Pregrado y Posgrado 2026-I"
   }
-
-  try {
-    results.trends = await scrapeGoogleTrends(config);
-  } catch (error) {
-    console.error(`❌ Error Trends: ${error.message}`);
-    results.trends = { error: error.message };
-  }
-
-  try {
-    results.meta = await scrapeMeta(config);
-  } catch (error) {
-    console.error(`❌ Error Meta: ${error.message}`);
-    results.meta = { error: error.message };
-  }
-
-  return results;
-}
-
-/**
- * Guardar resultados en archivos JSON
- */
-export function saveResults(results, config) {
-  const dataPath = config.output.dataPath;
-  const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
-
-  // Guardar cada fuente
-  for (const [source, data] of Object.entries(results)) {
-    if (data.error) continue;
-
-    const sourceDir = path.join(dataPath, source);
-    if (!fs.existsSync(sourceDir)) {
-      fs.mkdirSync(sourceDir, { recursive: true });
-    }
-
-    // Guardar con fecha
-    const filePath = path.join(sourceDir, `${source}_${date}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
-    // Actualizar latest.json
-    const latestPath = path.join(sourceDir, 'latest.json');
-    fs.writeFileSync(latestPath, JSON.stringify(data, null, 2));
-
-    console.log(`✅ Guardado: ${filePath}`);
-  }
-}
-
-// Funciones auxiliares de procesamiento
-function processHashtags(items) {
-  const hashtagMap = new Map();
-  items.forEach(item => {
-    (item.hashtags || []).forEach(tag => {
-      const current = hashtagMap.get(tag) || { count: 0, views: 0 };
-      hashtagMap.set(tag, {
-        count: current.count + 1,
-        views: current.views + (item.playCount || 0)
-      });
-    });
-  });
-  return Array.from(hashtagMap.entries())
-    .map(([hashtag, data]) => ({ hashtag, ...data }))
-    .sort((a, b) => b.views - a.views)
-    .slice(0, 20);
-}
-
-function processVideos(items) {
-  return items
-    .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
-    .slice(0, 10)
-    .map(item => ({
-      id: item.id,
-      description: item.text?.slice(0, 100),
-      views: item.playCount,
-      likes: item.diggCount,
-      shares: item.shareCount,
-      author: item.authorMeta?.name
-    }));
-}
-
-function processGoogleTrends(items) {
-  return items.map(item => ({
-    keyword: item.term,
-    interest: item.interestOverTime?.[0]?.value || 0,
-    trend: item.trend || 'stable',
-    related_queries: item.relatedQueries?.slice(0, 5) || []
-  }));
-}
-
-function processMetaTopics(items, keywords) {
-  const topics = {};
-  items.forEach(post => {
-    keywords.forEach(keyword => {
-      if (post.text?.toLowerCase().includes(keyword.toLowerCase())) {
-        topics[keyword] = (topics[keyword] || 0) + 1;
-      }
-    });
-  });
-  return Object.entries(topics)
-    .map(([topic, mentions]) => ({ topic, mentions }))
-    .sort((a, b) => b.mentions - a.mentions);
-}
-
-function calculateEngagement(items) {
-  const total = items.reduce((acc, post) => ({
-    likes: acc.likes + (post.likes || 0),
-    comments: acc.comments + (post.comments || 0),
-    shares: acc.shares + (post.shares || 0)
-  }), { likes: 0, comments: 0, shares: 0 });
-
-  return {
-    ...total,
-    total: total.likes + total.comments + total.shares,
-    posts_analyzed: items.length
-  };
 }
 ```
 
-### Paso 4: Script de ejecución
+### Paso 3: Scrapers implementados
 
-```javascript
-// scrapers/run_apify.js
-import { scrapeAll, saveResults } from './apify_runner.js';
+Los scrapers reales están en la carpeta `scrapers/`:
 
-// Cargar configuración del cliente
-const CLIENT_ID = process.env.CLIENT_ID || 'ucsp';
-const configPath = `../configs/clients/${CLIENT_ID}.js`;
+| Archivo | Fuente | Uso |
+|---------|--------|-----|
+| `google_trends_apify.js` | Google Trends | `node google_trends_apify.js --client=ucsp` |
+| `tiktok_apify.js` | TikTok | `node tiktok_apify.js --client=ucsp` |
+| `meta_apify.js` | Meta/Facebook | `node meta_apify.js --client=ucsp` |
+| `validate_data.js` | Validación | `node validate_data.js` |
 
-async function main() {
-  console.log(`\n${'='.repeat(50)}`);
-  console.log(`🚀 Iniciando scraping para: ${CLIENT_ID}`);
-  console.log(`📅 Fecha: ${new Date().toISOString()}`);
-  console.log(`${'='.repeat(50)}\n`);
+Ejemplo de uso del scraper de Google Trends:
 
-  try {
-    // Importar configuración dinámicamente
-    const { default: config } = await import(configPath);
-
-    // Ejecutar todos los scrapers
-    const results = await scrapeAll(config);
-
-    // Guardar resultados
-    saveResults(results, config);
-
-    console.log(`\n✅ Scraping completado para ${config.name}`);
-
-  } catch (error) {
-    console.error(`\n❌ Error fatal: ${error.message}`);
-    process.exit(1);
-  }
-}
-
-main();
+```bash
+# Ejecutar manualmente
+cd scrapers
+APIFY_TOKEN=tu_token node google_trends_apify.js --client=ucsp
 ```
 
-### Paso 5: GitHub Actions actualizado
+Para más detalles sobre los scrapers, consulta `docs/SCRAPERS_GUIDE.md`.
+
+### Paso 4: GitHub Actions (ya configurado)
+
+El workflow actual (`.github/workflows/scrape-data.yml`) incluye:
+
+1. **Scrapers Apify** - Google Trends, TikTok, Meta
+2. **ML Pipeline** - Análisis de sentimiento, optimización, insights
+3. **Auto-commit** - Guarda datos y hace deploy automático
 
 ```yaml
-# .github/workflows/scrape-data.yml
-name: UCSP Algorithm - Weekly Data Scrape (Apify)
+# Resumen del workflow (ver archivo completo en .github/workflows/)
+name: UCSP Algorithm - Weekly Data Scrape
 
 on:
   schedule:
-    # Lunes 8 AM Perú (1 PM UTC)
-    - cron: '0 13 * * 1'
-  workflow_dispatch:
-    inputs:
-      client_id:
-        description: 'ID del cliente (ucsp, powerpay, etc.)'
-        required: false
-        default: 'ucsp'
-
-env:
-  NODE_VERSION: '18'
-  CLIENT_ID: ${{ github.event.inputs.client_id || 'ucsp' }}
+    - cron: '0 13 * * 1'  # Lunes 8 AM Perú
+  workflow_dispatch:       # Ejecución manual
 
 jobs:
-  scrape:
-    runs-on: ubuntu-latest
-
+  scrape-and-commit:
     steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: scrapers/package-lock.json
-
-      - name: 📦 Install dependencies
-        working-directory: scrapers
-        run: npm ci
-
-      - name: 🔍 Run Apify scrapers
-        working-directory: scrapers
-        env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-          CLIENT_ID: ${{ env.CLIENT_ID }}
-        run: node run_apify.js
-
-      - name: 📤 Commit and push data
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-          # Agregar cambios
-          git add public/data/
-          git add data/
-
-          # Verificar si hay cambios
-          if git diff --staged --quiet; then
-            echo "No hay cambios para commitear"
-            exit 0
-          fi
-
-          # Commit con fecha
-          DATE=$(TZ='America/Lima' date '+%Y-%m-%d %H:%M')
-          git commit -m "📊 Actualización automática de datos - $DATE"
-
-          # Push
-          git push
-
-      - name: 🔔 Notificar éxito (opcional)
-        if: success()
-        run: |
-          echo "✅ Scraping completado exitosamente para $CLIENT_ID"
-          # Aquí puedes agregar notificación a Slack/Discord/Email
+      - Checkout repository
+      - Setup Node.js 20
+      - Install dependencies
+      - Run Google Trends Scraper (Apify)
+      - Run TikTok Trends Scraper (Apify)
+      - Run Meta/Facebook Scraper (Apify)
+      - Run ML Pipeline              # ← Ejecuta ml/pipeline/weekly_pipeline.js
+      - Commit and push data
 ```
 
-### Paso 6: Duplicar repo para nuevo cliente
+### Paso 5: Duplicar repo para nuevo cliente
 
-Sigue estos pasos para crear un nuevo Algorithm para otro cliente:
+Para crear un nuevo Algorithm para otro cliente:
 
 ```bash
 # 1. Clonar el repo base
@@ -1144,30 +946,22 @@ cd NuevoCliente-algorithm-mvp
 git remote set-url origin https://github.com/tu-usuario/NuevoCliente-algorithm-mvp.git
 
 # 3. Crear archivo de configuración del nuevo cliente
-cp configs/clients/ucsp.js configs/clients/nuevocliente.js
+cp scrapers/config/ucsp.json scrapers/config/nuevocliente.json
 
 # 4. Editar la configuración
-nano configs/clients/nuevocliente.js
-# Cambiar: id, name, industry, hashtags, keywords, pages, etc.
+# Cambiar: client, clientFullName, keywords, facebook_pages, etc.
 
-# 5. Actualizar package.json
-sed -i 's/ucsp-algorithm/nuevocliente-algorithm/g' package.json
-sed -i 's/UCSP/NuevoCliente/g' package.json
-
-# 6. Actualizar branding (colores, logo)
+# 5. Actualizar branding
 # Editar: src/data/config.js → BRAND_CONFIG
 
-# 7. Limpiar datos del cliente anterior
+# 6. Limpiar datos del cliente anterior
 rm -rf public/data/*/latest.json
 rm -rf data/*/
 
-# 8. Configurar secretos en GitHub
+# 7. Configurar secretos en GitHub
 # GitHub → Settings → Secrets → APIFY_TOKEN
 
-# 9. Actualizar variable CLIENT_ID en workflow
-# .github/workflows/scrape-data.yml → default: 'nuevocliente'
-
-# 10. Commit inicial
+# 8. Commit inicial
 git add .
 git commit -m "Configuración inicial para NuevoCliente"
 git push -u origin main
@@ -1177,25 +971,15 @@ git push -u origin main
 
 **Obligatorio:**
 - [ ] Repo clonado y remote actualizado
-- [ ] `configs/clients/[cliente].js` creado con:
-  - [ ] Hashtags TikTok relevantes
-  - [ ] Keywords Google Trends
-  - [ ] Páginas Meta (Facebook/Instagram)
-- [ ] `package.json` actualizado (nombre, descripción)
-- [ ] `src/data/config.js` actualizado:
-  - [ ] BRAND_CONFIG (colores, logo, nombre)
-  - [ ] TARGET_AUDIENCES (si aplica)
-- [ ] Secretos configurados en GitHub:
-  - [ ] `APIFY_TOKEN`
+- [ ] `scrapers/config/[cliente].json` creado con keywords y páginas
+- [ ] `src/data/config.js` actualizado (BRAND_CONFIG)
+- [ ] `APIFY_TOKEN` configurado en GitHub Secrets
 - [ ] GitHub Actions habilitado
-- [ ] Netlify conectado (o hosting alternativo)
 - [ ] Primer scraping manual ejecutado (workflow_dispatch)
-- [ ] Datos aparecen en el dashboard
 
-**Opcional (solo si el cliente lo requiere):**
-- [ ] HUBSPOT_CONFIG (monitoreo CPL automático) - *UCSP lo usa, otros clientes pueden no necesitarlo*
-- [ ] GA4 API (métricas web reales)
-- [ ] Meta Ads API (pausado automático de campañas)
+**Opcional:**
+- [ ] HUBSPOT_CONFIG para monitoreo CPL
+- [ ] GA4 API para métricas web reales
 
 ### Costos estimados por cliente
 
@@ -1251,4 +1035,4 @@ Para consultas sobre el proyecto:
 
 ---
 
-**© 2025 UCSP Algorithm - Universidad Católica San Pablo**
+**© 2026 UCSP Algorithm - Universidad Católica San Pablo**
