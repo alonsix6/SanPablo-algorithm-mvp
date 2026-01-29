@@ -1,35 +1,67 @@
 import { useState, useEffect } from 'react';
-import { TrendingUp, Search, Target, Heart, Zap, BarChart3, Calendar, GraduationCap, ChevronDown } from 'lucide-react';
+import { TrendingUp, Search, Target, Heart, Zap, BarChart3, Calendar, GraduationCap, ChevronDown, X } from 'lucide-react';
 import DataLayer from './DataLayer';
 import DecisionLayer from './DecisionLayer';
 import ExecutionLayer from './ExecutionLayer';
 import OptimizationLayer from './OptimizationLayer';
 import { BRAND_CONFIG, LAYER_CONFIG, UI_TEXT } from '../data/config';
 
-// Date filter options
-const DATE_FILTERS = [
-  { id: '3m', label: 'Últimos 3 meses', months: 3 },
-  { id: '6m', label: 'Últimos 6 meses', months: 6 },
-  { id: '12m', label: 'Último año', months: 12 },
-  { id: 'all', label: 'Todo el periodo', months: null },
+// Quick preset options
+const DATE_PRESETS = [
+  { id: '3m', label: 'Últimos 3 meses' },
+  { id: '6m', label: 'Últimos 6 meses' },
+  { id: '12m', label: 'Último año' },
+  { id: 'all', label: 'Todo el periodo' },
 ];
 
-/**
- * Filter monthly data entries by the selected date range.
- * monthlyData: { "2025-01": 100, "2025-02": 200, ... }
- * months: number of months back from today, or null for all.
- */
-export function filterMonthlyData(monthlyData, months) {
-  if (!monthlyData || !months) return monthlyData;
-
+function presetToDates(presetId) {
+  if (presetId === 'all') return { start: null, end: null };
+  const months = { '3m': 3, '6m': 6, '12m': 12 }[presetId] || null;
+  if (!months) return { start: null, end: null };
   const now = new Date();
-  const cutoff = new Date(now.getFullYear(), now.getMonth() - months, 1);
+  const start = new Date(now.getFullYear(), now.getMonth() - months, 1);
+  return {
+    start: start.toISOString().slice(0, 10),
+    end: now.toISOString().slice(0, 10),
+  };
+}
+
+function formatDateLabel(start, end) {
+  if (!start && !end) return 'Todo el periodo';
+  const fmt = (d) => {
+    const date = new Date(d + 'T00:00:00');
+    return date.toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' });
+  };
+  if (start && end) return `${fmt(start)} — ${fmt(end)}`;
+  if (start) return `Desde ${fmt(start)}`;
+  return `Hasta ${fmt(end)}`;
+}
+
+/**
+ * Filter monthly data entries by start/end date range.
+ * monthlyData: { "2025-01": 100, "2025-02": 200, ... }
+ * dateRange: { start: "2025-01-15" | null, end: "2025-09-20" | null }
+ * A month is included if any part of it falls within the range.
+ */
+export function filterMonthlyData(monthlyData, dateRange) {
+  if (!monthlyData) return monthlyData;
+  if (!dateRange || (!dateRange.start && !dateRange.end)) return monthlyData;
+
+  const startDate = dateRange.start ? new Date(dateRange.start + 'T00:00:00') : null;
+  const endDate = dateRange.end ? new Date(dateRange.end + 'T00:00:00') : null;
 
   const filtered = {};
   Object.entries(monthlyData).forEach(([key, value]) => {
     const [year, month] = key.split('-').map(Number);
-    const entryDate = new Date(year, month - 1, 1);
-    if (entryDate >= cutoff) {
+    // Month start = first day, month end = last day
+    const monthStart = new Date(year, month - 1, 1);
+    const monthEnd = new Date(year, month, 0); // last day of month
+
+    // Include if month overlaps with [startDate, endDate]
+    const afterStart = !startDate || monthEnd >= startDate;
+    const beforeEnd = !endDate || monthStart <= endDate;
+
+    if (afterStart && beforeEnd) {
       filtered[key] = value;
     }
   });
@@ -40,57 +72,43 @@ export default function Dashboard() {
   const [activeLayer, setActiveLayer] = useState('data');
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [loading, setLoading] = useState(true);
-  const [dateFilter, setDateFilter] = useState('all');
-  const [showDateDropdown, setShowDateDropdown] = useState(false);
+  const [dateRange, setDateRange] = useState({ start: null, end: null });
+  const [activePreset, setActivePreset] = useState('all');
+  const [showDatePanel, setShowDatePanel] = useState(false);
 
   useEffect(() => {
-    // Simular carga inicial
     setTimeout(() => setLoading(false), 800);
-    
-    // Actualizar timestamp cada minuto
-    const interval = setInterval(() => {
-      setLastUpdate(new Date());
-    }, 60000);
-    
+    const interval = setInterval(() => setLastUpdate(new Date()), 60000);
     return () => clearInterval(interval);
   }, []);
 
-  const iconMap = {
-    Search,
-    Target,
-    Zap,
-    TrendingUp,
+  const applyPreset = (presetId) => {
+    setActivePreset(presetId);
+    setDateRange(presetToDates(presetId));
   };
 
+  const handleStartChange = (e) => {
+    setActivePreset(null);
+    setDateRange(prev => ({ ...prev, start: e.target.value || null }));
+  };
+
+  const handleEndChange = (e) => {
+    setActivePreset(null);
+    setDateRange(prev => ({ ...prev, end: e.target.value || null }));
+  };
+
+  const clearDates = () => {
+    setActivePreset('all');
+    setDateRange({ start: null, end: null });
+  };
+
+  const iconMap = { Search, Target, Zap, TrendingUp };
+
   const layers = [
-    {
-      id: 'data',
-      name: LAYER_CONFIG.data.name,
-      icon: iconMap[LAYER_CONFIG.data.icon],
-      description: LAYER_CONFIG.data.description,
-      color: LAYER_CONFIG.data.color
-    },
-    {
-      id: 'decision',
-      name: LAYER_CONFIG.decision.name,
-      icon: iconMap[LAYER_CONFIG.decision.icon],
-      description: LAYER_CONFIG.decision.description,
-      color: LAYER_CONFIG.decision.color
-    },
-    {
-      id: 'execution',
-      name: LAYER_CONFIG.execution.name,
-      icon: iconMap[LAYER_CONFIG.execution.icon],
-      description: LAYER_CONFIG.execution.description,
-      color: LAYER_CONFIG.execution.color
-    },
-    {
-      id: 'optimization',
-      name: LAYER_CONFIG.optimization.name,
-      icon: iconMap[LAYER_CONFIG.optimization.icon],
-      description: LAYER_CONFIG.optimization.description,
-      color: LAYER_CONFIG.optimization.color
-    }
+    { id: 'data', name: LAYER_CONFIG.data.name, icon: iconMap[LAYER_CONFIG.data.icon], description: LAYER_CONFIG.data.description, color: LAYER_CONFIG.data.color },
+    { id: 'decision', name: LAYER_CONFIG.decision.name, icon: iconMap[LAYER_CONFIG.decision.icon], description: LAYER_CONFIG.decision.description, color: LAYER_CONFIG.decision.color },
+    { id: 'execution', name: LAYER_CONFIG.execution.name, icon: iconMap[LAYER_CONFIG.execution.icon], description: LAYER_CONFIG.execution.description, color: LAYER_CONFIG.execution.color },
+    { id: 'optimization', name: LAYER_CONFIG.optimization.name, icon: iconMap[LAYER_CONFIG.optimization.icon], description: LAYER_CONFIG.optimization.description, color: LAYER_CONFIG.optimization.color },
   ];
 
   if (loading) {
@@ -103,6 +121,8 @@ export default function Dashboard() {
       </div>
     );
   }
+
+  const hasDateFilter = dateRange.start || dateRange.end;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -123,41 +143,93 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-3 sm:gap-4 self-end sm:self-auto">
-              {/* Date Filter */}
+              {/* Date Range Filter */}
               <div className="relative">
                 <button
-                  onClick={() => setShowDateDropdown(!showDateDropdown)}
-                  className="flex items-center gap-2 px-3 py-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-lg transition-colors text-sm"
+                  onClick={() => setShowDatePanel(!showDatePanel)}
+                  className={`flex items-center gap-2 px-3 py-2 backdrop-blur-sm rounded-lg transition-colors text-sm ${
+                    hasDateFilter
+                      ? 'bg-white/25 ring-1 ring-white/40'
+                      : 'bg-white/15 hover:bg-white/25'
+                  }`}
                 >
                   <Calendar className="w-4 h-4" />
-                  <span className="hidden sm:inline font-medium">
-                    {DATE_FILTERS.find(f => f.id === dateFilter)?.label}
+                  <span className="hidden sm:inline font-medium max-w-[200px] truncate">
+                    {formatDateLabel(dateRange.start, dateRange.end)}
                   </span>
                   <span className="sm:hidden font-medium">
-                    {dateFilter === 'all' ? 'Todo' : dateFilter.toUpperCase()}
+                    {hasDateFilter ? 'Filtrado' : 'Fechas'}
                   </span>
-                  <ChevronDown className="w-3.5 h-3.5" />
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showDatePanel ? 'rotate-180' : ''}`} />
                 </button>
-                {showDateDropdown && (
+
+                {showDatePanel && (
                   <>
-                    <div className="fixed inset-0 z-50" onClick={() => setShowDateDropdown(false)} />
-                    <div className="absolute right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-xl border border-gray-200 py-1 min-w-[180px]">
-                      {DATE_FILTERS.map(filter => (
-                        <button
-                          key={filter.id}
-                          onClick={() => {
-                            setDateFilter(filter.id);
-                            setShowDateDropdown(false);
-                          }}
-                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                            dateFilter === filter.id
-                              ? 'bg-ucsp-blue/10 text-ucsp-blue font-bold'
-                              : 'text-gray-700 hover:bg-gray-50'
-                          }`}
-                        >
-                          {filter.label}
-                        </button>
-                      ))}
+                    <div className="fixed inset-0 z-50" onClick={() => setShowDatePanel(false)} />
+                    <div className="absolute right-0 top-full mt-2 z-50 bg-white rounded-xl shadow-2xl border border-gray-200 w-[320px]">
+                      {/* Presets */}
+                      <div className="p-3 border-b border-gray-100">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accesos rápidos</p>
+                        <div className="grid grid-cols-2 gap-1.5">
+                          {DATE_PRESETS.map(preset => (
+                            <button
+                              key={preset.id}
+                              onClick={() => { applyPreset(preset.id); setShowDatePanel(false); }}
+                              className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                                activePreset === preset.id
+                                  ? 'bg-ucsp-blue text-white'
+                                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                              }`}
+                            >
+                              {preset.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Custom Date Range */}
+                      <div className="p-3">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Rango personalizado</p>
+                        <div className="space-y-2">
+                          <div>
+                            <label className="text-xs text-gray-500 block mb-1">Fecha inicio</label>
+                            <input
+                              type="date"
+                              value={dateRange.start || ''}
+                              onChange={handleStartChange}
+                              max={dateRange.end || undefined}
+                              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-ucsp-blue focus:border-ucsp-blue"
+                            />
+                          </div>
+                          <div>
+                            <label className="text-xs text-gray-500 block mb-1">Fecha fin</label>
+                            <input
+                              type="date"
+                              value={dateRange.end || ''}
+                              onChange={handleEndChange}
+                              min={dateRange.start || undefined}
+                              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-ucsp-blue focus:border-ucsp-blue"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex gap-2 mt-3">
+                          {hasDateFilter && (
+                            <button
+                              onClick={() => { clearDates(); setShowDatePanel(false); }}
+                              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors"
+                            >
+                              <X className="w-3 h-3" /> Limpiar
+                            </button>
+                          )}
+                          <button
+                            onClick={() => setShowDatePanel(false)}
+                            className="flex-1 px-3 py-2 bg-ucsp-blue text-white rounded-lg text-xs font-medium hover:bg-ucsp-blue/90 transition-colors"
+                          >
+                            Aplicar
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}
@@ -222,10 +294,10 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="animate-fadeIn">
-          {activeLayer === 'data' && <DataLayer dateFilter={dateFilter} />}
-          {activeLayer === 'decision' && <DecisionLayer dateFilter={dateFilter} />}
-          {activeLayer === 'execution' && <ExecutionLayer dateFilter={dateFilter} />}
-          {activeLayer === 'optimization' && <OptimizationLayer dateFilter={dateFilter} />}
+          {activeLayer === 'data' && <DataLayer dateRange={dateRange} />}
+          {activeLayer === 'decision' && <DecisionLayer dateRange={dateRange} />}
+          {activeLayer === 'execution' && <ExecutionLayer dateRange={dateRange} />}
+          {activeLayer === 'optimization' && <OptimizationLayer dateRange={dateRange} />}
         </div>
       </main>
 

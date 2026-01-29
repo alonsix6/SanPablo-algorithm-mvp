@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, TrendingUp, Video, Share2, GraduationCap, RefreshCw, ChevronDown, ChevronUp, BarChart3, Info, Music, Target, DollarSign, Layers, Lightbulb, Users, Globe, MapPin } from 'lucide-react';
 
-export default function DataLayer({ dateFilter = 'all' }) {
+export default function DataLayer({ dateRange }) {
   const [trendsData, setTrendsData] = useState(null);
   const [tiktokData, setTiktokData] = useState(null);
   const [metaData, setMetaData] = useState(null);

@@ -180,15 +180,11 @@ function buildPipelineSummary(hubspot) {
     });
 }
 
-const DATE_FILTER_MONTHS = { '3m': 3, '6m': 6, '12m': 12, all: null };
-
-export default function OptimizationLayer({ dateFilter = 'all' }) {
+export default function OptimizationLayer({ dateRange }) {
   const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
   const { data: mlData } = useMLData();
   const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
   const [showPipelineSummary, setShowPipelineSummary] = useState(false);
-
-  const filterMonths = DATE_FILTER_MONTHS[dateFilter];
 
   // Build real data (or fallback)
   const channelData = buildChannelData(hubspot) || [
@@ -226,18 +222,18 @@ export default function OptimizationLayer({ dateFilter = 'all' }) {
     { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Monthly leads trend from HubSpot (filtered by date)
+  // Monthly leads trend from HubSpot (filtered by date range)
   const monthlyLeadsData = hubspot?.deals?.monthly_deals
-    ? Object.entries(filterMonthlyData(hubspot.deals.monthly_deals, filterMonths))
+    ? Object.entries(filterMonthlyData(hubspot.deals.monthly_deals, dateRange))
         .map(([month, count]) => ({
           date: month.substring(5),
           leads: count,
         }))
     : null;
 
-  // Monthly contacts trend (filtered by date)
+  // Monthly contacts trend (filtered by date range)
   const monthlyContactsData = hubspot?.contacts?.monthly_creation
-    ? Object.entries(filterMonthlyData(hubspot.contacts.monthly_creation, filterMonths))
+    ? Object.entries(filterMonthlyData(hubspot.contacts.monthly_creation, dateRange))
         .map(([month, count]) => ({
           date: month.substring(5),
           contacts: count,
