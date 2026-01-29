@@ -4,6 +4,7 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 import { useHubSpotData, useMLData } from '../hooks/useRealData';
+import { filterMonthlyData } from './Dashboard';
 
 // Map HubSpot sources to display names and colors
 const SOURCE_CONFIG = {
@@ -179,11 +180,15 @@ function buildPipelineSummary(hubspot) {
     });
 }
 
-export default function OptimizationLayer() {
+const DATE_FILTER_MONTHS = { '3m': 3, '6m': 6, '12m': 12, all: null };
+
+export default function OptimizationLayer({ dateFilter = 'all' }) {
   const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
   const { data: mlData } = useMLData();
   const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
   const [showPipelineSummary, setShowPipelineSummary] = useState(false);
+
+  const filterMonths = DATE_FILTER_MONTHS[dateFilter];
 
   // Build real data (or fallback)
   const channelData = buildChannelData(hubspot) || [
@@ -221,13 +226,21 @@ export default function OptimizationLayer() {
     { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Monthly leads trend from HubSpot
+  // Monthly leads trend from HubSpot (filtered by date)
   const monthlyLeadsData = hubspot?.deals?.monthly_deals
-    ? Object.entries(hubspot.deals.monthly_deals)
-        .slice(-6)
+    ? Object.entries(filterMonthlyData(hubspot.deals.monthly_deals, filterMonths))
         .map(([month, count]) => ({
           date: month.substring(5),
           leads: count,
+        }))
+    : null;
+
+  // Monthly contacts trend (filtered by date)
+  const monthlyContactsData = hubspot?.contacts?.monthly_creation
+    ? Object.entries(filterMonthlyData(hubspot.contacts.monthly_creation, filterMonths))
+        .map(([month, count]) => ({
+          date: month.substring(5),
+          contacts: count,
         }))
     : null;
 
@@ -420,10 +433,10 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Leads Trend (REAL from HubSpot) + Performance Trend (mock) */}
+      {/* Leads + Contacts Trends (REAL from HubSpot, filtered by date) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Monthly Leads Trend - REAL */}
-        {monthlyLeadsData && (
+        {monthlyLeadsData && monthlyLeadsData.length > 0 && (
           <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-6">
               <div>
@@ -446,7 +459,32 @@ export default function OptimizationLayer() {
           </div>
         )}
 
-        {/* Performance 7 días - MOCK */}
+        {/* Monthly Contacts Trend - REAL */}
+        {monthlyContactsData && monthlyContactsData.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Contactos Mensuales</h3>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
+                </div>
+                <p className="text-sm text-gray-600">Fuente: HubSpot CRM</p>
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={monthlyContactsData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
+                <YAxis stroke="#6b7280" style={{ fontSize: '12px' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} />
+                <Bar dataKey="contacts" fill="#6B1B3D" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
+        {/* Performance 7 días - MOCK (only show if no contacts chart) */}
+        {(!monthlyContactsData || monthlyContactsData.length === 0) && (
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -467,6 +505,7 @@ export default function OptimizationLayer() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+        )}
       </div>
 
       {/* Channel Distribution - REAL from HubSpot */}

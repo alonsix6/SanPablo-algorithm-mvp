@@ -128,7 +128,7 @@ function buildPipelinePerformance(hubspot) {
     });
 }
 
-export default function ExecutionLayer() {
+export default function ExecutionLayer({ dateFilter = 'all' }) {
   const { data: hubspot } = useHubSpotData();
   const [showAllPipelines, setShowAllPipelines] = useState(false);
   const [expandedPipeline, setExpandedPipeline] = useState(null);
