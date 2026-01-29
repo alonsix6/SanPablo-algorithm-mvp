@@ -3,6 +3,7 @@ import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangl
 import { BUDGET_ALLOCATION, CONTENT_PILLARS } from '../data/mockData';
 import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
 import { useHubSpotData } from '../hooks/useRealData';
+import { sumFilteredObjectData, hasActiveDateFilter } from './Dashboard';
 
 // Display names and colors for HubSpot sources
 const SOURCE_DISPLAY = {
@@ -32,10 +33,16 @@ const PIPELINE_DISPLAY = {
 /**
  * Calculate ganados/perdidos from stage_distribution (direct HubSpot data).
  * Same logic used in OptimizationLayer — scans stage names and definitions.
+ * When dateRange is active, recalculates from daily_by_pipeline_stage.
  */
-function calcWonLost(hubspot, pipelineName) {
-  const stages = hubspot?.deals?.stage_distribution?.[pipelineName];
-  if (!stages) return { won: 0, lost: 0 };
+function calcWonLost(hubspot, pipelineName, dateRange) {
+  let stages;
+  if (hasActiveDateFilter(dateRange) && hubspot?.deals?.daily_by_pipeline_stage?.[pipelineName]) {
+    stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[pipelineName], dateRange);
+  } else {
+    stages = hubspot?.deals?.stage_distribution?.[pipelineName];
+  }
+  if (!stages || Object.keys(stages).length === 0) return { won: 0, lost: 0 };
 
   const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
   let won = 0;
@@ -77,22 +84,46 @@ function calcWonLost(hubspot, pipelineName) {
  * Build pipeline performance data from HubSpot
  * Calculates ganados/perdidos from stage_distribution (same as OptimizationLayer).
  * Includes: total leads, won, lost, revenue, channel breakdown, estimated CPL
+ * When dateRange is active, recalculates all metrics from daily data.
  */
-function buildPipelinePerformance(hubspot) {
+function buildPipelinePerformance(hubspot, dateRange) {
   if (!hubspot?.deals) return null;
 
   const { pipeline_distribution, source_by_pipeline, revenue } = hubspot.deals;
   if (!pipeline_distribution) return null;
 
-  const totalSpend = hubspot.campaigns?.total_spend || 0;
-  const totalLeadsAllPipelines = Object.values(pipeline_distribution).reduce((s, v) => s + v, 0) || 1;
+  const filtering = hasActiveDateFilter(dateRange);
 
-  return Object.entries(pipeline_distribution)
+  // Pipeline distribution: from daily_by_pipeline when filtering
+  const pipDist = filtering && hubspot.deals.daily_by_pipeline
+    ? sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange)
+    : pipeline_distribution;
+
+  // Revenue by pipeline: from daily_revenue when filtering
+  let revByPipeline;
+  if (filtering && hubspot.deals.daily_revenue) {
+    revByPipeline = sumFilteredObjectData(hubspot.deals.daily_revenue, dateRange);
+  } else {
+    revByPipeline = revenue?.by_pipeline || {};
+  }
+
+  const totalSpend = hubspot.campaigns?.total_spend || 0;
+  const totalLeadsAllPipelines = Object.values(pipDist).reduce((s, v) => s + v, 0) || 1;
+
+  return Object.entries(pipDist)
     .sort((a, b) => b[1] - a[1])
     .map(([name, totalLeads]) => {
-      const wonLost = calcWonLost(hubspot, name);
-      const sources = source_by_pipeline?.[name] || {};
-      const pipelineRevenue = revenue?.by_pipeline?.[name] || 0;
+      const wonLost = calcWonLost(hubspot, name, dateRange);
+
+      // Source breakdown: from daily_source_by_pipeline when filtering
+      let sources;
+      if (filtering && hubspot.deals.daily_source_by_pipeline?.[name]) {
+        sources = sumFilteredObjectData(hubspot.deals.daily_source_by_pipeline[name], dateRange);
+      } else {
+        sources = source_by_pipeline?.[name] || {};
+      }
+
+      const pipelineRevenue = revByPipeline[name] || 0;
 
       // Estimated spend proportional to lead volume
       const estimatedSpend = totalSpend * (totalLeads / totalLeadsAllPipelines);
@@ -133,7 +164,7 @@ export default function ExecutionLayer({ dateRange }) {
   const [showAllPipelines, setShowAllPipelines] = useState(false);
   const [expandedPipeline, setExpandedPipeline] = useState(null);
 
-  const pipelinePerformance = buildPipelinePerformance(hubspot);
+  const pipelinePerformance = buildPipelinePerformance(hubspot, dateRange);
   const hasPipelineData = pipelinePerformance && pipelinePerformance.length > 0;
 
   // Calcular status color

@@ -4,7 +4,7 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 import { useHubSpotData, useMLData } from '../hooks/useRealData';
-import { filterMonthlyData, aggregateForChart } from './Dashboard';
+import { filterMonthlyData, aggregateForChart, sumFilteredData, sumFilteredObjectData, hasActiveDateFilter } from './Dashboard';
 
 // Map HubSpot sources to display names and colors
 const SOURCE_CONFIG = {
@@ -32,12 +32,19 @@ const FUNNEL_COLORS = [
 const FUNNEL_ICONS = [Users, FileText, Globe, Target, GraduationCap, CheckCircle, CheckCircle];
 
 /**
- * Build channel distribution from real HubSpot source_distribution data
+ * Build channel distribution from real HubSpot source_distribution data.
+ * When dateRange is active, recalculates from daily_by_source.
  */
-function buildChannelData(hubspot) {
+function buildChannelData(hubspot, dateRange) {
   if (!hubspot?.contacts?.source_distribution) return null;
 
-  const sources = hubspot.contacts.source_distribution;
+  let sources;
+  if (hasActiveDateFilter(dateRange) && hubspot.contacts.daily_by_source) {
+    sources = sumFilteredObjectData(hubspot.contacts.daily_by_source, dateRange);
+  } else {
+    sources = hubspot.contacts.source_distribution;
+  }
+
   const total = Object.values(sources).reduce((sum, v) => sum + v, 0) || 1;
 
   return Object.entries(sources)
@@ -54,11 +61,18 @@ function buildChannelData(hubspot) {
 /**
  * Build funnel from real HubSpot pipeline stage_distribution data.
  * Excludes "Cierre perdido" from the funnel flow and returns it separately.
+ * When dateRange is active, recalculates from daily_by_pipeline_stage.
  */
-function buildFunnelSteps(hubspot, pipelineName) {
+function buildFunnelSteps(hubspot, pipelineName, dateRange) {
   if (!hubspot?.deals?.stage_distribution?.[pipelineName]) return null;
 
-  const stages = hubspot.deals.stage_distribution[pipelineName];
+  let stages;
+  if (hasActiveDateFilter(dateRange) && hubspot.deals.daily_by_pipeline_stage?.[pipelineName]) {
+    stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[pipelineName], dateRange);
+    if (Object.keys(stages).length === 0) return null;
+  } else {
+    stages = hubspot.deals.stage_distribution[pipelineName];
+  }
 
   // Find matching pipeline definition for stage ordering
   const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
@@ -101,18 +115,70 @@ function buildFunnelSteps(hubspot, pipelineName) {
 }
 
 /**
- * Build HubSpot CRM summary KPIs from real data
+ * Build HubSpot CRM summary KPIs from real data.
+ * When dateRange is active, recalculates totals from daily data.
  */
-function buildCRMKpis(hubspot) {
+function buildCRMKpis(hubspot, dateRange) {
   if (!hubspot) return null;
+
+  const filtering = hasActiveDateFilter(dateRange);
+
+  // Contacts & Leads: recalculate from daily data when filtering
+  const totalContacts = filtering && hubspot.contacts?.daily_creation
+    ? sumFilteredData(hubspot.contacts.daily_creation, dateRange)
+    : hubspot.contacts?.total || 0;
+
+  const totalLeads = filtering && hubspot.deals?.daily_deals
+    ? sumFilteredData(hubspot.deals.daily_deals, dateRange)
+    : hubspot.deals?.total || 0;
+
+  // Revenue: recalculate from daily_revenue when filtering
+  let revenue = hubspot.deals?.revenue?.total || 0;
+  if (filtering && hubspot.deals?.daily_revenue) {
+    const dailyRev = sumFilteredObjectData(hubspot.deals.daily_revenue, dateRange);
+    revenue = Object.values(dailyRev).reduce((s, v) => s + v, 0);
+  }
+
+  // Won/Lost: recalculate from daily_by_pipeline_stage when filtering
+  let wonLeads = hubspot.deals?.won_deals || 0;
+  let lostLeads = hubspot.deals?.lost_deals || 0;
+  if (filtering && hubspot.deals?.daily_by_pipeline_stage) {
+    wonLeads = 0;
+    lostLeads = 0;
+    const pipelineDefs = hubspot.pipelines || [];
+    Object.keys(hubspot.deals.daily_by_pipeline_stage).forEach(pName => {
+      const filteredStages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[pName], dateRange);
+      const pDef = pipelineDefs.find(p => p.name === pName);
+      Object.entries(filteredStages).forEach(([stageName, count]) => {
+        const nameLower = stageName.toLowerCase();
+        if (nameLower.includes('perdido')) {
+          lostLeads += count;
+        } else {
+          const sDef = pDef?.stages?.find(s => s.name === stageName);
+          if (sDef) {
+            if ((sDef.is_closed && sDef.probability > 0) || nameLower.includes('ganado') || nameLower.includes('matriculado')) {
+              wonLeads += count;
+            }
+          } else if (nameLower.includes('ganado') || nameLower.includes('matriculado') || nameLower.includes('pagado')) {
+            wonLeads += count;
+          }
+        }
+      });
+    });
+  }
+
+  const closedDeals = wonLeads + lostLeads;
+  const winRate = closedDeals > 0 ? parseFloat((wonLeads / closedDeals * 100).toFixed(1)) : (hubspot.deals?.win_rate || 0);
+  const avgDealValue = totalLeads > 0 ? parseFloat((revenue / totalLeads).toFixed(2)) : (hubspot.deals?.revenue?.avg_deal_value || 0);
+
   return {
-    totalContacts: hubspot.contacts?.total || 0,
-    totalLeads: hubspot.deals?.total || 0,
-    winRate: hubspot.deals?.win_rate || 0,
-    wonLeads: hubspot.deals?.won_deals || 0,
-    lostLeads: hubspot.deals?.lost_deals || 0,
-    revenue: hubspot.deals?.revenue?.total || 0,
-    avgDealValue: hubspot.deals?.revenue?.avg_deal_value || 0,
+    totalContacts,
+    totalLeads,
+    winRate,
+    wonLeads,
+    lostLeads,
+    revenue,
+    avgDealValue,
     activeCampaigns: hubspot.campaigns?.active_count || 0,
     totalCampaigns: hubspot.campaigns?.total || 0,
     totalBudget: hubspot.campaigns?.total_budget || 0,
@@ -128,18 +194,33 @@ function buildCRMKpis(hubspot) {
  * Calculates from stage_distribution (direct HubSpot data) — identifies:
  *   "won" stages: is_closed=true & probability>0, or name contains "ganado"/"matriculado"
  *   "lost" stages: name contains "perdido"
+ * When dateRange is active, recalculates from daily_by_pipeline_stage and daily_by_pipeline.
  */
-function buildPipelineSummary(hubspot) {
+function buildPipelineSummary(hubspot, dateRange) {
   if (!hubspot?.deals?.pipeline_distribution || !hubspot?.deals?.stage_distribution) return null;
 
-  const pipelines = hubspot.deals.pipeline_distribution;
-  const stageDistributions = hubspot.deals.stage_distribution;
+  const filtering = hasActiveDateFilter(dateRange);
   const pipelineDefs = hubspot.pipelines || [];
+
+  // Pipeline totals: from daily_by_pipeline when filtering
+  let pipelines;
+  if (filtering && hubspot.deals.daily_by_pipeline) {
+    pipelines = sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange);
+  } else {
+    pipelines = hubspot.deals.pipeline_distribution;
+  }
 
   return Object.entries(pipelines)
     .sort((a, b) => b[1] - a[1])
     .map(([name, total]) => {
-      const stages = stageDistributions[name] || {};
+      // Stage distribution: from daily_by_pipeline_stage when filtering
+      let stages;
+      if (filtering && hubspot.deals.daily_by_pipeline_stage?.[name]) {
+        stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[name], dateRange);
+      } else {
+        stages = hubspot.deals.stage_distribution[name] || {};
+      }
+
       const pipelineDef = pipelineDefs.find(p => p.name === name);
 
       let ganados = 0;
@@ -186,8 +267,8 @@ export default function OptimizationLayer({ dateRange }) {
   const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
   const [showPipelineSummary, setShowPipelineSummary] = useState(false);
 
-  // Build real data (or fallback)
-  const channelData = buildChannelData(hubspot) || [
+  // Build real data (or fallback) — all date-filtered when dateRange is active
+  const channelData = buildChannelData(hubspot, dateRange) || [
     { name: 'Google Search', value: 35, leads: 291, color: '#003B7A' },
     { name: 'Meta Ads', value: 35, leads: 291, color: '#6B1B3D' },
     { name: 'YouTube', value: 20, leads: 166, color: '#EF4444' },
@@ -195,12 +276,12 @@ export default function OptimizationLayer({ dateRange }) {
   ];
 
   // Funnel now returns {steps, lost} instead of an array
-  const funnelResult = buildFunnelSteps(hubspot, selectedPipeline);
+  const funnelResult = buildFunnelSteps(hubspot, selectedPipeline, dateRange);
   const funnelSteps = funnelResult?.steps || null;
   const funnelLost = funnelResult?.lost || null;
 
-  const crmKpis = buildCRMKpis(hubspot);
-  const pipelineSummary = buildPipelineSummary(hubspot);
+  const crmKpis = buildCRMKpis(hubspot, dateRange);
+  const pipelineSummary = buildPipelineSummary(hubspot, dateRange);
 
   const availablePipelines = hubspot?.deals?.stage_distribution
     ? Object.keys(hubspot.deals.stage_distribution)
@@ -638,13 +719,19 @@ export default function OptimizationLayer({ dateRange }) {
                 <div className="bg-amber-50 rounded-lg p-3">
                   <p className="text-xs text-gray-600 mb-1">Total en Programa</p>
                   <p className="text-xl font-bold text-orange-600">
-                    {hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A'}
+                    {(() => {
+                      if (hasActiveDateFilter(dateRange) && hubspot?.deals?.daily_by_pipeline) {
+                        const filtered = sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange);
+                        return (filtered[selectedPipeline] || 0).toLocaleString();
+                      }
+                      return hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A';
+                    })()}
                   </p>
                   <p className="text-xs text-gray-500">{selectedPipeline}</p>
                 </div>
                 <div className="bg-green-50 rounded-lg p-3">
                   <p className="text-xs text-gray-600 mb-1">Tasa de Cierre General</p>
-                  <p className="text-xl font-bold text-green-600">{hubspot?.deals?.win_rate || 0}%</p>
+                  <p className="text-xl font-bold text-green-600">{crmKpis?.winRate || 0}%</p>
                   <p className="text-xs text-gray-500">Todos los programas</p>
                 </div>
               </div>
@@ -797,14 +884,19 @@ export default function OptimizationLayer({ dateRange }) {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
                 <h4 className="font-bold text-sm mb-3">Leads por Programa:</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {Object.entries(hubspot.deals.pipeline_distribution)
-                    .sort((a, b) => b[1] - a[1])
-                    .map(([name, count]) => (
-                      <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
-                        <span className="text-white/80 truncate mr-2">{name}</span>
-                        <span className="font-bold flex-shrink-0">{count.toLocaleString()}</span>
-                      </div>
-                    ))}
+                  {(() => {
+                    const pipelineDist = hasActiveDateFilter(dateRange) && hubspot.deals.daily_by_pipeline
+                      ? sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange)
+                      : hubspot.deals.pipeline_distribution;
+                    return Object.entries(pipelineDist)
+                      .sort((a, b) => b[1] - a[1])
+                      .map(([name, count]) => (
+                        <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
+                          <span className="text-white/80 truncate mr-2">{name}</span>
+                          <span className="font-bold flex-shrink-0">{count.toLocaleString()}</span>
+                        </div>
+                      ));
+                  })()}
                 </div>
               </div>
             )}

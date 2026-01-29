@@ -122,6 +122,43 @@ export function aggregateForChart(filteredData, valueKey) {
     .map(([key, val]) => ({ date: key.substring(5), [valueKey]: val }));
 }
 
+/**
+ * Sum a time-keyed numeric object filtered by date range.
+ * Input:  { "YYYY-MM-DD": count, ... }
+ * Output: total count within range
+ */
+export function sumFilteredData(data, dateRange) {
+  const filtered = filterMonthlyData(data, dateRange);
+  if (!filtered) return 0;
+  return Object.values(filtered).reduce((sum, v) => sum + v, 0);
+}
+
+/**
+ * Aggregate a time-keyed object-valued structure filtered by date range.
+ * Input:  { "YYYY-MM-DD": { key: count, ... }, ... }
+ * Output: { key: totalCount, ... }  (summed across all days in range)
+ */
+export function sumFilteredObjectData(data, dateRange) {
+  const filtered = filterMonthlyData(data, dateRange);
+  if (!filtered) return {};
+  const result = {};
+  Object.values(filtered).forEach(obj => {
+    if (obj && typeof obj === 'object') {
+      Object.entries(obj).forEach(([key, count]) => {
+        result[key] = (result[key] || 0) + count;
+      });
+    }
+  });
+  return result;
+}
+
+/**
+ * Check if a dateRange is actively filtering (has start or end set).
+ */
+export function hasActiveDateFilter(dateRange) {
+  return dateRange && (dateRange.start || dateRange.end);
+}
+
 export default function Dashboard() {
   const [activeLayer, setActiveLayer] = useState('data');
   const [lastUpdate, setLastUpdate] = useState(new Date());
