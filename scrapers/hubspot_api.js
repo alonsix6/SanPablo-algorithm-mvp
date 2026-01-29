@@ -332,6 +332,7 @@ function analyzeContacts(contacts) {
   const conversionEvents = { total: 0, withEvents: 0 };
   const monthlyCreation = {};
   const dailyCreation = {};
+  const dailyBySource = {};
 
   contacts.forEach(c => {
     const props = c.properties || {};
@@ -356,6 +357,10 @@ function analyzeContacts(contacts) {
 
       const day = props.createdate.substring(0, 10); // YYYY-MM-DD
       dailyCreation[day] = (dailyCreation[day] || 0) + 1;
+
+      // Daily by source (for date-filtered channel distribution)
+      if (!dailyBySource[day]) dailyBySource[day] = {};
+      dailyBySource[day][source] = (dailyBySource[day][source] || 0) + 1;
     }
   });
 
@@ -372,7 +377,8 @@ function analyzeContacts(contacts) {
       ? parseFloat((conversionEvents.total / contacts.length).toFixed(2))
       : 0,
     monthly_creation: monthlyCreation,
-    daily_creation: dailyCreation
+    daily_creation: dailyCreation,
+    daily_by_source: dailyBySource
   };
 }
 
@@ -395,6 +401,8 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
   const monthlyDeals = {};
   const dailyDeals = {};
   const dailyByPipeline = {};
+  const dailyByPipelineStage = {};  // { pipelineName: { day: { stageName: count } } }
+  const dailyRevenue = {};           // { day: { pipelineName: amount } }
   let totalAmount = 0;
   let wonDeals = 0;
   let lostDeals = 0;
@@ -445,11 +453,23 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
       // Daily by pipeline
       if (!dailyByPipeline[day]) dailyByPipeline[day] = {};
       dailyByPipeline[day][pipelineName] = (dailyByPipeline[day][pipelineName] || 0) + 1;
+
+      // Daily by pipeline + stage (for date-filtered funnel & ganados/perdidos)
+      if (!dailyByPipelineStage[pipelineName]) dailyByPipelineStage[pipelineName] = {};
+      if (!dailyByPipelineStage[pipelineName][day]) dailyByPipelineStage[pipelineName][day] = {};
+      dailyByPipelineStage[pipelineName][day][stageName] = (dailyByPipelineStage[pipelineName][day][stageName] || 0) + 1;
+
+      // Daily revenue by pipeline
+      if (amount > 0) {
+        if (!dailyRevenue[day]) dailyRevenue[day] = {};
+        dailyRevenue[day][pipelineName] = (dailyRevenue[day][pipelineName] || 0) + amount;
+      }
     }
   });
 
   // Source attribution per pipeline (channel breakdown)
   const sourceByPipeline = {};
+  const dailySourceByPipeline = {};  // { pipelineName: { day: { source: count } } }
   deals.forEach(d => {
     const props = d.properties || {};
     const pipelineId = props.pipeline || 'default';
@@ -458,6 +478,14 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
 
     if (!sourceByPipeline[pipelineName]) sourceByPipeline[pipelineName] = {};
     sourceByPipeline[pipelineName][source] = (sourceByPipeline[pipelineName][source] || 0) + 1;
+
+    // Daily source by pipeline (for date-filtered channel breakdown per program)
+    const day = props.createdate?.substring(0, 10);
+    if (day) {
+      if (!dailySourceByPipeline[pipelineName]) dailySourceByPipeline[pipelineName] = {};
+      if (!dailySourceByPipeline[pipelineName][day]) dailySourceByPipeline[pipelineName][day] = {};
+      dailySourceByPipeline[pipelineName][day][source] = (dailySourceByPipeline[pipelineName][day][source] || 0) + 1;
+    }
   });
 
   // Won/lost per pipeline
@@ -509,7 +537,10 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
     lost_deals: lostDeals,
     monthly_deals: monthlyDeals,
     daily_deals: dailyDeals,
-    daily_by_pipeline: dailyByPipeline
+    daily_by_pipeline: dailyByPipeline,
+    daily_by_pipeline_stage: dailyByPipelineStage,
+    daily_source_by_pipeline: dailySourceByPipeline,
+    daily_revenue: dailyRevenue
   };
 }
 

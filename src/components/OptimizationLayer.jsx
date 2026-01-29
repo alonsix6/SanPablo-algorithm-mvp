@@ -4,7 +4,7 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 import { useHubSpotData, useMLData } from '../hooks/useRealData';
-import { filterMonthlyData, aggregateForChart } from './Dashboard';
+import { filterMonthlyData, aggregateForChart, sumFilteredData, sumFilteredObjectData, hasActiveDateFilter } from './Dashboard';
 
 // Map HubSpot sources to display names and colors
 const SOURCE_CONFIG = {
@@ -32,12 +32,45 @@ const FUNNEL_COLORS = [
 const FUNNEL_ICONS = [Users, FileText, Globe, Target, GraduationCap, CheckCircle, CheckCircle];
 
 /**
- * Build channel distribution from real HubSpot source_distribution data
+ * Extract a single key's values from a daily-keyed object structure.
+ * Input:  { "YYYY-MM-DD": { key1: count, key2: count, ... } }
+ * Output: { "YYYY-MM-DD": count }  (for the specified key only)
  */
-function buildChannelData(hubspot) {
-  if (!hubspot?.contacts?.source_distribution) return null;
+function extractKeyFromDaily(dailyObjData, key) {
+  if (!dailyObjData || !key) return null;
+  const result = {};
+  Object.entries(dailyObjData).forEach(([day, obj]) => {
+    if (obj && obj[key] != null) result[day] = obj[key];
+  });
+  return Object.keys(result).length > 0 ? result : null;
+}
 
-  const sources = hubspot.contacts.source_distribution;
+/**
+ * Build channel distribution from real HubSpot source data.
+ * When selectedProgram is set, shows deal sources for that program.
+ * When dateRange is active, recalculates from daily data.
+ */
+function buildChannelData(hubspot, dateRange, selectedProgram) {
+  const filtering = hasActiveDateFilter(dateRange);
+
+  let sources;
+  if (selectedProgram) {
+    // Per-program: use deal source attribution for that program
+    if (filtering && hubspot?.deals?.daily_source_by_pipeline?.[selectedProgram]) {
+      sources = sumFilteredObjectData(hubspot.deals.daily_source_by_pipeline[selectedProgram], dateRange);
+    } else {
+      sources = hubspot?.deals?.source_by_pipeline?.[selectedProgram];
+    }
+  } else {
+    // All programs: use contact source distribution
+    if (filtering && hubspot?.contacts?.daily_by_source) {
+      sources = sumFilteredObjectData(hubspot.contacts.daily_by_source, dateRange);
+    } else {
+      sources = hubspot?.contacts?.source_distribution;
+    }
+  }
+
+  if (!sources || Object.keys(sources).length === 0) return null;
   const total = Object.values(sources).reduce((sum, v) => sum + v, 0) || 1;
 
   return Object.entries(sources)
@@ -54,11 +87,18 @@ function buildChannelData(hubspot) {
 /**
  * Build funnel from real HubSpot pipeline stage_distribution data.
  * Excludes "Cierre perdido" from the funnel flow and returns it separately.
+ * When dateRange is active, recalculates from daily_by_pipeline_stage.
  */
-function buildFunnelSteps(hubspot, pipelineName) {
+function buildFunnelSteps(hubspot, pipelineName, dateRange) {
   if (!hubspot?.deals?.stage_distribution?.[pipelineName]) return null;
 
-  const stages = hubspot.deals.stage_distribution[pipelineName];
+  let stages;
+  if (hasActiveDateFilter(dateRange) && hubspot.deals.daily_by_pipeline_stage?.[pipelineName]) {
+    stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[pipelineName], dateRange);
+    if (Object.keys(stages).length === 0) return null;
+  } else {
+    stages = hubspot.deals.stage_distribution[pipelineName];
+  }
 
   // Find matching pipeline definition for stage ordering
   const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
@@ -101,18 +141,114 @@ function buildFunnelSteps(hubspot, pipelineName) {
 }
 
 /**
- * Build HubSpot CRM summary KPIs from real data
+ * Build HubSpot CRM summary KPIs from real data.
+ * When selectedProgram is set, shows KPIs for that program only.
+ * When dateRange is active, recalculates totals from daily data.
  */
-function buildCRMKpis(hubspot) {
+function buildCRMKpis(hubspot, dateRange, selectedProgram) {
   if (!hubspot) return null;
+
+  const filtering = hasActiveDateFilter(dateRange);
+  const pipelineDefs = hubspot.pipelines || [];
+
+  // Contacts: always global (contacts aren't pipeline-specific)
+  const totalContacts = filtering && hubspot.contacts?.daily_creation
+    ? sumFilteredData(hubspot.contacts.daily_creation, dateRange)
+    : hubspot.contacts?.total || 0;
+
+  // Leads: per-program when selected
+  let totalLeads;
+  if (selectedProgram) {
+    if (filtering && hubspot.deals?.daily_by_pipeline) {
+      const pipelineDaily = extractKeyFromDaily(hubspot.deals.daily_by_pipeline, selectedProgram);
+      totalLeads = pipelineDaily ? sumFilteredData(pipelineDaily, dateRange) : 0;
+    } else {
+      totalLeads = hubspot.deals?.pipeline_distribution?.[selectedProgram] || 0;
+    }
+  } else {
+    totalLeads = filtering && hubspot.deals?.daily_deals
+      ? sumFilteredData(hubspot.deals.daily_deals, dateRange)
+      : hubspot.deals?.total || 0;
+  }
+
+  // Revenue: per-program when selected
+  let revenue;
+  if (selectedProgram) {
+    if (filtering && hubspot.deals?.daily_revenue) {
+      const revDaily = extractKeyFromDaily(hubspot.deals.daily_revenue, selectedProgram);
+      revenue = revDaily ? sumFilteredData(revDaily, dateRange) : 0;
+    } else {
+      revenue = hubspot.deals?.revenue?.by_pipeline?.[selectedProgram] || 0;
+    }
+  } else {
+    revenue = hubspot.deals?.revenue?.total || 0;
+    if (filtering && hubspot.deals?.daily_revenue) {
+      const dailyRev = sumFilteredObjectData(hubspot.deals.daily_revenue, dateRange);
+      revenue = Object.values(dailyRev).reduce((s, v) => s + v, 0);
+    }
+  }
+
+  // Won/Lost: per-program or all
+  let wonLeads = 0;
+  let lostLeads = 0;
+
+  function classifyStages(stages, pName) {
+    const pDef = pipelineDefs.find(p => p.name === pName);
+    let w = 0, l = 0;
+    Object.entries(stages).forEach(([stageName, count]) => {
+      const nameLower = stageName.toLowerCase();
+      if (nameLower.includes('perdido')) {
+        l += count;
+      } else {
+        const sDef = pDef?.stages?.find(s => s.name === stageName);
+        if (sDef) {
+          if ((sDef.is_closed && sDef.probability > 0) || nameLower.includes('ganado') || nameLower.includes('matriculado')) w += count;
+        } else if (nameLower.includes('ganado') || nameLower.includes('matriculado') || nameLower.includes('pagado')) {
+          w += count;
+        }
+      }
+    });
+    return { w, l };
+  }
+
+  if (selectedProgram) {
+    let stages;
+    if (filtering && hubspot.deals?.daily_by_pipeline_stage?.[selectedProgram]) {
+      stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[selectedProgram], dateRange);
+    } else {
+      stages = hubspot.deals?.stage_distribution?.[selectedProgram] || {};
+    }
+    const { w, l } = classifyStages(stages, selectedProgram);
+    wonLeads = w;
+    lostLeads = l;
+  } else {
+    if (filtering && hubspot.deals?.daily_by_pipeline_stage) {
+      Object.keys(hubspot.deals.daily_by_pipeline_stage).forEach(pName => {
+        const filteredStages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[pName], dateRange);
+        const { w, l } = classifyStages(filteredStages, pName);
+        wonLeads += w;
+        lostLeads += l;
+      });
+    } else {
+      wonLeads = hubspot.deals?.won_deals || 0;
+      lostLeads = hubspot.deals?.lost_deals || 0;
+    }
+  }
+
+  const closedDeals = wonLeads + lostLeads;
+  const winRate = closedDeals > 0
+    ? parseFloat((wonLeads / closedDeals * 100).toFixed(1))
+    : (selectedProgram ? 0 : (hubspot.deals?.win_rate || 0));
+  const avgDealValue = totalLeads > 0 ? parseFloat((revenue / totalLeads).toFixed(2)) : (hubspot.deals?.revenue?.avg_deal_value || 0);
+
   return {
-    totalContacts: hubspot.contacts?.total || 0,
-    totalLeads: hubspot.deals?.total || 0,
-    winRate: hubspot.deals?.win_rate || 0,
-    wonLeads: hubspot.deals?.won_deals || 0,
-    lostLeads: hubspot.deals?.lost_deals || 0,
-    revenue: hubspot.deals?.revenue?.total || 0,
-    avgDealValue: hubspot.deals?.revenue?.avg_deal_value || 0,
+    totalContacts,
+    totalLeads,
+    winRate,
+    wonLeads,
+    lostLeads,
+    revenue,
+    avgDealValue,
     activeCampaigns: hubspot.campaigns?.active_count || 0,
     totalCampaigns: hubspot.campaigns?.total || 0,
     totalBudget: hubspot.campaigns?.total_budget || 0,
@@ -128,18 +264,39 @@ function buildCRMKpis(hubspot) {
  * Calculates from stage_distribution (direct HubSpot data) — identifies:
  *   "won" stages: is_closed=true & probability>0, or name contains "ganado"/"matriculado"
  *   "lost" stages: name contains "perdido"
+ * When dateRange is active, recalculates from daily_by_pipeline_stage and daily_by_pipeline.
  */
-function buildPipelineSummary(hubspot) {
+function buildPipelineSummary(hubspot, dateRange, selectedProgram) {
   if (!hubspot?.deals?.pipeline_distribution || !hubspot?.deals?.stage_distribution) return null;
 
-  const pipelines = hubspot.deals.pipeline_distribution;
-  const stageDistributions = hubspot.deals.stage_distribution;
+  const filtering = hasActiveDateFilter(dateRange);
   const pipelineDefs = hubspot.pipelines || [];
 
-  return Object.entries(pipelines)
+  // Pipeline totals: from daily_by_pipeline when filtering
+  let pipelines;
+  if (filtering && hubspot.deals.daily_by_pipeline) {
+    pipelines = sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange);
+  } else {
+    pipelines = hubspot.deals.pipeline_distribution;
+  }
+
+  // Filter to single program when selected
+  let pipelineEntries = Object.entries(pipelines);
+  if (selectedProgram) {
+    pipelineEntries = pipelineEntries.filter(([name]) => name === selectedProgram);
+  }
+
+  return pipelineEntries
     .sort((a, b) => b[1] - a[1])
     .map(([name, total]) => {
-      const stages = stageDistributions[name] || {};
+      // Stage distribution: from daily_by_pipeline_stage when filtering
+      let stages;
+      if (filtering && hubspot.deals.daily_by_pipeline_stage?.[name]) {
+        stages = sumFilteredObjectData(hubspot.deals.daily_by_pipeline_stage[name], dateRange);
+      } else {
+        stages = hubspot.deals.stage_distribution[name] || {};
+      }
+
       const pipelineDef = pipelineDefs.find(p => p.name === name);
 
       let ganados = 0;
@@ -183,28 +340,29 @@ function buildPipelineSummary(hubspot) {
 export default function OptimizationLayer({ dateRange }) {
   const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
   const { data: mlData } = useMLData();
-  const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
+  const [selectedProgram, setSelectedProgram] = useState('');
   const [showPipelineSummary, setShowPipelineSummary] = useState(false);
 
-  // Build real data (or fallback)
-  const channelData = buildChannelData(hubspot) || [
+  const availablePipelines = hubspot?.deals?.stage_distribution
+    ? Object.keys(hubspot.deals.stage_distribution)
+    : [];
+
+  // Build real data — all filtered by dateRange AND selectedProgram
+  const channelData = buildChannelData(hubspot, dateRange, selectedProgram) || [
     { name: 'Google Search', value: 35, leads: 291, color: '#003B7A' },
     { name: 'Meta Ads', value: 35, leads: 291, color: '#6B1B3D' },
     { name: 'YouTube', value: 20, leads: 166, color: '#EF4444' },
     { name: 'Display', value: 10, leads: 83, color: '#C5A572' },
   ];
 
-  // Funnel now returns {steps, lost} instead of an array
-  const funnelResult = buildFunnelSteps(hubspot, selectedPipeline);
+  // Funnel: use selected program, fallback to first available
+  const funnelPipeline = selectedProgram || availablePipelines[0] || 'Pregrado';
+  const funnelResult = buildFunnelSteps(hubspot, funnelPipeline, dateRange);
   const funnelSteps = funnelResult?.steps || null;
   const funnelLost = funnelResult?.lost || null;
 
-  const crmKpis = buildCRMKpis(hubspot);
-  const pipelineSummary = buildPipelineSummary(hubspot);
-
-  const availablePipelines = hubspot?.deals?.stage_distribution
-    ? Object.keys(hubspot.deals.stage_distribution)
-    : [];
+  const crmKpis = buildCRMKpis(hubspot, dateRange, selectedProgram);
+  const pipelineSummary = buildPipelineSummary(hubspot, dateRange, selectedProgram);
 
   // Data freshness
   const dataAge = crmKpis?.timestamp
@@ -222,14 +380,22 @@ export default function OptimizationLayer({ dateRange }) {
     { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Leads trend from HubSpot — prefer daily data for precise filtering
-  const hasDailyLeads = !!hubspot?.deals?.daily_deals;
-  const leadsSource = hasDailyLeads ? hubspot.deals.daily_deals : hubspot?.deals?.monthly_deals;
+  // Leads trend — when program is selected, show only that program's daily data
+  let leadsSource;
+  let leadsDataLabel;
+  if (selectedProgram) {
+    leadsSource = extractKeyFromDaily(hubspot?.deals?.daily_by_pipeline, selectedProgram);
+    leadsDataLabel = `Datos diarios · ${selectedProgram}`;
+  } else {
+    const hasDailyDeals = !!hubspot?.deals?.daily_deals;
+    leadsSource = hasDailyDeals ? hubspot.deals.daily_deals : hubspot?.deals?.monthly_deals;
+    leadsDataLabel = (hubspot?.deals?.daily_deals ? 'Datos diarios' : 'Datos mensuales') + ' · HubSpot CRM';
+  }
   const monthlyLeadsData = leadsSource
     ? aggregateForChart(filterMonthlyData(leadsSource, dateRange), 'leads')
     : null;
 
-  // Contacts trend — prefer daily data
+  // Contacts trend — always global (contacts aren't pipeline-specific)
   const hasDailyContacts = !!hubspot?.contacts?.daily_creation;
   const contactsSource = hasDailyContacts ? hubspot.contacts.daily_creation : hubspot?.contacts?.monthly_creation;
   const monthlyContactsData = contactsSource
@@ -263,6 +429,39 @@ export default function OptimizationLayer({ dateRange }) {
             </span>
           </div>
         </div>
+
+        {/* Program Filter */}
+        {availablePipelines.length > 0 && (
+          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <GraduationCap className="w-4 h-4 text-ucsp-burgundy" />
+              <span className="font-medium text-gray-700">Filtrar por programa:</span>
+            </div>
+            <select
+              value={selectedProgram}
+              onChange={(e) => setSelectedProgram(e.target.value)}
+              className="px-4 py-2 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 bg-white hover:border-ucsp-blue focus:ring-2 focus:ring-ucsp-blue focus:border-ucsp-blue transition-colors cursor-pointer shadow-sm"
+            >
+              <option value="">Todos los programas</option>
+              {availablePipelines.map(name => (
+                <option key={name} value={name}>{name}</option>
+              ))}
+            </select>
+            {selectedProgram && (
+              <button
+                onClick={() => setSelectedProgram('')}
+                className="px-3 py-2 bg-gray-100 text-gray-600 rounded-xl text-xs font-medium hover:bg-gray-200 transition-colors flex items-center gap-1"
+              >
+                <XCircle className="w-3.5 h-3.5" /> Limpiar filtro
+              </button>
+            )}
+            {selectedProgram && (
+              <span className="ml-auto text-xs text-ucsp-burgundy font-semibold bg-ucsp-burgundy/10 px-3 py-1.5 rounded-lg">
+                Mostrando: {selectedProgram}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* KPIs Principales */}
@@ -318,7 +517,7 @@ export default function OptimizationLayer({ dateRange }) {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Leads en Proceso (90d)' : 'Alcance Único'}
+            {crmKpis ? (selectedProgram ? `Leads · ${selectedProgram}` : 'Leads en Proceso') : 'Alcance Único'}
           </h3>
           <p className="text-2xl font-bold mb-2">
             {crmKpis ? crmKpis.totalLeads.toLocaleString() : `${(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M`}
@@ -360,7 +559,7 @@ export default function OptimizationLayer({ dateRange }) {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Revenue CRM (90d)' : 'Interacciones Totales'}
+            {crmKpis ? (selectedProgram ? `Revenue · ${selectedProgram}` : 'Revenue CRM') : 'Interacciones Totales'}
           </h3>
           <p className="text-2xl font-bold mb-2">
             {crmKpis
@@ -436,7 +635,7 @@ export default function OptimizationLayer({ dateRange }) {
                   <h3 className="text-base font-bold text-gray-900">Tendencia de Leads</h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
                 </div>
-                <p className="text-sm text-gray-600">{hasDailyLeads ? 'Datos diarios · HubSpot CRM' : 'Datos mensuales · HubSpot CRM'}</p>
+                <p className="text-sm text-gray-600">{leadsDataLabel}</p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={250}>
@@ -503,7 +702,9 @@ export default function OptimizationLayer({ dateRange }) {
       {/* Channel Distribution - REAL from HubSpot */}
       <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
         <div className="flex items-center gap-2 mb-8 text-center md:text-left">
-          <h3 className="text-base font-bold text-gray-900">Distribución de Contactos por Fuente</h3>
+          <h3 className="text-base font-bold text-gray-900">
+            {selectedProgram ? `Distribución de Leads por Fuente · ${selectedProgram}` : 'Distribución de Contactos por Fuente'}
+          </h3>
           {hubspot && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
         </div>
 
@@ -561,18 +762,9 @@ export default function OptimizationLayer({ dateRange }) {
             <h3 className="text-base font-bold text-gray-900">Funnel de Conversión</h3>
             {funnelSteps && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
           </div>
-          {/* Programa Selector */}
-          {availablePipelines.length > 0 && (
-            <select
-              value={selectedPipeline}
-              onChange={(e) => setSelectedPipeline(e.target.value)}
-              className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white focus:ring-2 focus:ring-ucsp-blue focus:border-ucsp-blue"
-            >
-              {availablePipelines.map(name => (
-                <option key={name} value={name}>{name}</option>
-              ))}
-            </select>
-          )}
+          <span className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium">
+            {funnelPipeline}
+          </span>
         </div>
 
         {funnelSteps ? (
@@ -638,13 +830,19 @@ export default function OptimizationLayer({ dateRange }) {
                 <div className="bg-amber-50 rounded-lg p-3">
                   <p className="text-xs text-gray-600 mb-1">Total en Programa</p>
                   <p className="text-xl font-bold text-orange-600">
-                    {hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A'}
+                    {(() => {
+                      if (hasActiveDateFilter(dateRange) && hubspot?.deals?.daily_by_pipeline) {
+                        const filtered = sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange);
+                        return (filtered[funnelPipeline] || 0).toLocaleString();
+                      }
+                      return hubspot?.deals?.pipeline_distribution?.[funnelPipeline]?.toLocaleString() || 'N/A';
+                    })()}
                   </p>
-                  <p className="text-xs text-gray-500">{selectedPipeline}</p>
+                  <p className="text-xs text-gray-500">{funnelPipeline}</p>
                 </div>
                 <div className="bg-green-50 rounded-lg p-3">
                   <p className="text-xs text-gray-600 mb-1">Tasa de Cierre General</p>
-                  <p className="text-xl font-bold text-green-600">{hubspot?.deals?.win_rate || 0}%</p>
+                  <p className="text-xl font-bold text-green-600">{crmKpis?.winRate || 0}%</p>
                   <p className="text-xs text-gray-500">Todos los programas</p>
                 </div>
               </div>
@@ -797,14 +995,19 @@ export default function OptimizationLayer({ dateRange }) {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
                 <h4 className="font-bold text-sm mb-3">Leads por Programa:</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {Object.entries(hubspot.deals.pipeline_distribution)
-                    .sort((a, b) => b[1] - a[1])
-                    .map(([name, count]) => (
-                      <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
-                        <span className="text-white/80 truncate mr-2">{name}</span>
-                        <span className="font-bold flex-shrink-0">{count.toLocaleString()}</span>
-                      </div>
-                    ))}
+                  {(() => {
+                    const pipelineDist = hasActiveDateFilter(dateRange) && hubspot.deals.daily_by_pipeline
+                      ? sumFilteredObjectData(hubspot.deals.daily_by_pipeline, dateRange)
+                      : hubspot.deals.pipeline_distribution;
+                    return Object.entries(pipelineDist)
+                      .sort((a, b) => b[1] - a[1])
+                      .map(([name, count]) => (
+                        <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
+                          <span className="text-white/80 truncate mr-2">{name}</span>
+                          <span className="font-bold flex-shrink-0">{count.toLocaleString()}</span>
+                        </div>
+                      ));
+                  })()}
                 </div>
               </div>
             )}
