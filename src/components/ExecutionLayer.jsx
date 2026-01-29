@@ -1,10 +1,96 @@
 import { useState } from 'react';
-import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, GraduationCap, ChevronDown, ChevronUp, MessageCircle, Rocket, CheckCircle, ArrowRight, AlertCircle, FileText, Globe, Star, Lightbulb } from 'lucide-react';
-import { BUDGET_ALLOCATION, CONTENT_PILLARS, CARRERAS_PERFORMANCE } from '../data/mockData';
+import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, GraduationCap, ChevronDown, ChevronUp, MessageCircle, Rocket, CheckCircle, ArrowRight, AlertCircle, FileText, Globe, Star, Lightbulb, Database, XCircle, Users } from 'lucide-react';
+import { BUDGET_ALLOCATION, CONTENT_PILLARS } from '../data/mockData';
 import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
+import { useHubSpotData } from '../hooks/useRealData';
+
+// Display names and colors for HubSpot sources
+const SOURCE_DISPLAY = {
+  PAID_SEARCH: { name: 'Google Ads', color: 'bg-blue-100 text-blue-800' },
+  PAID_SOCIAL: { name: 'Meta Ads', color: 'bg-purple-100 text-purple-800' },
+  ORGANIC_SEARCH: { name: 'Orgánico', color: 'bg-green-100 text-green-800' },
+  DIRECT_TRAFFIC: { name: 'Directo', color: 'bg-gray-100 text-gray-800' },
+  OFFLINE: { name: 'Offline', color: 'bg-yellow-100 text-yellow-800' },
+  REFERRALS: { name: 'Referidos', color: 'bg-indigo-100 text-indigo-800' },
+  OTHER_CAMPAIGNS: { name: 'Otras', color: 'bg-orange-100 text-orange-800' },
+  SOCIAL_MEDIA: { name: 'Redes', color: 'bg-pink-100 text-pink-800' },
+};
+
+// Friendly display names for pipelines
+const PIPELINE_DISPLAY = {
+  'Formación Continua': { short: 'Form. Continua', icon: 'book' },
+  'Pregrado': { short: 'Pregrado', icon: 'graduation' },
+  'Pregrado Matrículas': { short: 'Pregrado Matrículas', icon: 'clipboard' },
+  'Postgrado Maestrías': { short: 'Maestrías', icon: 'award' },
+  'Postgrado Diplomados': { short: 'Diplomados', icon: 'file' },
+  'Postgrado PED': { short: 'PED (Prog. Ejecutivos)', icon: 'briefcase' },
+  'Centro de Idiomas': { short: 'Idiomas', icon: 'globe' },
+  'Pregrado Colegios': { short: 'Colegios', icon: 'school' },
+  'CENDES': { short: 'CENDES', icon: 'building' },
+};
+
+/**
+ * Build pipeline performance data from HubSpot
+ * Includes: total leads, won, lost, revenue, channel breakdown, estimated CPL
+ */
+function buildPipelinePerformance(hubspot) {
+  if (!hubspot?.deals) return null;
+
+  const { pipeline_distribution, won_lost_by_pipeline, source_by_pipeline, revenue } = hubspot.deals;
+  if (!pipeline_distribution) return null;
+
+  const totalSpend = hubspot.campaigns?.total_spend || 0;
+  const totalLeadsAllPipelines = Object.values(pipeline_distribution).reduce((s, v) => s + v, 0) || 1;
+
+  return Object.entries(pipeline_distribution)
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, totalLeads]) => {
+      const wonLost = won_lost_by_pipeline?.[name] || { won: 0, lost: 0 };
+      const sources = source_by_pipeline?.[name] || {};
+      const pipelineRevenue = revenue?.by_pipeline?.[name] || 0;
+
+      // Estimated spend proportional to lead volume
+      const estimatedSpend = totalSpend * (totalLeads / totalLeadsAllPipelines);
+      const cpl = totalLeads > 0 ? estimatedSpend / totalLeads : 0;
+      const costPerWon = wonLost.won > 0 ? estimatedSpend / wonLost.won : 0;
+      const conversionRate = totalLeads > 0 ? (wonLost.won / totalLeads * 100) : 0;
+
+      // Top 4 channels
+      const topChannels = Object.entries(sources)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4)
+        .map(([src, count]) => ({
+          source: src,
+          name: SOURCE_DISPLAY[src]?.name || src,
+          color: SOURCE_DISPLAY[src]?.color || 'bg-gray-100 text-gray-800',
+          count,
+          pct: totalLeads > 0 ? parseFloat((count / totalLeads * 100).toFixed(1)) : 0,
+        }));
+
+      return {
+        name,
+        displayName: PIPELINE_DISPLAY[name]?.short || name,
+        totalLeads,
+        won: wonLost.won,
+        lost: wonLost.lost,
+        revenue: pipelineRevenue,
+        estimatedSpend,
+        cpl,
+        costPerWon,
+        conversionRate: parseFloat(conversionRate.toFixed(1)),
+        topChannels,
+      };
+    });
+}
 
 export default function ExecutionLayer() {
-  const [showAllCareers, setShowAllCareers] = useState(false);
+  const { data: hubspot } = useHubSpotData();
+  const [showAllPipelines, setShowAllPipelines] = useState(false);
+  const [expandedPipeline, setExpandedPipeline] = useState(null);
+
+  const pipelinePerformance = buildPipelinePerformance(hubspot);
+  const hasPipelineData = pipelinePerformance && pipelinePerformance.length > 0;
+
   // Calcular status color
   const getStatusColor = (status) => {
     if (status === 'overperforming') return { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', badge: 'bg-green-100' };
@@ -18,6 +104,14 @@ export default function ExecutionLayer() {
     if (status === 'performing') return <CheckCircle className="w-3 h-3" />;
     if (status === 'ontrack') return <ArrowRight className="w-3 h-3" />;
     return <AlertCircle className="w-3 h-3" />;
+  };
+
+  // Performance status based on conversion rate
+  const getConversionStatus = (rate) => {
+    if (rate >= 10) return 'overperforming';
+    if (rate >= 7) return 'performing';
+    if (rate >= 4) return 'ontrack';
+    return 'underperforming';
   };
 
   return (
@@ -34,6 +128,12 @@ export default function ExecutionLayer() {
             </p>
           </div>
           <div className="flex gap-2">
+            {hasPipelineData && (
+              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium flex items-center gap-1">
+                <Database className="w-3 h-3" />
+                HubSpot conectado
+              </span>
+            )}
             <span className="px-3 py-1 bg-ucsp-blue text-white rounded-full text-sm font-medium flex items-center gap-1">
               <PlayCircle className="w-4 h-4" />
               Live
@@ -231,7 +331,7 @@ export default function ExecutionLayer() {
         </div>
       </div>
 
-      {/* Carreras UCSP - Performance */}
+      {/* Performance por Pipeline - REAL DATA */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
@@ -239,117 +339,155 @@ export default function ExecutionLayer() {
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-gray-900">Performance por Carrera UCSP</h3>
-              <p className="text-sm text-gray-600">Rendimiento de campaña por carrera monitoreada</p>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-bold text-gray-900">Performance por Pipeline</h3>
+                {hasPipelineData && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
+              </div>
+              <p className="text-sm text-gray-600">Leads, conversiones y CPL estimado por programa</p>
             </div>
           </div>
-          <button
-            onClick={() => setShowAllCareers(!showAllCareers)}
-            className="flex items-center gap-2 px-4 py-2 bg-ucsp-blue text-white rounded-lg hover:bg-ucsp-darkBlue transition-colors text-sm font-medium"
-          >
-            {showAllCareers ? (
-              <>
-                <ChevronUp className="w-4 h-4" />
-                Mostrar solo top 5
-              </>
-            ) : (
-              <>
-                <ChevronDown className="w-4 h-4" />
-                Mostrar todas (13)
-              </>
-            )}
-          </button>
+          {hasPipelineData && (
+            <button
+              onClick={() => setShowAllPipelines(!showAllPipelines)}
+              className="flex items-center gap-2 px-4 py-2 bg-ucsp-blue text-white rounded-lg hover:bg-ucsp-darkBlue transition-colors text-sm font-medium"
+            >
+              {showAllPipelines ? (
+                <>
+                  <ChevronUp className="w-4 h-4" />
+                  Mostrar top 5
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  Mostrar todos ({pipelinePerformance?.length || 0})
+                </>
+              )}
+            </button>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {CARRERAS_PERFORMANCE
-            .slice(0, showAllCareers ? 13 : 5)
-            .map((carrera, idx) => {
-            return (
-              <div key={carrera.id} className={`p-5 rounded-xl border-2 ${
-                idx < 5 ? 'bg-gradient-to-r from-ucsp-blue/5 to-ucsp-burgundy/5 border-ucsp-blue/30' : 'bg-gray-50 border-gray-200'
-              }`}>
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-bold text-gray-900 text-base">{carrera.nombre}</h4>
-                  {idx < 5 && (
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-ucsp-gold/20 text-ucsp-burgundy flex items-center gap-1">
-                      <Star className="w-3 h-3" /> TOP 5
-                    </span>
-                  )}
-                </div>
+        {hasPipelineData ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {pipelinePerformance
+                .slice(0, showAllPipelines ? pipelinePerformance.length : 5)
+                .map((pipeline, idx) => {
+                  const status = getConversionStatus(pipeline.conversionRate);
+                  const colors = getStatusColor(status);
+                  const isExpanded = expandedPipeline === pipeline.name;
 
-                <div className="space-y-3 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Postulaciones</span>
-                    <span className="font-semibold text-gray-900">{carrera.postulaciones}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">CPP (Costo/Postulación)</span>
-                    <span className="font-semibold text-ucsp-burgundy">${carrera.cpp}</span>
-                  </div>
-                </div>
+                  return (
+                    <div key={pipeline.name} className={`p-5 rounded-xl border-2 ${colors.bg} ${colors.border} transition-all`}>
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="font-bold text-gray-900 text-base">{pipeline.displayName}</h4>
+                        <div className="flex items-center gap-2">
+                          {idx < 3 && (
+                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-ucsp-gold/20 text-ucsp-burgundy flex items-center gap-1">
+                              <Star className="w-3 h-3" /> TOP {idx + 1}
+                            </span>
+                          )}
+                          <span className={`px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 ${colors.badge} ${colors.text}`}>
+                            {getStatusIcon(status)} {pipeline.conversionRate}%
+                          </span>
+                        </div>
+                      </div>
 
-                {/* Lead Ads Metrics */}
-                <div className="pt-3 border-t border-gray-300 mb-3">
-                  <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
-                    <FileText className="w-3 h-3" /> Lead Ads (Meta)
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div>
-                      <p className="text-gray-500">Formularios</p>
-                      <p className="font-semibold text-gray-900">{carrera.leadAds.formularios}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Conv. Rate</p>
-                      <p className="font-semibold text-green-600">{carrera.leadAds.conversion_rate}%</p>
-                    </div>
-                  </div>
-                </div>
+                      {/* Key Metrics */}
+                      <div className="grid grid-cols-3 gap-3 mb-4">
+                        <div>
+                          <p className="text-xs text-gray-500">Total Leads</p>
+                          <p className="text-lg font-bold text-gray-900">{pipeline.totalLeads.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 flex items-center gap-1">
+                            <CheckCircle className="w-3 h-3 text-green-600" /> Ganados
+                          </p>
+                          <p className="text-lg font-bold text-green-700">{pipeline.won.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 flex items-center gap-1">
+                            <XCircle className="w-3 h-3 text-red-500" /> Perdidos
+                          </p>
+                          <p className="text-lg font-bold text-red-600">{pipeline.lost.toLocaleString()}</p>
+                        </div>
+                      </div>
 
-                {/* WhatsApp Metrics */}
-                <div className="pt-3 border-t border-gray-300 mb-3">
-                  <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
-                    <MessageCircle className="w-3 h-3 text-green-600" />
-                    WhatsApp Conversaciones
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div>
-                      <p className="text-gray-500">Iniciadas</p>
-                      <p className="font-semibold text-gray-900">{carrera.whatsapp.conversaciones}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Respondidas</p>
-                      <p className="font-semibold text-green-600">{carrera.whatsapp.respondidas}</p>
-                    </div>
-                  </div>
-                </div>
+                      {/* CPL & Cost per Won */}
+                      <div className="pt-3 border-t border-gray-300 mb-3">
+                        <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                          <DollarSign className="w-3 h-3" /> Costos Estimados
+                          <span className="ml-1 px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded text-[9px] font-bold">ESTIMADO</span>
+                        </p>
+                        <div className="grid grid-cols-3 gap-2 text-xs">
+                          <div>
+                            <p className="text-gray-500">CPL</p>
+                            <p className="font-bold text-gray-900">${pipeline.cpl.toFixed(1)}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500">Costo/Ganado</p>
+                            <p className="font-bold text-ucsp-burgundy">${pipeline.costPerWon.toFixed(0)}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500">Revenue</p>
+                            <p className="font-bold text-green-700">${(pipeline.revenue / 1000).toFixed(0)}K</p>
+                          </div>
+                        </div>
+                      </div>
 
-                {/* Landing Page Metrics */}
-                <div className="pt-3 border-t border-gray-300">
-                  <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
-                    <Globe className="w-3 h-3" /> Landing Page
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div>
-                      <p className="text-gray-500">Visitas</p>
-                      <p className="font-semibold text-gray-900">{carrera.landing.visitas.toLocaleString()}</p>
+                      {/* Channel Breakdown */}
+                      <div className="pt-3 border-t border-gray-300">
+                        <button
+                          onClick={() => setExpandedPipeline(isExpanded ? null : pipeline.name)}
+                          className="flex items-center justify-between w-full text-xs font-semibold text-gray-700 mb-2"
+                        >
+                          <span className="flex items-center gap-1">
+                            <Globe className="w-3 h-3" /> Desglose por Canal
+                          </span>
+                          {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                        </button>
+                        {isExpanded && (
+                          <div className="space-y-2 mt-2">
+                            {pipeline.topChannels.map(ch => (
+                              <div key={ch.source} className="flex items-center justify-between">
+                                <span className={`px-2 py-0.5 rounded text-xs font-medium ${ch.color}`}>
+                                  {ch.name}
+                                </span>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xs text-gray-700 font-semibold">{ch.count.toLocaleString()}</span>
+                                  <span className="text-xs text-gray-500">({ch.pct}%)</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-gray-500">Conv. Rate</p>
-                      <p className="font-semibold text-ucsp-blue">{carrera.landing.conversion_rate}%</p>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
+            </div>
+
+            {!showAllPipelines && pipelinePerformance.length > 5 && (
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-500">
+                  Mostrando top 5 pipelines. Haz clic en "Mostrar todos" para ver los {pipelinePerformance.length} pipelines.
+                </p>
               </div>
-            );
-          })}
-        </div>
+            )}
 
-        {!showAllCareers && (
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-500">
-              Mostrando top 5 carreras. Haz clic en "Mostrar todas" para ver las 13 carreras monitoreadas.
-            </p>
+            {/* CPL Note */}
+            <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+              <p className="text-xs text-amber-800 flex items-center gap-1">
+                <Lightbulb className="w-4 h-4 flex-shrink-0" />
+                <strong>Nota:</strong> Los CPL son estimados, calculados distribuyendo proporcionalmente el gasto total de campañas (${(hubspot?.campaigns?.total_spend || 0).toLocaleString()}) entre pipelines según volumen de leads.
+                Para CPL exactos por canal se requiere Google Ads API y Meta Marketing API.
+              </p>
+            </div>
+          </>
+        ) : (
+          /* Fallback: Mock data loading message */
+          <div className="text-center py-8 text-gray-500">
+            <Database className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+            <p>Conectando con HubSpot para datos de pipeline...</p>
           </div>
         )}
       </div>

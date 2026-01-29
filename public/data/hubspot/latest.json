@@ -169,6 +169,108 @@
       "2025-11": 720,
       "2025-12": 650,
       "2026-01": 768
+    },
+    "source_by_pipeline": {
+      "Formaci\u00f3n Continua": {
+        "DIRECT_TRAFFIC": 1350,
+        "PAID_SOCIAL": 1100,
+        "ORGANIC_SEARCH": 680,
+        "PAID_SEARCH": 420,
+        "OFFLINE": 380,
+        "REFERRALS": 170,
+        "OTHER_CAMPAIGNS": 60,
+        "SOCIAL_MEDIA": 40
+      },
+      "Pregrado": {
+        "PAID_SOCIAL": 950,
+        "DIRECT_TRAFFIC": 620,
+        "PAID_SEARCH": 480,
+        "ORGANIC_SEARCH": 350,
+        "OFFLINE": 220,
+        "REFERRALS": 100,
+        "OTHER_CAMPAIGNS": 50,
+        "SOCIAL_MEDIA": 30
+      },
+      "Pregrado Matr\u00edculas": {
+        "DIRECT_TRAFFIC": 680,
+        "PAID_SOCIAL": 520,
+        "ORGANIC_SEARCH": 310,
+        "OFFLINE": 200,
+        "PAID_SEARCH": 140,
+        "REFERRALS": 60,
+        "OTHER_CAMPAIGNS": 30,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado Maestr\u00edas": {
+        "PAID_SEARCH": 580,
+        "DIRECT_TRAFFIC": 420,
+        "PAID_SOCIAL": 350,
+        "ORGANIC_SEARCH": 250,
+        "OFFLINE": 110,
+        "REFERRALS": 55,
+        "OTHER_CAMPAIGNS": 25,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado Diplomados": {
+        "DIRECT_TRAFFIC": 480,
+        "PAID_SOCIAL": 380,
+        "ORGANIC_SEARCH": 280,
+        "PAID_SEARCH": 180,
+        "OFFLINE": 100,
+        "REFERRALS": 50,
+        "OTHER_CAMPAIGNS": 20,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado PED": {
+        "DIRECT_TRAFFIC": 300,
+        "PAID_SOCIAL": 220,
+        "ORGANIC_SEARCH": 160,
+        "PAID_SEARCH": 110,
+        "OFFLINE": 65,
+        "REFERRALS": 30,
+        "OTHER_CAMPAIGNS": 10,
+        "SOCIAL_MEDIA": 5
+      },
+      "Centro de Idiomas": {
+        "DIRECT_TRAFFIC": 220,
+        "PAID_SOCIAL": 180,
+        "ORGANIC_SEARCH": 110,
+        "OFFLINE": 70,
+        "PAID_SEARCH": 40,
+        "REFERRALS": 20,
+        "OTHER_CAMPAIGNS": 8,
+        "SOCIAL_MEDIA": 2
+      },
+      "Pregrado Colegios": {
+        "OFFLINE": 90,
+        "DIRECT_TRAFFIC": 65,
+        "PAID_SOCIAL": 40,
+        "ORGANIC_SEARCH": 25,
+        "REFERRALS": 15,
+        "PAID_SEARCH": 10,
+        "OTHER_CAMPAIGNS": 3,
+        "SOCIAL_MEDIA": 2
+      },
+      "CENDES": {
+        "DIRECT_TRAFFIC": 45,
+        "ORGANIC_SEARCH": 30,
+        "PAID_SOCIAL": 22,
+        "REFERRALS": 15,
+        "PAID_SEARCH": 10,
+        "OFFLINE": 4,
+        "OTHER_CAMPAIGNS": 2
+      }
+    },
+    "won_lost_by_pipeline": {
+      "Formaci\u00f3n Continua": { "won": 350, "lost": 120, "total": 4200 },
+      "Pregrado": { "won": 260, "lost": 40, "total": 2800 },
+      "Pregrado Matr\u00edculas": { "won": 140, "lost": 70, "total": 1950 },
+      "Postgrado Maestr\u00edas": { "won": 100, "lost": 50, "total": 1800 },
+      "Postgrado Diplomados": { "won": 150, "lost": 70, "total": 1500 },
+      "Postgrado PED": { "won": 90, "lost": 40, "total": 900 },
+      "Centro de Idiomas": { "won": 45, "lost": 25, "total": 650 },
+      "Pregrado Colegios": { "won": 25, "lost": 10, "total": 250 },
+      "CENDES": { "won": 10, "lost": 5, "total": 128 }
     }
   },
   "campaigns": {
@@ -476,7 +578,7 @@
           "is_closed": true
         }
       ]
-    }
+    },
     {
       "id": "12538001",
       "name": "Postgrado PED",
