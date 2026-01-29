@@ -212,6 +212,74 @@ async function fetchRecentDeals(days = 90) {
 }
 
 /**
+ * Fetch deal-to-contact associations and contact sources in batches.
+ * Returns a Map: dealId → source (hs_analytics_source)
+ */
+async function fetchDealContactSources(dealIds) {
+  console.log(`\n   Obteniendo fuentes de contacto para ${dealIds.length} deals...`);
+  const dealSourceMap = new Map();
+  const batchSize = 100;
+
+  for (let i = 0; i < dealIds.length; i += batchSize) {
+    const batch = dealIds.slice(i, i + batchSize);
+    try {
+      // Get deal→contact associations
+      const body = {
+        inputs: batch.map(id => ({ id }))
+      };
+      const assocData = await hubspotFetch('/crm/v3/associations/deals/contacts/batch/read', {
+        method: 'POST',
+        body
+      });
+
+      // Collect unique contact IDs
+      const contactIds = new Set();
+      const dealContactMap = new Map();
+      (assocData.results || []).forEach(r => {
+        const dealId = r.from?.id;
+        const contactId = r.to?.[0]?.id;
+        if (dealId && contactId) {
+          dealContactMap.set(dealId, contactId);
+          contactIds.add(contactId);
+        }
+      });
+
+      // Fetch contact sources in batch
+      if (contactIds.size > 0) {
+        const contactBatchBody = {
+          inputs: [...contactIds].map(id => ({ id })),
+          properties: ['hs_analytics_source']
+        };
+        const contactData = await hubspotFetch('/crm/v3/objects/contacts/batch/read', {
+          method: 'POST',
+          body: contactBatchBody
+        });
+
+        const contactSourceMap = new Map();
+        (contactData.results || []).forEach(c => {
+          contactSourceMap.set(c.id, c.properties?.hs_analytics_source || 'unknown');
+        });
+
+        // Map deal → source
+        dealContactMap.forEach((contactId, dealId) => {
+          dealSourceMap.set(dealId, contactSourceMap.get(contactId) || 'unknown');
+        });
+      }
+    } catch (e) {
+      console.log(`   ⚠️ Batch ${i}-${i + batchSize}: ${e.message}`);
+    }
+
+    // Rate limit: small delay between batches
+    if (i + batchSize < dealIds.length) {
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+
+  console.log(`   Fuentes obtenidas: ${dealSourceMap.size} de ${dealIds.length} deals`);
+  return dealSourceMap;
+}
+
+/**
  * Fetch deal pipelines with stages
  */
 async function fetchPipelines() {
@@ -303,7 +371,7 @@ function analyzeContacts(contacts) {
   };
 }
 
-function analyzeDeals(deals, pipelines) {
+function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
   console.log('\n   Analizando deals...');
 
   // Build stage label lookup
@@ -365,6 +433,44 @@ function analyzeDeals(deals, pipelines) {
     }
   });
 
+  // Source attribution per pipeline (channel breakdown)
+  const sourceByPipeline = {};
+  deals.forEach(d => {
+    const props = d.properties || {};
+    const pipelineId = props.pipeline || 'default';
+    const pipelineName = pipelineLabels[pipelineId] || pipelineId;
+    const source = dealSourceMap.get(d.id) || 'unknown';
+
+    if (!sourceByPipeline[pipelineName]) sourceByPipeline[pipelineName] = {};
+    sourceByPipeline[pipelineName][source] = (sourceByPipeline[pipelineName][source] || 0) + 1;
+  });
+
+  // Won/lost per pipeline
+  const wonLostByPipeline = {};
+  deals.forEach(d => {
+    const props = d.properties || {};
+    const pipelineId = props.pipeline || 'default';
+    const stageId = props.dealstage || 'unknown';
+    const pipelineName = pipelineLabels[pipelineId] || pipelineId;
+
+    if (!wonLostByPipeline[pipelineName]) {
+      wonLostByPipeline[pipelineName] = { won: 0, lost: 0, total: 0 };
+    }
+    wonLostByPipeline[pipelineName].total++;
+
+    const stage = pipelines
+      .flatMap(p => p.stages || [])
+      .find(s => s.id === stageId);
+
+    if (stage?.metadata?.isClosed === 'true') {
+      if (parseFloat(stage.metadata.probability || '0') > 0) {
+        wonLostByPipeline[pipelineName].won++;
+      } else {
+        wonLostByPipeline[pipelineName].lost++;
+      }
+    }
+  });
+
   const closedDeals = wonDeals + lostDeals;
   const winRate = closedDeals > 0
     ? parseFloat((wonDeals / closedDeals * 100).toFixed(1))
@@ -374,6 +480,8 @@ function analyzeDeals(deals, pipelines) {
     total: deals.length,
     pipeline_distribution: pipelineDistribution,
     stage_distribution: stageDistribution,
+    won_lost_by_pipeline: wonLostByPipeline,
+    source_by_pipeline: sourceByPipeline,
     revenue: {
       total: totalAmount,
       by_pipeline: revenueByPipeline,
@@ -485,10 +593,14 @@ async function fetchHubSpotData(clientConfig) {
       fetchCampaigns()
     ]);
 
+    // Fetch deal→contact source attributions
+    const dealIds = deals.map(d => d.id);
+    const dealSourceMap = await fetchDealContactSources(dealIds);
+
     // Analyze
     console.log('\nAnalizando datos...');
     const contactAnalysis = analyzeContacts(contacts);
-    const dealAnalysis = analyzeDeals(deals, pipelines);
+    const dealAnalysis = analyzeDeals(deals, pipelines, dealSourceMap);
     const campaignAnalysis = analyzeCampaigns(campaigns);
     const pipelineAnalysis = analyzePipelines(pipelines);
 

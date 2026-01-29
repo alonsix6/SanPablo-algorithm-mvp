@@ -85,6 +85,55 @@
         "En seguimiento de Cobranza": 140,
         "Pagado/Cierre ganado": 100,
         "Cierre perdido": 50
+      },
+      "Pregrado Matr\u00edculas": {
+        "Ingresante": 520,
+        "Contactado": 430,
+        "Interesado": 350,
+        "Pago sin matr\u00edcula": 260,
+        "Validaci\u00f3n de documentos": 180,
+        "Matr\u00edcula documentaria": 140,
+        "Cierre perdido": 70
+      },
+      "Postgrado Diplomados": {
+        "Nuevo Lead": 450,
+        "Interesado": 370,
+        "Ficha requisitos Enviada": 280,
+        "En seguimiento de cobranza": 180,
+        "Cierre ganado": 150,
+        "Cierre perdido": 70
+      },
+      "Postgrado PED": {
+        "Nuevo Lead": 280,
+        "Interesado": 220,
+        "Ficha Enviada": 160,
+        "En seguimiento de cobranza": 110,
+        "Cierre ganado": 90,
+        "Cierre perdido": 40
+      },
+      "Centro de Idiomas": {
+        "Nuevo Lead": 200,
+        "Interesado": 160,
+        "Inscripci\u00f3n Enviada": 120,
+        "Pagado": 100,
+        "Cierre ganado": 45,
+        "Cierre perdido": 25
+      },
+      "Pregrado Colegios": {
+        "Nuevo Lead": 80,
+        "Contactado": 60,
+        "Interesado": 45,
+        "En proceso": 30,
+        "Cierre ganado": 25,
+        "Cierre perdido": 10
+      },
+      "CENDES": {
+        "Nuevo Lead": 42,
+        "Interesado": 32,
+        "En evaluaci\u00f3n": 24,
+        "En seguimiento": 15,
+        "Cierre ganado": 10,
+        "Cierre perdido": 5
       }
     },
     "revenue": {
@@ -120,6 +169,108 @@
       "2025-11": 720,
       "2025-12": 650,
       "2026-01": 768
+    },
+    "source_by_pipeline": {
+      "Formaci\u00f3n Continua": {
+        "DIRECT_TRAFFIC": 1350,
+        "PAID_SOCIAL": 1100,
+        "ORGANIC_SEARCH": 680,
+        "PAID_SEARCH": 420,
+        "OFFLINE": 380,
+        "REFERRALS": 170,
+        "OTHER_CAMPAIGNS": 60,
+        "SOCIAL_MEDIA": 40
+      },
+      "Pregrado": {
+        "PAID_SOCIAL": 950,
+        "DIRECT_TRAFFIC": 620,
+        "PAID_SEARCH": 480,
+        "ORGANIC_SEARCH": 350,
+        "OFFLINE": 220,
+        "REFERRALS": 100,
+        "OTHER_CAMPAIGNS": 50,
+        "SOCIAL_MEDIA": 30
+      },
+      "Pregrado Matr\u00edculas": {
+        "DIRECT_TRAFFIC": 680,
+        "PAID_SOCIAL": 520,
+        "ORGANIC_SEARCH": 310,
+        "OFFLINE": 200,
+        "PAID_SEARCH": 140,
+        "REFERRALS": 60,
+        "OTHER_CAMPAIGNS": 30,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado Maestr\u00edas": {
+        "PAID_SEARCH": 580,
+        "DIRECT_TRAFFIC": 420,
+        "PAID_SOCIAL": 350,
+        "ORGANIC_SEARCH": 250,
+        "OFFLINE": 110,
+        "REFERRALS": 55,
+        "OTHER_CAMPAIGNS": 25,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado Diplomados": {
+        "DIRECT_TRAFFIC": 480,
+        "PAID_SOCIAL": 380,
+        "ORGANIC_SEARCH": 280,
+        "PAID_SEARCH": 180,
+        "OFFLINE": 100,
+        "REFERRALS": 50,
+        "OTHER_CAMPAIGNS": 20,
+        "SOCIAL_MEDIA": 10
+      },
+      "Postgrado PED": {
+        "DIRECT_TRAFFIC": 300,
+        "PAID_SOCIAL": 220,
+        "ORGANIC_SEARCH": 160,
+        "PAID_SEARCH": 110,
+        "OFFLINE": 65,
+        "REFERRALS": 30,
+        "OTHER_CAMPAIGNS": 10,
+        "SOCIAL_MEDIA": 5
+      },
+      "Centro de Idiomas": {
+        "DIRECT_TRAFFIC": 220,
+        "PAID_SOCIAL": 180,
+        "ORGANIC_SEARCH": 110,
+        "OFFLINE": 70,
+        "PAID_SEARCH": 40,
+        "REFERRALS": 20,
+        "OTHER_CAMPAIGNS": 8,
+        "SOCIAL_MEDIA": 2
+      },
+      "Pregrado Colegios": {
+        "OFFLINE": 90,
+        "DIRECT_TRAFFIC": 65,
+        "PAID_SOCIAL": 40,
+        "ORGANIC_SEARCH": 25,
+        "REFERRALS": 15,
+        "PAID_SEARCH": 10,
+        "OTHER_CAMPAIGNS": 3,
+        "SOCIAL_MEDIA": 2
+      },
+      "CENDES": {
+        "DIRECT_TRAFFIC": 45,
+        "ORGANIC_SEARCH": 30,
+        "PAID_SOCIAL": 22,
+        "REFERRALS": 15,
+        "PAID_SEARCH": 10,
+        "OFFLINE": 4,
+        "OTHER_CAMPAIGNS": 2
+      }
+    },
+    "won_lost_by_pipeline": {
+      "Formaci\u00f3n Continua": { "won": 350, "lost": 120, "total": 4200 },
+      "Pregrado": { "won": 260, "lost": 40, "total": 2800 },
+      "Pregrado Matr\u00edculas": { "won": 140, "lost": 70, "total": 1950 },
+      "Postgrado Maestr\u00edas": { "won": 100, "lost": 50, "total": 1800 },
+      "Postgrado Diplomados": { "won": 150, "lost": 70, "total": 1500 },
+      "Postgrado PED": { "won": 90, "lost": 40, "total": 900 },
+      "Centro de Idiomas": { "won": 45, "lost": 25, "total": 650 },
+      "Pregrado Colegios": { "won": 25, "lost": 10, "total": 250 },
+      "CENDES": { "won": 10, "lost": 5, "total": 128 }
     }
   },
   "campaigns": {
@@ -426,6 +577,54 @@
           "probability": 0.0,
           "is_closed": true
         }
+      ]
+    },
+    {
+      "id": "12538001",
+      "name": "Postgrado PED",
+      "stages": [
+        { "id": "12538002", "name": "Nuevo Lead", "probability": 0.01, "is_closed": false },
+        { "id": "12538003", "name": "Interesado", "probability": 0.2, "is_closed": false },
+        { "id": "12538004", "name": "Ficha Enviada", "probability": 0.4, "is_closed": false },
+        { "id": "12538005", "name": "En seguimiento de cobranza", "probability": 0.8, "is_closed": false },
+        { "id": "12538006", "name": "Cierre ganado", "probability": 1.0, "is_closed": true },
+        { "id": "12538007", "name": "Cierre perdido", "probability": 0.0, "is_closed": true }
+      ]
+    },
+    {
+      "id": "12539001",
+      "name": "Centro de Idiomas",
+      "stages": [
+        { "id": "12539002", "name": "Nuevo Lead", "probability": 0.01, "is_closed": false },
+        { "id": "12539003", "name": "Interesado", "probability": 0.2, "is_closed": false },
+        { "id": "12539004", "name": "Inscripci\u00f3n Enviada", "probability": 0.4, "is_closed": false },
+        { "id": "12539005", "name": "Pagado", "probability": 0.9, "is_closed": false },
+        { "id": "12539006", "name": "Cierre ganado", "probability": 1.0, "is_closed": true },
+        { "id": "12539007", "name": "Cierre perdido", "probability": 0.0, "is_closed": true }
+      ]
+    },
+    {
+      "id": "12540001",
+      "name": "Pregrado Colegios",
+      "stages": [
+        { "id": "12540002", "name": "Nuevo Lead", "probability": 0.01, "is_closed": false },
+        { "id": "12540003", "name": "Contactado", "probability": 0.2, "is_closed": false },
+        { "id": "12540004", "name": "Interesado", "probability": 0.4, "is_closed": false },
+        { "id": "12540005", "name": "En proceso", "probability": 0.7, "is_closed": false },
+        { "id": "12540006", "name": "Cierre ganado", "probability": 1.0, "is_closed": true },
+        { "id": "12540007", "name": "Cierre perdido", "probability": 0.0, "is_closed": true }
+      ]
+    },
+    {
+      "id": "12541001",
+      "name": "CENDES",
+      "stages": [
+        { "id": "12541002", "name": "Nuevo Lead", "probability": 0.01, "is_closed": false },
+        { "id": "12541003", "name": "Interesado", "probability": 0.2, "is_closed": false },
+        { "id": "12541004", "name": "En evaluaci\u00f3n", "probability": 0.5, "is_closed": false },
+        { "id": "12541005", "name": "En seguimiento", "probability": 0.8, "is_closed": false },
+        { "id": "12541006", "name": "Cierre ganado", "probability": 1.0, "is_closed": true },
+        { "id": "12541007", "name": "Cierre perdido", "probability": 0.0, "is_closed": true }
       ]
     }
   ],

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database, XCircle } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
@@ -52,32 +52,33 @@ function buildChannelData(hubspot) {
 
 /**
  * Build funnel from real HubSpot pipeline stage_distribution data.
- * Uses the selected pipeline (defaults to Pregrado).
+ * Excludes "Cierre perdido" from the funnel flow and returns it separately.
  */
 function buildFunnelSteps(hubspot, pipelineName) {
   if (!hubspot?.deals?.stage_distribution?.[pipelineName]) return null;
 
   const stages = hubspot.deals.stage_distribution[pipelineName];
-  const entries = Object.entries(stages);
 
   // Find matching pipeline definition for stage ordering
   const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
 
   let orderedStages;
   if (pipelineDef?.stages) {
-    // Use pipeline definition order (excludes stages with 0 deals)
     orderedStages = pipelineDef.stages
       .filter(s => stages[s.name] != null)
       .map(s => ({ name: s.name, value: stages[s.name] || 0 }));
   } else {
-    // Fallback: sort by count descending
-    orderedStages = entries
+    orderedStages = Object.entries(stages)
       .sort((a, b) => b[1] - a[1])
       .map(([name, value]) => ({ name, value }));
   }
 
-  return orderedStages.map((stage, idx) => {
-    const nextStage = orderedStages[idx + 1];
+  // Separate "Cierre perdido" from the funnel flow
+  const lostStage = orderedStages.find(s => s.name.toLowerCase().includes('perdido'));
+  const activeStages = orderedStages.filter(s => !s.name.toLowerCase().includes('perdido'));
+
+  const steps = activeStages.map((stage, idx) => {
+    const nextStage = activeStages[idx + 1];
     const conversionRate = nextStage && stage.value > 0
       ? parseFloat((nextStage.value / stage.value * 100).toFixed(1))
       : null;
@@ -91,6 +92,11 @@ function buildFunnelSteps(hubspot, pipelineName) {
       color: FUNNEL_COLORS[idx] || 'from-gray-500 to-gray-600',
     };
   });
+
+  return {
+    steps,
+    lost: lostStage ? { name: lostStage.name, value: lostStage.value } : null,
+  };
 }
 
 /**
@@ -100,10 +106,10 @@ function buildCRMKpis(hubspot) {
   if (!hubspot) return null;
   return {
     totalContacts: hubspot.contacts?.total || 0,
-    totalDeals: hubspot.deals?.total || 0,
+    totalLeads: hubspot.deals?.total || 0,
     winRate: hubspot.deals?.win_rate || 0,
-    wonDeals: hubspot.deals?.won_deals || 0,
-    lostDeals: hubspot.deals?.lost_deals || 0,
+    wonLeads: hubspot.deals?.won_deals || 0,
+    lostLeads: hubspot.deals?.lost_deals || 0,
     revenue: hubspot.deals?.revenue?.total || 0,
     avgDealValue: hubspot.deals?.revenue?.avg_deal_value || 0,
     activeCampaigns: hubspot.campaigns?.active_count || 0,
@@ -114,6 +120,63 @@ function buildCRMKpis(hubspot) {
     conversionRate: hubspot.contacts?.conversion_rate || 0,
     timestamp: hubspot.timestamp,
   };
+}
+
+/**
+ * Build pipeline summary showing ganados/perdidos for ALL pipelines.
+ * Identifies "won" stages by: is_closed=true & probability>0, or name containing "ganado"/"matriculado"/"pagado".
+ * Identifies "lost" stages by: name containing "perdido".
+ */
+function buildPipelineSummary(hubspot) {
+  if (!hubspot?.deals?.pipeline_distribution || !hubspot?.deals?.stage_distribution) return null;
+
+  const pipelines = hubspot.deals.pipeline_distribution;
+  const stageDistributions = hubspot.deals.stage_distribution;
+  const pipelineDefs = hubspot.pipelines || [];
+
+  return Object.entries(pipelines)
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, total]) => {
+      const stages = stageDistributions[name] || {};
+      const pipelineDef = pipelineDefs.find(p => p.name === name);
+
+      let ganados = 0;
+      let perdidos = 0;
+
+      if (pipelineDef?.stages) {
+        pipelineDef.stages.forEach(s => {
+          const count = stages[s.name] || 0;
+          const nameLower = s.name.toLowerCase();
+          if (nameLower.includes('perdido')) {
+            perdidos += count;
+          } else if (
+            (s.is_closed && s.probability > 0) ||
+            nameLower.includes('ganado') ||
+            nameLower.includes('matriculado')
+          ) {
+            ganados += count;
+          }
+        });
+      } else {
+        // No pipeline definition, infer from stage names
+        Object.entries(stages).forEach(([stageName, count]) => {
+          const nameLower = stageName.toLowerCase();
+          if (nameLower.includes('perdido')) {
+            perdidos += count;
+          } else if (
+            nameLower.includes('ganado') ||
+            nameLower.includes('matriculado') ||
+            nameLower.includes('pagado')
+          ) {
+            ganados += count;
+          }
+        });
+      }
+
+      const conversionRate = total > 0 ? parseFloat((ganados / total * 100).toFixed(1)) : 0;
+
+      return { name, total, ganados, perdidos, conversionRate };
+    });
 }
 
 export default function OptimizationLayer() {
@@ -129,8 +192,14 @@ export default function OptimizationLayer() {
     { name: 'Display', value: 10, leads: 83, color: '#C5A572' },
   ];
 
-  const funnelSteps = buildFunnelSteps(hubspot, selectedPipeline);
+  // Funnel now returns {steps, lost} instead of an array
+  const funnelResult = buildFunnelSteps(hubspot, selectedPipeline);
+  const funnelSteps = funnelResult?.steps || null;
+  const funnelLost = funnelResult?.lost || null;
+
   const crmKpis = buildCRMKpis(hubspot);
+  const pipelineSummary = buildPipelineSummary(hubspot);
+
   const availablePipelines = hubspot?.deals?.stage_distribution
     ? Object.keys(hubspot.deals.stage_distribution)
     : [];
@@ -151,13 +220,13 @@ export default function OptimizationLayer() {
     { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Monthly deals trend from HubSpot
-  const monthlyDealsData = hubspot?.deals?.monthly_deals
+  // Monthly leads trend from HubSpot
+  const monthlyLeadsData = hubspot?.deals?.monthly_deals
     ? Object.entries(hubspot.deals.monthly_deals)
         .slice(-6)
         .map(([month, count]) => ({
           date: month.substring(5),
-          deals: count,
+          leads: count,
         }))
     : null;
 
@@ -190,7 +259,7 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* KPIs Principales - Mixto: HubSpot real + mock donde falta */}
+      {/* KPIs Principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Contactos CRM (REAL) */}
         <div className="bg-gradient-to-br from-ucsp-burgundy to-ucsp-darkBurgundy text-white rounded-2xl p-6 shadow-lg">
@@ -212,9 +281,7 @@ export default function OptimizationLayer() {
           </p>
           <div className="flex items-baseline gap-2">
             {crmKpis ? (
-              <>
-                <span className="text-sm text-white/70">Conversión: {crmKpis.conversionRate}%</span>
-              </>
+              <span className="text-sm text-white/70">Conversión: {crmKpis.conversionRate}%</span>
             ) : (
               <>
                 <span className="text-sm text-white/70">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()} postulaciones</span>
@@ -232,7 +299,7 @@ export default function OptimizationLayer() {
           )}
         </div>
 
-        {/* Deals CRM (REAL) */}
+        {/* Leads en Proceso (REAL) */}
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Target className="w-8 h-8" />
@@ -245,14 +312,14 @@ export default function OptimizationLayer() {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Deals CRM (90d)' : 'Alcance Único'}
+            {crmKpis ? 'Leads en Proceso (90d)' : 'Alcance Único'}
           </h3>
           <p className="text-2xl font-bold mb-2">
-            {crmKpis ? crmKpis.totalDeals.toLocaleString() : `${(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M`}
+            {crmKpis ? crmKpis.totalLeads.toLocaleString() : `${(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M`}
           </p>
           <div className="flex items-baseline gap-2">
             {crmKpis ? (
-              <span className="text-sm text-white/70">Win Rate: {crmKpis.winRate}%</span>
+              <span className="text-sm text-white/70">Tasa de cierre: {crmKpis.winRate}%</span>
             ) : (
               <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
             )}
@@ -262,7 +329,7 @@ export default function OptimizationLayer() {
               {crmKpis ? (
                 <>
                   <span className="text-white/70">Ganados / Perdidos</span>
-                  <span className="font-bold">{crmKpis.wonDeals.toLocaleString()} / {crmKpis.lostDeals.toLocaleString()}</span>
+                  <span className="font-bold">{crmKpis.wonLeads.toLocaleString()} / {crmKpis.lostLeads.toLocaleString()}</span>
                 </>
               ) : (
                 <>
@@ -352,27 +419,27 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Deals Trend (REAL from HubSpot) + Performance Trend (mock) */}
+      {/* Leads Trend (REAL from HubSpot) + Performance Trend (mock) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Monthly Deals Trend - REAL */}
-        {monthlyDealsData && (
+        {/* Monthly Leads Trend - REAL */}
+        {monthlyLeadsData && (
           <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-base font-bold text-gray-900">Deals Mensuales</h3>
+                  <h3 className="text-base font-bold text-gray-900">Leads Mensuales</h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
                 </div>
                 <p className="text-sm text-gray-600">Fuente: HubSpot CRM</p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={monthlyDealsData}>
+              <BarChart data={monthlyLeadsData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
                 <YAxis stroke="#6b7280" style={{ fontSize: '12px' }} />
                 <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} />
-                <Bar dataKey="deals" fill="#003B7A" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="leads" fill="#003B7A" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -462,7 +529,7 @@ export default function OptimizationLayer() {
             <h3 className="text-base font-bold text-gray-900">Funnel de Conversión</h3>
             {funnelSteps && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
           </div>
-          {/* Pipeline Selector */}
+          {/* Programa Selector */}
           {availablePipelines.length > 0 && (
             <select
               value={selectedPipeline}
@@ -506,6 +573,24 @@ export default function OptimizationLayer() {
               ))}
             </div>
 
+            {/* Cierre Perdido - Separate Indicator */}
+            {funnelLost && (
+              <div className="mt-4 flex items-center gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <XCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                <div className="flex-1">
+                  <span className="text-sm font-bold text-red-700">{funnelLost.value.toLocaleString()} leads perdidos</span>
+                  <span className="text-sm text-red-600 ml-2">
+                    ({funnelSteps.length > 0 && funnelSteps[0].value > 0
+                      ? (funnelLost.value / (funnelSteps[0].value + funnelLost.value) * 100).toFixed(1)
+                      : 0}% del total del programa)
+                  </span>
+                </div>
+                <span className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-bold flex-shrink-0">
+                  {funnelLost.name}
+                </span>
+              </div>
+            )}
+
             {/* Summary Stats */}
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="grid grid-cols-3 gap-4">
@@ -519,29 +604,107 @@ export default function OptimizationLayer() {
                   <p className="text-xs text-gray-500">{funnelSteps[0]?.stage} → {funnelSteps[funnelSteps.length - 1]?.stage}</p>
                 </div>
                 <div className="bg-amber-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-600 mb-1">Total en Pipeline</p>
+                  <p className="text-xs text-gray-600 mb-1">Total en Programa</p>
                   <p className="text-xl font-bold text-orange-600">
                     {hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A'}
                   </p>
                   <p className="text-xs text-gray-500">{selectedPipeline}</p>
                 </div>
                 <div className="bg-green-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-600 mb-1">Win Rate General</p>
+                  <p className="text-xs text-gray-600 mb-1">Tasa de Cierre General</p>
                   <p className="text-xl font-bold text-green-600">{hubspot?.deals?.win_rate || 0}%</p>
-                  <p className="text-xs text-gray-500">Todos los pipelines</p>
+                  <p className="text-xs text-gray-500">Todos los programas</p>
                 </div>
               </div>
             </div>
           </>
         ) : (
-          /* Fallback mock funnel */
+          /* Fallback */
           <div className="text-center py-8 text-gray-500">
             <p>Cargando datos de HubSpot...</p>
           </div>
         )}
       </div>
 
-      {/* HubSpot Monitoring - REAL data */}
+      {/* Resumen por Programa - Ganados / Perdidos - ALL 9 programs */}
+      {pipelineSummary && (
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="flex items-center gap-2 mb-6">
+            <GraduationCap className="w-6 h-6 text-ucsp-burgundy" />
+            <h3 className="text-base font-bold text-gray-900">Ganados y Perdidos por Programa</h3>
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
+          </div>
+          <p className="text-sm text-gray-500 mb-4">Matriculados, inscritos o cierres ganados vs. leads perdidos por cada programa.</p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b-2 border-gray-200">
+                  <th className="text-left py-3 px-3 font-bold text-gray-700">Programa</th>
+                  <th className="text-right py-3 px-3 font-bold text-gray-700">Total Leads</th>
+                  <th className="text-right py-3 px-3 font-bold text-green-700">Ganados</th>
+                  <th className="text-right py-3 px-3 font-bold text-red-700">Perdidos</th>
+                  <th className="text-right py-3 px-3 font-bold text-gray-700">Conversión</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pipelineSummary.map((row, idx) => (
+                  <tr key={row.name} className={`border-b border-gray-100 ${idx % 2 === 0 ? 'bg-gray-50/50' : ''} hover:bg-gray-100 transition-colors`}>
+                    <td className="py-3 px-3 font-medium text-gray-900">{row.name}</td>
+                    <td className="py-3 px-3 text-right text-gray-700 font-semibold">{row.total.toLocaleString()}</td>
+                    <td className="py-3 px-3 text-right">
+                      <span className="inline-flex items-center gap-1 text-green-700 font-bold">
+                        <CheckCircle className="w-3.5 h-3.5" />
+                        {row.ganados.toLocaleString()}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 text-right">
+                      <span className="inline-flex items-center gap-1 text-red-600 font-bold">
+                        <XCircle className="w-3.5 h-3.5" />
+                        {row.perdidos.toLocaleString()}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 text-right">
+                      <span className={`px-2 py-1 rounded text-xs font-bold ${
+                        row.conversionRate >= 10 ? 'bg-green-100 text-green-800' :
+                        row.conversionRate >= 5 ? 'bg-amber-100 text-amber-800' :
+                        'bg-red-100 text-red-800'
+                      }`}>
+                        {row.conversionRate}%
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className="border-t-2 border-gray-300 bg-gray-50 font-bold">
+                  <td className="py-3 px-3 text-gray-900">TOTAL</td>
+                  <td className="py-3 px-3 text-right text-gray-900">
+                    {pipelineSummary.reduce((s, r) => s + r.total, 0).toLocaleString()}
+                  </td>
+                  <td className="py-3 px-3 text-right text-green-700">
+                    {pipelineSummary.reduce((s, r) => s + r.ganados, 0).toLocaleString()}
+                  </td>
+                  <td className="py-3 px-3 text-right text-red-600">
+                    {pipelineSummary.reduce((s, r) => s + r.perdidos, 0).toLocaleString()}
+                  </td>
+                  <td className="py-3 px-3 text-right">
+                    <span className="px-2 py-1 rounded text-xs font-bold bg-ucsp-blue/10 text-ucsp-blue">
+                      {(() => {
+                        const totalLeads = pipelineSummary.reduce((s, r) => s + r.total, 0);
+                        const totalGanados = pipelineSummary.reduce((s, r) => s + r.ganados, 0);
+                        return totalLeads > 0 ? (totalGanados / totalLeads * 100).toFixed(1) : 0;
+                      })()}%
+                    </span>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* HubSpot CRM - Resumen */}
       <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
@@ -567,11 +730,11 @@ export default function OptimizationLayer() {
                 <p className="text-xl font-bold">{crmKpis.totalContacts.toLocaleString()}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-                <p className="text-xs text-white/70">Deals</p>
-                <p className="text-xl font-bold">{crmKpis.totalDeals.toLocaleString()}</p>
+                <p className="text-xs text-white/70">Leads en Proceso</p>
+                <p className="text-xl font-bold">{crmKpis.totalLeads.toLocaleString()}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-                <p className="text-xs text-white/70">Win Rate</p>
+                <p className="text-xs text-white/70">Tasa de Cierre</p>
                 <p className="text-xl font-bold">{crmKpis.winRate}%</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
@@ -580,14 +743,13 @@ export default function OptimizationLayer() {
               </div>
             </div>
 
-            {/* Pipeline Distribution */}
+            {/* Distribución por Programa */}
             {hubspot?.deals?.pipeline_distribution && (
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
-                <h4 className="font-bold text-sm mb-3">Deals por Pipeline:</h4>
+                <h4 className="font-bold text-sm mb-3">Leads por Programa:</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {Object.entries(hubspot.deals.pipeline_distribution)
                     .sort((a, b) => b[1] - a[1])
-                    .slice(0, 6)
                     .map(([name, count]) => (
                       <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
                         <span className="text-white/80 truncate mr-2">{name}</span>
