@@ -331,6 +331,7 @@ function analyzeContacts(contacts) {
   const sourceDistribution = {};
   const conversionEvents = { total: 0, withEvents: 0 };
   const monthlyCreation = {};
+  const dailyCreation = {};
 
   contacts.forEach(c => {
     const props = c.properties || {};
@@ -352,6 +353,9 @@ function analyzeContacts(contacts) {
     if (props.createdate) {
       const month = props.createdate.substring(0, 7); // YYYY-MM
       monthlyCreation[month] = (monthlyCreation[month] || 0) + 1;
+
+      const day = props.createdate.substring(0, 10); // YYYY-MM-DD
+      dailyCreation[day] = (dailyCreation[day] || 0) + 1;
     }
   });
 
@@ -367,7 +371,8 @@ function analyzeContacts(contacts) {
     avg_conversions_per_contact: contacts.length > 0
       ? parseFloat((conversionEvents.total / contacts.length).toFixed(2))
       : 0,
-    monthly_creation: monthlyCreation
+    monthly_creation: monthlyCreation,
+    daily_creation: dailyCreation
   };
 }
 
@@ -388,6 +393,8 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
   const stageDistribution = {};
   const revenueByPipeline = {};
   const monthlyDeals = {};
+  const dailyDeals = {};
+  const dailyByPipeline = {};
   let totalAmount = 0;
   let wonDeals = 0;
   let lostDeals = 0;
@@ -430,6 +437,14 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
     if (props.createdate) {
       const month = props.createdate.substring(0, 7);
       monthlyDeals[month] = (monthlyDeals[month] || 0) + 1;
+
+      // Daily trend
+      const day = props.createdate.substring(0, 10); // YYYY-MM-DD
+      dailyDeals[day] = (dailyDeals[day] || 0) + 1;
+
+      // Daily by pipeline
+      if (!dailyByPipeline[day]) dailyByPipeline[day] = {};
+      dailyByPipeline[day][pipelineName] = (dailyByPipeline[day][pipelineName] || 0) + 1;
     }
   });
 
@@ -492,7 +507,9 @@ function analyzeDeals(deals, pipelines, dealSourceMap = new Map()) {
     win_rate: winRate,
     won_deals: wonDeals,
     lost_deals: lostDeals,
-    monthly_deals: monthlyDeals
+    monthly_deals: monthlyDeals,
+    daily_deals: dailyDeals,
+    daily_by_pipeline: dailyByPipeline
   };
 }
 
