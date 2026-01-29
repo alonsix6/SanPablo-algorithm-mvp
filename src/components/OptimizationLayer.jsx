@@ -241,6 +241,21 @@ function buildCRMKpis(hubspot, dateRange, selectedProgram) {
     : (selectedProgram ? 0 : (hubspot.deals?.win_rate || 0));
   const avgDealValue = totalLeads > 0 ? parseFloat((revenue / totalLeads).toFixed(2)) : (hubspot.deals?.revenue?.avg_deal_value || 0);
 
+  // Campaign spend: proportionally estimate based on date range coverage
+  let totalSpend = hubspot.campaigns?.total_spend || 0;
+  let totalBudget = hubspot.campaigns?.total_budget || 0;
+  let budgetUtilization = hubspot.campaigns?.budget_utilization || 0;
+  if (filtering && hubspot.deals?.daily_deals) {
+    const allDays = Object.keys(hubspot.deals.daily_deals).length || 1;
+    const filteredDays = Object.keys(filterMonthlyData(hubspot.deals.daily_deals, dateRange) || {}).length;
+    if (filteredDays < allDays) {
+      const ratio = filteredDays / allDays;
+      totalSpend = Math.round(totalSpend * ratio);
+      totalBudget = Math.round(totalBudget * ratio);
+    }
+    budgetUtilization = totalBudget > 0 ? parseFloat((totalSpend / totalBudget * 100).toFixed(1)) : 0;
+  }
+
   return {
     totalContacts,
     totalLeads,
@@ -251,9 +266,9 @@ function buildCRMKpis(hubspot, dateRange, selectedProgram) {
     avgDealValue,
     activeCampaigns: hubspot.campaigns?.active_count || 0,
     totalCampaigns: hubspot.campaigns?.total || 0,
-    totalBudget: hubspot.campaigns?.total_budget || 0,
-    totalSpend: hubspot.campaigns?.total_spend || 0,
-    budgetUtilization: hubspot.campaigns?.budget_utilization || 0,
+    totalBudget,
+    totalSpend,
+    budgetUtilization,
     conversionRate: hubspot.contacts?.conversion_rate || 0,
     timestamp: hubspot.timestamp,
   };
@@ -479,7 +494,7 @@ export default function OptimizationLayer({ dateRange }) {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Contactos CRM (90d)' : 'Leads Generados'}
+            {crmKpis ? 'Contactos CRM' : 'Leads Generados'}
           </h3>
           <p className="text-2xl font-bold mb-2">
             {crmKpis ? crmKpis.totalContacts.toLocaleString() : PERFORMANCE_KPIS.leads.total.toLocaleString()}
