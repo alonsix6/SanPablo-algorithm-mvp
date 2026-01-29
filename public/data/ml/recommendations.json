@@ -1,35 +1,45 @@
 {
-  "generated_at": "2026-01-05T22:12:57.591Z",
+  "generated_at": "2026-01-29T03:17:06.786Z",
   "budget": [
     {
       "channel": "display",
       "type": "increase",
       "from": 10,
-      "to": 23.9,
-      "change": "+13.9%",
-      "impact": 3196.9999999999995,
+      "to": 25.5,
+      "change": "+15.5%",
+      "impact": 3565,
       "confidence": "high",
-      "reason": "display muestra ROI superior (36.0%)"
-    },
-    {
-      "channel": "meta_ads",
-      "type": "decrease",
-      "from": 35,
-      "to": 25,
-      "change": "-10.0%",
-      "impact": 2300,
-      "confidence": "high",
-      "reason": "meta_ads muestra menor efectividad"
+      "reason": "display muestra ROI superior (99.4%)"
     },
     {
       "channel": "google_search",
       "type": "decrease",
       "from": 35,
-      "to": 29,
-      "change": "-6.0%",
-      "impact": 1380,
+      "to": 23.2,
+      "change": "-11.8%",
+      "impact": 2714,
       "confidence": "high",
       "reason": "google_search muestra menor efectividad"
+    },
+    {
+      "channel": "meta_ads",
+      "type": "decrease",
+      "from": 35,
+      "to": 25.7,
+      "change": "-9.3%",
+      "impact": 2139.0000000000005,
+      "confidence": "high",
+      "reason": "meta_ads muestra menor efectividad"
+    },
+    {
+      "channel": "youtube",
+      "type": "increase",
+      "from": 20,
+      "to": 25.6,
+      "change": "+5.6%",
+      "impact": 1288.0000000000002,
+      "confidence": "high",
+      "reason": "youtube muestra ROI superior (99.7%)"
     }
   ],
   "actions": [

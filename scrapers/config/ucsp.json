@@ -62,6 +62,21 @@
     "language": "es"
   },
 
+  "hubspot": {
+    "portal_id": "9013951",
+    "lookback_days": 90,
+    "pipelines_of_interest": [
+      "Pregrado",
+      "Pregrado Matrículas",
+      "Postgrado Maestrías",
+      "Postgrado Diplomados",
+      "Postgrado PED",
+      "Formación Continua",
+      "Centro de Idiomas",
+      "CENDES"
+    ]
+  },
+
   "metadata": {
     "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
     "product": "Pregrado y Posgrado 2026-I"
