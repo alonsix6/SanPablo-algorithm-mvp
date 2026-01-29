@@ -585,6 +585,50 @@ function analyzeCampaigns(campaigns) {
 
   const currentCampaigns = activeCampaigns.filter(c => c.status === 'in_progress');
 
+  // Build daily_spend and daily_budget by distributing each campaign's
+  // spend/budget evenly across its active date range (start_date → end_date).
+  // This gives much more accurate date filtering than global proportional estimation.
+  const dailySpend = {};
+  const dailyBudget = {};
+  let campaignsWithDates = 0;
+  let spendWithoutDates = 0;
+  let budgetWithoutDates = 0;
+
+  activeCampaigns.forEach(camp => {
+    if (camp.start_date && camp.spend > 0) {
+      const start = new Date(camp.start_date);
+      const end = camp.end_date ? new Date(camp.end_date) : new Date();
+      const days = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1);
+      const dailyAmount = camp.spend / days;
+      const dailyBudgetAmount = camp.budget / days;
+
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        const key = d.toISOString().split('T')[0]; // YYYY-MM-DD
+        dailySpend[key] = (dailySpend[key] || 0) + dailyAmount;
+        if (camp.budget > 0) {
+          dailyBudget[key] = (dailyBudget[key] || 0) + dailyBudgetAmount;
+        }
+      }
+      campaignsWithDates++;
+    } else if (camp.spend > 0) {
+      spendWithoutDates += camp.spend;
+      budgetWithoutDates += camp.budget;
+    }
+  });
+
+  // Round daily values to 2 decimals
+  Object.keys(dailySpend).forEach(k => {
+    dailySpend[k] = parseFloat(dailySpend[k].toFixed(2));
+  });
+  Object.keys(dailyBudget).forEach(k => {
+    dailyBudget[k] = parseFloat(dailyBudget[k].toFixed(2));
+  });
+
+  console.log(`   Campanas con fechas para daily_spend: ${campaignsWithDates}`);
+  if (spendWithoutDates > 0) {
+    console.log(`   Gasto sin fechas (no distribuido): $${spendWithoutDates.toFixed(0)}`);
+  }
+
   return {
     total: campaigns.length,
     active_count: currentCampaigns.length,
@@ -593,6 +637,10 @@ function analyzeCampaigns(campaigns) {
     budget_utilization: totalBudget > 0
       ? parseFloat((totalSpend / totalBudget * 100).toFixed(1))
       : 0,
+    daily_spend: dailySpend,
+    daily_budget: dailyBudget,
+    spend_without_dates: spendWithoutDates,
+    budget_without_dates: budgetWithoutDates,
     current_campaigns: currentCampaigns.slice(0, 10),
     recent_campaigns: activeCampaigns.slice(0, 20)
   };

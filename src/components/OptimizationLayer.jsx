@@ -241,18 +241,25 @@ function buildCRMKpis(hubspot, dateRange, selectedProgram) {
     : (selectedProgram ? 0 : (hubspot.deals?.win_rate || 0));
   const avgDealValue = totalLeads > 0 ? parseFloat((revenue / totalLeads).toFixed(2)) : (hubspot.deals?.revenue?.avg_deal_value || 0);
 
-  // Campaign spend: proportionally estimate based on date range coverage
+  // Campaign spend: use daily_spend/daily_budget for exact date filtering
+  // Each campaign's spend is distributed across its active date range (start → end)
   let totalSpend = hubspot.campaigns?.total_spend || 0;
   let totalBudget = hubspot.campaigns?.total_budget || 0;
   let budgetUtilization = hubspot.campaigns?.budget_utilization || 0;
-  if (filtering && hubspot.deals?.daily_deals) {
-    const allDays = Object.keys(hubspot.deals.daily_deals).length || 1;
-    const filteredDays = Object.keys(filterMonthlyData(hubspot.deals.daily_deals, dateRange) || {}).length;
-    if (filteredDays < allDays) {
-      const ratio = filteredDays / allDays;
-      totalSpend = Math.round(totalSpend * ratio);
-      totalBudget = Math.round(totalBudget * ratio);
+  if (filtering) {
+    if (hubspot.campaigns?.daily_spend) {
+      totalSpend = sumFilteredData(hubspot.campaigns.daily_spend, dateRange);
+      totalSpend = Math.round(totalSpend);
     }
+    if (hubspot.campaigns?.daily_budget) {
+      totalBudget = sumFilteredData(hubspot.campaigns.daily_budget, dateRange);
+      totalBudget = Math.round(totalBudget);
+    }
+    // Add any spend/budget from campaigns without dates (shown as-is since we can't filter)
+    const spendNoDate = hubspot.campaigns?.spend_without_dates || 0;
+    const budgetNoDate = hubspot.campaigns?.budget_without_dates || 0;
+    totalSpend += spendNoDate;
+    totalBudget += budgetNoDate;
     budgetUtilization = totalBudget > 0 ? parseFloat((totalSpend / totalBudget * 100).toFixed(1)) : 0;
   }
 
