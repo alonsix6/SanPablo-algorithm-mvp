@@ -30,13 +30,58 @@ const PIPELINE_DISPLAY = {
 };
 
 /**
+ * Calculate ganados/perdidos from stage_distribution (direct HubSpot data).
+ * Same logic used in OptimizationLayer — scans stage names and definitions.
+ */
+function calcWonLost(hubspot, pipelineName) {
+  const stages = hubspot?.deals?.stage_distribution?.[pipelineName];
+  if (!stages) return { won: 0, lost: 0 };
+
+  const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
+  let won = 0;
+  let lost = 0;
+
+  if (pipelineDef?.stages) {
+    pipelineDef.stages.forEach(s => {
+      const count = stages[s.name] || 0;
+      const nameLower = s.name.toLowerCase();
+      if (nameLower.includes('perdido')) {
+        lost += count;
+      } else if (
+        (s.is_closed && s.probability > 0) ||
+        nameLower.includes('ganado') ||
+        nameLower.includes('matriculado')
+      ) {
+        won += count;
+      }
+    });
+  } else {
+    Object.entries(stages).forEach(([stageName, count]) => {
+      const nameLower = stageName.toLowerCase();
+      if (nameLower.includes('perdido')) {
+        lost += count;
+      } else if (
+        nameLower.includes('ganado') ||
+        nameLower.includes('matriculado') ||
+        nameLower.includes('pagado')
+      ) {
+        won += count;
+      }
+    });
+  }
+
+  return { won, lost };
+}
+
+/**
  * Build pipeline performance data from HubSpot
+ * Calculates ganados/perdidos from stage_distribution (same as OptimizationLayer).
  * Includes: total leads, won, lost, revenue, channel breakdown, estimated CPL
  */
 function buildPipelinePerformance(hubspot) {
   if (!hubspot?.deals) return null;
 
-  const { pipeline_distribution, won_lost_by_pipeline, source_by_pipeline, revenue } = hubspot.deals;
+  const { pipeline_distribution, source_by_pipeline, revenue } = hubspot.deals;
   if (!pipeline_distribution) return null;
 
   const totalSpend = hubspot.campaigns?.total_spend || 0;
@@ -45,7 +90,7 @@ function buildPipelinePerformance(hubspot) {
   return Object.entries(pipeline_distribution)
     .sort((a, b) => b[1] - a[1])
     .map(([name, totalLeads]) => {
-      const wonLost = won_lost_by_pipeline?.[name] || { won: 0, lost: 0 };
+      const wonLost = calcWonLost(hubspot, name);
       const sources = source_by_pipeline?.[name] || {};
       const pipelineRevenue = revenue?.by_pipeline?.[name] || 0;
 

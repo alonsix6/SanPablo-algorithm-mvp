@@ -124,60 +124,53 @@ function buildCRMKpis(hubspot) {
 
 /**
  * Build pipeline summary showing ganados/perdidos for ALL pipelines.
- * Uses won_lost_by_pipeline as primary source (same data used in ExecutionLayer).
- * Falls back to stage_distribution scanning if won_lost_by_pipeline is not available.
+ * Calculates from stage_distribution (direct HubSpot data) — identifies:
+ *   "won" stages: is_closed=true & probability>0, or name contains "ganado"/"matriculado"
+ *   "lost" stages: name contains "perdido"
  */
 function buildPipelineSummary(hubspot) {
-  if (!hubspot?.deals?.pipeline_distribution) return null;
+  if (!hubspot?.deals?.pipeline_distribution || !hubspot?.deals?.stage_distribution) return null;
 
   const pipelines = hubspot.deals.pipeline_distribution;
-  const wonLostByPipeline = hubspot.deals.won_lost_by_pipeline;
   const stageDistributions = hubspot.deals.stage_distribution;
   const pipelineDefs = hubspot.pipelines || [];
 
   return Object.entries(pipelines)
     .sort((a, b) => b[1] - a[1])
     .map(([name, total]) => {
+      const stages = stageDistributions[name] || {};
+      const pipelineDef = pipelineDefs.find(p => p.name === name);
+
       let ganados = 0;
       let perdidos = 0;
 
-      // Primary: use won_lost_by_pipeline (same source as ExecutionLayer)
-      if (wonLostByPipeline?.[name]) {
-        ganados = wonLostByPipeline[name].won || 0;
-        perdidos = wonLostByPipeline[name].lost || 0;
-      } else if (stageDistributions?.[name]) {
-        // Fallback: infer from stage definitions
-        const stages = stageDistributions[name] || {};
-        const pipelineDef = pipelineDefs.find(p => p.name === name);
-
-        if (pipelineDef?.stages) {
-          pipelineDef.stages.forEach(s => {
-            const count = stages[s.name] || 0;
-            const nameLower = s.name.toLowerCase();
-            if (nameLower.includes('perdido')) {
-              perdidos += count;
-            } else if (
-              (s.is_closed && s.probability > 0) ||
-              nameLower.includes('ganado') ||
-              nameLower.includes('matriculado')
-            ) {
-              ganados += count;
-            }
-          });
-        } else {
-          Object.entries(stages).forEach(([stageName, count]) => {
-            const nameLower = stageName.toLowerCase();
-            if (nameLower.includes('perdido')) {
-              perdidos += count;
-            } else if (
-              nameLower.includes('ganado') ||
-              nameLower.includes('matriculado') ||
-              nameLower.includes('pagado')
-            ) {
-              ganados += count;
-            }
-          });
-        }
+      if (pipelineDef?.stages) {
+        pipelineDef.stages.forEach(s => {
+          const count = stages[s.name] || 0;
+          const nameLower = s.name.toLowerCase();
+          if (nameLower.includes('perdido')) {
+            perdidos += count;
+          } else if (
+            (s.is_closed && s.probability > 0) ||
+            nameLower.includes('ganado') ||
+            nameLower.includes('matriculado')
+          ) {
+            ganados += count;
+          }
+        });
+      } else {
+        Object.entries(stages).forEach(([stageName, count]) => {
+          const nameLower = stageName.toLowerCase();
+          if (nameLower.includes('perdido')) {
+            perdidos += count;
+          } else if (
+            nameLower.includes('ganado') ||
+            nameLower.includes('matriculado') ||
+            nameLower.includes('pagado')
+          ) {
+            ganados += count;
+          }
+        });
       }
 
       const conversionRate = total > 0 ? parseFloat((ganados / total * 100).toFixed(1)) : 0;
