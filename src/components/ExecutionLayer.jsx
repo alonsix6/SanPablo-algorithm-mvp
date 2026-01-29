@@ -331,7 +331,7 @@ export default function ExecutionLayer() {
         </div>
       </div>
 
-      {/* Performance por Pipeline - REAL DATA */}
+      {/* Performance por Programa - REAL DATA */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
@@ -340,7 +340,7 @@ export default function ExecutionLayer() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-gray-900">Performance por Pipeline</h3>
+                <h3 className="text-base font-bold text-gray-900">Performance por Programa</h3>
                 {hasPipelineData && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
               </div>
               <p className="text-sm text-gray-600">Leads, conversiones y CPL estimado por programa</p>
@@ -469,7 +469,7 @@ export default function ExecutionLayer() {
             {!showAllPipelines && pipelinePerformance.length > 5 && (
               <div className="mt-4 text-center">
                 <p className="text-sm text-gray-500">
-                  Mostrando top 5 pipelines. Haz clic en "Mostrar todos" para ver los {pipelinePerformance.length} pipelines.
+                  Mostrando top 5 programas. Haz clic en "Mostrar todos" para ver los {pipelinePerformance.length} programas.
                 </p>
               </div>
             )}
@@ -478,7 +478,7 @@ export default function ExecutionLayer() {
             <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
               <p className="text-xs text-amber-800 flex items-center gap-1">
                 <Lightbulb className="w-4 h-4 flex-shrink-0" />
-                <strong>Nota:</strong> Los CPL son estimados, calculados distribuyendo proporcionalmente el gasto total de campañas (${(hubspot?.campaigns?.total_spend || 0).toLocaleString()}) entre pipelines según volumen de leads.
+                <strong>Nota:</strong> Los CPL son estimados, calculados distribuyendo proporcionalmente el gasto total de campañas (${(hubspot?.campaigns?.total_spend || 0).toLocaleString()}) entre programas según volumen de leads.
                 Para CPL exactos por canal se requiere Google Ads API y Meta Marketing API.
               </p>
             </div>
@@ -487,7 +487,7 @@ export default function ExecutionLayer() {
           /* Fallback: Mock data loading message */
           <div className="text-center py-8 text-gray-500">
             <Database className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-            <p>Conectando con HubSpot para datos de pipeline...</p>
+            <p>Conectando con HubSpot para datos por programa...</p>
           </div>
         )}
       </div>

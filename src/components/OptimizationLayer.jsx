@@ -299,7 +299,7 @@ export default function OptimizationLayer() {
           )}
         </div>
 
-        {/* Leads en Pipeline (REAL) */}
+        {/* Leads en Proceso (REAL) */}
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Target className="w-8 h-8" />
@@ -312,7 +312,7 @@ export default function OptimizationLayer() {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Leads en Pipeline (90d)' : 'Alcance Único'}
+            {crmKpis ? 'Leads en Proceso (90d)' : 'Alcance Único'}
           </h3>
           <p className="text-2xl font-bold mb-2">
             {crmKpis ? crmKpis.totalLeads.toLocaleString() : `${(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M`}
@@ -529,7 +529,7 @@ export default function OptimizationLayer() {
             <h3 className="text-base font-bold text-gray-900">Funnel de Conversión</h3>
             {funnelSteps && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
           </div>
-          {/* Pipeline Selector */}
+          {/* Programa Selector */}
           {availablePipelines.length > 0 && (
             <select
               value={selectedPipeline}
@@ -582,7 +582,7 @@ export default function OptimizationLayer() {
                   <span className="text-sm text-red-600 ml-2">
                     ({funnelSteps.length > 0 && funnelSteps[0].value > 0
                       ? (funnelLost.value / (funnelSteps[0].value + funnelLost.value) * 100).toFixed(1)
-                      : 0}% del total del pipeline)
+                      : 0}% del total del programa)
                   </span>
                 </div>
                 <span className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-bold flex-shrink-0">
@@ -604,7 +604,7 @@ export default function OptimizationLayer() {
                   <p className="text-xs text-gray-500">{funnelSteps[0]?.stage} → {funnelSteps[funnelSteps.length - 1]?.stage}</p>
                 </div>
                 <div className="bg-amber-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-600 mb-1">Total en Pipeline</p>
+                  <p className="text-xs text-gray-600 mb-1">Total en Programa</p>
                   <p className="text-xl font-bold text-orange-600">
                     {hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A'}
                   </p>
@@ -613,7 +613,7 @@ export default function OptimizationLayer() {
                 <div className="bg-green-50 rounded-lg p-3">
                   <p className="text-xs text-gray-600 mb-1">Tasa de Cierre General</p>
                   <p className="text-xl font-bold text-green-600">{hubspot?.deals?.win_rate || 0}%</p>
-                  <p className="text-xs text-gray-500">Todos los pipelines</p>
+                  <p className="text-xs text-gray-500">Todos los programas</p>
                 </div>
               </div>
             </div>
@@ -626,12 +626,12 @@ export default function OptimizationLayer() {
         )}
       </div>
 
-      {/* Resumen por Pipeline - Ganados / Perdidos - ALL 9 pipelines */}
+      {/* Resumen por Programa - Ganados / Perdidos - ALL 9 programs */}
       {pipelineSummary && (
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center gap-2 mb-6">
             <GraduationCap className="w-6 h-6 text-ucsp-burgundy" />
-            <h3 className="text-base font-bold text-gray-900">Ganados y Perdidos por Pipeline</h3>
+            <h3 className="text-base font-bold text-gray-900">Ganados y Perdidos por Programa</h3>
             <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
           </div>
           <p className="text-sm text-gray-500 mb-4">Matriculados, inscritos o cierres ganados vs. leads perdidos por cada programa.</p>
@@ -640,7 +640,7 @@ export default function OptimizationLayer() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-3 px-3 font-bold text-gray-700">Pipeline</th>
+                  <th className="text-left py-3 px-3 font-bold text-gray-700">Programa</th>
                   <th className="text-right py-3 px-3 font-bold text-gray-700">Total Leads</th>
                   <th className="text-right py-3 px-3 font-bold text-green-700">Ganados</th>
                   <th className="text-right py-3 px-3 font-bold text-red-700">Perdidos</th>
@@ -730,7 +730,7 @@ export default function OptimizationLayer() {
                 <p className="text-xl font-bold">{crmKpis.totalContacts.toLocaleString()}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-                <p className="text-xs text-white/70">Leads en Pipeline</p>
+                <p className="text-xs text-white/70">Leads en Proceso</p>
                 <p className="text-xl font-bold">{crmKpis.totalLeads.toLocaleString()}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
@@ -743,10 +743,10 @@ export default function OptimizationLayer() {
               </div>
             </div>
 
-            {/* Pipeline Distribution */}
+            {/* Distribución por Programa */}
             {hubspot?.deals?.pipeline_distribution && (
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
-                <h4 className="font-bold text-sm mb-3">Leads por Pipeline:</h4>
+                <h4 className="font-bold text-sm mb-3">Leads por Programa:</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {Object.entries(hubspot.deals.pipeline_distribution)
                     .sort((a, b) => b[1] - a[1])
