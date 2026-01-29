@@ -1,10 +1,146 @@
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb } from 'lucide-react';
+import { useState } from 'react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, HUBSPOT_MOCKUP } from '../data/mockData';
-import { LAYER_CONFIG, METRIC_CARDS_CONFIG, HUBSPOT_CONFIG } from '../data/config';
+import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
+import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
+import { useHubSpotData, useMLData } from '../hooks/useRealData';
+
+// Map HubSpot sources to display names and colors
+const SOURCE_CONFIG = {
+  PAID_SEARCH: { name: 'Google Search', color: '#003B7A' },
+  PAID_SOCIAL: { name: 'Meta Ads', color: '#6B1B3D' },
+  ORGANIC_SEARCH: { name: 'Orgánico', color: '#059669' },
+  DIRECT_TRAFFIC: { name: 'Directo', color: '#C5A572' },
+  OFFLINE: { name: 'Offline', color: '#6B7280' },
+  REFERRALS: { name: 'Referidos', color: '#7C3AED' },
+  OTHER_CAMPAIGNS: { name: 'Otras Campañas', color: '#F59E0B' },
+  SOCIAL_MEDIA: { name: 'Redes Sociales', color: '#EC4899' },
+};
+
+// Funnel stage icons and colors
+const FUNNEL_COLORS = [
+  'from-ucsp-blue to-ucsp-lightBlue',
+  'from-ucsp-lightBlue to-ucsp-skyBlue',
+  'from-ucsp-burgundy to-ucsp-wine',
+  'from-ucsp-gold to-ucsp-burgundy',
+  'from-amber-500 to-orange-500',
+  'from-green-500 to-green-600',
+  'from-emerald-500 to-emerald-600',
+];
+
+const FUNNEL_ICONS = [Users, FileText, Globe, Target, GraduationCap, CheckCircle, CheckCircle];
+
+/**
+ * Build channel distribution from real HubSpot source_distribution data
+ */
+function buildChannelData(hubspot) {
+  if (!hubspot?.contacts?.source_distribution) return null;
+
+  const sources = hubspot.contacts.source_distribution;
+  const total = Object.values(sources).reduce((sum, v) => sum + v, 0) || 1;
+
+  return Object.entries(sources)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([key, count]) => ({
+      name: SOURCE_CONFIG[key]?.name || key,
+      value: Math.round(count / total * 100),
+      leads: count,
+      color: SOURCE_CONFIG[key]?.color || '#9CA3AF',
+    }));
+}
+
+/**
+ * Build funnel from real HubSpot pipeline stage_distribution data.
+ * Uses the selected pipeline (defaults to Pregrado).
+ */
+function buildFunnelSteps(hubspot, pipelineName) {
+  if (!hubspot?.deals?.stage_distribution?.[pipelineName]) return null;
+
+  const stages = hubspot.deals.stage_distribution[pipelineName];
+  const entries = Object.entries(stages);
+
+  // Find matching pipeline definition for stage ordering
+  const pipelineDef = hubspot.pipelines?.find(p => p.name === pipelineName);
+
+  let orderedStages;
+  if (pipelineDef?.stages) {
+    // Use pipeline definition order (excludes stages with 0 deals)
+    orderedStages = pipelineDef.stages
+      .filter(s => stages[s.name] != null)
+      .map(s => ({ name: s.name, value: stages[s.name] || 0 }));
+  } else {
+    // Fallback: sort by count descending
+    orderedStages = entries
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, value]) => ({ name, value }));
+  }
+
+  return orderedStages.map((stage, idx) => {
+    const nextStage = orderedStages[idx + 1];
+    const conversionRate = nextStage && stage.value > 0
+      ? parseFloat((nextStage.value / stage.value * 100).toFixed(1))
+      : null;
+
+    return {
+      stage: stage.name,
+      value: stage.value,
+      conversionRate,
+      conversionLabel: nextStage ? `a ${nextStage.name.split(' ')[0]}` : null,
+      IconComponent: FUNNEL_ICONS[idx] || CheckCircle,
+      color: FUNNEL_COLORS[idx] || 'from-gray-500 to-gray-600',
+    };
+  });
+}
+
+/**
+ * Build HubSpot CRM summary KPIs from real data
+ */
+function buildCRMKpis(hubspot) {
+  if (!hubspot) return null;
+  return {
+    totalContacts: hubspot.contacts?.total || 0,
+    totalDeals: hubspot.deals?.total || 0,
+    winRate: hubspot.deals?.win_rate || 0,
+    wonDeals: hubspot.deals?.won_deals || 0,
+    lostDeals: hubspot.deals?.lost_deals || 0,
+    revenue: hubspot.deals?.revenue?.total || 0,
+    avgDealValue: hubspot.deals?.revenue?.avg_deal_value || 0,
+    activeCampaigns: hubspot.campaigns?.active_count || 0,
+    totalCampaigns: hubspot.campaigns?.total || 0,
+    totalBudget: hubspot.campaigns?.total_budget || 0,
+    totalSpend: hubspot.campaigns?.total_spend || 0,
+    budgetUtilization: hubspot.campaigns?.budget_utilization || 0,
+    conversionRate: hubspot.contacts?.conversion_rate || 0,
+    timestamp: hubspot.timestamp,
+  };
+}
 
 export default function OptimizationLayer() {
-  // Performance últimos 7 días - UCSP Admisiones
+  const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
+  const { data: mlData } = useMLData();
+  const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
+
+  // Build real data (or fallback)
+  const channelData = buildChannelData(hubspot) || [
+    { name: 'Google Search', value: 35, leads: 291, color: '#003B7A' },
+    { name: 'Meta Ads', value: 35, leads: 291, color: '#6B1B3D' },
+    { name: 'YouTube', value: 20, leads: 166, color: '#EF4444' },
+    { name: 'Display', value: 10, leads: 83, color: '#C5A572' },
+  ];
+
+  const funnelSteps = buildFunnelSteps(hubspot, selectedPipeline);
+  const crmKpis = buildCRMKpis(hubspot);
+  const availablePipelines = hubspot?.deals?.stage_distribution
+    ? Object.keys(hubspot.deals.stage_distribution)
+    : [];
+
+  // Data freshness
+  const dataAge = crmKpis?.timestamp
+    ? Math.floor((Date.now() - new Date(crmKpis.timestamp).getTime()) / (1000 * 60 * 60 * 24))
+    : null;
+
+  // Performance últimos 7 días (mock - necesita Google Ads API)
   const performanceData = [
     { date: '14 Nov', leads: 95, reach: 105000, engagement: 15200, spent: 5950 },
     { date: '15 Nov', leads: 142, reach: 118000, engagement: 18500, spent: 6480 },
@@ -12,60 +148,18 @@ export default function OptimizationLayer() {
     { date: '17 Nov', leads: 88, reach: 98000, engagement: 14200, spent: 5680 },
     { date: '18 Nov', leads: 156, reach: 128000, engagement: 20100, spent: 6850 },
     { date: '19 Nov', leads: 135, reach: 122000, engagement: 18900, spent: 6590 },
-    { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 }
+    { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Channel performance distribution (sin TikTok ni LinkedIn)
-  const channelData = [
-    { name: 'Google Search', value: 35, leads: 291, color: '#003B7A' }, // UCSP Blue
-    { name: 'Meta Ads', value: 35, leads: 291, color: '#6B1B3D' }, // UCSP Burgundy
-    { name: 'YouTube', value: 20, leads: 166, color: '#EF4444' }, // Rojo YouTube
-    { name: 'Display', value: 10, leads: 83, color: '#C5A572' } // UCSP Gold
-  ];
-
-  // Funnel de conversión UCSP - Datos sinceros basados en GA4 y Performance real
-  const funnelSteps = [
-    {
-      stage: 'Alcance',
-      value: 540000, // Reach único de campaigns (sincronizado con PERFORMANCE_KPIS)
-      conversionRate: 7.8,
-      conversionLabel: 'a Landing',
-      IconComponent: Users,
-      color: 'from-ucsp-blue to-ucsp-lightBlue'
-    },
-    {
-      stage: 'Visitas Landing',
-      value: 42200, // Sessions de GA4
-      conversionRate: 2.3,
-      conversionLabel: 'a Formulario',
-      IconComponent: Globe,
-      color: 'from-ucsp-lightBlue to-ucsp-skyBlue'
-    },
-    {
-      stage: 'Formularios',
-      value: 980, // Total leads generados (sincronizado con PERFORMANCE_KPIS)
-      conversionRate: 79.6,
-      conversionLabel: 'a Postulación',
-      IconComponent: FileText,
-      color: 'from-ucsp-burgundy to-ucsp-wine'
-    },
-    {
-      stage: 'Postulaciones',
-      value: 780, // Leads calificados (sincronizado con PERFORMANCE_KPIS)
-      conversionRate: 23.0,
-      conversionLabel: 'a Matrícula',
-      IconComponent: GraduationCap,
-      color: 'from-ucsp-gold to-ucsp-burgundy'
-    },
-    {
-      stage: 'Matriculados',
-      value: 179, // ~23% de postulaciones (tasa realista de conversión final)
-      conversionRate: null,
-      conversionLabel: null,
-      IconComponent: CheckCircle,
-      color: 'from-green-500 to-green-600'
-    }
-  ];
+  // Monthly deals trend from HubSpot
+  const monthlyDealsData = hubspot?.deals?.monthly_deals
+    ? Object.entries(hubspot.deals.monthly_deals)
+        .slice(-6)
+        .map(([month, count]) => ({
+          date: month.substring(5),
+          deals: count,
+        }))
+    : null;
 
   return (
     <div className="space-y-8">
@@ -80,7 +174,14 @@ export default function OptimizationLayer() {
               {LAYER_CONFIG.optimization.subtitle}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap justify-end">
+            {crmKpis && (
+              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium flex items-center gap-1">
+                <Database className="w-3 h-3" />
+                HubSpot conectado
+                {dataAge !== null && ` (hace ${dataAge}d)`}
+              </span>
+            )}
             <span className="px-3 py-1 bg-ucsp-blue text-white rounded-full text-sm font-medium flex items-center gap-1">
               <RefreshCw className="w-4 h-4" />
               Auto-optimización activa
@@ -89,139 +190,223 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* KPIs Principales */}
+      {/* KPIs Principales - Mixto: HubSpot real + mock donde falta */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Postulaciones */}
+        {/* Contactos CRM (REAL) */}
         <div className="bg-gradient-to-br from-ucsp-burgundy to-ucsp-darkBurgundy text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <GraduationCap className="w-8 h-8" />
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
-            }`}>
-              {PERFORMANCE_KPIS.leads.trend}
-            </span>
+            {crmKpis ? (
+              <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-green-400 text-green-900">REAL</span>
+            ) : (
+              <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+              }`}>{PERFORMANCE_KPIS.leads.trend}</span>
+            )}
           </div>
-          <h3 className="text-sm font-medium text-white/80 mb-1">Leads Generados (Formularios)</h3>
-          <p className="text-2xl font-bold mb-2">{PERFORMANCE_KPIS.leads.total.toLocaleString()}</p>
+          <h3 className="text-sm font-medium text-white/80 mb-1">
+            {crmKpis ? 'Contactos CRM (90d)' : 'Leads Generados'}
+          </h3>
+          <p className="text-2xl font-bold mb-2">
+            {crmKpis ? crmKpis.totalContacts.toLocaleString() : PERFORMANCE_KPIS.leads.total.toLocaleString()}
+          </p>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-white/70">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()} postulaciones</span>
-            <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.leads.qualification_rate}% conversión</span>
+            {crmKpis ? (
+              <>
+                <span className="text-sm text-white/70">Conversión: {crmKpis.conversionRate}%</span>
+              </>
+            ) : (
+              <>
+                <span className="text-sm text-white/70">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()} postulaciones</span>
+                <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.leads.qualification_rate}% conversión</span>
+              </>
+            )}
           </div>
-          <div className="mt-3 pt-3 border-t border-white/20">
-            <div className="flex justify-between text-xs">
-              <span className="text-white/70">CPL</span>
-              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
+          {crmKpis && (
+            <div className="mt-3 pt-3 border-t border-white/20">
+              <div className="flex justify-between text-xs">
+                <span className="text-white/70">Fuente principal</span>
+                <span className="font-bold">{channelData[0]?.name}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Alcance */}
+        {/* Deals CRM (REAL) */}
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
-            <Users className="w-8 h-8" />
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
-            }`}>
-              {PERFORMANCE_KPIS.reach.trend}
-            </span>
+            <Target className="w-8 h-8" />
+            {crmKpis ? (
+              <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-green-400 text-green-900">REAL</span>
+            ) : (
+              <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+              }`}>{PERFORMANCE_KPIS.reach.trend}</span>
+            )}
           </div>
-          <h3 className="text-sm font-medium text-white/80 mb-1">Alcance Único</h3>
-          <p className="text-2xl font-bold mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
+          <h3 className="text-sm font-medium text-white/80 mb-1">
+            {crmKpis ? 'Deals CRM (90d)' : 'Alcance Único'}
+          </h3>
+          <p className="text-2xl font-bold mb-2">
+            {crmKpis ? crmKpis.totalDeals.toLocaleString() : `${(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M`}
+          </p>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
+            {crmKpis ? (
+              <span className="text-sm text-white/70">Win Rate: {crmKpis.winRate}%</span>
+            ) : (
+              <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
+            )}
           </div>
           <div className="mt-3 pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
-              <span className="text-white/70">Frecuencia</span>
-              <span className="font-bold">{PERFORMANCE_KPIS.reach.frequency}</span>
+              {crmKpis ? (
+                <>
+                  <span className="text-white/70">Ganados / Perdidos</span>
+                  <span className="font-bold">{crmKpis.wonDeals.toLocaleString()} / {crmKpis.lostDeals.toLocaleString()}</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-white/70">Frecuencia</span>
+                  <span className="font-bold">{PERFORMANCE_KPIS.reach.frequency}</span>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Engagement */}
+        {/* Revenue (REAL) */}
         <div className="bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
-            <Heart className="w-8 h-8" />
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
-            }`}>
-              {PERFORMANCE_KPIS.engagement.trend}
-            </span>
+            <Award className="w-8 h-8" />
+            {crmKpis ? (
+              <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-green-400 text-green-900">REAL</span>
+            ) : (
+              <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+              }`}>{PERFORMANCE_KPIS.engagement.trend}</span>
+            )}
           </div>
-          <h3 className="text-sm font-medium text-white/80 mb-1">Interacciones Totales</h3>
-          <p className="text-2xl font-bold mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
+          <h3 className="text-sm font-medium text-white/80 mb-1">
+            {crmKpis ? 'Revenue CRM (90d)' : 'Interacciones Totales'}
+          </h3>
+          <p className="text-2xl font-bold mb-2">
+            {crmKpis
+              ? `$${(crmKpis.revenue / 1000000).toFixed(1)}M`
+              : `${(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K`}
+          </p>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-white/70">Engagement Rate</span>
-            <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
+            {crmKpis ? (
+              <span className="text-sm text-white/70">Ticket prom: ${crmKpis.avgDealValue.toFixed(0)}</span>
+            ) : (
+              <>
+                <span className="text-sm text-white/70">Engagement Rate</span>
+                <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
+              </>
+            )}
           </div>
-          <div className="mt-3 pt-3 border-t border-white/20">
-            <div className="flex justify-between text-xs">
-              <span className="text-white/70">Shares</span>
-              <span className="font-bold">{(PERFORMANCE_KPIS.engagement.shares / 1000).toFixed(1)}K</span>
+          {crmKpis && (
+            <div className="mt-3 pt-3 border-t border-white/20">
+              <div className="flex justify-between text-xs">
+                <span className="text-white/70">Campañas</span>
+                <span className="font-bold">{crmKpis.activeCampaigns} activas / {crmKpis.totalCampaigns} total</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Budget */}
+        {/* Presupuesto Campañas (REAL) */}
         <div className="bg-gradient-to-br from-ucsp-blue to-success text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
-            <Award className="w-8 h-8" />
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-400">
-              {PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%
-            </span>
+            <BarChart3 className="w-8 h-8" />
+            {crmKpis ? (
+              <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-green-400 text-green-900">REAL</span>
+            ) : (
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-400">
+                {PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%
+              </span>
+            )}
           </div>
-          <h3 className="text-sm font-medium text-white/80 mb-1">Presupuesto Ejecutado</h3>
-          <p className="text-2xl font-bold mb-2">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <h3 className="text-sm font-medium text-white/80 mb-1">
+            {crmKpis ? 'Presupuesto Campañas' : 'Presupuesto Ejecutado'}
+          </h3>
+          <p className="text-2xl font-bold mb-2">
+            {crmKpis
+              ? `$${(crmKpis.totalSpend / 1000).toFixed(1)}K`
+              : `$${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K`}
+          </p>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-white/70">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+            {crmKpis ? (
+              <span className="text-sm text-white/70">de ${(crmKpis.totalBudget / 1000).toFixed(0)}K budget</span>
+            ) : (
+              <span className="text-sm text-white/70">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+            )}
           </div>
           <div className="mt-3 pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
-              <span className="text-white/70">CPC</span>
-              <span className="font-bold">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
+              <span className="text-white/70">Ejecución</span>
+              <span className="font-bold">
+                {crmKpis ? `${crmKpis.budgetUtilization}%` : `${PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%`}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Performance Trends */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h3 className="text-base font-bold text-gray-900">Performance Últimos 7 Días</h3>
-            <p className="text-sm text-gray-600">Evolución de métricas clave</p>
-          </div>
-          <div className="flex gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-ucsp-burgundy"></div>
-              <span>Leads</span>
+      {/* Deals Trend (REAL from HubSpot) + Performance Trend (mock) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Monthly Deals Trend - REAL */}
+        {monthlyDealsData && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Deals Mensuales</h3>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
+                </div>
+                <p className="text-sm text-gray-600">Fuente: HubSpot CRM</p>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-ucsp-blue"></div>
-              <span>Engagement (K)</span>
-            </div>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={monthlyDealsData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
+                <YAxis stroke="#6b7280" style={{ fontSize: '12px' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} />
+                <Bar dataKey="deals" fill="#003B7A" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
-        </div>
+        )}
 
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={performanceData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
-            <YAxis yAxisId="left" stroke="#6b7280" style={{ fontSize: '12px' }} />
-            <YAxis yAxisId="right" orientation="right" stroke="#6b7280" style={{ fontSize: '12px' }} />
-            <Tooltip
-              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
-              labelStyle={{ fontWeight: 'bold', marginBottom: '8px' }}
-            />
-            <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#6B1B3D" strokeWidth={3} dot={{ r: 5 }} />
-            <Line yAxisId="right" type="monotone" dataKey="engagement" stroke="#003B7A" strokeWidth={3} dot={{ r: 5 }} />
-          </LineChart>
-        </ResponsiveContainer>
+        {/* Performance 7 días - MOCK */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-base font-bold text-gray-900">Performance 7 Días</h3>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500">MOCK</span>
+              </div>
+              <p className="text-sm text-gray-600">Pendiente: Google Ads API</p>
+            </div>
+          </div>
+          <ResponsiveContainer width="100%" height={250}>
+            <LineChart data={performanceData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
+              <YAxis yAxisId="left" stroke="#6b7280" style={{ fontSize: '12px' }} />
+              <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }} />
+              <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#6B1B3D" strokeWidth={3} dot={{ r: 4 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
-      {/* Channel Distribution */}
+      {/* Channel Distribution - REAL from HubSpot */}
       <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-        <h3 className="text-base font-bold text-gray-900 mb-8 text-center md:text-left">Distribución de Leads por Canal</h3>
+        <div className="flex items-center gap-2 mb-8 text-center md:text-left">
+          <h3 className="text-base font-bold text-gray-900">Distribución de Contactos por Fuente</h3>
+          {hubspot && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
+        </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Pie Chart */}
@@ -247,7 +432,7 @@ export default function OptimizationLayer() {
             </ResponsiveContainer>
           </div>
 
-          {/* Divider - only visible on desktop */}
+          {/* Divider */}
           <div className="hidden md:block w-px h-64 bg-gray-200"></div>
 
           {/* Legend */}
@@ -259,7 +444,7 @@ export default function OptimizationLayer() {
                   <span className="text-sm font-medium text-gray-900 truncate">{channel.name}</span>
                 </div>
                 <div className="flex items-center gap-3 flex-shrink-0 ml-4">
-                  <span className="text-sm font-bold text-gray-900">{channel.leads}</span>
+                  <span className="text-sm font-bold text-gray-900">{channel.leads.toLocaleString()}</span>
                   <span className="text-sm font-bold text-gray-700 bg-gray-200 px-2.5 py-1 rounded-md min-w-[48px] text-center">
                     {channel.value}%
                   </span>
@@ -270,139 +455,191 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Funnel de Conversión - Horizontal */}
+      {/* Funnel de Conversión - REAL from HubSpot */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <h3 className="text-base font-bold text-gray-900 mb-6">Funnel de Conversión</h3>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <h3 className="text-base font-bold text-gray-900">Funnel de Conversión</h3>
+            {funnelSteps && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>}
+          </div>
+          {/* Pipeline Selector */}
+          {availablePipelines.length > 0 && (
+            <select
+              value={selectedPipeline}
+              onChange={(e) => setSelectedPipeline(e.target.value)}
+              className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white focus:ring-2 focus:ring-ucsp-blue focus:border-ucsp-blue"
+            >
+              {availablePipelines.map(name => (
+                <option key={name} value={name}>{name}</option>
+              ))}
+            </select>
+          )}
+        </div>
 
-        {/* Horizontal Flow */}
-        <div className="flex items-center justify-between gap-3 overflow-x-auto pb-4">
-          {funnelSteps.map((step, idx) => (
-            <div key={idx} className="flex items-center gap-3 flex-shrink-0">
-              {/* Step Card */}
-              <div className={`bg-gradient-to-br ${step.color} rounded-xl p-4 text-white shadow-md min-w-[140px]`}>
-                <div className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <step.IconComponent className="w-8 h-8" />
+        {funnelSteps ? (
+          <>
+            {/* Horizontal Flow */}
+            <div className="flex items-center justify-between gap-2 overflow-x-auto pb-4">
+              {funnelSteps.map((step, idx) => (
+                <div key={idx} className="flex items-center gap-2 flex-shrink-0">
+                  {/* Step Card */}
+                  <div className={`bg-gradient-to-br ${step.color} rounded-xl p-3 text-white shadow-md min-w-[120px]`}>
+                    <div className="text-center">
+                      <div className="flex justify-center mb-1">
+                        <step.IconComponent className="w-6 h-6" />
+                      </div>
+                      <p className="text-[10px] font-medium text-white/80 uppercase tracking-wide mb-1 leading-tight">{step.stage}</p>
+                      <p className="text-lg font-bold">{step.value.toLocaleString()}</p>
+                    </div>
                   </div>
-                  <p className="text-xs font-medium text-white/80 uppercase tracking-wide mb-1">{step.stage}</p>
-                  <p className="text-lg font-bold">{step.value.toLocaleString()}</p>
+
+                  {/* Arrow with conversion rate */}
+                  {idx < funnelSteps.length - 1 && step.conversionRate !== null && (
+                    <div className="flex flex-col items-center justify-center min-w-[50px]">
+                      <div className="text-xs font-bold text-gray-900 mb-1">{step.conversionRate}%</div>
+                      <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Summary Stats */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-ucsp-blue/10 rounded-lg p-3">
+                  <p className="text-xs text-gray-600 mb-1">Conversión Global</p>
+                  <p className="text-xl font-bold text-ucsp-blue">
+                    {funnelSteps.length >= 2 && funnelSteps[0].value > 0
+                      ? `${(funnelSteps[funnelSteps.length - 1].value / funnelSteps[0].value * 100).toFixed(1)}%`
+                      : 'N/A'}
+                  </p>
+                  <p className="text-xs text-gray-500">{funnelSteps[0]?.stage} → {funnelSteps[funnelSteps.length - 1]?.stage}</p>
+                </div>
+                <div className="bg-amber-50 rounded-lg p-3">
+                  <p className="text-xs text-gray-600 mb-1">Total en Pipeline</p>
+                  <p className="text-xl font-bold text-orange-600">
+                    {hubspot?.deals?.pipeline_distribution?.[selectedPipeline]?.toLocaleString() || 'N/A'}
+                  </p>
+                  <p className="text-xs text-gray-500">{selectedPipeline}</p>
+                </div>
+                <div className="bg-green-50 rounded-lg p-3">
+                  <p className="text-xs text-gray-600 mb-1">Win Rate General</p>
+                  <p className="text-xl font-bold text-green-600">{hubspot?.deals?.win_rate || 0}%</p>
+                  <p className="text-xs text-gray-500">Todos los pipelines</p>
                 </div>
               </div>
-
-              {/* Arrow with conversion rate */}
-              {idx < funnelSteps.length - 1 && (
-                <div className="flex flex-col items-center justify-center min-w-[60px]">
-                  <div className="text-sm font-bold text-gray-900 mb-1">{step.conversionRate}%</div>
-                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              )}
             </div>
-          ))}
-        </div>
-
-        {/* Summary Stats */}
-        <div className="mt-6 pt-6 border-t border-gray-200">
-          <div className="grid grid-cols-3 gap-4">
-            <div className="bg-ucsp-blue/10 rounded-lg p-3">
-              <p className="text-xs text-gray-600 mb-1">Conversión Global</p>
-              <p className="text-xl font-bold text-ucsp-blue">0.027%</p>
-              <p className="text-xs text-gray-500">Alcance → Matriculados</p>
-            </div>
-            <div className="bg-amber-50 rounded-lg p-3">
-              <p className="text-xs text-gray-600 mb-1">Etapa Crítica</p>
-              <p className="text-xl font-bold text-orange-600">22.9%</p>
-              <p className="text-xs text-gray-500">Postulaciones → Matrícula</p>
-            </div>
-            <div className="bg-green-50 rounded-lg p-3">
-              <p className="text-xs text-gray-600 mb-1">Tasa Conversión Web</p>
-              <p className="text-xl font-bold text-green-600">25.0%</p>
-              <p className="text-xs text-gray-500">Landing → Formulario</p>
-            </div>
+          </>
+        ) : (
+          /* Fallback mock funnel */
+          <div className="text-center py-8 text-gray-500">
+            <p>Cargando datos de HubSpot...</p>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* HubSpot Monitoring */}
+      {/* HubSpot Monitoring - REAL data */}
       <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <Bell className="w-8 h-8" />
             <div>
-              <h3 className="text-lg font-bold">HubSpot - Monitoreo CPL</h3>
-              <p className="text-sm text-white/90">Alertas automáticas de costo por lead</p>
+              <h3 className="text-lg font-bold">HubSpot CRM - Resumen</h3>
+              <p className="text-sm text-white/90">
+                {crmKpis ? 'Datos reales del CRM' : 'Alertas automáticas de costo por lead'}
+              </p>
             </div>
           </div>
-          <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-bold">
-            {HUBSPOT_CONFIG.enabled ? 'ACTIVO' : 'MONITOREO'}
+          <span className={`px-3 py-1 rounded-full text-xs font-bold ${crmKpis ? 'bg-green-400 text-green-900' : 'bg-white/20'}`}>
+            {crmKpis ? 'CONECTADO' : 'MONITOREO'}
           </span>
         </div>
 
-        {/* CPL Thresholds */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-              <GraduationCap className="w-5 h-5" />
-              Pregrado
-            </h4>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>CPL Máximo</span>
-                <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.max_cpl}</span>
+        {crmKpis ? (
+          <>
+            {/* Real CRM Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                <p className="text-xs text-white/70">Contactos</p>
+                <p className="text-xl font-bold">{crmKpis.totalContacts.toLocaleString()}</p>
               </div>
-              <div className="flex justify-between text-sm">
-                <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.alert_at}</span>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                <p className="text-xs text-white/70">Deals</p>
+                <p className="text-xl font-bold">{crmKpis.totalDeals.toLocaleString()}</p>
               </div>
-              <div className="flex justify-between text-sm">
-                <span>Pausar en</span>
-                <span className="font-bold text-red-300">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.pause_at}</span>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                <p className="text-xs text-white/70">Win Rate</p>
+                <p className="text-xl font-bold">{crmKpis.winRate}%</p>
               </div>
-            </div>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-            <h4 className="font-bold mb-3 flex items-center gap-2">
-              <Target className="w-5 h-5" />
-              Posgrado
-            </h4>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>CPL Máximo</span>
-                <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.max_cpl}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.alert_at}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Pausar en</span>
-                <span className="font-bold text-red-300">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.pause_at}</span>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                <p className="text-xs text-white/70">Revenue</p>
+                <p className="text-xl font-bold">${(crmKpis.revenue / 1000000).toFixed(1)}M</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Alertas Recientes */}
-        {HUBSPOT_MOCKUP && HUBSPOT_MOCKUP.alerts && HUBSPOT_MOCKUP.alerts.length > 0 && (
-          <div className="space-y-2">
-            <h4 className="font-bold text-sm mb-2">Alertas Recientes:</h4>
-            {HUBSPOT_MOCKUP.alerts.slice(0, 2).map((alert, idx) => (
-              <div key={idx} className={`p-3 rounded-lg ${
-                alert.type === 'critical' ? 'bg-red-500/30 border border-red-300' :
-                alert.type === 'warning' ? 'bg-yellow-500/30 border border-yellow-300' :
-                'bg-blue-500/30 border border-blue-300'
-              }`}>
-                <p className="text-sm font-medium">{alert.message}</p>
+            {/* Pipeline Distribution */}
+            {hubspot?.deals?.pipeline_distribution && (
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
+                <h4 className="font-bold text-sm mb-3">Deals por Pipeline:</h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {Object.entries(hubspot.deals.pipeline_distribution)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 6)
+                    .map(([name, count]) => (
+                      <div key={name} className="flex justify-between text-sm bg-white/5 rounded-lg px-3 py-2">
+                        <span className="text-white/80 truncate mr-2">{name}</span>
+                        <span className="font-bold flex-shrink-0">{count.toLocaleString()}</span>
+                      </div>
+                    ))}
+                </div>
               </div>
-            ))}
+            )}
+          </>
+        ) : (
+          /* Fallback: CPL Thresholds */
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <h4 className="font-bold mb-3 flex items-center gap-2">
+                <GraduationCap className="w-5 h-5" />
+                Pregrado
+              </h4>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span>CPL Máximo</span>
+                  <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.max_cpl}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>Alerta en</span>
+                  <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.alert_at}</span>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <h4 className="font-bold mb-3 flex items-center gap-2">
+                <Target className="w-5 h-5" />
+                Posgrado
+              </h4>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span>CPL Máximo</span>
+                  <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.max_cpl}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>Alerta en</span>
+                  <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.alert_at}</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
         <div className="mt-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
           <p className="text-xs flex items-center gap-1">
-            <Lightbulb className="w-4 h-4" /> <strong>Nota:</strong> Sistema de monitoreo de HubSpot configurado y listo para activación.
+            <Lightbulb className="w-4 h-4" />
+            <strong>Fuente:</strong> {crmKpis ? `HubSpot Portal ${hubspot?.metadata?.portal_id} | Datos actualizados semanalmente (Lunes 8am)` : 'Sistema de monitoreo de HubSpot configurado y listo para activación.'}
           </p>
         </div>
       </div>
@@ -412,6 +649,7 @@ export default function OptimizationLayer() {
         <div className="flex items-center gap-3 mb-4">
           <AlertCircle className="w-6 h-6 text-ucsp-burgundy" />
           <h3 className="text-base font-bold text-gray-900">Alertas Automáticas</h3>
+          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500">MOCK</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {ALERTS.slice(0, 3).map((alert) => (
@@ -441,7 +679,10 @@ export default function OptimizationLayer() {
 
       {/* Competitor Analysis */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <h3 className="text-base font-bold text-gray-900 mb-4">Análisis de Competencia Universitaria</h3>
+        <div className="flex items-center gap-2 mb-4">
+          <h3 className="text-base font-bold text-gray-900">Análisis de Competencia Universitaria</h3>
+          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500">MOCK</span>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'UCSP').map((comp, idx) => (
             <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-ucsp-burgundy transition-colors">
