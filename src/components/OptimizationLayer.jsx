@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database, XCircle } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
@@ -124,8 +124,9 @@ function buildCRMKpis(hubspot) {
 
 /**
  * Build pipeline summary showing ganados/perdidos for ALL pipelines.
- * Identifies "won" stages by: is_closed=true & probability>0, or name containing "ganado"/"matriculado"/"pagado".
- * Identifies "lost" stages by: name containing "perdido".
+ * Calculates from stage_distribution (direct HubSpot data) — identifies:
+ *   "won" stages: is_closed=true & probability>0, or name contains "ganado"/"matriculado"
+ *   "lost" stages: name contains "perdido"
  */
 function buildPipelineSummary(hubspot) {
   if (!hubspot?.deals?.pipeline_distribution || !hubspot?.deals?.stage_distribution) return null;
@@ -158,7 +159,6 @@ function buildPipelineSummary(hubspot) {
           }
         });
       } else {
-        // No pipeline definition, infer from stage names
         Object.entries(stages).forEach(([stageName, count]) => {
           const nameLower = stageName.toLowerCase();
           if (nameLower.includes('perdido')) {
@@ -183,6 +183,7 @@ export default function OptimizationLayer() {
   const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
   const { data: mlData } = useMLData();
   const [selectedPipeline, setSelectedPipeline] = useState('Pregrado');
+  const [showPipelineSummary, setShowPipelineSummary] = useState(false);
 
   // Build real data (or fallback)
   const channelData = buildChannelData(hubspot) || [
@@ -626,81 +627,98 @@ export default function OptimizationLayer() {
         )}
       </div>
 
-      {/* Resumen por Programa - Ganados / Perdidos - ALL 9 programs */}
+      {/* Resumen por Programa - Ganados / Perdidos - Collapsible */}
       {pipelineSummary && (
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <div className="flex items-center gap-2 mb-6">
-            <GraduationCap className="w-6 h-6 text-ucsp-burgundy" />
-            <h3 className="text-base font-bold text-gray-900">Ganados y Perdidos por Programa</h3>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
-          </div>
-          <p className="text-sm text-gray-500 mb-4">Matriculados, inscritos o cierres ganados vs. leads perdidos por cada programa.</p>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100">
+          <button
+            onClick={() => setShowPipelineSummary(!showPipelineSummary)}
+            className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors rounded-2xl"
+          >
+            <div className="flex items-center gap-2">
+              <GraduationCap className="w-6 h-6 text-ucsp-burgundy" />
+              <h3 className="text-base font-bold text-gray-900">Ganados y Perdidos por Programa</h3>
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
+              <span className="ml-2 text-sm text-gray-500">
+                ({pipelineSummary.reduce((s, r) => s + r.ganados, 0).toLocaleString()} ganados / {pipelineSummary.reduce((s, r) => s + r.perdidos, 0).toLocaleString()} perdidos)
+              </span>
+            </div>
+            {showPipelineSummary
+              ? <ChevronUp className="w-5 h-5 text-gray-400" />
+              : <ChevronDown className="w-5 h-5 text-gray-400" />
+            }
+          </button>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-3 px-3 font-bold text-gray-700">Programa</th>
-                  <th className="text-right py-3 px-3 font-bold text-gray-700">Total Leads</th>
-                  <th className="text-right py-3 px-3 font-bold text-green-700">Ganados</th>
-                  <th className="text-right py-3 px-3 font-bold text-red-700">Perdidos</th>
-                  <th className="text-right py-3 px-3 font-bold text-gray-700">Conversión</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pipelineSummary.map((row, idx) => (
-                  <tr key={row.name} className={`border-b border-gray-100 ${idx % 2 === 0 ? 'bg-gray-50/50' : ''} hover:bg-gray-100 transition-colors`}>
-                    <td className="py-3 px-3 font-medium text-gray-900">{row.name}</td>
-                    <td className="py-3 px-3 text-right text-gray-700 font-semibold">{row.total.toLocaleString()}</td>
-                    <td className="py-3 px-3 text-right">
-                      <span className="inline-flex items-center gap-1 text-green-700 font-bold">
-                        <CheckCircle className="w-3.5 h-3.5" />
-                        {row.ganados.toLocaleString()}
-                      </span>
-                    </td>
-                    <td className="py-3 px-3 text-right">
-                      <span className="inline-flex items-center gap-1 text-red-600 font-bold">
-                        <XCircle className="w-3.5 h-3.5" />
-                        {row.perdidos.toLocaleString()}
-                      </span>
-                    </td>
-                    <td className="py-3 px-3 text-right">
-                      <span className={`px-2 py-1 rounded text-xs font-bold ${
-                        row.conversionRate >= 10 ? 'bg-green-100 text-green-800' :
-                        row.conversionRate >= 5 ? 'bg-amber-100 text-amber-800' :
-                        'bg-red-100 text-red-800'
-                      }`}>
-                        {row.conversionRate}%
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr className="border-t-2 border-gray-300 bg-gray-50 font-bold">
-                  <td className="py-3 px-3 text-gray-900">TOTAL</td>
-                  <td className="py-3 px-3 text-right text-gray-900">
-                    {pipelineSummary.reduce((s, r) => s + r.total, 0).toLocaleString()}
-                  </td>
-                  <td className="py-3 px-3 text-right text-green-700">
-                    {pipelineSummary.reduce((s, r) => s + r.ganados, 0).toLocaleString()}
-                  </td>
-                  <td className="py-3 px-3 text-right text-red-600">
-                    {pipelineSummary.reduce((s, r) => s + r.perdidos, 0).toLocaleString()}
-                  </td>
-                  <td className="py-3 px-3 text-right">
-                    <span className="px-2 py-1 rounded text-xs font-bold bg-ucsp-blue/10 text-ucsp-blue">
-                      {(() => {
-                        const totalLeads = pipelineSummary.reduce((s, r) => s + r.total, 0);
-                        const totalGanados = pipelineSummary.reduce((s, r) => s + r.ganados, 0);
-                        return totalLeads > 0 ? (totalGanados / totalLeads * 100).toFixed(1) : 0;
-                      })()}%
-                    </span>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          {showPipelineSummary && (
+            <div className="px-6 pb-6">
+              <p className="text-sm text-gray-500 mb-4">Matriculados, inscritos o cierres ganados vs. leads perdidos por cada programa.</p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-3 px-3 font-bold text-gray-700">Programa</th>
+                      <th className="text-right py-3 px-3 font-bold text-gray-700">Total Leads</th>
+                      <th className="text-right py-3 px-3 font-bold text-green-700">Ganados</th>
+                      <th className="text-right py-3 px-3 font-bold text-red-700">Perdidos</th>
+                      <th className="text-right py-3 px-3 font-bold text-gray-700">Conversión</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pipelineSummary.map((row, idx) => (
+                      <tr key={row.name} className={`border-b border-gray-100 ${idx % 2 === 0 ? 'bg-gray-50/50' : ''} hover:bg-gray-100 transition-colors`}>
+                        <td className="py-3 px-3 font-medium text-gray-900">{row.name}</td>
+                        <td className="py-3 px-3 text-right text-gray-700 font-semibold">{row.total.toLocaleString()}</td>
+                        <td className="py-3 px-3 text-right">
+                          <span className="inline-flex items-center gap-1 text-green-700 font-bold">
+                            <CheckCircle className="w-3.5 h-3.5" />
+                            {row.ganados.toLocaleString()}
+                          </span>
+                        </td>
+                        <td className="py-3 px-3 text-right">
+                          <span className="inline-flex items-center gap-1 text-red-600 font-bold">
+                            <XCircle className="w-3.5 h-3.5" />
+                            {row.perdidos.toLocaleString()}
+                          </span>
+                        </td>
+                        <td className="py-3 px-3 text-right">
+                          <span className={`px-2 py-1 rounded text-xs font-bold ${
+                            row.conversionRate >= 10 ? 'bg-green-100 text-green-800' :
+                            row.conversionRate >= 5 ? 'bg-amber-100 text-amber-800' :
+                            'bg-red-100 text-red-800'
+                          }`}>
+                            {row.conversionRate}%
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="border-t-2 border-gray-300 bg-gray-50 font-bold">
+                      <td className="py-3 px-3 text-gray-900">TOTAL</td>
+                      <td className="py-3 px-3 text-right text-gray-900">
+                        {pipelineSummary.reduce((s, r) => s + r.total, 0).toLocaleString()}
+                      </td>
+                      <td className="py-3 px-3 text-right text-green-700">
+                        {pipelineSummary.reduce((s, r) => s + r.ganados, 0).toLocaleString()}
+                      </td>
+                      <td className="py-3 px-3 text-right text-red-600">
+                        {pipelineSummary.reduce((s, r) => s + r.perdidos, 0).toLocaleString()}
+                      </td>
+                      <td className="py-3 px-3 text-right">
+                        <span className="px-2 py-1 rounded text-xs font-bold bg-ucsp-blue/10 text-ucsp-blue">
+                          {(() => {
+                            const totalLeads = pipelineSummary.reduce((s, r) => s + r.total, 0);
+                            const totalGanados = pipelineSummary.reduce((s, r) => s + r.ganados, 0);
+                            return totalLeads > 0 ? (totalGanados / totalLeads * 100).toFixed(1) : 0;
+                          })()}%
+                        </span>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
