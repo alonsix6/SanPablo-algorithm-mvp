@@ -4,7 +4,7 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 import { useHubSpotData, useMLData } from '../hooks/useRealData';
-import { filterMonthlyData } from './Dashboard';
+import { filterMonthlyData, aggregateForChart } from './Dashboard';
 
 // Map HubSpot sources to display names and colors
 const SOURCE_CONFIG = {
@@ -222,22 +222,18 @@ export default function OptimizationLayer({ dateRange }) {
     { date: '20 Nov', leads: 108, reach: 115000, engagement: 17400, spent: 6250 },
   ];
 
-  // Monthly leads trend from HubSpot (filtered by date range)
-  const monthlyLeadsData = hubspot?.deals?.monthly_deals
-    ? Object.entries(filterMonthlyData(hubspot.deals.monthly_deals, dateRange))
-        .map(([month, count]) => ({
-          date: month.substring(5),
-          leads: count,
-        }))
+  // Leads trend from HubSpot — prefer daily data for precise filtering
+  const hasDailyLeads = !!hubspot?.deals?.daily_deals;
+  const leadsSource = hasDailyLeads ? hubspot.deals.daily_deals : hubspot?.deals?.monthly_deals;
+  const monthlyLeadsData = leadsSource
+    ? aggregateForChart(filterMonthlyData(leadsSource, dateRange), 'leads')
     : null;
 
-  // Monthly contacts trend (filtered by date range)
-  const monthlyContactsData = hubspot?.contacts?.monthly_creation
-    ? Object.entries(filterMonthlyData(hubspot.contacts.monthly_creation, dateRange))
-        .map(([month, count]) => ({
-          date: month.substring(5),
-          contacts: count,
-        }))
+  // Contacts trend — prefer daily data
+  const hasDailyContacts = !!hubspot?.contacts?.daily_creation;
+  const contactsSource = hasDailyContacts ? hubspot.contacts.daily_creation : hubspot?.contacts?.monthly_creation;
+  const monthlyContactsData = contactsSource
+    ? aggregateForChart(filterMonthlyData(contactsSource, dateRange), 'contacts')
     : null;
 
   return (
@@ -437,10 +433,10 @@ export default function OptimizationLayer({ dateRange }) {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-base font-bold text-gray-900">Leads Mensuales</h3>
+                  <h3 className="text-base font-bold text-gray-900">Tendencia de Leads</h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
                 </div>
-                <p className="text-sm text-gray-600">Fuente: HubSpot CRM</p>
+                <p className="text-sm text-gray-600">{hasDailyLeads ? 'Datos diarios · HubSpot CRM' : 'Datos mensuales · HubSpot CRM'}</p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={250}>
@@ -461,10 +457,10 @@ export default function OptimizationLayer({ dateRange }) {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-base font-bold text-gray-900">Contactos Mensuales</h3>
+                  <h3 className="text-base font-bold text-gray-900">Tendencia de Contactos</h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">REAL</span>
                 </div>
-                <p className="text-sm text-gray-600">Fuente: HubSpot CRM</p>
+                <p className="text-sm text-gray-600">{hasDailyContacts ? 'Datos diarios · HubSpot CRM' : 'Datos mensuales · HubSpot CRM'}</p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={250}>

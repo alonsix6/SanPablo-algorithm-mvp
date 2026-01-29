@@ -38,34 +38,88 @@ function formatDateLabel(start, end) {
 }
 
 /**
- * Filter monthly data entries by start/end date range.
- * monthlyData: { "2025-01": 100, "2025-02": 200, ... }
- * dateRange: { start: "2025-01-15" | null, end: "2025-09-20" | null }
- * A month is included if any part of it falls within the range.
+ * Filter time-keyed data by start/end date range.
+ * Auto-detects key format:
+ *   - Monthly keys ("YYYY-MM"): included if any part of month overlaps range
+ *   - Daily keys ("YYYY-MM-DD"): included if day falls within range
  */
-export function filterMonthlyData(monthlyData, dateRange) {
-  if (!monthlyData) return monthlyData;
-  if (!dateRange || (!dateRange.start && !dateRange.end)) return monthlyData;
+export function filterMonthlyData(data, dateRange) {
+  if (!data) return data;
+  if (!dateRange || (!dateRange.start && !dateRange.end)) return data;
 
   const startDate = dateRange.start ? new Date(dateRange.start + 'T00:00:00') : null;
   const endDate = dateRange.end ? new Date(dateRange.end + 'T00:00:00') : null;
 
   const filtered = {};
-  Object.entries(monthlyData).forEach(([key, value]) => {
-    const [year, month] = key.split('-').map(Number);
-    // Month start = first day, month end = last day
-    const monthStart = new Date(year, month - 1, 1);
-    const monthEnd = new Date(year, month, 0); // last day of month
+  Object.entries(data).forEach(([key, value]) => {
+    const parts = key.split('-');
 
-    // Include if month overlaps with [startDate, endDate]
-    const afterStart = !startDate || monthEnd >= startDate;
-    const beforeEnd = !endDate || monthStart <= endDate;
-
-    if (afterStart && beforeEnd) {
-      filtered[key] = value;
+    if (parts.length >= 3) {
+      // Daily key: YYYY-MM-DD — exact day comparison
+      const date = new Date(key + 'T00:00:00');
+      const afterStart = !startDate || date >= startDate;
+      const beforeEnd = !endDate || date <= endDate;
+      if (afterStart && beforeEnd) filtered[key] = value;
+    } else {
+      // Monthly key: YYYY-MM — include if month overlaps range
+      const [year, month] = parts.map(Number);
+      const monthStart = new Date(year, month - 1, 1);
+      const monthEnd = new Date(year, month, 0);
+      const afterStart = !startDate || monthEnd >= startDate;
+      const beforeEnd = !endDate || monthStart <= endDate;
+      if (afterStart && beforeEnd) filtered[key] = value;
     }
   });
   return filtered;
+}
+
+/**
+ * Aggregate time-keyed data into chart-ready array with smart bucketing.
+ * Daily data is aggregated based on entry count:
+ *   ≤45 entries → daily bars, ≤180 → weekly, >180 → monthly
+ * Monthly data passes through as-is.
+ */
+export function aggregateForChart(filteredData, valueKey) {
+  if (!filteredData) return [];
+  const entries = Object.entries(filteredData).sort(([a], [b]) => a.localeCompare(b));
+  if (entries.length === 0) return [];
+
+  const isDaily = entries[0][0].length === 10; // YYYY-MM-DD
+
+  if (!isDaily) {
+    return entries.map(([key, val]) => ({ date: key.substring(5), [valueKey]: val }));
+  }
+
+  if (entries.length <= 45) {
+    // Show daily
+    return entries.map(([key, val]) => ({ date: key.substring(5), [valueKey]: val }));
+  }
+
+  if (entries.length <= 180) {
+    // Aggregate to ISO weeks
+    const weeks = {};
+    entries.forEach(([key, val]) => {
+      const d = new Date(key + 'T00:00:00');
+      const day = d.getDay();
+      const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+      const ws = new Date(d.getFullYear(), d.getMonth(), diff);
+      const wk = ws.toISOString().slice(0, 10);
+      weeks[wk] = (weeks[wk] || 0) + val;
+    });
+    return Object.entries(weeks)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, val]) => ({ date: key.substring(5), [valueKey]: val }));
+  }
+
+  // Aggregate to months
+  const months = {};
+  entries.forEach(([key, val]) => {
+    const mk = key.substring(0, 7);
+    months[mk] = (months[mk] || 0) + val;
+  });
+  return Object.entries(months)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, val]) => ({ date: key.substring(5), [valueKey]: val }));
 }
 
 export default function Dashboard() {
