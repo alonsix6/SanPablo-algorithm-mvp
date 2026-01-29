@@ -365,6 +365,32 @@ function analyzeDeals(deals, pipelines) {
     }
   });
 
+  // Won/lost per pipeline
+  const wonLostByPipeline = {};
+  deals.forEach(d => {
+    const props = d.properties || {};
+    const pipelineId = props.pipeline || 'default';
+    const stageId = props.dealstage || 'unknown';
+    const pipelineName = pipelineLabels[pipelineId] || pipelineId;
+
+    if (!wonLostByPipeline[pipelineName]) {
+      wonLostByPipeline[pipelineName] = { won: 0, lost: 0, total: 0 };
+    }
+    wonLostByPipeline[pipelineName].total++;
+
+    const stage = pipelines
+      .flatMap(p => p.stages || [])
+      .find(s => s.id === stageId);
+
+    if (stage?.metadata?.isClosed === 'true') {
+      if (parseFloat(stage.metadata.probability || '0') > 0) {
+        wonLostByPipeline[pipelineName].won++;
+      } else {
+        wonLostByPipeline[pipelineName].lost++;
+      }
+    }
+  });
+
   const closedDeals = wonDeals + lostDeals;
   const winRate = closedDeals > 0
     ? parseFloat((wonDeals / closedDeals * 100).toFixed(1))
@@ -374,6 +400,7 @@ function analyzeDeals(deals, pipelines) {
     total: deals.length,
     pipeline_distribution: pipelineDistribution,
     stage_distribution: stageDistribution,
+    won_lost_by_pipeline: wonLostByPipeline,
     revenue: {
       total: totalAmount,
       by_pipeline: revenueByPipeline,
