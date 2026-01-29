@@ -38,8 +38,8 @@ jobs:
       # 4. Crear directorios de datos
       - name: Create data directories
         run: |
-          mkdir -p data/trends data/tiktok data/meta
-          mkdir -p public/data/trends public/data/tiktok public/data/meta
+          mkdir -p data/trends data/tiktok data/meta data/hubspot
+          mkdir -p public/data/trends public/data/tiktok public/data/meta public/data/hubspot
 
       # 5. Ejecutar scraper de Google Trends (Apify)
       - name: Run Google Trends Scraper
@@ -71,7 +71,17 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         continue-on-error: true
 
-      # 8. Ejecutar ML Pipeline
+      # 8. Ejecutar HubSpot CRM Connector
+      - name: Run HubSpot CRM Connector
+        working-directory: ./scrapers
+        run: |
+          echo "📊 Fetching HubSpot CRM data..."
+          node hubspot_api.js --client=ucsp
+        env:
+          HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+        continue-on-error: true
+
+      # 9. Ejecutar ML Pipeline
       - name: Run ML Pipeline
         run: |
           echo "🧠 Ejecutando ML Pipeline..."
@@ -85,6 +95,7 @@ jobs:
           echo "=== Google Trends ===" && ls -lah data/trends/ || echo "No data"
           echo "=== TikTok ===" && ls -lah data/tiktok/ || echo "No data"
           echo "=== Meta ===" && ls -lah data/meta/ || echo "No data"
+          echo "=== HubSpot ===" && ls -lah data/hubspot/ || echo "No data"
           echo "=== ML ===" && ls -lah public/data/ml/ || echo "No ML data"
 
       # 10. Commit y push de los datos

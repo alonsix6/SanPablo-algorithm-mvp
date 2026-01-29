@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-05T22:12:57.588Z",
+  "generated_at": "2026-01-29T03:17:06.783Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -43,10 +43,10 @@
         "engagement": 5
       }
     },
-    "timestamp": "2026-01-05T22:12:57.575Z"
+    "timestamp": "2026-01-29T03:17:06.770Z"
   },
   "scores": {
-    "timestamp": "2026-01-05T22:12:57.576Z",
+    "timestamp": "2026-01-29T03:17:06.771Z",
     "individual": {
       "search": {
         "base": 7.716666666666667,
@@ -63,11 +63,14 @@
         "final": 5
       },
       "intent": {
-        "conversion_rate": 0.058,
-        "final": 8.700000000000001
+        "source": "hubspot_crm",
+        "win_rate": 42.3,
+        "contact_conversion_rate": 21.8,
+        "avg_conversions": 1.45,
+        "final": 3.216
       }
     },
-    "overall": 7.343755555555555,
+    "overall": 5.424355555555556,
     "weights": {
       "search": 0.28,
       "trend": 0.15,
@@ -84,27 +87,27 @@
     },
     "recommended": {
       "google_search": {
-        "percentage": 29,
-        "amount": 6667,
-        "expected_roi": "43.6%",
+        "percentage": 23.2,
+        "amount": 5336,
+        "expected_roi": "90.3%",
         "confidence": "high"
       },
       "meta_ads": {
-        "percentage": 25,
-        "amount": 5741,
-        "expected_roi": "37.6%",
+        "percentage": 25.7,
+        "amount": 5902,
+        "expected_roi": "99.9%",
         "confidence": "high"
       },
       "youtube": {
-        "percentage": 22.1,
-        "amount": 5093,
-        "expected_roi": "33.3%",
+        "percentage": 25.6,
+        "amount": 5890,
+        "expected_roi": "99.7%",
         "confidence": "high"
       },
       "display": {
-        "percentage": 23.9,
-        "amount": 5500,
-        "expected_roi": "36.0%",
+        "percentage": 25.5,
+        "amount": 5872,
+        "expected_roi": "99.4%",
         "confidence": "high"
       }
     },
@@ -113,42 +116,52 @@
         "channel": "display",
         "type": "increase",
         "from": 10,
-        "to": 23.9,
-        "change": "+13.9%",
-        "impact": 3196.9999999999995,
+        "to": 25.5,
+        "change": "+15.5%",
+        "impact": 3565,
         "confidence": "high",
-        "reason": "display muestra ROI superior (36.0%)"
-      },
-      {
-        "channel": "meta_ads",
-        "type": "decrease",
-        "from": 35,
-        "to": 25,
-        "change": "-10.0%",
-        "impact": 2300,
-        "confidence": "high",
-        "reason": "meta_ads muestra menor efectividad"
+        "reason": "display muestra ROI superior (99.4%)"
       },
       {
         "channel": "google_search",
         "type": "decrease",
         "from": 35,
-        "to": 29,
-        "change": "-6.0%",
-        "impact": 1380,
+        "to": 23.2,
+        "change": "-11.8%",
+        "impact": 2714,
         "confidence": "high",
         "reason": "google_search muestra menor efectividad"
+      },
+      {
+        "channel": "meta_ads",
+        "type": "decrease",
+        "from": 35,
+        "to": 25.7,
+        "change": "-9.3%",
+        "impact": 2139.0000000000005,
+        "confidence": "high",
+        "reason": "meta_ads muestra menor efectividad"
+      },
+      {
+        "channel": "youtube",
+        "type": "increase",
+        "from": 20,
+        "to": 25.6,
+        "change": "+5.6%",
+        "impact": 1288.0000000000002,
+        "confidence": "high",
+        "reason": "youtube muestra ROI superior (99.7%)"
       }
     ],
     "simulation": {
       "allocations": [],
       "best_channel_wins": {
-        "google_search": "60.1%",
-        "meta_ads": "15.5%",
-        "youtube": "6.2%",
-        "display": "18.2%"
+        "google_search": "0.0%",
+        "meta_ads": "68.5%",
+        "youtube": "21.1%",
+        "display": "10.4%"
       }
     },
-    "timestamp": "2026-01-05T22:12:57.586Z"
+    "timestamp": "2026-01-29T03:17:06.780Z"
   }
 }

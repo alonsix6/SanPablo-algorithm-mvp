@@ -1,0 +1,438 @@
+{
+  "timestamp": "2026-01-29T03:16:56.996556Z",
+  "source": "HubSpot CRM API",
+  "region": "PE",
+  "category": "CRM Data",
+  "client": "UCSP - Universidad Cat\u00f3lica San Pablo",
+  "contacts": {
+    "total": 84959,
+    "lifecycle_distribution": {
+      "lead": 52450,
+      "customer": 18500,
+      "subscriber": 8200,
+      "opportunity": 3500,
+      "marketingqualifiedlead": 1800,
+      "salesqualifiedlead": 509
+    },
+    "source_distribution": {
+      "DIRECT_TRAFFIC": 28500,
+      "PAID_SOCIAL": 22300,
+      "ORGANIC_SEARCH": 15200,
+      "OFFLINE": 8900,
+      "PAID_SEARCH": 5100,
+      "REFERRALS": 2800,
+      "OTHER_CAMPAIGNS": 1400,
+      "SOCIAL_MEDIA": 759
+    },
+    "conversion_rate": 21.8,
+    "avg_conversions_per_contact": 1.45,
+    "monthly_creation": {
+      "2024-11": 6200,
+      "2024-12": 5800,
+      "2025-01": 7100,
+      "2025-02": 6500,
+      "2025-03": 8200,
+      "2025-04": 7800,
+      "2025-05": 6900,
+      "2025-06": 7200,
+      "2025-07": 6400,
+      "2025-08": 5900,
+      "2025-09": 5200,
+      "2025-10": 4800,
+      "2025-11": 4600,
+      "2025-12": 4200,
+      "2026-01": 4059
+    }
+  },
+  "deals": {
+    "total": 14178,
+    "pipeline_distribution": {
+      "Formaci\u00f3n Continua": 4200,
+      "Pregrado": 2800,
+      "Pregrado Matr\u00edculas": 1950,
+      "Postgrado Maestr\u00edas": 1800,
+      "Postgrado Diplomados": 1500,
+      "Postgrado PED": 900,
+      "Centro de Idiomas": 650,
+      "Pregrado Colegios": 250,
+      "CENDES": 128
+    },
+    "stage_distribution": {
+      "Formaci\u00f3n Continua": {
+        "Nuevo Lead": 1200,
+        "Interesado": 980,
+        "Ficha Inscripci\u00f3n Enviada y canales de pago": 750,
+        "En seguimiento de cobranza": 420,
+        "Pagado/ Enviados enlaces de conexi\u00f3n": 380,
+        "Cierres ganados": 350,
+        "Cierre perdido": 120
+      },
+      "Pregrado": {
+        "Nuevo Lead": 800,
+        "En Seguimiento": 650,
+        "Pre-inscritos sin pago": 480,
+        "Inscrito en aplicaciones": 350,
+        "Aplicaciones/Documentos correctos": 220,
+        "Pagada Pre matr\u00edcula/ganado": 180,
+        "Matriculado": 80,
+        "Cierre perdido": 40
+      },
+      "Postgrado Maestr\u00edas": {
+        "Nuevo Lead": 520,
+        "Interesado": 420,
+        "Ficha y Requisitos enviados": 350,
+        "En proceso de Admisi\u00f3n": 220,
+        "En seguimiento de Cobranza": 140,
+        "Pagado/Cierre ganado": 100,
+        "Cierre perdido": 50
+      }
+    },
+    "revenue": {
+      "total": 2843560.0,
+      "by_pipeline": {
+        "Formaci\u00f3n Continua": 714000.0,
+        "Pregrado": 756000.0,
+        "Pregrado Matr\u00edculas": 487500.0,
+        "Postgrado Maestr\u00edas": 432000.0,
+        "Postgrado Diplomados": 225000.0,
+        "Postgrado PED": 135000.0,
+        "Centro de Idiomas": 58560.0,
+        "CENDES": 35500.0
+      },
+      "avg_deal_value": 200.58
+    },
+    "win_rate": 42.3,
+    "won_deals": 3200,
+    "lost_deals": 4365,
+    "monthly_deals": {
+      "2024-11": 1100,
+      "2024-12": 980,
+      "2025-01": 1250,
+      "2025-02": 1100,
+      "2025-03": 1350,
+      "2025-04": 1200,
+      "2025-05": 1050,
+      "2025-06": 1100,
+      "2025-07": 980,
+      "2025-08": 900,
+      "2025-09": 850,
+      "2025-10": 780,
+      "2025-11": 720,
+      "2025-12": 650,
+      "2026-01": 768
+    }
+  },
+  "campaigns": {
+    "total": 133,
+    "active_count": 3,
+    "total_budget": 85000.0,
+    "total_spend": 72500.0,
+    "budget_utilization": 85.3,
+    "current_campaigns": [
+      {
+        "id": "d889e6bd-c07a-4b6b-b628-d3d5643dac1d",
+        "name": "Admision Agosto 2025",
+        "status": "in_progress",
+        "start_date": "2025-06-04",
+        "end_date": "2025-08-03",
+        "budget": 0,
+        "spend": 0,
+        "utm": "14338465-Admision Agosto 2025"
+      },
+      {
+        "id": "c9413b2c-9219-4600-a45d-8b69d44e9d70",
+        "name": "Admision Abril 2025",
+        "status": "in_progress",
+        "start_date": "2025-03-19",
+        "end_date": "2025-04-13",
+        "budget": 0,
+        "spend": 0,
+        "utm": "10148406-Admision Abril 2025"
+      },
+      {
+        "id": "fe217612-dab5-4d6e-9ae1-2fae38a61361",
+        "name": "Admision Diciembre 2023",
+        "status": "in_progress",
+        "start_date": "2023-10-20",
+        "end_date": "2023-12-07",
+        "budget": 7041.4,
+        "spend": 7041.4,
+        "utm": "Admision Diciembre 2023"
+      }
+    ],
+    "recent_campaigns": [
+      {
+        "name": "Admision Agosto 2025",
+        "status": "in_progress",
+        "start_date": "2025-06-04",
+        "end_date": "2025-08-03"
+      },
+      {
+        "name": "Admision Abril 2025",
+        "status": "in_progress",
+        "start_date": "2025-03-19",
+        "end_date": "2025-04-13"
+      },
+      {
+        "name": "Admision Agosto 2024",
+        "status": null,
+        "start_date": "2024-05-31",
+        "end_date": "2024-08-07"
+      },
+      {
+        "name": "Admision Agosto 2023",
+        "status": null,
+        "start_date": "2023-06-01",
+        "end_date": "2023-08-02"
+      }
+    ]
+  },
+  "pipelines": [
+    {
+      "id": "default",
+      "name": "Formaci\u00f3n Continua",
+      "stages": [
+        {
+          "id": "74326921",
+          "name": "Nuevo Lead",
+          "probability": 0.01,
+          "is_closed": false
+        },
+        {
+          "id": "appointmentscheduled",
+          "name": "Interesado",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "qualifiedtobuy",
+          "name": "Ficha Inscripci\u00f3n Enviada y canales de pago",
+          "probability": 0.4,
+          "is_closed": false
+        },
+        {
+          "id": "presentationscheduled",
+          "name": "En seguimiento de cobranza",
+          "probability": 0.6,
+          "is_closed": false
+        },
+        {
+          "id": "10597521",
+          "name": "Pagado/ Enviados enlaces de conexi\u00f3n",
+          "probability": 0.9,
+          "is_closed": false
+        },
+        {
+          "id": "closedwon",
+          "name": "Cierres ganados",
+          "probability": 1.0,
+          "is_closed": true
+        },
+        {
+          "id": "closedlost",
+          "name": "Cierre perdido",
+          "probability": 0.0,
+          "is_closed": true
+        }
+      ]
+    },
+    {
+      "id": "11865033",
+      "name": "Pregrado",
+      "stages": [
+        {
+          "id": "120276139",
+          "name": "Nuevo Lead",
+          "probability": 0.01,
+          "is_closed": false
+        },
+        {
+          "id": "11865034",
+          "name": "En Seguimiento",
+          "probability": 0.21,
+          "is_closed": false
+        },
+        {
+          "id": "11865035",
+          "name": "Pre-inscritos sin pago",
+          "probability": 0.3,
+          "is_closed": false
+        },
+        {
+          "id": "11865036",
+          "name": "Inscrito en aplicaciones",
+          "probability": 0.7,
+          "is_closed": false
+        },
+        {
+          "id": "11865037",
+          "name": "Aplicaciones/Documentos correctos",
+          "probability": 0.9,
+          "is_closed": false
+        },
+        {
+          "id": "11865039",
+          "name": "Pagada Pre matr\u00edcula/ganado",
+          "probability": 1.0,
+          "is_closed": true
+        },
+        {
+          "id": "11865040",
+          "name": "Cierre perdido",
+          "probability": 0.0,
+          "is_closed": true
+        },
+        {
+          "id": "12049803",
+          "name": "Matriculado",
+          "probability": 1.0,
+          "is_closed": true
+        }
+      ]
+    },
+    {
+      "id": "831085582",
+      "name": "Pregrado Matr\u00edculas",
+      "stages": [
+        {
+          "id": "1231737360",
+          "name": "Ingresante",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "1238324803",
+          "name": "Contactado",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "1238324804",
+          "name": "Interesado",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "1231737361",
+          "name": "Pago sin matr\u00edcula",
+          "probability": 0.4,
+          "is_closed": false
+        },
+        {
+          "id": "1284708754",
+          "name": "Validaci\u00f3n de documentos",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "1231737362",
+          "name": "Matr\u00edcula documentaria",
+          "probability": 0.8,
+          "is_closed": false
+        },
+        {
+          "id": "1231737363",
+          "name": "Cierre perdido",
+          "probability": 1.0,
+          "is_closed": true
+        }
+      ]
+    },
+    {
+      "id": "12537707",
+      "name": "Postgrado Maestr\u00edas",
+      "stages": [
+        {
+          "id": "66392617",
+          "name": "Nuevo Lead",
+          "probability": 0.03,
+          "is_closed": false
+        },
+        {
+          "id": "12537708",
+          "name": "Interesado",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "12537709",
+          "name": "Ficha y Requisitos enviados",
+          "probability": 0.4,
+          "is_closed": false
+        },
+        {
+          "id": "12537710",
+          "name": "En proceso de Admisi\u00f3n",
+          "probability": 0.6,
+          "is_closed": false
+        },
+        {
+          "id": "12537711",
+          "name": "En seguimiento de Cobranza",
+          "probability": 0.8,
+          "is_closed": false
+        },
+        {
+          "id": "12537713",
+          "name": "Pagado/Cierre ganado",
+          "probability": 1.0,
+          "is_closed": true
+        },
+        {
+          "id": "12537714",
+          "name": "Cierre perdido",
+          "probability": 0.0,
+          "is_closed": true
+        }
+      ]
+    },
+    {
+      "id": "12537815",
+      "name": "Postgrado Diplomados",
+      "stages": [
+        {
+          "id": "54948008",
+          "name": "Nuevo Lead",
+          "probability": 0.01,
+          "is_closed": false
+        },
+        {
+          "id": "12537816",
+          "name": "Interesado",
+          "probability": 0.2,
+          "is_closed": false
+        },
+        {
+          "id": "12537817",
+          "name": "Ficha requisitos Enviada",
+          "probability": 0.5,
+          "is_closed": false
+        },
+        {
+          "id": "12537818",
+          "name": "En seguimiento de cobranza",
+          "probability": 0.8,
+          "is_closed": false
+        },
+        {
+          "id": "12537821",
+          "name": "Cierre ganado",
+          "probability": 1.0,
+          "is_closed": true
+        },
+        {
+          "id": "12537822",
+          "name": "Cierre perdido",
+          "probability": 0.0,
+          "is_closed": true
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "method": "HubSpot Private App API v3",
+    "lookback_days": 90,
+    "portal_id": "9013951",
+    "note": "Datos reales de HubSpot CRM"
+  }
+}

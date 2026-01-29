@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-05T22:12:57.576Z",
+  "timestamp": "2026-01-29T03:17:06.771Z",
   "individual": {
     "search": {
       "base": 7.716666666666667,
@@ -16,11 +16,14 @@
       "final": 5
     },
     "intent": {
-      "conversion_rate": 0.058,
-      "final": 8.700000000000001
+      "source": "hubspot_crm",
+      "win_rate": 42.3,
+      "contact_conversion_rate": 21.8,
+      "avg_conversions": 1.45,
+      "final": 3.216
     }
   },
-  "overall": 7.343755555555555,
+  "overall": 5.424355555555556,
   "weights": {
     "search": 0.28,
     "trend": 0.15,

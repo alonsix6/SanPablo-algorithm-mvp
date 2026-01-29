@@ -73,6 +73,16 @@ async function loadAllData() {
     data.ga4 = null;
   }
 
+  try {
+    // Load HubSpot CRM data
+    const hubspotPath = path.join(DATA_DIR, 'hubspot/latest.json');
+    data.hubspot = JSON.parse(await fs.readFile(hubspotPath, 'utf-8'));
+    console.log(`   ✅ HubSpot: ${data.hubspot.contacts?.total || 0} contactos, ${data.hubspot.deals?.total || 0} deals`);
+  } catch (e) {
+    console.log('   ⚠️ HubSpot: No disponible');
+    data.hubspot = null;
+  }
+
   return data;
 }
 
@@ -220,17 +230,40 @@ function calculateMLScores(data, sentimentResults) {
   }
   console.log(`   Social: ${scores.individual.social.final.toFixed(1)}/10`);
 
-  // Intent Score (GA4)
-  if (data.ga4?.overview?.conversionRate) {
+  // Intent Score (GA4 + HubSpot CRM)
+  if (data.hubspot?.deals?.win_rate > 0 || data.hubspot?.contacts?.conversion_rate > 0) {
+    // Use real HubSpot CRM data for intent scoring
+    const winRate = data.hubspot.deals.win_rate || 0;
+    const contactConvRate = data.hubspot.contacts.conversion_rate || 0;
+    const avgConversions = data.hubspot.contacts.avg_conversions_per_contact || 0;
+
+    // Composite intent score from CRM data
+    const winRateScore = Math.min(10, winRate / 10); // 100% win = 10
+    const convScore = Math.min(10, contactConvRate / 10); // 100% = 10
+    const engagementScore = Math.min(10, avgConversions * 2); // 5 conversions = 10
+
+    const intentFinal = (winRateScore * 0.4 + convScore * 0.3 + engagementScore * 0.3);
+
+    scores.individual.intent = {
+      source: 'hubspot_crm',
+      win_rate: winRate,
+      contact_conversion_rate: contactConvRate,
+      avg_conversions: avgConversions,
+      final: Math.min(10, intentFinal)
+    };
+    console.log(`   Intent (HubSpot): ${scores.individual.intent.final.toFixed(1)}/10 (win_rate: ${winRate}%)`);
+  } else if (data.ga4?.overview?.conversionRate) {
     const convRate = data.ga4.overview.conversionRate;
     scores.individual.intent = {
+      source: 'ga4',
       conversion_rate: convRate,
       final: Math.min(10, convRate * 150)
     };
+    console.log(`   Intent (GA4): ${scores.individual.intent.final.toFixed(1)}/10`);
   } else {
-    scores.individual.intent = { conversion_rate: 0.05, final: 7.5 };
+    scores.individual.intent = { source: 'default', conversion_rate: 0.05, final: 7.5 };
+    console.log(`   Intent (default): ${scores.individual.intent.final.toFixed(1)}/10`);
   }
-  console.log(`   Intent: ${scores.individual.intent.final.toFixed(1)}/10`);
 
   // Calculate weighted overall
   scores.overall = (
@@ -249,7 +282,7 @@ function calculateMLScores(data, sentimentResults) {
 // BUDGET OPTIMIZATION
 // ============================================================================
 
-function runBudgetOptimization(historicalData = null) {
+function runBudgetOptimization(historicalData = null, hubspotData = null) {
   console.log('\n💰 Ejecutando optimización de presupuesto...');
 
   const optimizer = new BudgetOptimizer();
@@ -257,6 +290,25 @@ function runBudgetOptimization(historicalData = null) {
   // Load historical performance if available
   if (historicalData) {
     optimizer.batchUpdate(historicalData);
+  } else if (hubspotData?.campaigns?.total_spend > 0) {
+    // Use HubSpot campaign data to inform budget optimization
+    const totalSpend = hubspotData.campaigns.total_spend;
+    const wonDeals = hubspotData.deals?.won_deals || 0;
+    // Estimate channel distribution from source data
+    const sources = hubspotData.contacts?.source_distribution || {};
+    const paidSearch = sources['PAID_SEARCH'] || 0;
+    const paidSocial = sources['PAID_SOCIAL'] || 0;
+    const organic = sources['ORGANIC_SEARCH'] || 0;
+    const direct = sources['DIRECT_TRAFFIC'] || 0;
+    const totalSourced = paidSearch + paidSocial + organic + direct || 1;
+
+    console.log('   Usando datos reales de HubSpot CRM');
+    optimizer.batchUpdate([
+      { channel: 'google_search', conversions: Math.round(wonDeals * paidSearch / totalSourced) || 35, spend: totalSpend * 0.35 },
+      { channel: 'meta_ads', conversions: Math.round(wonDeals * paidSocial / totalSourced) || 30, spend: totalSpend * 0.35 },
+      { channel: 'youtube', conversions: Math.round(wonDeals * 0.1) || 15, spend: totalSpend * 0.20 },
+      { channel: 'display', conversions: Math.round(wonDeals * 0.05) || 8, spend: totalSpend * 0.10 }
+    ]);
   } else {
     // Use default priors based on typical education marketing
     optimizer.batchUpdate([
@@ -413,8 +465,8 @@ async function runPipeline() {
     // 3. Calculate ML-enhanced scores
     const scores = calculateMLScores(data, sentimentResults);
 
-    // 4. Run budget optimization
-    const budgetResults = runBudgetOptimization();
+    // 4. Run budget optimization (with HubSpot data if available)
+    const budgetResults = runBudgetOptimization(null, data.hubspot);
 
     // 5. Generate insights
     const insights = generateInsights(data, sentimentResults, scores, budgetResults);
