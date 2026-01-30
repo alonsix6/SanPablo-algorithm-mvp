@@ -241,6 +241,28 @@ function buildCRMKpis(hubspot, dateRange, selectedProgram) {
     : (selectedProgram ? 0 : (hubspot.deals?.win_rate || 0));
   const avgDealValue = totalLeads > 0 ? parseFloat((revenue / totalLeads).toFixed(2)) : (hubspot.deals?.revenue?.avg_deal_value || 0);
 
+  // Campaign spend: use daily_spend/daily_budget for exact date filtering
+  // Each campaign's spend is distributed across its active date range (start → end)
+  let totalSpend = hubspot.campaigns?.total_spend || 0;
+  let totalBudget = hubspot.campaigns?.total_budget || 0;
+  let budgetUtilization = hubspot.campaigns?.budget_utilization || 0;
+  if (filtering) {
+    if (hubspot.campaigns?.daily_spend) {
+      totalSpend = sumFilteredData(hubspot.campaigns.daily_spend, dateRange);
+      totalSpend = Math.round(totalSpend);
+    }
+    if (hubspot.campaigns?.daily_budget) {
+      totalBudget = sumFilteredData(hubspot.campaigns.daily_budget, dateRange);
+      totalBudget = Math.round(totalBudget);
+    }
+    // Add any spend/budget from campaigns without dates (shown as-is since we can't filter)
+    const spendNoDate = hubspot.campaigns?.spend_without_dates || 0;
+    const budgetNoDate = hubspot.campaigns?.budget_without_dates || 0;
+    totalSpend += spendNoDate;
+    totalBudget += budgetNoDate;
+    budgetUtilization = totalBudget > 0 ? parseFloat((totalSpend / totalBudget * 100).toFixed(1)) : 0;
+  }
+
   return {
     totalContacts,
     totalLeads,
@@ -251,9 +273,9 @@ function buildCRMKpis(hubspot, dateRange, selectedProgram) {
     avgDealValue,
     activeCampaigns: hubspot.campaigns?.active_count || 0,
     totalCampaigns: hubspot.campaigns?.total || 0,
-    totalBudget: hubspot.campaigns?.total_budget || 0,
-    totalSpend: hubspot.campaigns?.total_spend || 0,
-    budgetUtilization: hubspot.campaigns?.budget_utilization || 0,
+    totalBudget,
+    totalSpend,
+    budgetUtilization,
     conversionRate: hubspot.contacts?.conversion_rate || 0,
     timestamp: hubspot.timestamp,
   };
@@ -479,7 +501,7 @@ export default function OptimizationLayer({ dateRange }) {
             )}
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">
-            {crmKpis ? 'Contactos CRM (90d)' : 'Leads Generados'}
+            {crmKpis ? 'Contactos CRM' : 'Leads Generados'}
           </h3>
           <p className="text-2xl font-bold mb-2">
             {crmKpis ? crmKpis.totalContacts.toLocaleString() : PERFORMANCE_KPIS.leads.total.toLocaleString()}
