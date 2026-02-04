@@ -9,6 +9,9 @@ on:
   # Permitir ejecución manual desde GitHub Actions UI
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   scrape-and-commit:
     name: Scrape UCSP data from all sources (daily)
