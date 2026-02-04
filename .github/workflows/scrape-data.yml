@@ -1,17 +1,17 @@
-name: UCSP Algorithm - Weekly Data Scrape
+name: UCSP Algorithm - Daily Data Scrape
 
 # Trigger del workflow
 on:
-  # Ejecutar cada lunes a las 1 PM UTC (8 AM Perú)
+  # Ejecutar todos los días a las 1 PM UTC (8 AM Perú)
   schedule:
-    - cron: '0 13 * * 1'
+    - cron: '0 13 * * *'
 
   # Permitir ejecución manual desde GitHub Actions UI
   workflow_dispatch:
 
 jobs:
   scrape-and-commit:
-    name: Scrape UCSP data from all sources (Apify)
+    name: Scrape UCSP data from all sources (daily)
     runs-on: ubuntu-latest
 
     steps:
@@ -120,7 +120,7 @@ jobs:
         run: |
           if [ "${{ job.status }}" == "success" ]; then
             echo "✅ UCSP Algorithm scraping completado"
-            echo "📅 Próxima ejecución: Próximo lunes 8 AM (Perú)"
+            echo "📅 Próxima ejecución: Mañana 8 AM (Perú)"
           else
             echo "⚠️ Algunos scrapers fallaron - revisa los logs"
           fi
