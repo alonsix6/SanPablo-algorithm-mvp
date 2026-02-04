@@ -64,7 +64,7 @@
 
   "hubspot": {
     "portal_id": "9013951",
-    "lookback_days": 90,
+    "lookback_days": 730,
     "pipelines_of_interest": [
       "Pregrado",
       "Pregrado Matrículas",
