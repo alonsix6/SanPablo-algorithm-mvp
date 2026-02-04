@@ -359,6 +359,52 @@ function buildPipelineSummary(hubspot, dateRange, selectedProgram) {
     });
 }
 
+/**
+ * Filter campaign_performance by dateRange and selectedProgram.
+ * - dateRange: show only campaigns whose active period overlaps with the range
+ * - selectedProgram: show campaigns whose name contains the program name
+ *   (e.g. "Formación Continua Q1 2025" matches program "Formación Continua").
+ *   General "Admision" campaigns are always shown (they span all programs).
+ */
+function filterCampaignPerformance(campaigns, dateRange, selectedProgram) {
+  if (!campaigns || campaigns.length === 0) return [];
+
+  let filtered = campaigns;
+
+  // Date filter — keep campaigns that overlap with the selected date range
+  if (hasActiveDateFilter(dateRange)) {
+    const rangeStart = dateRange.start ? new Date(dateRange.start) : null;
+    const rangeEnd = dateRange.end ? new Date(dateRange.end) : null;
+
+    filtered = filtered.filter(c => {
+      if (!c.start_date && !c.end_date) return true; // no dates = always show
+      const campStart = c.start_date ? new Date(c.start_date) : new Date('2000-01-01');
+      const campEnd = c.end_date ? new Date(c.end_date) : new Date('2099-12-31');
+      // Overlap check: campStart <= rangeEnd AND campEnd >= rangeStart
+      if (rangeEnd && campStart > rangeEnd) return false;
+      if (rangeStart && campEnd < rangeStart) return false;
+      return true;
+    });
+  }
+
+  // Program filter — keep campaigns matching the selected program name
+  if (selectedProgram) {
+    const progLower = selectedProgram.toLowerCase();
+    filtered = filtered.filter(c => {
+      const nameLower = c.name.toLowerCase();
+      // Direct match: campaign name contains program name
+      if (nameLower.includes(progLower)) return true;
+      // "Admision" or general campaigns: match if program is Pregrado-related
+      if (nameLower.includes('admisi')) {
+        return progLower.includes('pregrado');
+      }
+      return false;
+    });
+  }
+
+  return filtered;
+}
+
 export default function OptimizationLayer({ dateRange }) {
   const { data: hubspot, loading: hubspotLoading } = useHubSpotData();
   const { data: mlData } = useMLData();
@@ -385,6 +431,7 @@ export default function OptimizationLayer({ dateRange }) {
 
   const crmKpis = buildCRMKpis(hubspot, dateRange, selectedProgram);
   const pipelineSummary = buildPipelineSummary(hubspot, dateRange, selectedProgram);
+  const filteredCampaigns = filterCampaignPerformance(hubspot?.campaign_performance, dateRange, selectedProgram);
 
   // Data freshness
   const dataAge = crmKpis?.timestamp
@@ -973,20 +1020,22 @@ export default function OptimizationLayer({ dateRange }) {
         </div>
       )}
 
-      {/* Top Campañas & Anuncios — Revenue Attribution */}
-      {hubspot?.campaign_performance && hubspot.campaign_performance.length > 0 && (
+      {/* Top Campañas & Anuncios — Revenue Attribution (filtered by dateRange + selectedProgram) */}
+      {filteredCampaigns && filteredCampaigns.length > 0 && (
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
           <div className="bg-gradient-to-r from-ucsp-blue to-ucsp-lightBlue p-5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Megaphone className="w-7 h-7 text-white" />
                 <div>
-                  <h3 className="text-lg font-bold text-white">Top Campañas & Anuncios</h3>
+                  <h3 className="text-lg font-bold text-white">
+                    Top Campañas & Anuncios{selectedProgram ? ` · ${selectedProgram}` : ''}
+                  </h3>
                   <p className="text-sm text-white/80">Revenue attribution desde HubSpot CRM</p>
                 </div>
               </div>
               <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-                {hubspot.campaign_performance.length} campañas
+                {filteredCampaigns.length} campañas
               </span>
             </div>
           </div>
@@ -994,7 +1043,7 @@ export default function OptimizationLayer({ dateRange }) {
           <div className="p-5">
             {/* Summary KPIs */}
             {(() => {
-              const perf = hubspot.campaign_performance;
+              const perf = filteredCampaigns;
               const totContacts = perf.reduce((s, c) => s + c.contacts_attributed, 0);
               const totDeals = perf.reduce((s, c) => s + c.deals_attributed, 0);
               const totRevenue = perf.reduce((s, c) => s + c.revenue_attributed, 0);
@@ -1043,7 +1092,7 @@ export default function OptimizationLayer({ dateRange }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {hubspot.campaign_performance
+                  {filteredCampaigns
                     .filter(c => c.contacts_attributed > 0 || c.revenue_attributed > 0 || c.spend > 0)
                     .map((camp, idx) => {
                       const roas = camp.spend > 0 ? (camp.revenue_attributed / camp.spend).toFixed(1) : '—';
@@ -1087,7 +1136,7 @@ export default function OptimizationLayer({ dateRange }) {
             {/* Ad campaigns breakdown */}
             {(() => {
               const allAds = [];
-              hubspot.campaign_performance.forEach(camp => {
+              filteredCampaigns.forEach(camp => {
                 camp.ad_campaigns.forEach(ad => {
                   allAds.push({
                     ...ad,
