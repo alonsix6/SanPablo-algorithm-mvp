@@ -57,10 +57,13 @@ async function loadClientConfig(clientName) {
 }
 
 // ============================================================================
-// HTTP HELPER
+// HTTP HELPER — with automatic retry on 429 rate limit
 // ============================================================================
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 async function hubspotFetch(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
+  const maxRetries = 5;
 
   const axiosConfig = {
     method: options.method || 'GET',
@@ -77,14 +80,24 @@ async function hubspotFetch(endpoint, options = {}) {
     axiosConfig.data = options.body;
   }
 
-  try {
-    const response = await axios(axiosConfig);
-    return response.data;
-  } catch (error) {
-    if (error.response) {
-      throw new Error(`HubSpot API ${error.response.status}: ${JSON.stringify(error.response.data)}`);
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await axios(axiosConfig);
+      return response.data;
+    } catch (error) {
+      const status = error.response?.status;
+      if (status === 429 && attempt < maxRetries) {
+        // Rate limited — wait with exponential backoff (1s, 2s, 4s, 8s, 16s)
+        const waitMs = Math.pow(2, attempt) * 1000;
+        console.log(`     [Rate limit] Esperando ${waitMs / 1000}s antes de reintentar...`);
+        await sleep(waitMs);
+        continue;
+      }
+      if (error.response) {
+        throw new Error(`HubSpot API ${status}: ${JSON.stringify(error.response.data)}`);
+      }
+      throw error;
     }
-    throw error;
   }
 }
 
@@ -753,13 +766,12 @@ async function fetchHubSpotData(clientConfig) {
   console.log('='.repeat(50));
 
   try {
-    // Fetch all data in parallel where possible
-    const [contacts, deals, pipelines, campaigns] = await Promise.all([
-      fetchRecentContacts(lookbackDays),
-      fetchRecentDeals(lookbackDays),
-      fetchPipelines(),
-      fetchCampaigns()
-    ]);
+    // Fetch data sequentially to avoid HubSpot 429 rate limits
+    // (parallel requests with 730-day lookback overloads the per-second limit)
+    const contacts = await fetchRecentContacts(lookbackDays);
+    const deals = await fetchRecentDeals(lookbackDays);
+    const pipelines = await fetchPipelines();
+    const campaigns = await fetchCampaigns();
 
     // Fetch deal→contact source attributions
     const dealIds = deals.map(d => d.id);
