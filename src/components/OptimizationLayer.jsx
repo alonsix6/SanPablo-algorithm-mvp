@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell, Globe, FileText, CheckCircle, Lightbulb, Database, XCircle, ChevronDown, ChevronUp, Megaphone, ExternalLink, DollarSign } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
@@ -970,6 +970,176 @@ export default function OptimizationLayer({ dateRange }) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Top Campañas & Anuncios — Revenue Attribution */}
+      {hubspot?.campaign_performance && hubspot.campaign_performance.length > 0 && (
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+          <div className="bg-gradient-to-r from-ucsp-blue to-ucsp-lightBlue p-5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Megaphone className="w-7 h-7 text-white" />
+                <div>
+                  <h3 className="text-lg font-bold text-white">Top Campañas & Anuncios</h3>
+                  <p className="text-sm text-white/80">Revenue attribution desde HubSpot CRM</p>
+                </div>
+              </div>
+              <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                {hubspot.campaign_performance.length} campañas
+              </span>
+            </div>
+          </div>
+
+          <div className="p-5">
+            {/* Summary KPIs */}
+            {(() => {
+              const perf = hubspot.campaign_performance;
+              const totContacts = perf.reduce((s, c) => s + c.contacts_attributed, 0);
+              const totDeals = perf.reduce((s, c) => s + c.deals_attributed, 0);
+              const totRevenue = perf.reduce((s, c) => s + c.revenue_attributed, 0);
+              const totSpend = perf.reduce((s, c) => s + c.spend, 0);
+              const roas = totSpend > 0 ? (totRevenue / totSpend).toFixed(1) : '—';
+              const totalAds = perf.reduce((s, c) => s + c.ad_campaigns.length, 0);
+              return (
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-5">
+                  <div className="bg-blue-50 rounded-xl p-3 text-center">
+                    <p className="text-[11px] text-gray-500 font-medium">Contactos Atribuidos</p>
+                    <p className="text-xl font-bold text-ucsp-blue">{totContacts.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-green-50 rounded-xl p-3 text-center">
+                    <p className="text-[11px] text-gray-500 font-medium">Deals Generados</p>
+                    <p className="text-xl font-bold text-green-700">{totDeals.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-amber-50 rounded-xl p-3 text-center">
+                    <p className="text-[11px] text-gray-500 font-medium">Revenue Atribuido</p>
+                    <p className="text-xl font-bold text-amber-700">${(totRevenue / 1000).toFixed(0)}K</p>
+                  </div>
+                  <div className="bg-purple-50 rounded-xl p-3 text-center">
+                    <p className="text-[11px] text-gray-500 font-medium">ROAS</p>
+                    <p className="text-xl font-bold text-purple-700">{roas}x</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-3 text-center">
+                    <p className="text-[11px] text-gray-500 font-medium">Anuncios Activos</p>
+                    <p className="text-xl font-bold text-gray-700">{totalAds}</p>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Campaign table */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="text-left py-2 px-2 text-gray-600 font-semibold">Campaña</th>
+                    <th className="text-center py-2 px-1 text-gray-600 font-semibold">Estado</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">Spend</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">Contactos</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">Deals</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">Revenue</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">ROAS</th>
+                    <th className="text-right py-2 px-1 text-gray-600 font-semibold">CPL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {hubspot.campaign_performance
+                    .filter(c => c.contacts_attributed > 0 || c.revenue_attributed > 0 || c.spend > 0)
+                    .map((camp, idx) => {
+                      const roas = camp.spend > 0 ? (camp.revenue_attributed / camp.spend).toFixed(1) : '—';
+                      const cpl = camp.contacts_attributed > 0 ? (camp.spend / camp.contacts_attributed).toFixed(0) : '—';
+                      return (
+                        <tr key={camp.id || idx} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                          <td className="py-2.5 px-2">
+                            <div className="font-medium text-gray-900 text-[13px]">{camp.name}</div>
+                            {camp.start_date && (
+                              <div className="text-[11px] text-gray-400">
+                                {camp.start_date} → {camp.end_date || 'activa'}
+                              </div>
+                            )}
+                          </td>
+                          <td className="text-center py-2.5 px-1">
+                            <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                              camp.status === 'in_progress' ? 'bg-green-100 text-green-700' :
+                              camp.status === 'completed' ? 'bg-gray-100 text-gray-500' :
+                              'bg-yellow-100 text-yellow-700'
+                            }`}>
+                              {camp.status === 'in_progress' ? 'Activa' : camp.status === 'completed' ? 'Finalizada' : camp.status}
+                            </span>
+                          </td>
+                          <td className="text-right py-2.5 px-1 font-medium text-gray-700">${camp.spend.toLocaleString()}</td>
+                          <td className="text-right py-2.5 px-1 font-medium text-ucsp-blue">{camp.contacts_attributed}</td>
+                          <td className="text-right py-2.5 px-1 font-medium text-green-700">{camp.deals_attributed}</td>
+                          <td className="text-right py-2.5 px-1 font-bold text-gray-900">${(camp.revenue_attributed / 1000).toFixed(0)}K</td>
+                          <td className="text-right py-2.5 px-1">
+                            <span className={`font-bold ${parseFloat(roas) >= 5 ? 'text-green-600' : parseFloat(roas) >= 2 ? 'text-amber-600' : 'text-red-500'}`}>
+                              {roas}{roas !== '—' ? 'x' : ''}
+                            </span>
+                          </td>
+                          <td className="text-right py-2.5 px-1 text-gray-600">{cpl !== '—' ? `$${cpl}` : '—'}</td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Ad campaigns breakdown */}
+            {(() => {
+              const allAds = [];
+              hubspot.campaign_performance.forEach(camp => {
+                camp.ad_campaigns.forEach(ad => {
+                  allAds.push({
+                    ...ad,
+                    campaign: camp.name,
+                    campaignStatus: camp.status,
+                    campaignSpend: camp.spend,
+                    campaignContacts: camp.contacts_attributed,
+                    campaignRevenue: camp.revenue_attributed
+                  });
+                });
+              });
+              if (allAds.length === 0) return null;
+              return (
+                <div className="mt-5 pt-4 border-t border-gray-200">
+                  <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                    <ExternalLink className="w-4 h-4" />
+                    Anuncios Asociados ({allAds.length})
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {allAds.map((ad, idx) => {
+                      const isGoogle = ad.name.toLowerCase().includes('google');
+                      const isMeta = ad.name.toLowerCase().includes('meta') || ad.name.toLowerCase().includes('facebook') || ad.name.toLowerCase().includes('instagram');
+                      const isLinkedIn = ad.name.toLowerCase().includes('linkedin');
+                      const platformColor = isGoogle ? 'border-l-blue-500 bg-blue-50/50' :
+                                           isMeta ? 'border-l-purple-500 bg-purple-50/50' :
+                                           isLinkedIn ? 'border-l-sky-500 bg-sky-50/50' :
+                                           'border-l-gray-400 bg-gray-50/50';
+                      const platformLabel = isGoogle ? 'Google' : isMeta ? 'Meta' : isLinkedIn ? 'LinkedIn' : 'Otro';
+                      return (
+                        <div key={ad.id || idx} className={`border-l-4 ${platformColor} rounded-lg px-3 py-2`}>
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="text-[12px] font-medium text-gray-800">{ad.name}</p>
+                              <p className="text-[10px] text-gray-400">{ad.campaign}</p>
+                            </div>
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                              isGoogle ? 'bg-blue-100 text-blue-700' :
+                              isMeta ? 'bg-purple-100 text-purple-700' :
+                              isLinkedIn ? 'bg-sky-100 text-sky-700' :
+                              'bg-gray-100 text-gray-600'
+                            }`}>
+                              {platformLabel}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
         </div>
       )}
 
