@@ -1,171 +1,432 @@
 {
-  "timestamp": "2026-01-05T21:45:34.998Z",
+  "timestamp": "2026-02-04T23:24:41.069Z",
   "source": "TikTok Trends via Apify",
   "region": "PE",
   "category": "Education",
   "client": "UCSP - Universidad Católica San Pablo",
   "trends": {
-    "hashtags": [],
+    "hashtags": [
+      {
+        "hashtag": "#agro",
+        "views": "0",
+        "posts": "130.0K",
+        "growth": "+0%",
+        "relevanceScore": 98,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#trabalho",
+        "views": "0",
+        "posts": "91.7K",
+        "growth": "+0%",
+        "relevanceScore": 96,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#enem",
+        "views": "0",
+        "posts": "34.1K",
+        "growth": "+0%",
+        "relevanceScore": 94,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#faculdade",
+        "views": "0",
+        "posts": "29.9K",
+        "growth": "+0%",
+        "relevanceScore": 92,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#obra",
+        "views": "0",
+        "posts": "31.2K",
+        "growth": "+0%",
+        "relevanceScore": 90,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#inss",
+        "views": "0",
+        "posts": "23.7K",
+        "growth": "+0%",
+        "relevanceScore": 88,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#formatura",
+        "views": "0",
+        "posts": "19.2K",
+        "growth": "+0%",
+        "relevanceScore": 86,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#direito",
+        "views": "0",
+        "posts": "22.3K",
+        "growth": "+0%",
+        "relevanceScore": 84,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#vestibular",
+        "views": "0",
+        "posts": "14.5K",
+        "growth": "+0%",
+        "relevanceScore": 82,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#advogada",
+        "views": "0",
+        "posts": "14.5K",
+        "growth": "+0%",
+        "relevanceScore": 80,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#advogado",
+        "views": "0",
+        "posts": "13.4K",
+        "growth": "+0%",
+        "relevanceScore": 78,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#concursopublico",
+        "views": "0",
+        "posts": "13.8K",
+        "growth": "+0%",
+        "relevanceScore": 76,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#construcao",
+        "views": "0",
+        "posts": "10.0K",
+        "growth": "+0%",
+        "relevanceScore": 74,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#aposentadoria",
+        "views": "0",
+        "posts": "8.8K",
+        "growth": "+0%",
+        "relevanceScore": 72,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#agricultura",
+        "views": "0",
+        "posts": "10.0K",
+        "growth": "+0%",
+        "relevanceScore": 70,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#arcondicionado",
+        "views": "0",
+        "posts": "8.0K",
+        "growth": "+0%",
+        "relevanceScore": 68,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#trabalhador",
+        "views": "0",
+        "posts": "7.3K",
+        "growth": "+0%",
+        "relevanceScore": 66,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#biologia",
+        "views": "0",
+        "posts": "7.5K",
+        "growth": "+0%",
+        "relevanceScore": 64,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#soja",
+        "views": "0",
+        "posts": "9.3K",
+        "growth": "+0%",
+        "relevanceScore": 62,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      },
+      {
+        "hashtag": "#ensinomedio",
+        "views": "0",
+        "posts": "4.9K",
+        "growth": "+0%",
+        "relevanceScore": 60,
+        "region": "LATAM",
+        "regionNote": "Tendencias Brasil (proxy LATAM)",
+        "category": "Education",
+        "isPromoted": false
+      }
+    ],
     "sounds": [
       {
         "soundName": "Unknown",
-        "author": "Ice Spice",
+        "author": "Lil Uzi Vert",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Darlene Love",
+        "author": "City of Dawn",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Mariah Carey",
+        "author": "Se'Kret",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Geaux Teezy",
+        "author": "Bktherula",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Goji Georgie",
+        "author": "Trim",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Sounds Reel",
+        "author": "Empire Scores",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Ekkstacy",
+        "author": "Gaming World",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "O.T. Genasis",
+        "author": "Chihei Hatakeyama",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "José Feliciano",
+        "author": "Dominic Fike",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Ariana Grande",
+        "author": "Rihanna",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "John Lennon & Yoko Ono",
+        "author": "MusicBox",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Laufey",
+        "author": "h5wk",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Moby",
+        "author": "Wolf Parade",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "The Stylistics",
+        "author": "Stunna Girl & Vanessa Doll",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "H3adband",
+        "author": "yasuhiro soda",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "YoungBoy Never Broke Again",
+        "author": "Icy Light",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Cahill",
+        "author": "Lenin Ramirez",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Diana Ross",
+        "author": "Melissa Colorado",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "ilyTOMMY",
+        "author": "Housecall",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       },
       {
         "soundName": "Unknown",
-        "author": "Auni",
+        "author": "K's note",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
-        "category": "Music"
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
       }
     ],
     "creators": []
@@ -175,6 +436,10 @@
     "note": "Datos reales de TikTok Creative Center",
     "timeframe": "Last 30 days",
     "industry": "Education",
-    "items_fetched": 21
+    "items_fetched": 40,
+    "hashtags_region": "LATAM",
+    "sounds_region": "PE",
+    "hashtags_source": "Brasil (proxy LATAM)",
+    "sounds_source": "Global trends"
   }
 }

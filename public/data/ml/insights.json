@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-01-29T03:17:06.784Z",
+  "generated_at": "2026-02-04T23:28:04.238Z",
   "insights": [
+    {
+      "id": "tiktok_top_hashtag",
+      "type": "tiktok",
+      "priority": "medium",
+      "title": "#agro lidera en TikTok",
+      "description": "0 visualizaciones y 130.0K posts",
+      "action": "Crear contenido usando este hashtag trending",
+      "growth": "+0%",
+      "confidence": 0.75,
+      "impact_score": 9.8,
+      "source": "TikTok Trends"
+    },
     {
       "id": "ml_trend_momentum",
       "type": "multi_source",
@@ -156,17 +168,6 @@
       "confidence": 0.8,
       "impact_score": 6,
       "source": "Google Analytics 4"
-    },
-    {
-      "id": "social_brand_presence",
-      "type": "social",
-      "priority": "medium",
-      "title": "UCSP presente en 1/5 conversaciones",
-      "description": "La marca aparece en 20% de los temas monitoreados",
-      "action": "Aumentar share of voice en temas donde no aparece UCSP",
-      "confidence": 0.8,
-      "impact_score": 5,
-      "source": "Meta Social Listening"
     }
   ],
   "total_count": 10

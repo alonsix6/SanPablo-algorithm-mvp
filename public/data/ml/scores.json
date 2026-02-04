@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-29T03:17:06.771Z",
+  "timestamp": "2026-02-04T23:28:04.228Z",
   "individual": {
     "search": {
       "base": 7.716666666666667,
@@ -7,8 +7,8 @@
       "final": 8.745555555555555
     },
     "trend": {
-      "base": 5,
-      "final": 5
+      "base": 7.9,
+      "final": 7.9
     },
     "social": {
       "sentiment": 5,
@@ -17,13 +17,13 @@
     },
     "intent": {
       "source": "hubspot_crm",
-      "win_rate": 42.3,
-      "contact_conversion_rate": 21.8,
-      "avg_conversions": 1.45,
-      "final": 3.216
+      "win_rate": 79.5,
+      "contact_conversion_rate": 83.3,
+      "avg_conversions": 1.31,
+      "final": 6.465
     }
   },
-  "overall": 5.424355555555556,
+  "overall": 6.996505555555555,
   "weights": {
     "search": 0.28,
     "trend": 0.15,

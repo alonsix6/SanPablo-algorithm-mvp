@@ -1,48 +1,43 @@
 {
-  "generated_at": "2026-01-29T03:17:06.786Z",
+  "generated_at": "2026-02-04T23:28:04.239Z",
   "budget": [
-    {
-      "channel": "display",
-      "type": "increase",
-      "from": 10,
-      "to": 25.5,
-      "change": "+15.5%",
-      "impact": 3565,
-      "confidence": "high",
-      "reason": "display muestra ROI superior (99.4%)"
-    },
     {
       "channel": "google_search",
       "type": "decrease",
       "from": 35,
-      "to": 23.2,
-      "change": "-11.8%",
-      "impact": 2714,
+      "to": 9.3,
+      "change": "-25.7%",
+      "impact": 5911,
       "confidence": "high",
       "reason": "google_search muestra menor efectividad"
     },
     {
       "channel": "meta_ads",
-      "type": "decrease",
+      "type": "increase",
       "from": 35,
-      "to": 25.7,
-      "change": "-9.3%",
-      "impact": 2139.0000000000005,
+      "to": 55.7,
+      "change": "+20.7%",
+      "impact": 4761.000000000001,
       "confidence": "high",
-      "reason": "meta_ads muestra menor efectividad"
+      "reason": "meta_ads muestra ROI superior (39.6%)"
     },
     {
-      "channel": "youtube",
+      "channel": "display",
       "type": "increase",
-      "from": 20,
-      "to": 25.6,
-      "change": "+5.6%",
-      "impact": 1288.0000000000002,
+      "from": 10,
+      "to": 17.6,
+      "change": "+7.6%",
+      "impact": 1748.0000000000002,
       "confidence": "high",
-      "reason": "youtube muestra ROI superior (99.7%)"
+      "reason": "display muestra ROI superior (12.5%)"
     }
   ],
   "actions": [
+    {
+      "priority": "medium",
+      "action": "Crear contenido usando este hashtag trending",
+      "source": "TikTok Trends"
+    },
     {
       "priority": "high",
       "action": "Aprovechar momento para escalar inversión en Search",
@@ -87,11 +82,6 @@
       "priority": "medium",
       "action": "Analizar qué hace exitosa esta página y replicar",
       "source": "Google Analytics 4"
-    },
-    {
-      "priority": "medium",
-      "action": "Aumentar share of voice en temas donde no aparece UCSP",
-      "source": "Meta Social Listening"
     }
   ]
 }

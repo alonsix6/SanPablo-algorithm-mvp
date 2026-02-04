@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-29T03:17:06.783Z",
+  "generated_at": "2026-02-04T23:28:04.238Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -43,10 +43,10 @@
         "engagement": 5
       }
     },
-    "timestamp": "2026-01-29T03:17:06.770Z"
+    "timestamp": "2026-02-04T23:28:04.228Z"
   },
   "scores": {
-    "timestamp": "2026-01-29T03:17:06.771Z",
+    "timestamp": "2026-02-04T23:28:04.228Z",
     "individual": {
       "search": {
         "base": 7.716666666666667,
@@ -54,8 +54,8 @@
         "final": 8.745555555555555
       },
       "trend": {
-        "base": 5,
-        "final": 5
+        "base": 7.9,
+        "final": 7.9
       },
       "social": {
         "sentiment": 5,
@@ -64,13 +64,13 @@
       },
       "intent": {
         "source": "hubspot_crm",
-        "win_rate": 42.3,
-        "contact_conversion_rate": 21.8,
-        "avg_conversions": 1.45,
-        "final": 3.216
+        "win_rate": 79.5,
+        "contact_conversion_rate": 83.3,
+        "avg_conversions": 1.31,
+        "final": 6.465
       }
     },
-    "overall": 5.424355555555556,
+    "overall": 6.996505555555555,
     "weights": {
       "search": 0.28,
       "trend": 0.15,
@@ -87,81 +87,71 @@
     },
     "recommended": {
       "google_search": {
-        "percentage": 23.2,
-        "amount": 5336,
-        "expected_roi": "90.3%",
+        "percentage": 9.3,
+        "amount": 2128,
+        "expected_roi": "6.6%",
         "confidence": "high"
       },
       "meta_ads": {
-        "percentage": 25.7,
-        "amount": 5902,
-        "expected_roi": "99.9%",
+        "percentage": 55.7,
+        "amount": 12802,
+        "expected_roi": "39.6%",
         "confidence": "high"
       },
       "youtube": {
-        "percentage": 25.6,
-        "amount": 5890,
-        "expected_roi": "99.7%",
+        "percentage": 17.5,
+        "amount": 4023,
+        "expected_roi": "12.4%",
         "confidence": "high"
       },
       "display": {
-        "percentage": 25.5,
-        "amount": 5872,
-        "expected_roi": "99.4%",
+        "percentage": 17.6,
+        "amount": 4046,
+        "expected_roi": "12.5%",
         "confidence": "high"
       }
     },
     "recommendations": [
       {
-        "channel": "display",
-        "type": "increase",
-        "from": 10,
-        "to": 25.5,
-        "change": "+15.5%",
-        "impact": 3565,
-        "confidence": "high",
-        "reason": "display muestra ROI superior (99.4%)"
-      },
-      {
         "channel": "google_search",
         "type": "decrease",
         "from": 35,
-        "to": 23.2,
-        "change": "-11.8%",
-        "impact": 2714,
+        "to": 9.3,
+        "change": "-25.7%",
+        "impact": 5911,
         "confidence": "high",
         "reason": "google_search muestra menor efectividad"
       },
       {
         "channel": "meta_ads",
-        "type": "decrease",
+        "type": "increase",
         "from": 35,
-        "to": 25.7,
-        "change": "-9.3%",
-        "impact": 2139.0000000000005,
+        "to": 55.7,
+        "change": "+20.7%",
+        "impact": 4761.000000000001,
         "confidence": "high",
-        "reason": "meta_ads muestra menor efectividad"
+        "reason": "meta_ads muestra ROI superior (39.6%)"
       },
       {
-        "channel": "youtube",
+        "channel": "display",
         "type": "increase",
-        "from": 20,
-        "to": 25.6,
-        "change": "+5.6%",
-        "impact": 1288.0000000000002,
+        "from": 10,
+        "to": 17.6,
+        "change": "+7.6%",
+        "impact": 1748.0000000000002,
         "confidence": "high",
-        "reason": "youtube muestra ROI superior (99.7%)"
+        "reason": "display muestra ROI superior (12.5%)"
       }
     ],
     "simulation": {
       "allocations": [],
       "best_channel_wins": {
         "google_search": "0.0%",
-        "meta_ads": "68.5%",
-        "youtube": "21.1%",
-        "display": "10.4%"
+        "meta_ads": "100.0%",
+        "youtube": "0.0%",
+        "display": "0.0%"
       }
     },
-    "timestamp": "2026-01-29T03:17:06.780Z"
+    "timestamp": "2026-02-04T23:28:04.235Z"
   }
 }
