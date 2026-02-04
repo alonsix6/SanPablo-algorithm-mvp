@@ -45897,5 +45897,223 @@
     "lookback_days": 90,
     "portal_id": "9013951",
     "note": "Datos reales de HubSpot CRM"
-  }
+  },
+  "campaign_performance": [
+    {
+      "id": "camp-001",
+      "name": "Admision Agosto 2025",
+      "status": "in_progress",
+      "start_date": "2025-06-04",
+      "end_date": "2025-08-03",
+      "spend": 20586.02,
+      "budget": 23007.13,
+      "contacts_attributed": 342,
+      "deals_attributed": 89,
+      "revenue_attributed": 156800,
+      "ad_campaigns": [
+        {
+          "id": "ad-101",
+          "name": "Google Search - Admisi\u00f3n Pregrado 2025"
+        },
+        {
+          "id": "ad-102",
+          "name": "Meta - Carreras de Ingenier\u00eda"
+        },
+        {
+          "id": "ad-103",
+          "name": "Google Display - Brand UCSP"
+        },
+        {
+          "id": "ad-104",
+          "name": "Meta - Becas y Financiamiento"
+        },
+        {
+          "id": "ad-105",
+          "name": "LinkedIn - Postgrado Maestr\u00edas"
+        }
+      ]
+    },
+    {
+      "id": "camp-002",
+      "name": "Admision Abril 2025",
+      "status": "in_progress",
+      "start_date": "2025-03-19",
+      "end_date": "2025-04-13",
+      "spend": 9333.72,
+      "budget": 10422.44,
+      "contacts_attributed": 187,
+      "deals_attributed": 52,
+      "revenue_attributed": 91500,
+      "ad_campaigns": [
+        {
+          "id": "ad-201",
+          "name": "Google Search - Matr\u00edculas Abril"
+        },
+        {
+          "id": "ad-202",
+          "name": "Meta - Open Day Virtual"
+        },
+        {
+          "id": "ad-203",
+          "name": "Meta - Testimonios Estudiantes"
+        }
+      ]
+    },
+    {
+      "id": "camp-003",
+      "name": "Admision Agosto 2024",
+      "status": "completed",
+      "start_date": "2024-05-31",
+      "end_date": "2024-08-07",
+      "spend": 24887.61,
+      "budget": 29853.53,
+      "contacts_attributed": 521,
+      "deals_attributed": 134,
+      "revenue_attributed": 245300,
+      "ad_campaigns": [
+        {
+          "id": "ad-301",
+          "name": "Google Search - Admisi\u00f3n 2024-II"
+        },
+        {
+          "id": "ad-302",
+          "name": "Meta - Carreras del Futuro"
+        },
+        {
+          "id": "ad-303",
+          "name": "Google Display - Remarketing UCSP"
+        },
+        {
+          "id": "ad-304",
+          "name": "Meta - Campus Tour Virtual"
+        },
+        {
+          "id": "ad-305",
+          "name": "LinkedIn - Diplomados PED"
+        },
+        {
+          "id": "ad-306",
+          "name": "Google Search - Becas Arequipa 2024"
+        }
+      ]
+    },
+    {
+      "id": "camp-004",
+      "name": "Admision Agosto 2023",
+      "status": "completed",
+      "start_date": "2023-06-01",
+      "end_date": "2023-08-02",
+      "spend": 17692.64,
+      "budget": 21716.9,
+      "contacts_attributed": 398,
+      "deals_attributed": 97,
+      "revenue_attributed": 178600,
+      "ad_campaigns": [
+        {
+          "id": "ad-401",
+          "name": "Google Search - Pregrado 2023"
+        },
+        {
+          "id": "ad-402",
+          "name": "Meta - Vida Universitaria"
+        },
+        {
+          "id": "ad-403",
+          "name": "Meta - Inscripciones Abiertas"
+        },
+        {
+          "id": "ad-404",
+          "name": "Google Display - Arequipa Universidades"
+        }
+      ]
+    },
+    {
+      "id": "camp-005",
+      "name": "Formaci\u00f3n Continua Q1 2025",
+      "status": "in_progress",
+      "start_date": "2025-01-15",
+      "end_date": "2025-03-31",
+      "spend": 4200,
+      "budget": 5000,
+      "contacts_attributed": 76,
+      "deals_attributed": 28,
+      "revenue_attributed": 42000,
+      "ad_campaigns": [
+        {
+          "id": "ad-501",
+          "name": "Google Search - Cursos Profesionales"
+        },
+        {
+          "id": "ad-502",
+          "name": "LinkedIn - Formaci\u00f3n Ejecutiva"
+        }
+      ]
+    },
+    {
+      "id": "camp-006",
+      "name": "Centro de Idiomas 2025",
+      "status": "in_progress",
+      "start_date": "2025-02-01",
+      "end_date": "2025-06-30",
+      "spend": 3100,
+      "budget": 4000,
+      "contacts_attributed": 145,
+      "deals_attributed": 41,
+      "revenue_attributed": 28700,
+      "ad_campaigns": [
+        {
+          "id": "ad-601",
+          "name": "Meta - Ingl\u00e9s UCSP Arequipa"
+        },
+        {
+          "id": "ad-602",
+          "name": "Google Search - Idiomas Arequipa"
+        }
+      ]
+    },
+    {
+      "id": "camp-007",
+      "name": "Postgrado Maestr\u00edas 2025",
+      "status": "in_progress",
+      "start_date": "2025-04-01",
+      "end_date": "2025-07-15",
+      "spend": 6800,
+      "budget": 8500,
+      "contacts_attributed": 63,
+      "deals_attributed": 18,
+      "revenue_attributed": 108000,
+      "ad_campaigns": [
+        {
+          "id": "ad-701",
+          "name": "LinkedIn - MBA UCSP"
+        },
+        {
+          "id": "ad-702",
+          "name": "Google Search - Maestr\u00eda Arequipa"
+        },
+        {
+          "id": "ad-703",
+          "name": "Meta - Maestr\u00eda Ingenier\u00eda"
+        }
+      ]
+    },
+    {
+      "id": "camp-008",
+      "name": "CENDES Capacitaciones 2024",
+      "status": "completed",
+      "start_date": "2024-03-01",
+      "end_date": "2024-11-30",
+      "spend": 2800,
+      "budget": 3500,
+      "contacts_attributed": 92,
+      "deals_attributed": 35,
+      "revenue_attributed": 31500,
+      "ad_campaigns": [
+        {
+          "id": "ad-801",
+          "name": "Google Search - Capacitaci\u00f3n Empresarial"
+        }
+      ]
+    }
+  ]
 }

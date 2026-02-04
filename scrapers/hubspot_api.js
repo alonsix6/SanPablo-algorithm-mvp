@@ -646,6 +646,78 @@ function analyzeCampaigns(campaigns) {
   };
 }
 
+/**
+ * Fetch revenue attribution + ad campaign assets for each marketing campaign.
+ * Requires scope: marketing.campaigns.revenue.read
+ */
+async function fetchCampaignRevenueAndAds(campaigns) {
+  console.log('\n   Obteniendo revenue y ads de campanas...');
+
+  const results = [];
+
+  for (const c of campaigns) {
+    const props = c.properties || {};
+    const name = props.hs_name || 'Sin nombre';
+    if (name === 'Sin nombre') continue;
+
+    const entry = {
+      id: c.id,
+      name,
+      status: props.hs_campaign_status || 'unknown',
+      start_date: props.hs_start_date || null,
+      end_date: props.hs_end_date || null,
+      spend: parseFloat(props.hs_spend_items_sum_amount || '0'),
+      budget: parseFloat(props.hs_budget_items_sum_amount || '0'),
+      revenue: null,
+      contacts_attributed: 0,
+      deals_attributed: 0,
+      revenue_attributed: 0,
+      ad_campaigns: []
+    };
+
+    // Fetch revenue report
+    try {
+      const revData = await hubspotFetch(
+        `/marketing/v3/campaigns/${c.id}/reports/revenue?attributionModel=LINEAR`
+      );
+      entry.contacts_attributed = revData.contactsNumber || 0;
+      entry.deals_attributed = revData.dealsNumber || 0;
+      entry.revenue_attributed = revData.revenueAmount || 0;
+    } catch (err) {
+      // Scope might not be available — skip silently
+      if (!err.message.includes('403')) {
+        console.log(`     Revenue error for ${name}: ${err.message.substring(0, 80)}`);
+      }
+    }
+
+    // Fetch AD_CAMPAIGN assets
+    try {
+      const adsData = await hubspotFetch(
+        `/marketing/v3/campaigns/${c.id}/assets/AD_CAMPAIGN?limit=50`
+      );
+      entry.ad_campaigns = (adsData.results || []).map(a => ({
+        id: a.id,
+        name: a.name || a.id
+      }));
+    } catch (err) {
+      // No ads associated or not available
+    }
+
+    results.push(entry);
+  }
+
+  // Sort by revenue_attributed descending, then by contacts
+  results.sort((a, b) => {
+    if (b.revenue_attributed !== a.revenue_attributed) return b.revenue_attributed - a.revenue_attributed;
+    return b.contacts_attributed - a.contacts_attributed;
+  });
+
+  console.log(`   Campanas con revenue data: ${results.filter(r => r.revenue_attributed > 0 || r.contacts_attributed > 0).length}`);
+  console.log(`   Campanas con ads asociados: ${results.filter(r => r.ad_campaigns.length > 0).length}`);
+
+  return results;
+}
+
 function analyzePipelines(pipelines) {
   return pipelines
     .filter(p => !p.label.includes('NO USAR'))
@@ -700,6 +772,9 @@ async function fetchHubSpotData(clientConfig) {
     const campaignAnalysis = analyzeCampaigns(campaigns);
     const pipelineAnalysis = analyzePipelines(pipelines);
 
+    // Fetch campaign revenue attribution & ad assets
+    const campaignPerformance = await fetchCampaignRevenueAndAds(campaigns);
+
     // Build output
     const data = {
       timestamp: new Date().toISOString(),
@@ -710,6 +785,7 @@ async function fetchHubSpotData(clientConfig) {
       contacts: contactAnalysis,
       deals: dealAnalysis,
       campaigns: campaignAnalysis,
+      campaign_performance: campaignPerformance,
       pipelines: pipelineAnalysis,
       metadata: {
         method: 'HubSpot Private App API v3',
