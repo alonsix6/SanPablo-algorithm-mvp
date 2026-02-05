@@ -140,14 +140,15 @@ export const DATA_SOURCES_CONFIG = {
     status: 'active',
   },
   ga4: {
-    enabled: false,
+    enabled: true,
     name: 'Google Analytics 4',
     description: 'Tráfico web y conversiones',
     icon: 'BarChart3',
     color: 'text-amber-600',
     bgColor: 'bg-amber-50',
-    mock_data: true,
+    mock_data: false,
     status: 'active',
+    property_id: '310975508',
   },
 };
 

@@ -5,11 +5,13 @@
   "description": "Data scrapers for UCSP Algorithm - Social Intelligence para Universidad Católica San Pablo",
   "main": "index.js",
   "scripts": {
-    "scrape:all": "npm run scrape:trends && npm run scrape:tiktok && npm run scrape:meta && npm run scrape:hubspot",
+    "scrape:all": "npm run scrape:trends && npm run scrape:tiktok && npm run scrape:meta && npm run scrape:hubspot && npm run scrape:ga4",
     "scrape:trends": "node google_trends_apify.js --client=ucsp",
     "scrape:tiktok": "node tiktok_apify.js --client=ucsp",
     "scrape:meta": "node meta_apify.js --client=ucsp",
     "scrape:hubspot": "node hubspot_api.js --client=ucsp",
+    "scrape:ga4": "node ga4_api.js --client=ucsp",
+    "scrape:ga4:incremental": "node ga4_api.js --client=ucsp --mode=incremental",
     "validate": "node validate_data.js"
   },
   "keywords": [
@@ -23,6 +25,7 @@
   "author": "Reset",
   "license": "UNLICENSED",
   "dependencies": {
+    "@google-analytics/data": "^4.8.0",
     "apify-client": "^2.9.0",
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
