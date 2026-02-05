@@ -44,8 +44,8 @@ jobs:
       # 4. Crear directorios de datos
       - name: Create data directories
         run: |
-          mkdir -p data/trends data/tiktok data/meta data/hubspot
-          mkdir -p public/data/trends public/data/tiktok public/data/meta public/data/hubspot
+          mkdir -p data/trends data/tiktok data/meta data/hubspot data/ga4
+          mkdir -p public/data/trends public/data/tiktok public/data/meta public/data/hubspot public/data/ga4
 
       # 5. Ejecutar scraper de Google Trends (Apify)
       - name: Run Google Trends Scraper
@@ -87,20 +87,32 @@ jobs:
           HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
         continue-on-error: true
 
-      # 9. Ejecutar ML Pipeline
+      # 9. Ejecutar GA4 Data Connector (INCREMENTAL - 7 días, merge)
+      - name: Run GA4 Data Connector (incremental)
+        working-directory: ./scrapers
+        run: |
+          echo "GA4 Analytics incremental update (7 dias)..."
+          node ga4_api.js --client=ucsp --mode=incremental
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_CREDENTIALS_JSON: ${{ secrets.GA4_CREDENTIALS_JSON }}
+        continue-on-error: true
+
+      # 10. Ejecutar ML Pipeline
       - name: Run ML Pipeline
         run: |
           echo "Ejecutando ML Pipeline..."
           node ml/pipeline/weekly_pipeline.js
         continue-on-error: true
 
-      # 10. Verificar archivos generados
+      # 11. Verificar archivos generados
       - name: Check generated files
         run: |
           echo "Verificando archivos generados..."
           echo "=== HubSpot ===" && ls -lah data/hubspot/ || echo "No data"
+          echo "=== GA4 ===" && ls -lah data/ga4/ || echo "No data"
 
-      # 11. Commit y push de los datos
+      # 12. Commit y push de los datos
       - name: Commit and push data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -117,7 +129,7 @@ jobs:
             echo "Datos UCSP actualizados (incremental)"
           fi
 
-      # 12. Notificación
+      # 13. Notificación
       - name: Status notification
         run: |
           if [ "${{ job.status }}" == "success" ]; then
