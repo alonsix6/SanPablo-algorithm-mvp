@@ -152,34 +152,39 @@ async function fetchRecentContacts(days = 90) {
     const windowStart = new Date(now);
     windowStart.setDate(windowStart.getDate() - Math.min(offset + windowDays, days));
 
-    let after = undefined;
-    let windowCount = 0;
-    do {
-      const body = {
-        filterGroups: [{
-          filters: [
-            { propertyName: 'createdate', operator: 'GTE', value: windowStart.toISOString() },
-            { propertyName: 'createdate', operator: 'LT', value: windowEnd.toISOString() }
-          ]
-        }],
-        properties,
-        limit: 100,
-        ...(after ? { after } : {})
-      };
+    try {
+      let after = undefined;
+      let windowCount = 0;
+      do {
+        const body = {
+          filterGroups: [{
+            filters: [
+              { propertyName: 'createdate', operator: 'GTE', value: windowStart.getTime().toString() },
+              { propertyName: 'createdate', operator: 'LT', value: windowEnd.getTime().toString() }
+            ]
+          }],
+          properties,
+          limit: 100,
+          ...(after ? { after } : {})
+        };
 
-      const data = await hubspotFetch('/crm/v3/objects/contacts/search', {
-        method: 'POST',
-        body
-      });
+        const data = await hubspotFetch('/crm/v3/objects/contacts/search', {
+          method: 'POST',
+          body
+        });
 
-      const results = data.results || [];
-      allContacts.push(...results);
-      windowCount += results.length;
-      after = data.paging?.next?.after || null;
-    } while (after);
+        const results = data.results || [];
+        allContacts.push(...results);
+        windowCount += results.length;
+        after = data.paging?.next?.after || null;
+      } while (after);
 
-    if (windowCount > 0) {
-      console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} contactos`);
+      if (windowCount > 0) {
+        console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} contactos`);
+      }
+    } catch (err) {
+      console.log(`     [WARN] Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]} falló: ${err.message}`);
+      // Continue with next window instead of crashing
     }
   }
 
@@ -209,34 +214,38 @@ async function fetchRecentDeals(days = 90) {
     const windowStart = new Date(now);
     windowStart.setDate(windowStart.getDate() - Math.min(offset + windowDays, days));
 
-    let after = undefined;
-    let windowCount = 0;
-    do {
-      const body = {
-        filterGroups: [{
-          filters: [
-            { propertyName: 'createdate', operator: 'GTE', value: windowStart.toISOString() },
-            { propertyName: 'createdate', operator: 'LT', value: windowEnd.toISOString() }
-          ]
-        }],
-        properties,
-        limit: 100,
-        ...(after ? { after } : {})
-      };
+    try {
+      let after = undefined;
+      let windowCount = 0;
+      do {
+        const body = {
+          filterGroups: [{
+            filters: [
+              { propertyName: 'createdate', operator: 'GTE', value: windowStart.getTime().toString() },
+              { propertyName: 'createdate', operator: 'LT', value: windowEnd.getTime().toString() }
+            ]
+          }],
+          properties,
+          limit: 100,
+          ...(after ? { after } : {})
+        };
 
-      const data = await hubspotFetch('/crm/v3/objects/deals/search', {
-        method: 'POST',
-        body
-      });
+        const data = await hubspotFetch('/crm/v3/objects/deals/search', {
+          method: 'POST',
+          body
+        });
 
-      const results = data.results || [];
-      allDeals.push(...results);
-      windowCount += results.length;
-      after = data.paging?.next?.after || null;
-    } while (after);
+        const results = data.results || [];
+        allDeals.push(...results);
+        windowCount += results.length;
+        after = data.paging?.next?.after || null;
+      } while (after);
 
-    if (windowCount > 0) {
-      console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} deals`);
+      if (windowCount > 0) {
+        console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} deals`);
+      }
+    } catch (err) {
+      console.log(`     [WARN] Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]} falló: ${err.message}`);
     }
   }
 
