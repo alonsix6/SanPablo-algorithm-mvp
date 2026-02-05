@@ -7,10 +7,13 @@
  * - Deals: pipeline stages, montos, tasas de conversión
  * - Campañas: presupuestos, UTMs, estados
  *
- * Se ejecuta semanalmente (Lunes 8am) via GitHub Actions.
+ * Dos modos de ejecución:
+ *   --mode=full          Full rebuild, 730 días (semanal, ~35 min)
+ *   --mode=incremental   Solo últimos 7 días, merge con data existente (diario, ~3 min)
  *
  * Uso:
- *   node hubspot_api.js --client=ucsp
+ *   node hubspot_api.js --client=ucsp --mode=full
+ *   node hubspot_api.js --client=ucsp --mode=incremental
  *
  * Requiere:
  *   HUBSPOT_ACCESS_TOKEN en .env o variable de entorno
@@ -35,9 +38,10 @@ const BASE_URL = 'https://api.hubapi.com';
 // ============================================================================
 function parseArgs() {
   const args = process.argv.slice(2);
-  const options = { client: 'ucsp' };
+  const options = { client: 'ucsp', mode: 'full' };
   args.forEach(arg => {
     if (arg.startsWith('--client=')) options.client = arg.split('=')[1];
+    if (arg.startsWith('--mode=')) options.mode = arg.split('=')[1];
   });
   return options;
 }
@@ -776,10 +780,265 @@ function analyzePipelines(pipelines) {
 }
 
 // ============================================================================
+// INCREMENTAL MERGE
+// ============================================================================
+
+/**
+ * Load existing latest.json for incremental merge.
+ * Returns null if file doesn't exist or is invalid.
+ */
+async function loadExistingData() {
+  const filePath = path.join(__dirname, '../data/hubspot/latest.json');
+  try {
+    const content = await fs.readFile(filePath, 'utf-8');
+    const data = JSON.parse(content);
+    // Validate basic structure
+    if (data.contacts && data.deals && data.campaigns) {
+      console.log(`   Datos existentes cargados (${data.timestamp})`);
+      return data;
+    }
+    console.log('   [WARN] Datos existentes con estructura incompleta, ignorando');
+    return null;
+  } catch {
+    console.log('   No hay datos existentes, se hará fetch completo');
+    return null;
+  }
+}
+
+/**
+ * Aggregate a daily object { "YYYY-MM-DD": number } into monthly { "YYYY-MM": number }
+ */
+function dailyToMonthly(dailyData) {
+  const monthly = {};
+  Object.entries(dailyData || {}).forEach(([day, count]) => {
+    const month = day.substring(0, 7);
+    monthly[month] = (monthly[month] || 0) + count;
+  });
+  return monthly;
+}
+
+/**
+ * Sum all values from a { day: { key: count } } structure into { key: totalCount }
+ */
+function aggregateObjectDaily(dailyObjData) {
+  const result = {};
+  Object.values(dailyObjData || {}).forEach(obj => {
+    if (obj && typeof obj === 'object') {
+      Object.entries(obj).forEach(([key, count]) => {
+        result[key] = (result[key] || 0) + count;
+      });
+    }
+  });
+  return result;
+}
+
+/**
+ * For nested daily structures like { pipeline: { day: { stage: count } } },
+ * aggregate into { pipeline: { stage: totalCount } }
+ */
+function aggregateNestedDaily(nestedDailyData) {
+  const result = {};
+  Object.entries(nestedDailyData || {}).forEach(([outerKey, dailyObj]) => {
+    result[outerKey] = aggregateObjectDaily(dailyObj);
+  });
+  return result;
+}
+
+/**
+ * Deep merge daily data: for simple { day: count }, overwrite days from fresh.
+ * Returns merged object.
+ */
+function mergeDailySimple(existing, fresh) {
+  return { ...(existing || {}), ...(fresh || {}) };
+}
+
+/**
+ * Deep merge daily object data: { day: { key: count } }
+ * Overwrites entire day entry from fresh.
+ */
+function mergeDailyObject(existing, fresh) {
+  const merged = { ...(existing || {}) };
+  Object.entries(fresh || {}).forEach(([day, obj]) => {
+    merged[day] = obj; // replace entire day
+  });
+  return merged;
+}
+
+/**
+ * Deep merge nested daily data: { pipeline: { day: { stage: count } } }
+ * For each pipeline in fresh, merge its daily entries.
+ */
+function mergeNestedDaily(existing, fresh) {
+  const merged = {};
+  // Start with all existing pipelines
+  Object.entries(existing || {}).forEach(([key, dailyObj]) => {
+    merged[key] = { ...dailyObj };
+  });
+  // Merge fresh pipelines
+  Object.entries(fresh || {}).forEach(([key, dailyObj]) => {
+    if (!merged[key]) merged[key] = {};
+    Object.entries(dailyObj).forEach(([day, val]) => {
+      merged[key][day] = val; // replace entire day for this pipeline
+    });
+  });
+  return merged;
+}
+
+/**
+ * Calculate won/lost deals from stage_distribution using pipeline definitions.
+ */
+function calcWonLostFromStages(stageDistribution, pipelineAnalysis) {
+  let won = 0;
+  let lost = 0;
+
+  Object.entries(stageDistribution || {}).forEach(([pipelineName, stages]) => {
+    const pDef = pipelineAnalysis.find(p => p.name === pipelineName);
+    Object.entries(stages || {}).forEach(([stageName, count]) => {
+      const nameLower = stageName.toLowerCase();
+      if (nameLower.includes('perdido')) {
+        lost += count;
+      } else if (pDef) {
+        const sDef = pDef.stages?.find(s => s.name === stageName);
+        if (sDef?.is_closed && sDef.probability > 0) {
+          won += count;
+        } else if (nameLower.includes('ganado') || nameLower.includes('matriculado')) {
+          won += count;
+        }
+      } else if (nameLower.includes('ganado') || nameLower.includes('matriculado') || nameLower.includes('pagado')) {
+        won += count;
+      }
+    });
+  });
+
+  return { won, lost };
+}
+
+/**
+ * Merge fresh incremental data into existing full data.
+ * - Daily breakdowns: fresh days overwrite existing days
+ * - Aggregates: recalculated from merged daily data
+ * - Campaigns, pipelines: always taken from fresh (small, always full fetch)
+ */
+function mergeHubSpotData(existing, fresh, pipelineAnalysis) {
+  console.log('\n   Mergeando datos incrementales con existentes...');
+
+  const merged = JSON.parse(JSON.stringify(existing)); // deep clone
+
+  // === CONTACTS ===
+  merged.contacts.daily_creation = mergeDailySimple(
+    existing.contacts.daily_creation, fresh.contacts.daily_creation
+  );
+  merged.contacts.daily_by_source = mergeDailyObject(
+    existing.contacts.daily_by_source, fresh.contacts.daily_by_source
+  );
+
+  // Recalculate aggregates from merged daily data
+  merged.contacts.total = Object.values(merged.contacts.daily_creation).reduce((s, v) => s + v, 0);
+  merged.contacts.monthly_creation = dailyToMonthly(merged.contacts.daily_creation);
+  merged.contacts.source_distribution = aggregateObjectDaily(merged.contacts.daily_by_source);
+  // lifecycle_distribution, conversion_rate: keep from existing (need full raw data)
+
+  // === DEALS ===
+  merged.deals.daily_deals = mergeDailySimple(
+    existing.deals.daily_deals, fresh.deals.daily_deals
+  );
+  merged.deals.daily_by_pipeline = mergeDailyObject(
+    existing.deals.daily_by_pipeline, fresh.deals.daily_by_pipeline
+  );
+  merged.deals.daily_by_pipeline_stage = mergeNestedDaily(
+    existing.deals.daily_by_pipeline_stage, fresh.deals.daily_by_pipeline_stage
+  );
+  merged.deals.daily_revenue = mergeDailyObject(
+    existing.deals.daily_revenue, fresh.deals.daily_revenue
+  );
+  merged.deals.daily_source_by_pipeline = mergeNestedDaily(
+    existing.deals.daily_source_by_pipeline, fresh.deals.daily_source_by_pipeline
+  );
+
+  // Recalculate all deal aggregates from merged daily data
+  merged.deals.total = Object.values(merged.deals.daily_deals).reduce((s, v) => s + v, 0);
+  merged.deals.monthly_deals = dailyToMonthly(merged.deals.daily_deals);
+  merged.deals.pipeline_distribution = aggregateObjectDaily(merged.deals.daily_by_pipeline);
+  merged.deals.stage_distribution = aggregateNestedDaily(merged.deals.daily_by_pipeline_stage);
+  merged.deals.source_by_pipeline = aggregateNestedDaily(merged.deals.daily_source_by_pipeline);
+
+  // Revenue aggregates
+  const revByPipeline = aggregateObjectDaily(merged.deals.daily_revenue);
+  const totalRevenue = Object.values(revByPipeline).reduce((s, v) => s + v, 0);
+  merged.deals.revenue = {
+    total: totalRevenue,
+    by_pipeline: revByPipeline,
+    avg_deal_value: merged.deals.total > 0
+      ? parseFloat((totalRevenue / merged.deals.total).toFixed(2))
+      : 0
+  };
+
+  // Won/lost from merged stage_distribution + pipeline definitions
+  const { won, lost } = calcWonLostFromStages(merged.deals.stage_distribution, pipelineAnalysis);
+  merged.deals.won_deals = won;
+  merged.deals.lost_deals = lost;
+  merged.deals.win_rate = (won + lost) > 0
+    ? parseFloat((won / (won + lost) * 100).toFixed(1))
+    : 0;
+
+  // Won/lost by pipeline
+  const wonLostByPipeline = {};
+  Object.entries(merged.deals.pipeline_distribution).forEach(([name, total]) => {
+    const stages = merged.deals.stage_distribution[name] || {};
+    const pDef = pipelineAnalysis.find(p => p.name === name);
+    let w = 0, l = 0;
+    Object.entries(stages).forEach(([stageName, count]) => {
+      const nameLower = stageName.toLowerCase();
+      if (nameLower.includes('perdido')) {
+        l += count;
+      } else if (pDef) {
+        const sDef = pDef.stages?.find(s => s.name === stageName);
+        if (sDef?.is_closed && sDef.probability > 0) w += count;
+        else if (nameLower.includes('ganado') || nameLower.includes('matriculado')) w += count;
+      } else if (nameLower.includes('ganado') || nameLower.includes('matriculado') || nameLower.includes('pagado')) {
+        w += count;
+      }
+    });
+    wonLostByPipeline[name] = { won: w, lost: l, total };
+  });
+  merged.deals.won_lost_by_pipeline = wonLostByPipeline;
+
+  // === CAMPAIGNS, PIPELINES, CAMPAIGN_PERFORMANCE: always fresh ===
+  merged.campaigns = fresh.campaigns;
+  merged.campaign_performance = fresh.campaign_performance;
+  merged.pipelines = fresh.pipelines || pipelineAnalysis;
+
+  // === METADATA ===
+  merged.timestamp = fresh.timestamp;
+  merged.metadata = {
+    ...merged.metadata,
+    ...fresh.metadata,
+    mode: 'incremental',
+    incremental_days: 7,
+    last_full_run: existing.metadata?.last_full_run || existing.timestamp
+  };
+
+  // Summary
+  const freshContactDays = Object.keys(fresh.contacts.daily_creation).length;
+  const freshDealDays = Object.keys(fresh.deals.daily_deals).length;
+  const totalContactDays = Object.keys(merged.contacts.daily_creation).length;
+  const totalDealDays = Object.keys(merged.deals.daily_deals).length;
+
+  console.log(`   Merge completado:`);
+  console.log(`     Contactos: ${freshContactDays} días frescos → ${totalContactDays} días totales (${merged.contacts.total} contactos)`);
+  console.log(`     Deals: ${freshDealDays} días frescos → ${totalDealDays} días totales (${merged.deals.total} deals)`);
+
+  return merged;
+}
+
+// ============================================================================
 // MAIN CONNECTOR
 // ============================================================================
-async function fetchHubSpotData(clientConfig) {
+async function fetchHubSpotData(clientConfig, mode = 'full') {
+  const isIncremental = mode === 'incremental';
+
   console.log(`\nHubSpot CRM Connector - ${clientConfig.client}`);
+  console.log(`   Modo: ${isIncremental ? 'INCREMENTAL (7 días)' : 'FULL REBUILD'}`);
   console.log('='.repeat(50));
 
   if (!HUBSPOT_TOKEN) {
@@ -789,14 +1048,26 @@ async function fetchHubSpotData(clientConfig) {
   }
 
   const hubspotConfig = clientConfig.hubspot || {};
-  const lookbackDays = hubspotConfig.lookback_days || 90;
+
+  // Incremental: only 7 days. Full: use config lookback_days.
+  let lookbackDays;
+  let existingData = null;
+
+  if (isIncremental) {
+    existingData = await loadExistingData();
+    if (!existingData) {
+      console.log('   [INFO] Sin datos existentes — cambiando a modo FULL');
+    }
+    lookbackDays = existingData ? 7 : (hubspotConfig.lookback_days || 730);
+  } else {
+    lookbackDays = hubspotConfig.lookback_days || 730;
+  }
 
   console.log(`   Lookback: ${lookbackDays} dias`);
   console.log('='.repeat(50));
 
   try {
     // Fetch data sequentially to avoid HubSpot 429 rate limits
-    // (parallel requests with 730-day lookback overloads the per-second limit)
     const contacts = await fetchRecentContacts(lookbackDays);
     const deals = await fetchRecentDeals(lookbackDays);
     const pipelines = await fetchPipelines();
@@ -816,8 +1087,8 @@ async function fetchHubSpotData(clientConfig) {
     // Fetch campaign revenue attribution & ad assets
     const campaignPerformance = await fetchCampaignRevenueAndAds(campaigns);
 
-    // Build output
-    const data = {
+    // Build fresh output
+    const freshData = {
       timestamp: new Date().toISOString(),
       source: 'HubSpot CRM API',
       region: clientConfig.region,
@@ -832,12 +1103,22 @@ async function fetchHubSpotData(clientConfig) {
         method: 'HubSpot Private App API v3',
         lookback_days: lookbackDays,
         portal_id: hubspotConfig.portal_id || '9013951',
-        note: 'Datos reales de HubSpot CRM'
+        note: 'Datos reales de HubSpot CRM',
+        mode: isIncremental && existingData ? 'incremental' : 'full',
+        last_full_run: isIncremental ? undefined : new Date().toISOString()
       }
     };
 
-    await saveResults(data);
-    return data;
+    // Incremental: merge with existing; Full: use fresh as-is
+    let finalData;
+    if (isIncremental && existingData) {
+      finalData = mergeHubSpotData(existingData, freshData, pipelineAnalysis);
+    } else {
+      finalData = freshData;
+    }
+
+    await saveResults(finalData);
+    return finalData;
 
   } catch (error) {
     console.error(`\nError: ${error.message}`);
@@ -903,11 +1184,12 @@ async function main() {
 
   console.log('HubSpot CRM Data Connector');
   console.log(`   Cliente: ${options.client}`);
+  console.log(`   Modo: ${options.mode}`);
   console.log(`   Fecha: ${new Date().toLocaleString('es-PE')}`);
 
   try {
     const clientConfig = await loadClientConfig(options.client);
-    await fetchHubSpotData(clientConfig);
+    await fetchHubSpotData(clientConfig, options.mode);
     console.log('\nConexion completada exitosamente');
     process.exit(0);
   } catch (error) {

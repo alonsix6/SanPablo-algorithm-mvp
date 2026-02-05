@@ -1,13 +1,13 @@
-name: UCSP Algorithm - Weekly Full Rebuild
+name: UCSP Algorithm - Daily Incremental Update
 
-# Full rebuild semanal: trae 730 días completos de HubSpot (~35 min)
-# Garantiza consistencia total de datos históricos
+# Actualización incremental diaria: trae últimos 7 días y mergea (~3 min)
+# Corre martes-domingo. El lunes corre el full rebuild semanal.
 on:
-  # Ejecutar cada lunes a las 1 PM UTC (8 AM Perú)
+  # Ejecutar martes a domingo a las 1 PM UTC (8 AM Perú)
   schedule:
-    - cron: '0 13 * * 1'
+    - cron: '0 13 * * 2-7'
 
-  # Permitir ejecución manual desde GitHub Actions UI
+  # Permitir ejecución manual
   workflow_dispatch:
 
 permissions:
@@ -15,12 +15,12 @@ permissions:
 
 jobs:
   scrape-and-commit:
-    name: Full rebuild - all sources (weekly)
+    name: Incremental update - all sources (daily)
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 15
 
     steps:
-      # 1. Checkout del código
+      # 1. Checkout del código (incluyendo data existente para merge)
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -76,12 +76,12 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         continue-on-error: true
 
-      # 8. Ejecutar HubSpot CRM Connector (FULL MODE - 730 días)
-      - name: Run HubSpot CRM Connector (full rebuild)
+      # 8. Ejecutar HubSpot CRM Connector (INCREMENTAL - 7 días, merge)
+      - name: Run HubSpot CRM Connector (incremental)
         working-directory: ./scrapers
         run: |
-          echo "HubSpot CRM full rebuild (730 dias)..."
-          node hubspot_api.js --client=ucsp --mode=full
+          echo "HubSpot CRM incremental update (7 dias)..."
+          node hubspot_api.js --client=ucsp --mode=incremental
         env:
           HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
         continue-on-error: true
@@ -97,11 +97,7 @@ jobs:
       - name: Check generated files
         run: |
           echo "Verificando archivos generados..."
-          echo "=== Google Trends ===" && ls -lah data/trends/ || echo "No data"
-          echo "=== TikTok ===" && ls -lah data/tiktok/ || echo "No data"
-          echo "=== Meta ===" && ls -lah data/meta/ || echo "No data"
           echo "=== HubSpot ===" && ls -lah data/hubspot/ || echo "No data"
-          echo "=== ML ===" && ls -lah public/data/ml/ || echo "No ML data"
 
       # 11. Commit y push de los datos
       - name: Commit and push data
@@ -115,17 +111,17 @@ jobs:
             echo "No hay cambios en los datos"
           else
             TIMESTAMP=$(date +'%Y-%m-%d %H:%M UTC')
-            git commit -m "Weekly full rebuild - $TIMESTAMP"
+            git commit -m "Daily incremental update - $TIMESTAMP"
             git push
-            echo "Datos UCSP actualizados (full rebuild)"
+            echo "Datos UCSP actualizados (incremental)"
           fi
 
       # 12. Notificación
       - name: Status notification
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "UCSP Algorithm weekly rebuild completado"
-            echo "Proximo full rebuild: Lunes 8 AM (Peru)"
+            echo "UCSP Algorithm daily update completado"
+            echo "Proxima ejecucion: Manana 8 AM (Peru)"
           else
             echo "Algunos scrapers fallaron - revisa los logs"
           fi
