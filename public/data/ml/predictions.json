@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05T03:13:43.478Z",
+  "generated_at": "2026-02-05T14:07:04.920Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -43,10 +43,10 @@
         "engagement": 5
       }
     },
-    "timestamp": "2026-02-05T03:13:43.466Z"
+    "timestamp": "2026-02-05T14:07:04.907Z"
   },
   "scores": {
-    "timestamp": "2026-02-05T03:13:43.467Z",
+    "timestamp": "2026-02-05T14:07:04.908Z",
     "individual": {
       "search": {
         "base": 7.716666666666667,
@@ -156,12 +156,12 @@
     "simulation": {
       "allocations": [],
       "best_channel_wins": {
-        "google_search": "11.7%",
-        "meta_ads": "67.9%",
-        "youtube": "14.2%",
-        "display": "6.2%"
+        "google_search": "12.2%",
+        "meta_ads": "66.6%",
+        "youtube": "14.1%",
+        "display": "7.1%"
       }
     },
-    "timestamp": "2026-02-05T03:13:43.476Z"
+    "timestamp": "2026-02-05T14:07:04.916Z"
   }
 }
