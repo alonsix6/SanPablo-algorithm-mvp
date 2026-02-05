@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-04T23:28:04.238Z",
+  "generated_at": "2026-02-05T01:15:49.266Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -43,10 +43,10 @@
         "engagement": 5
       }
     },
-    "timestamp": "2026-02-04T23:28:04.228Z"
+    "timestamp": "2026-02-05T01:15:49.256Z"
   },
   "scores": {
-    "timestamp": "2026-02-04T23:28:04.228Z",
+    "timestamp": "2026-02-05T01:15:49.257Z",
     "individual": {
       "search": {
         "base": 7.716666666666667,
@@ -152,6 +152,6 @@
         "display": "0.0%"
       }
     },
-    "timestamp": "2026-02-04T23:28:04.235Z"
+    "timestamp": "2026-02-05T01:15:49.264Z"
   }
 }
