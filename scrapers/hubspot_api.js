@@ -131,9 +131,6 @@ async function hubspotFetchAll(endpoint, options = {}) {
 async function fetchRecentContacts(days = 90) {
   console.log(`\n   Obteniendo contactos (ultimos ${days} dias)...`);
 
-  const dateFrom = new Date();
-  dateFrom.setDate(dateFrom.getDate() - days);
-
   const properties = [
     'firstname', 'lastname', 'email', 'lifecyclestage',
     'hs_analytics_source', 'hs_analytics_source_data_1',
@@ -144,37 +141,49 @@ async function fetchRecentContacts(days = 90) {
     'createdate'
   ];
 
-  const propsQuery = properties.join(',');
+  // Batch by time windows to avoid HubSpot's 10000-result search limit
   const allContacts = [];
-  let after = undefined;
+  const windowDays = 30; // fetch 30 days at a time
+  const now = new Date();
 
-  do {
-    const body = {
-      filterGroups: [{
-        filters: [{
-          propertyName: 'createdate',
-          operator: 'GTE',
-          value: dateFrom.toISOString()
-        }]
-      }],
-      properties,
-      limit: 100,
-      ...(after ? { after } : {})
-    };
+  for (let offset = 0; offset < days; offset += windowDays) {
+    const windowEnd = new Date(now);
+    windowEnd.setDate(windowEnd.getDate() - offset);
+    const windowStart = new Date(now);
+    windowStart.setDate(windowStart.getDate() - Math.min(offset + windowDays, days));
 
-    const data = await hubspotFetch('/crm/v3/objects/contacts/search', {
-      method: 'POST',
-      body
-    });
+    let after = undefined;
+    let windowCount = 0;
+    do {
+      const body = {
+        filterGroups: [{
+          filters: [
+            { propertyName: 'createdate', operator: 'GTE', value: windowStart.toISOString() },
+            { propertyName: 'createdate', operator: 'LT', value: windowEnd.toISOString() }
+          ]
+        }],
+        properties,
+        limit: 100,
+        ...(after ? { after } : {})
+      };
 
-    allContacts.push(...(data.results || []));
-    after = data.paging?.next?.after || null;
+      const data = await hubspotFetch('/crm/v3/objects/contacts/search', {
+        method: 'POST',
+        body
+      });
 
-    // Safety limit - max 5000 contacts
-    if (allContacts.length >= 5000) break;
-  } while (after);
+      const results = data.results || [];
+      allContacts.push(...results);
+      windowCount += results.length;
+      after = data.paging?.next?.after || null;
+    } while (after);
 
-  console.log(`   Contactos obtenidos: ${allContacts.length}`);
+    if (windowCount > 0) {
+      console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} contactos`);
+    }
+  }
+
+  console.log(`   Contactos totales: ${allContacts.length}`);
   return allContacts;
 }
 
@@ -184,43 +193,54 @@ async function fetchRecentContacts(days = 90) {
 async function fetchRecentDeals(days = 90) {
   console.log(`\n   Obteniendo deals (ultimos ${days} dias)...`);
 
-  const dateFrom = new Date();
-  dateFrom.setDate(dateFrom.getDate() - days);
-
   const properties = [
     'dealname', 'amount', 'dealstage', 'pipeline',
     'closedate', 'createdate', 'hs_lastmodifieddate'
   ];
 
+  // Batch by time windows to avoid HubSpot's 10000-result search limit
   const allDeals = [];
-  let after = undefined;
+  const windowDays = 30;
+  const now = new Date();
 
-  do {
-    const body = {
-      filterGroups: [{
-        filters: [{
-          propertyName: 'createdate',
-          operator: 'GTE',
-          value: dateFrom.toISOString()
-        }]
-      }],
-      properties,
-      limit: 100,
-      ...(after ? { after } : {})
-    };
+  for (let offset = 0; offset < days; offset += windowDays) {
+    const windowEnd = new Date(now);
+    windowEnd.setDate(windowEnd.getDate() - offset);
+    const windowStart = new Date(now);
+    windowStart.setDate(windowStart.getDate() - Math.min(offset + windowDays, days));
 
-    const data = await hubspotFetch('/crm/v3/objects/deals/search', {
-      method: 'POST',
-      body
-    });
+    let after = undefined;
+    let windowCount = 0;
+    do {
+      const body = {
+        filterGroups: [{
+          filters: [
+            { propertyName: 'createdate', operator: 'GTE', value: windowStart.toISOString() },
+            { propertyName: 'createdate', operator: 'LT', value: windowEnd.toISOString() }
+          ]
+        }],
+        properties,
+        limit: 100,
+        ...(after ? { after } : {})
+      };
 
-    allDeals.push(...(data.results || []));
-    after = data.paging?.next?.after || null;
+      const data = await hubspotFetch('/crm/v3/objects/deals/search', {
+        method: 'POST',
+        body
+      });
 
-    if (allDeals.length >= 10000) break;
-  } while (after);
+      const results = data.results || [];
+      allDeals.push(...results);
+      windowCount += results.length;
+      after = data.paging?.next?.after || null;
+    } while (after);
 
-  console.log(`   Deals obtenidos: ${allDeals.length}`);
+    if (windowCount > 0) {
+      console.log(`     Ventana ${windowStart.toISOString().split('T')[0]} → ${windowEnd.toISOString().split('T')[0]}: ${windowCount} deals`);
+    }
+  }
+
+  console.log(`   Deals totales: ${allDeals.length}`);
   return allDeals;
 }
 
