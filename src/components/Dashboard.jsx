@@ -159,6 +159,39 @@ export function hasActiveDateFilter(dateRange) {
   return dateRange && (dateRange.start || dateRange.end);
 }
 
+/**
+ * Extract the min/max date range from a daily-keyed data object.
+ * Input: { "YYYY-MM-DD": value, ... }
+ * Output: { min: "YYYY-MM-DD", max: "YYYY-MM-DD" } or null if no daily keys
+ */
+export function getDataDateRange(...dailyDataSources) {
+  let allDates = [];
+  for (const data of dailyDataSources) {
+    if (!data) continue;
+    const keys = Object.keys(data).filter(k => k.length === 10 && k[4] === '-');
+    allDates.push(...keys);
+  }
+  if (allDates.length === 0) return null;
+  allDates.sort();
+  return { min: allDates[0], max: allDates[allDates.length - 1] };
+}
+
+/**
+ * Check if a selected dateRange overlaps with available data coverage.
+ * Returns true if there IS overlap (data will be shown), false if no overlap.
+ */
+export function dateRangeOverlapsData(dateRange, dataCoverage) {
+  if (!dateRange || !dataCoverage) return true; // no filter or no coverage info = assume OK
+  if (!dateRange.start && !dateRange.end) return true; // "Todo el periodo"
+  const filterStart = dateRange.start ? new Date(dateRange.start) : null;
+  const filterEnd = dateRange.end ? new Date(dateRange.end) : null;
+  const dataStart = new Date(dataCoverage.min);
+  const dataEnd = new Date(dataCoverage.max);
+  if (filterEnd && dataStart > filterEnd) return false;
+  if (filterStart && dataEnd < filterStart) return false;
+  return true;
+}
+
 export default function Dashboard() {
   const [activeLayer, setActiveLayer] = useState('data');
   const [lastUpdate, setLastUpdate] = useState(new Date());

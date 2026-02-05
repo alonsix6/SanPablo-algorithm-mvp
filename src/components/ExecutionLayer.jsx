@@ -3,7 +3,7 @@ import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangl
 import { BUDGET_ALLOCATION, CONTENT_PILLARS } from '../data/mockData';
 import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
 import { useHubSpotData } from '../hooks/useRealData';
-import { sumFilteredObjectData, hasActiveDateFilter } from './Dashboard';
+import { sumFilteredObjectData, hasActiveDateFilter, getDataDateRange, dateRangeOverlapsData } from './Dashboard';
 
 // Display names and colors for HubSpot sources
 const SOURCE_DISPLAY = {
@@ -167,6 +167,12 @@ export default function ExecutionLayer({ dateRange }) {
   const pipelinePerformance = buildPipelinePerformance(hubspot, dateRange);
   const hasPipelineData = pipelinePerformance && pipelinePerformance.length > 0;
 
+  // Data coverage detection
+  const dataCoverage = getDataDateRange(hubspot?.deals?.daily_deals, hubspot?.deals?.daily_by_pipeline);
+  const isFiltering = hasActiveDateFilter(dateRange);
+  const hasOverlap = dateRangeOverlapsData(dateRange, dataCoverage);
+  const showDataWarning = isFiltering && !hasOverlap && dataCoverage;
+
   // Calcular status color
   const getStatusColor = (status) => {
     if (status === 'overperforming') return { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', badge: 'bg-green-100' };
@@ -217,6 +223,22 @@ export default function ExecutionLayer({ dateRange }) {
           </div>
         </div>
       </div>
+
+      {/* Data Coverage Warning */}
+      {showDataWarning && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-semibold text-amber-800">
+              Sin datos diarios para el rango seleccionado
+            </p>
+            <p className="text-xs text-amber-700 mt-1">
+              Los datos disponibles cubren <strong>{dataCoverage.min}</strong> a <strong>{dataCoverage.max}</strong>.
+              Ejecuta el Action de GitHub para obtener datos actualizados, o selecciona "Todo el periodo".
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Budget Overview */}
       <div className="bg-gradient-to-br from-ucsp-burgundy to-ucsp-darkBurgundy text-white rounded-2xl shadow-ucsp-lg p-8">
