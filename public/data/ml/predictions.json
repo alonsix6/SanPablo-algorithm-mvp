@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05T02:00:18.911Z",
+  "generated_at": "2026-02-05T03:13:43.478Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -43,10 +43,10 @@
         "engagement": 5
       }
     },
-    "timestamp": "2026-02-05T02:00:18.902Z"
+    "timestamp": "2026-02-05T03:13:43.466Z"
   },
   "scores": {
-    "timestamp": "2026-02-05T02:00:18.902Z",
+    "timestamp": "2026-02-05T03:13:43.467Z",
     "individual": {
       "search": {
         "base": 7.716666666666667,
@@ -64,13 +64,13 @@
       },
       "intent": {
         "source": "hubspot_crm",
-        "win_rate": 78.2,
+        "win_rate": 79.7,
         "contact_conversion_rate": 76.3,
         "avg_conversions": 1.05,
-        "final": 6.047
+        "final": 6.107
       }
     },
-    "overall": 6.850205555555556,
+    "overall": 6.871205555555555,
     "weights": {
       "search": 0.28,
       "trend": 0.15,
@@ -157,11 +157,11 @@
       "allocations": [],
       "best_channel_wins": {
         "google_search": "11.7%",
-        "meta_ads": "68.8%",
-        "youtube": "13.3%",
+        "meta_ads": "67.9%",
+        "youtube": "14.2%",
         "display": "6.2%"
       }
     },
-    "timestamp": "2026-02-05T02:00:18.908Z"
+    "timestamp": "2026-02-05T03:13:43.476Z"
   }
 }
