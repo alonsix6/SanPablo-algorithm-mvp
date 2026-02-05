@@ -1,35 +1,45 @@
 {
-  "generated_at": "2026-02-05T01:15:49.268Z",
+  "generated_at": "2026-02-05T02:00:18.913Z",
   "budget": [
+    {
+      "channel": "display",
+      "type": "increase",
+      "from": 10,
+      "to": 25,
+      "change": "+15.0%",
+      "impact": 3450,
+      "confidence": "high",
+      "reason": "display muestra ROI superior (99.9%)"
+    },
     {
       "channel": "google_search",
       "type": "decrease",
       "from": 35,
-      "to": 9.3,
-      "change": "-25.7%",
-      "impact": 5911,
+      "to": 25,
+      "change": "-10.0%",
+      "impact": 2300,
       "confidence": "high",
       "reason": "google_search muestra menor efectividad"
     },
     {
       "channel": "meta_ads",
-      "type": "increase",
+      "type": "decrease",
       "from": 35,
-      "to": 55.7,
-      "change": "+20.7%",
-      "impact": 4761.000000000001,
+      "to": 25,
+      "change": "-10.0%",
+      "impact": 2300,
       "confidence": "high",
-      "reason": "meta_ads muestra ROI superior (39.6%)"
+      "reason": "meta_ads muestra menor efectividad"
     },
     {
-      "channel": "display",
+      "channel": "youtube",
       "type": "increase",
-      "from": 10,
-      "to": 17.6,
-      "change": "+7.6%",
-      "impact": 1748.0000000000002,
+      "from": 20,
+      "to": 25,
+      "change": "+5.0%",
+      "impact": 1150,
       "confidence": "high",
-      "reason": "display muestra ROI superior (12.5%)"
+      "reason": "youtube muestra ROI superior (100.0%)"
     }
   ],
   "actions": [
