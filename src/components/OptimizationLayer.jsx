@@ -4,7 +4,7 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
 import { LAYER_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 import { useHubSpotData, useMLData } from '../hooks/useRealData';
-import { filterMonthlyData, aggregateForChart, sumFilteredData, sumFilteredObjectData, hasActiveDateFilter } from './Dashboard';
+import { filterMonthlyData, aggregateForChart, sumFilteredData, sumFilteredObjectData, hasActiveDateFilter, getDataDateRange, dateRangeOverlapsData } from './Dashboard';
 
 // Map HubSpot sources to display names and colors
 const SOURCE_CONFIG = {
@@ -438,6 +438,15 @@ export default function OptimizationLayer({ dateRange }) {
     ? Math.floor((Date.now() - new Date(crmKpis.timestamp).getTime()) / (1000 * 60 * 60 * 24))
     : null;
 
+  // Data coverage detection — warn when selected date range doesn't overlap with available daily data
+  const dataCoverage = getDataDateRange(
+    hubspot?.contacts?.daily_creation,
+    hubspot?.deals?.daily_deals
+  );
+  const filtering = hasActiveDateFilter(dateRange);
+  const hasOverlap = dateRangeOverlapsData(dateRange, dataCoverage);
+  const showDataWarning = filtering && !hasOverlap && dataCoverage;
+
   // Performance últimos 7 días (mock - necesita Google Ads API)
   const performanceData = [
     { date: '14 Nov', leads: 95, reach: 105000, engagement: 15200, spent: 5950 },
@@ -532,6 +541,23 @@ export default function OptimizationLayer({ dateRange }) {
           </div>
         )}
       </div>
+
+      {/* Data Coverage Warning — shown when selected date range has no daily data */}
+      {showDataWarning && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-semibold text-amber-800">
+              Sin datos diarios para el rango seleccionado
+            </p>
+            <p className="text-xs text-amber-700 mt-1">
+              Los datos disponibles cubren <strong>{dataCoverage.min}</strong> a <strong>{dataCoverage.max}</strong>.
+              El rango actual ({dateRange.start || '...'} — {dateRange.end || '...'}) no tiene registros diarios.
+              Ejecuta el Action de GitHub para obtener datos actualizados, o selecciona "Todo el periodo".
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* KPIs Principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1294,7 +1320,7 @@ export default function OptimizationLayer({ dateRange }) {
         <div className="mt-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
           <p className="text-xs flex items-center gap-1">
             <Lightbulb className="w-4 h-4" />
-            <strong>Fuente:</strong> {crmKpis ? `HubSpot Portal ${hubspot?.metadata?.portal_id} | Datos actualizados semanalmente (Lunes 8am)` : 'Sistema de monitoreo de HubSpot configurado y listo para activación.'}
+            <strong>Fuente:</strong> {crmKpis ? `HubSpot Portal ${hubspot?.metadata?.portal_id} | Datos actualizados diariamente (8am Perú)` : 'Sistema de monitoreo de HubSpot configurado y listo para activación.'}
           </p>
         </div>
       </div>
