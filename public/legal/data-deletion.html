@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Deletion - Reset Algorithm</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+        }
+        h1 { color: #1a1a2e; border-bottom: 2px solid #4a4a8a; padding-bottom: 10px; }
+        h2 { color: #4a4a8a; margin-top: 30px; }
+        .last-updated { color: #666; font-style: italic; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .contact { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .steps { background: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .steps ol { margin: 0; padding-left: 20px; }
+        .warning { background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 20px 0; }
+        .form-container { background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background: #4a4a8a; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #3a3a7a; }
+    </style>
+</head>
+<body>
+    <h1>Data Deletion Request</h1>
+    <p class="last-updated">Last updated: February 2026</p>
+
+    <h2>Your Right to Data Deletion</h2>
+    <p>In accordance with data protection regulations (GDPR, CCPA, and other applicable laws), you have the right to request the deletion of your data from our systems.</p>
+
+    <h2>What Data Can Be Deleted</h2>
+    <p>Upon request, we can delete the following data associated with your accounts:</p>
+    <ul>
+        <li>Advertising performance data (campaign metrics, spend, conversions)</li>
+        <li>Analytics data collected from your properties</li>
+        <li>CRM data synced from connected systems</li>
+        <li>Account identifiers and API connection information</li>
+        <li>Historical reports and dashboards</li>
+    </ul>
+
+    <h2>How to Request Data Deletion</h2>
+
+    <div class="steps">
+        <h3>Option 1: Email Request</h3>
+        <ol>
+            <li>Send an email to <strong>privacy@resetagencia.com</strong></li>
+            <li>Subject: "Data Deletion Request"</li>
+            <li>Include:
+                <ul>
+                    <li>Your name and company</li>
+                    <li>Ad Account ID(s) or Business Manager ID</li>
+                    <li>Email associated with the account</li>
+                    <li>Confirmation that you are authorized to make this request</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="steps">
+        <h3>Option 2: Contact Form</h3>
+        <div class="form-container">
+            <form action="mailto:privacy@resetagencia.com" method="post" enctype="text/plain">
+                <label for="name"><strong>Full Name:</strong></label>
+                <input type="text" id="name" name="name" required placeholder="Your full name">
+
+                <label for="email"><strong>Email Address:</strong></label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+
+                <label for="company"><strong>Company/Organization:</strong></label>
+                <input type="text" id="company" name="company" required placeholder="Company name">
+
+                <label for="account_id"><strong>Ad Account ID or Business Manager ID:</strong></label>
+                <input type="text" id="account_id" name="account_id" placeholder="e.g., act_123456789">
+
+                <label for="message"><strong>Additional Information:</strong></label>
+                <textarea id="message" name="message" rows="4" placeholder="Please describe what data you would like deleted..."></textarea>
+
+                <button type="submit">Submit Deletion Request</button>
+            </form>
+        </div>
+    </div>
+
+    <h2>Processing Timeline</h2>
+    <ul>
+        <li><strong>Acknowledgment:</strong> Within 48 hours of receiving your request</li>
+        <li><strong>Verification:</strong> We may contact you to verify your identity (1-3 business days)</li>
+        <li><strong>Deletion:</strong> Data will be deleted within 30 days of verification</li>
+        <li><strong>Confirmation:</strong> You will receive confirmation once deletion is complete</li>
+    </ul>
+
+    <div class="warning">
+        <strong>Important Note:</strong> Deleting your data will remove all historical reports and analytics associated with your accounts. This action cannot be undone. Any active integrations will stop functioning once data is deleted.
+    </div>
+
+    <h2>Data Retention After Deletion</h2>
+    <p>After processing your deletion request:</p>
+    <ul>
+        <li>All personal and account data will be permanently removed from our active systems</li>
+        <li>Backup systems will purge the data within 90 days</li>
+        <li>Aggregated, anonymized statistics may be retained for internal analytics</li>
+    </ul>
+
+    <h2>Exceptions</h2>
+    <p>We may retain certain data if required by law, for legitimate business purposes (such as fraud prevention), or to resolve disputes. We will inform you if any exceptions apply to your request.</p>
+
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have questions about data deletion or our privacy practices:</p>
+        <p><strong>Reset Digital Marketing Agency</strong><br>
+        Email: privacy@resetagencia.com<br>
+        Website: https://resetagencia.com</p>
+        <p><a href="privacy-policy.html">View our full Privacy Policy</a></p>
+    </div>
+</body>
+</html>
