@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Search, TrendingUp, Video, Share2, GraduationCap, RefreshCw, ChevronDown, ChevronUp, BarChart3, Info, Music, Target, DollarSign, Layers, Lightbulb, Users, Globe, MapPin } from 'lucide-react';
+import { Search, TrendingUp, Video, Share2, GraduationCap, RefreshCw, ChevronDown, ChevronUp, BarChart3, Info, Music, Target, DollarSign, Layers, Lightbulb, Users, Globe, MapPin, PieChart } from 'lucide-react';
 
 export default function DataLayer({ dateRange }) {
   const [trendsData, setTrendsData] = useState(null);
   const [tiktokData, setTiktokData] = useState(null);
   const [metaData, setMetaData] = useState(null);
   const [ga4Data, setGA4Data] = useState(null);
+  const [powerbiData, setPowerBIData] = useState(null); // Power BI data
   const [mlData, setMLData] = useState(null); // ML predictions
   const [mlInsights, setMLInsights] = useState(null); // ML insights
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -16,7 +17,8 @@ export default function DataLayer({ dateRange }) {
     trends: false,
     tiktok: false,
     meta: false,
-    ga4: false
+    ga4: false,
+    powerbi: false
   });
 
   useEffect(() => {
@@ -27,11 +29,12 @@ export default function DataLayer({ dateRange }) {
     setIsRefreshing(true);
     try {
       const basePath = `/data`; // Datos UCSP
-      const [trends, tiktok, meta, ga4, mlPredictions, mlInsightsData] = await Promise.all([
+      const [trends, tiktok, meta, ga4, powerbi, mlPredictions, mlInsightsData] = await Promise.all([
         fetch(`${basePath}/trends/latest.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/tiktok/latest.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/meta/latest.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/mock/ga4_data.json`).then(r => r.json()).catch(() => null),
+        fetch(`${basePath}/powerbi/latest.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/ml/predictions.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/ml/insights.json`).then(r => r.json()).catch(() => null)
       ]);
@@ -40,6 +43,7 @@ export default function DataLayer({ dateRange }) {
       setTiktokData(tiktok);
       setMetaData(meta);
       setGA4Data(ga4);
+      setPowerBIData(powerbi);
       setMLData(mlPredictions);
       setMLInsights(mlInsightsData);
       setLastRefresh(new Date());
@@ -76,6 +80,7 @@ export default function DataLayer({ dateRange }) {
     if (source === 'TikTok') return Video;
     if (source === 'Meta') return Share2;
     if (source === 'GA4') return BarChart3;
+    if (source === 'Power BI') return PieChart;
     return Layers;
   };
 
@@ -304,6 +309,10 @@ export default function DataLayer({ dateRange }) {
             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
             <span className="text-xs text-white/80">GA4 Activo</span>
           </div>
+          <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2">
+            <div className={`w-2 h-2 ${powerbiData ? 'bg-green-400' : 'bg-yellow-400'} rounded-full`}></div>
+            <span className="text-xs text-white/80">Power BI {powerbiData ? 'Activo' : 'Pendiente'}</span>
+          </div>
           {lastRefresh && (
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2 ml-auto">
               <span className="text-xs text-white/60">
@@ -333,6 +342,7 @@ export default function DataLayer({ dateRange }) {
               insight.source === 'TikTok' ? { gradient: 'from-cyan-400 to-cyan-500', bg: 'bg-cyan-50', text: 'text-cyan-700', badge: 'bg-cyan-100 text-cyan-700' } :
               insight.source === 'Meta' ? { gradient: 'from-blue-600 to-blue-700', bg: 'bg-blue-50', text: 'text-blue-700', badge: 'bg-blue-100 text-blue-700' } :
               insight.source === 'GA4' ? { gradient: 'from-amber-500 to-orange-500', bg: 'bg-amber-50', text: 'text-amber-700', badge: 'bg-amber-100 text-amber-700' } :
+              insight.source === 'Power BI' ? { gradient: 'from-yellow-500 to-yellow-600', bg: 'bg-yellow-50', text: 'text-yellow-700', badge: 'bg-yellow-100 text-yellow-700' } :
               { gradient: 'from-gray-600 to-gray-700', bg: 'bg-gray-50', text: 'text-gray-700', badge: 'bg-gray-100 text-gray-700' };
 
             const sourceScore =
@@ -804,6 +814,214 @@ export default function DataLayer({ dateRange }) {
                 </table>
               </div>
             </div>
+          </div>
+        )}
+      </div>
+
+      {/* Power BI Section */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <button
+          onClick={() => toggleSection('powerbi')}
+          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 flex items-center justify-between hover:from-yellow-600 hover:to-yellow-700 transition"
+        >
+          <div className="flex items-center gap-3">
+            <PieChart className="w-6 h-6" />
+            <div className="text-left">
+              <h3 className="text-base font-bold">Power BI</h3>
+              <p className="text-xs text-yellow-100">Métricas de negocio y admisiones {powerbiData ? `• ${powerbiData.enrollment?.total_matriculados?.toLocaleString() || 0} matriculados` : '• Conexión pendiente'}</p>
+            </div>
+          </div>
+          {expandedSections.powerbi ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        </button>
+
+        {expandedSections.powerbi && (
+          <div className="p-6 space-y-4">
+            {/* Disclaimer */}
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex gap-3">
+              <Info className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-yellow-900">
+                <p className="font-semibold mb-1">Integración Power BI:</p>
+                <p>Datos extraídos vía Power BI REST API usando DAX queries contra el modelo semántico de admisiones. Incluye métricas de matrícula, rendimiento por canal, avance por programa y distribución geográfica.</p>
+                <p className="mt-2 text-xs text-yellow-700">
+                  <strong>Fuente:</strong> Power BI Dataset ({powerbiData?.dataset?.name || 'N/A'}) • <strong>Último refresh:</strong> {powerbiData?.dataset?.last_refresh ? new Date(powerbiData.dataset.last_refresh).toLocaleDateString('es-PE') : 'N/A'} • <strong>Estado:</strong> {powerbiData?.dataset?.refresh_status || 'N/A'}
+                </p>
+              </div>
+            </div>
+
+            {powerbiData ? (
+              <>
+                {/* KPI Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-600 mb-1">Postulaciones</p>
+                    <p className="text-xl font-bold text-gray-900">{powerbiData.enrollment?.total_postulaciones?.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-600 mb-1">Matriculados</p>
+                    <p className="text-xl font-bold text-yellow-600">{powerbiData.enrollment?.total_matriculados?.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-600 mb-1">Tasa Conversión</p>
+                    <p className="text-xl font-bold text-yellow-600">{powerbiData.enrollment?.tasa_conversion_global}%</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-600 mb-1">Inversión Total</p>
+                    <p className="text-xl font-bold text-gray-900">${powerbiData.channels?.totals?.inversion?.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-xs text-gray-600 mb-1">CPL Promedio</p>
+                    <p className="text-xl font-bold text-yellow-600">${powerbiData.channels?.totals?.cpl_promedio}</p>
+                  </div>
+                </div>
+
+                {/* Channel Performance Table */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-3">Rendimiento por Canal</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Canal</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Inversión</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Leads</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Matriculados</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">CPL</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">CPA</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">ROI</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200">
+                        {powerbiData.channels?.channels?.map((ch, idx) => (
+                          <tr key={idx} className="hover:bg-gray-50 transition">
+                            <td className="px-4 py-3 text-sm font-medium text-gray-900">{ch.canal}</td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm font-bold text-gray-700">${ch.inversion?.toLocaleString()}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm text-gray-600">{ch.leads?.toLocaleString()}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm font-bold text-yellow-600">{ch.matriculados?.toLocaleString()}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm font-bold text-gray-700">${ch.cpl}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm text-gray-600">${ch.cpa}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                                ch.roi > 150 ? 'bg-green-100 text-green-700' :
+                                ch.roi > 100 ? 'bg-yellow-100 text-yellow-700' :
+                                'bg-gray-100 text-gray-700'
+                              }`}>
+                                {ch.roi > 0 ? `${ch.roi}%` : '-'}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Program Performance Table */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-3">Avance por Programa</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Programa</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Tipo</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Postulaciones</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Matriculados</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Meta</th>
+                          <th className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase">Avance</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200">
+                        {powerbiData.programs?.programs?.map((prog, idx) => (
+                          <tr key={idx} className="hover:bg-gray-50 transition">
+                            <td className="px-4 py-3 text-sm font-medium text-gray-900">{prog.nombre}</td>
+                            <td className="px-4 py-3 text-center">
+                              <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                                prog.tipo === 'Pregrado' ? 'bg-blue-100 text-blue-700' :
+                                prog.tipo === 'Postgrado' ? 'bg-purple-100 text-purple-700' :
+                                'bg-gray-100 text-gray-700'
+                              }`}>
+                                {prog.tipo}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm text-gray-600">{prog.postulaciones?.toLocaleString()}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm font-bold text-yellow-600">{prog.matriculados?.toLocaleString()}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="text-sm text-gray-600">{prog.meta_matricula}</span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <div className="flex items-center gap-2">
+                                <div className="flex-1 bg-gray-200 rounded-full h-4 relative max-w-[100px]">
+                                  <div
+                                    className={`h-4 rounded-full flex items-center justify-end pr-1.5 transition-all duration-500 ${
+                                      prog.avance_pct >= 80 ? 'bg-gradient-to-r from-green-400 to-green-500' :
+                                      prog.avance_pct >= 60 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
+                                      'bg-gradient-to-r from-red-400 to-red-500'
+                                    }`}
+                                    style={{ width: `${Math.min(100, prog.avance_pct)}%` }}
+                                  >
+                                    <span className="text-[10px] font-semibold text-white">{prog.avance_pct}%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Geographic Distribution */}
+                {powerbiData.geographic?.by_departamento && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-700 mb-3">Distribución Geográfica</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {Object.entries(powerbiData.geographic.by_departamento)
+                        .sort(([, a], [, b]) => b.total - a.total)
+                        .slice(0, 6)
+                        .map(([dept, info], idx) => (
+                          <div key={idx} className="bg-gray-50 rounded-lg p-3">
+                            <div className="flex items-center gap-2 mb-2">
+                              <MapPin className="w-4 h-4 text-yellow-600" />
+                              <h5 className="text-xs font-semibold text-gray-900">{dept}</h5>
+                            </div>
+                            <div className="flex justify-between text-xs text-gray-600 mb-1">
+                              <span>Postulantes: <strong className="text-gray-900">{info.total?.toLocaleString()}</strong></span>
+                              <span>Matric: <strong className="text-yellow-600">{info.matriculados?.toLocaleString()}</strong></span>
+                            </div>
+                            <div className="bg-gray-200 rounded-full h-3 relative">
+                              <div
+                                className="bg-gradient-to-r from-yellow-400 to-yellow-500 h-3 rounded-full transition-all duration-500"
+                                style={{ width: `${(info.total / (powerbiData.enrollment?.total_postulaciones || 1)) * 100}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                <PieChart className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                <p className="font-medium">Power BI no conectado</p>
+                <p className="text-sm mt-1">Configura POWERBI_CLIENT_ID, POWERBI_CLIENT_SECRET y POWERBI_TENANT_ID para conectar tu workspace.</p>
+              </div>
+            )}
           </div>
         )}
       </div>

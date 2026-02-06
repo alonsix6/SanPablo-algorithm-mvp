@@ -1,0 +1,235 @@
+{
+  "timestamp": "2026-02-06T08:00:00Z",
+  "source": "Power BI REST API",
+  "region": "PE",
+  "category": "Business Intelligence",
+  "client": "UCSP - Universidad Católica San Pablo",
+  "workspace": {
+    "id": "demo-workspace",
+    "name": "UCSP Admisiones 2026"
+  },
+  "dataset": {
+    "id": "demo-dataset",
+    "name": "Modelo Admisiones UCSP",
+    "last_refresh": "2026-02-06T06:00:00Z",
+    "refresh_status": "Completed"
+  },
+  "reports": [
+    { "id": "rpt-001", "name": "Dashboard Admisiones", "webUrl": null },
+    { "id": "rpt-002", "name": "Performance Marketing", "webUrl": null },
+    { "id": "rpt-003", "name": "Análisis Financiero", "webUrl": null }
+  ],
+  "enrollment": {
+    "total_postulaciones": 4850,
+    "total_matriculados": 2180,
+    "tasa_conversion_global": 44.9,
+    "monthly": {
+      "2025-10": { "postulaciones": 620, "matriculados": 245, "tasa_conversion": 0.395 },
+      "2025-11": { "postulaciones": 780, "matriculados": 340, "tasa_conversion": 0.436 },
+      "2025-12": { "postulaciones": 950, "matriculados": 430, "tasa_conversion": 0.453 },
+      "2026-01": { "postulaciones": 1350, "matriculados": 650, "tasa_conversion": 0.481 },
+      "2026-02": { "postulaciones": 1150, "matriculados": 515, "tasa_conversion": 0.448 }
+    }
+  },
+  "channels": {
+    "channels": [
+      {
+        "canal": "Meta Ads",
+        "inversion": 42500.00,
+        "leads": 4250,
+        "matriculados": 850,
+        "cpl": 10.00,
+        "cpa": 50.00,
+        "roi": 185.0
+      },
+      {
+        "canal": "Google Search",
+        "inversion": 35000.00,
+        "leads": 3500,
+        "matriculados": 720,
+        "cpl": 10.00,
+        "cpa": 48.61,
+        "roi": 210.0
+      },
+      {
+        "canal": "YouTube Ads",
+        "inversion": 18000.00,
+        "leads": 1200,
+        "matriculados": 280,
+        "cpl": 15.00,
+        "cpa": 64.29,
+        "roi": 120.0
+      },
+      {
+        "canal": "Display",
+        "inversion": 12000.00,
+        "leads": 800,
+        "matriculados": 160,
+        "cpl": 15.00,
+        "cpa": 75.00,
+        "roi": 85.0
+      },
+      {
+        "canal": "Orgánico",
+        "inversion": 0,
+        "leads": 2100,
+        "matriculados": 170,
+        "cpl": 0,
+        "cpa": 0,
+        "roi": 0
+      }
+    ],
+    "totals": {
+      "inversion": 107500.00,
+      "leads": 11850,
+      "matriculados": 2180,
+      "cpl_promedio": 9.07,
+      "cpa_promedio": 49.31
+    }
+  },
+  "programs": {
+    "programs": [
+      {
+        "nombre": "Ingeniería Industrial",
+        "tipo": "Pregrado",
+        "postulaciones": 820,
+        "matriculados": 410,
+        "ingresos": 2870000,
+        "meta_matricula": 500,
+        "avance_pct": 82.0
+      },
+      {
+        "nombre": "Derecho",
+        "tipo": "Pregrado",
+        "postulaciones": 680,
+        "matriculados": 320,
+        "ingresos": 2240000,
+        "meta_matricula": 400,
+        "avance_pct": 80.0
+      },
+      {
+        "nombre": "Administración de Negocios",
+        "tipo": "Pregrado",
+        "postulaciones": 590,
+        "matriculados": 275,
+        "ingresos": 1925000,
+        "meta_matricula": 350,
+        "avance_pct": 78.6
+      },
+      {
+        "nombre": "Psicología",
+        "tipo": "Pregrado",
+        "postulaciones": 520,
+        "matriculados": 240,
+        "ingresos": 1680000,
+        "meta_matricula": 300,
+        "avance_pct": 80.0
+      },
+      {
+        "nombre": "Ciencias de la Computación",
+        "tipo": "Pregrado",
+        "postulaciones": 450,
+        "matriculados": 215,
+        "ingresos": 1505000,
+        "meta_matricula": 250,
+        "avance_pct": 86.0
+      },
+      {
+        "nombre": "Arquitectura",
+        "tipo": "Pregrado",
+        "postulaciones": 380,
+        "matriculados": 180,
+        "ingresos": 1260000,
+        "meta_matricula": 220,
+        "avance_pct": 81.8
+      },
+      {
+        "nombre": "MBA",
+        "tipo": "Postgrado",
+        "postulaciones": 180,
+        "matriculados": 95,
+        "ingresos": 1425000,
+        "meta_matricula": 120,
+        "avance_pct": 79.2
+      },
+      {
+        "nombre": "Maestría en Gestión Pública",
+        "tipo": "Postgrado",
+        "postulaciones": 150,
+        "matriculados": 78,
+        "ingresos": 936000,
+        "meta_matricula": 100,
+        "avance_pct": 78.0
+      },
+      {
+        "nombre": "Diplomado en Marketing Digital",
+        "tipo": "Formación Continua",
+        "postulaciones": 80,
+        "matriculados": 62,
+        "ingresos": 186000,
+        "meta_matricula": 80,
+        "avance_pct": 77.5
+      }
+    ],
+    "by_type": {
+      "Pregrado": [
+        { "nombre": "Ingeniería Industrial", "postulaciones": 820, "matriculados": 410, "avance_pct": 82.0 },
+        { "nombre": "Derecho", "postulaciones": 680, "matriculados": 320, "avance_pct": 80.0 },
+        { "nombre": "Administración de Negocios", "postulaciones": 590, "matriculados": 275, "avance_pct": 78.6 },
+        { "nombre": "Psicología", "postulaciones": 520, "matriculados": 240, "avance_pct": 80.0 },
+        { "nombre": "Ciencias de la Computación", "postulaciones": 450, "matriculados": 215, "avance_pct": 86.0 },
+        { "nombre": "Arquitectura", "postulaciones": 380, "matriculados": 180, "avance_pct": 81.8 }
+      ],
+      "Postgrado": [
+        { "nombre": "MBA", "postulaciones": 180, "matriculados": 95, "avance_pct": 79.2 },
+        { "nombre": "Maestría en Gestión Pública", "postulaciones": 150, "matriculados": 78, "avance_pct": 78.0 }
+      ],
+      "Formación Continua": [
+        { "nombre": "Diplomado en Marketing Digital", "postulaciones": 80, "matriculados": 62, "avance_pct": 77.5 }
+      ]
+    },
+    "total_programs": 9
+  },
+  "daily_kpis": {
+    "2026-01-27": { "sesiones_web": 4500, "leads": 185, "postulaciones": 52, "inversion": 3200 },
+    "2026-01-28": { "sesiones_web": 4800, "leads": 210, "postulaciones": 58, "inversion": 3400 },
+    "2026-01-29": { "sesiones_web": 5100, "leads": 225, "postulaciones": 65, "inversion": 3500 },
+    "2026-01-30": { "sesiones_web": 4900, "leads": 198, "postulaciones": 48, "inversion": 3300 },
+    "2026-01-31": { "sesiones_web": 5200, "leads": 240, "postulaciones": 72, "inversion": 3600 },
+    "2026-02-01": { "sesiones_web": 3800, "leads": 145, "postulaciones": 35, "inversion": 2800 },
+    "2026-02-02": { "sesiones_web": 3500, "leads": 130, "postulaciones": 28, "inversion": 2500 },
+    "2026-02-03": { "sesiones_web": 5500, "leads": 260, "postulaciones": 78, "inversion": 3800 },
+    "2026-02-04": { "sesiones_web": 5300, "leads": 245, "postulaciones": 70, "inversion": 3700 },
+    "2026-02-05": { "sesiones_web": 5600, "leads": 270, "postulaciones": 82, "inversion": 3900 },
+    "2026-02-06": { "sesiones_web": 5400, "leads": 255, "postulaciones": 75, "inversion": 3800 }
+  },
+  "geographic": {
+    "regions": [
+      { "departamento": "Arequipa", "provincia": "Arequipa", "total": 2910, "matriculados": 1350, "tasa_conversion": 46.4 },
+      { "departamento": "Puno", "provincia": "Puno", "total": 485, "matriculados": 210, "tasa_conversion": 43.3 },
+      { "departamento": "Cusco", "provincia": "Cusco", "total": 340, "matriculados": 145, "tasa_conversion": 42.6 },
+      { "departamento": "Moquegua", "provincia": "Mariscal Nieto", "total": 195, "matriculados": 88, "tasa_conversion": 45.1 },
+      { "departamento": "Tacna", "provincia": "Tacna", "total": 245, "matriculados": 105, "tasa_conversion": 42.9 },
+      { "departamento": "Lima", "provincia": "Lima", "total": 380, "matriculados": 160, "tasa_conversion": 42.1 },
+      { "departamento": "Arequipa", "provincia": "Camaná", "total": 120, "matriculados": 52, "tasa_conversion": 43.3 },
+      { "departamento": "Arequipa", "provincia": "Islay", "total": 95, "matriculados": 40, "tasa_conversion": 42.1 },
+      { "departamento": "Puno", "provincia": "San Román", "total": 80, "matriculados": 30, "tasa_conversion": 37.5 }
+    ],
+    "by_departamento": {
+      "Arequipa": { "total": 3125, "matriculados": 1442, "provincias": [] },
+      "Puno": { "total": 565, "matriculados": 240, "provincias": [] },
+      "Lima": { "total": 380, "matriculados": 160, "provincias": [] },
+      "Cusco": { "total": 340, "matriculados": 145, "provincias": [] },
+      "Tacna": { "total": 245, "matriculados": 105, "provincias": [] },
+      "Moquegua": { "total": 195, "matriculados": 88, "provincias": [] }
+    }
+  },
+  "metadata": {
+    "method": "Power BI REST API v1.0 + DAX Queries",
+    "workspace_id": "demo-workspace",
+    "dataset_id": "demo-dataset",
+    "queries_executed": 5,
+    "mode": "demo",
+    "note": "Datos de demostración - Conectar workspace real de Power BI para datos reales"
+  }
+}

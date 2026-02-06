@@ -77,6 +77,18 @@
     ]
   },
 
+  "powerbi": {
+    "workspace_id": "",
+    "dataset_id": "",
+    "tenant_id": "",
+    "reports_of_interest": [
+      "Dashboard Admisiones",
+      "Performance Marketing",
+      "Análisis Financiero"
+    ],
+    "dax_queries": {}
+  },
+
   "metadata": {
     "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
     "product": "Pregrado y Posgrado 2026-I"

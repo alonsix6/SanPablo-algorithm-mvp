@@ -44,8 +44,8 @@ jobs:
       # 4. Crear directorios de datos
       - name: Create data directories
         run: |
-          mkdir -p data/trends data/tiktok data/meta data/hubspot data/ga4
-          mkdir -p public/data/trends public/data/tiktok public/data/meta public/data/hubspot public/data/ga4
+          mkdir -p data/trends data/tiktok data/meta data/hubspot data/ga4 data/powerbi
+          mkdir -p public/data/trends public/data/tiktok public/data/meta public/data/hubspot public/data/ga4 public/data/powerbi
 
       # 5. Ejecutar scraper de Google Trends (Apify)
       - name: Run Google Trends Scraper
@@ -98,21 +98,34 @@ jobs:
           GA4_CREDENTIALS_JSON: ${{ secrets.GA4_CREDENTIALS_JSON }}
         continue-on-error: true
 
-      # 10. Ejecutar ML Pipeline
+      # 10. Ejecutar Power BI Connector (INCREMENTAL)
+      - name: Run Power BI Connector (incremental)
+        working-directory: ./scrapers
+        run: |
+          echo "Power BI incremental update (7 dias)..."
+          node powerbi_api.js --client=ucsp --mode=incremental
+        env:
+          POWERBI_CLIENT_ID: ${{ secrets.POWERBI_CLIENT_ID }}
+          POWERBI_CLIENT_SECRET: ${{ secrets.POWERBI_CLIENT_SECRET }}
+          POWERBI_TENANT_ID: ${{ secrets.POWERBI_TENANT_ID }}
+        continue-on-error: true
+
+      # 11. Ejecutar ML Pipeline
       - name: Run ML Pipeline
         run: |
           echo "Ejecutando ML Pipeline..."
           node ml/pipeline/weekly_pipeline.js
         continue-on-error: true
 
-      # 11. Verificar archivos generados
+      # 12. Verificar archivos generados
       - name: Check generated files
         run: |
           echo "Verificando archivos generados..."
           echo "=== HubSpot ===" && ls -lah data/hubspot/ || echo "No data"
           echo "=== GA4 ===" && ls -lah data/ga4/ || echo "No data"
+          echo "=== Power BI ===" && ls -lah data/powerbi/ || echo "No data"
 
-      # 12. Commit y push de los datos
+      # 13. Commit y push de los datos
       - name: Commit and push data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -129,7 +142,7 @@ jobs:
             echo "Datos UCSP actualizados (incremental)"
           fi
 
-      # 13. Notificación
+      # 14. Notificación
       - name: Status notification
         run: |
           if [ "${{ job.status }}" == "success" ]; then

@@ -83,6 +83,16 @@ async function loadAllData() {
     data.hubspot = null;
   }
 
+  try {
+    // Load Power BI data
+    const powerbiPath = path.join(DATA_DIR, 'powerbi/latest.json');
+    data.powerbi = JSON.parse(await fs.readFile(powerbiPath, 'utf-8'));
+    console.log(`   ✅ Power BI: ${data.powerbi.enrollment?.total_postulaciones || 0} postulaciones, ${data.powerbi.programs?.total_programs || 0} programas`);
+  } catch (e) {
+    console.log('   ⚠️ Power BI: No disponible');
+    data.powerbi = null;
+  }
+
   return data;
 }
 

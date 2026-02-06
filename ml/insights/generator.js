@@ -47,10 +47,15 @@ class InsightGenerator {
       insights.push(...this.generateGA4Insights(data.ga4));
     }
 
-    // 5. Cross-Source Insights
+    // 5. Power BI Insights
+    if (data.powerbi?.enrollment) {
+      insights.push(...this.generatePowerBIInsights(data.powerbi));
+    }
+
+    // 6. Cross-Source Insights
     insights.push(...this.generateCrossSourceInsights(data));
 
-    // 6. Budget Optimization Insights
+    // 7. Budget Optimization Insights
     if (data.budget) {
       insights.push(...this.generateBudgetInsights(data.budget));
     }
@@ -304,6 +309,92 @@ class InsightGenerator {
         impact_score: 6,
         source: 'Google Analytics 4'
       });
+    }
+
+    return insights;
+  }
+
+  /**
+   * Generate insights from Power BI data
+   */
+  generatePowerBIInsights(powerbiData) {
+    const insights = [];
+    const enrollment = powerbiData.enrollment || {};
+    const channels = powerbiData.channels || {};
+    const programs = powerbiData.programs || {};
+
+    // Enrollment conversion insight
+    if (enrollment.tasa_conversion_global > 0) {
+      const convRate = enrollment.tasa_conversion_global;
+      insights.push({
+        id: 'powerbi_enrollment_conversion',
+        type: 'intent',
+        priority: convRate > 40 ? 'medium' : 'high',
+        title: `Tasa de matrícula: ${convRate}%`,
+        description: `${enrollment.total_matriculados?.toLocaleString() || 0} matriculados de ${enrollment.total_postulaciones?.toLocaleString() || 0} postulaciones`,
+        action: convRate < 40
+          ? 'Optimizar proceso de admisión y seguimiento a postulantes'
+          : 'Mantener estrategia de conversión y escalar captación',
+        metric: convRate,
+        confidence: 0.90,
+        impact_score: convRate > 40 ? 7 : 9,
+        source: 'Power BI'
+      });
+    }
+
+    // Channel efficiency insight
+    if (channels.channels?.length > 0) {
+      const bestChannel = channels.channels
+        .filter(c => c.roi > 0)
+        .sort((a, b) => b.roi - a.roi)[0];
+
+      if (bestChannel) {
+        insights.push({
+          id: 'powerbi_best_channel',
+          type: 'budget',
+          priority: 'high',
+          title: `${bestChannel.canal} tiene el mayor ROI (${bestChannel.roi}%)`,
+          description: `CPL: $${bestChannel.cpl}, CPA: $${bestChannel.cpa}, ${bestChannel.matriculados} matriculados`,
+          action: `Considerar aumentar inversión en ${bestChannel.canal} por alto retorno`,
+          confidence: 0.85,
+          impact_score: 8,
+          source: 'Power BI'
+        });
+      }
+    }
+
+    // Program performance insight
+    if (programs.programs?.length > 0) {
+      const topProgram = programs.programs[0];
+      const lowPerformers = programs.programs.filter(p => p.avance_pct < 70);
+
+      if (topProgram) {
+        insights.push({
+          id: 'powerbi_top_program',
+          type: 'intent',
+          priority: 'medium',
+          title: `${topProgram.nombre} lidera en matrículas`,
+          description: `${topProgram.matriculados} matriculados (${topProgram.avance_pct}% de meta)`,
+          action: 'Replicar estrategia de captación en otros programas',
+          confidence: 0.85,
+          impact_score: 7,
+          source: 'Power BI'
+        });
+      }
+
+      if (lowPerformers.length > 0) {
+        insights.push({
+          id: 'powerbi_low_programs',
+          type: 'intent',
+          priority: 'high',
+          title: `${lowPerformers.length} programas debajo del 70% de meta`,
+          description: `Programas: ${lowPerformers.map(p => p.nombre).slice(0, 3).join(', ')}`,
+          action: 'Reforzar campañas específicas para programas con bajo avance',
+          confidence: 0.80,
+          impact_score: 8.5,
+          source: 'Power BI'
+        });
+      }
     }
 
     return insights;
