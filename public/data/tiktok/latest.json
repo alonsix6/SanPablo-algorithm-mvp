@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-05T14:04:24.226Z",
+  "timestamp": "2026-02-06T14:00:38.497Z",
   "source": "TikTok Trends via Apify",
   "region": "PE",
   "category": "Education",
@@ -7,9 +7,9 @@
   "trends": {
     "hashtags": [
       {
-        "hashtag": "#agro",
+        "hashtag": "#voltaasaulas",
         "views": "0",
-        "posts": "130.0K",
+        "posts": "123.8K",
         "growth": "+0%",
         "relevanceScore": 98,
         "region": "LATAM",
@@ -18,9 +18,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#trabalho",
+        "hashtag": "#materialescolar",
         "views": "0",
-        "posts": "91.7K",
+        "posts": "79.9K",
         "growth": "+0%",
         "relevanceScore": 96,
         "region": "LATAM",
@@ -31,7 +31,7 @@
       {
         "hashtag": "#enem",
         "views": "0",
-        "posts": "34.1K",
+        "posts": "34.7K",
         "growth": "+0%",
         "relevanceScore": 94,
         "region": "LATAM",
@@ -40,9 +40,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#faculdade",
+        "hashtag": "#inss",
         "views": "0",
-        "posts": "29.9K",
+        "posts": "24.3K",
         "growth": "+0%",
         "relevanceScore": 92,
         "region": "LATAM",
@@ -51,9 +51,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#obra",
+        "hashtag": "#vestibular",
         "views": "0",
-        "posts": "31.2K",
+        "posts": "14.9K",
         "growth": "+0%",
         "relevanceScore": 90,
         "region": "LATAM",
@@ -62,9 +62,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#inss",
+        "hashtag": "#soja",
         "views": "0",
-        "posts": "23.7K",
+        "posts": "9.4K",
         "growth": "+0%",
         "relevanceScore": 88,
         "region": "LATAM",
@@ -73,9 +73,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#formatura",
+        "hashtag": "#estojo",
         "views": "0",
-        "posts": "19.2K",
+        "posts": "6.7K",
         "growth": "+0%",
         "relevanceScore": 86,
         "region": "LATAM",
@@ -84,9 +84,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#direito",
+        "hashtag": "#cadernointeligente",
         "views": "0",
-        "posts": "22.3K",
+        "posts": "5.7K",
         "growth": "+0%",
         "relevanceScore": 84,
         "region": "LATAM",
@@ -95,9 +95,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#vestibular",
+        "hashtag": "#goodthing",
         "views": "0",
-        "posts": "14.5K",
+        "posts": "8.5K",
         "growth": "+0%",
         "relevanceScore": 82,
         "region": "LATAM",
@@ -106,9 +106,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#advogada",
+        "hashtag": "#maquina",
         "views": "0",
-        "posts": "14.5K",
+        "posts": "5.0K",
         "growth": "+0%",
         "relevanceScore": 80,
         "region": "LATAM",
@@ -117,9 +117,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#advogado",
+        "hashtag": "#detran",
         "views": "0",
-        "posts": "13.4K",
+        "posts": "3.1K",
         "growth": "+0%",
         "relevanceScore": 78,
         "region": "LATAM",
@@ -128,9 +128,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#concursopublico",
+        "hashtag": "#aprovação",
         "views": "0",
-        "posts": "13.8K",
+        "posts": "3.4K",
         "growth": "+0%",
         "relevanceScore": 76,
         "region": "LATAM",
@@ -139,9 +139,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#construcao",
+        "hashtag": "#manutenção",
         "views": "0",
-        "posts": "10.0K",
+        "posts": "4.0K",
         "growth": "+0%",
         "relevanceScore": 74,
         "region": "LATAM",
@@ -150,9 +150,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#aposentadoria",
+        "hashtag": "#estrela",
         "views": "0",
-        "posts": "8.8K",
+        "posts": "2.6K",
         "growth": "+0%",
         "relevanceScore": 72,
         "region": "LATAM",
@@ -161,9 +161,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#agricultura",
+        "hashtag": "#lifehacks",
         "views": "0",
-        "posts": "10.0K",
+        "posts": "2.6K",
         "growth": "+0%",
         "relevanceScore": 70,
         "region": "LATAM",
@@ -172,9 +172,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#arcondicionado",
+        "hashtag": "#psicanálise",
         "views": "0",
-        "posts": "8.0K",
+        "posts": "4.3K",
         "growth": "+0%",
         "relevanceScore": 68,
         "region": "LATAM",
@@ -183,9 +183,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#trabalhador",
+        "hashtag": "#factory",
         "views": "0",
-        "posts": "7.3K",
+        "posts": "2.2K",
         "growth": "+0%",
         "relevanceScore": 66,
         "region": "LATAM",
@@ -194,9 +194,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#biologia",
+        "hashtag": "#estojoescolar",
         "views": "0",
-        "posts": "7.5K",
+        "posts": "3.2K",
         "growth": "+0%",
         "relevanceScore": 64,
         "region": "LATAM",
@@ -205,9 +205,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#soja",
+        "hashtag": "#salariomaternidade",
         "views": "0",
-        "posts": "9.3K",
+        "posts": "3.6K",
         "growth": "+0%",
         "relevanceScore": 62,
         "region": "LATAM",
@@ -216,9 +216,9 @@
         "isPromoted": false
       },
       {
-        "hashtag": "#ensinomedio",
+        "hashtag": "#freidamcfadden",
         "views": "0",
-        "posts": "4.9K",
+        "posts": "2.1K",
         "growth": "+0%",
         "relevanceScore": 60,
         "region": "LATAM",
@@ -270,16 +270,6 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Empire Scores",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
         "author": "Chihei Hatakeyama",
         "usage": "0",
         "growth": "+0%",
@@ -290,7 +280,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Dominic Fike",
+        "author": "The Stylistics",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -320,27 +310,37 @@
       },
       {
         "soundName": "Unknown",
+        "author": "Dominic Fike",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Melissa Colorado",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Big Boogie",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
         "author": "MusicBox",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Rihanna",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Stunna Girl & Vanessa Doll",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -360,7 +360,17 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Melissa Colorado",
+        "author": "Stunna Girl & Vanessa Doll",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Rihanna",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -411,16 +421,6 @@
       {
         "soundName": "Unknown",
         "author": "Young Nudy",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Flatsound",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,

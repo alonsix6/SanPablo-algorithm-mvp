@@ -1,0 +1,6828 @@
+{
+  "timestamp": "2026-02-06T14:03:53.759Z",
+  "source": "Google Analytics 4 API",
+  "property_id": "310975508",
+  "client": "UCSP - Universidad Católica San Pablo",
+  "dateRange": {
+    "startDate": "2025-11-08",
+    "endDate": "2026-02-06"
+  },
+  "overview": {
+    "totalUsers": 217632,
+    "newUsers": 189515,
+    "sessions": 380073,
+    "screenPageViews": 727312,
+    "averageSessionDuration": 194.55311821005174,
+    "bounceRate": 0.48115230495194344,
+    "engagedSessions": 197200,
+    "engagementRate": 0.5188476950480566,
+    "conversions": 12272,
+    "eventCount": 2017144
+  },
+  "daily": {
+    "2025-11-08": {
+      "users": 2369,
+      "newUsers": 1578,
+      "sessions": 2739,
+      "conversions": 107,
+      "engagedSessions": 1480
+    },
+    "2025-11-09": {
+      "users": 2363,
+      "newUsers": 1543,
+      "sessions": 2711,
+      "conversions": 83,
+      "engagedSessions": 1474
+    },
+    "2025-11-10": {
+      "users": 3721,
+      "newUsers": 2282,
+      "sessions": 4627,
+      "conversions": 149,
+      "engagedSessions": 2511
+    },
+    "2025-11-11": {
+      "users": 3908,
+      "newUsers": 2463,
+      "sessions": 4731,
+      "conversions": 125,
+      "engagedSessions": 2434
+    },
+    "2025-11-12": {
+      "users": 3728,
+      "newUsers": 2256,
+      "sessions": 4310,
+      "conversions": 85,
+      "engagedSessions": 2375
+    },
+    "2025-11-13": {
+      "users": 3624,
+      "newUsers": 2181,
+      "sessions": 4483,
+      "conversions": 87,
+      "engagedSessions": 2403
+    },
+    "2025-11-14": {
+      "users": 3309,
+      "newUsers": 1985,
+      "sessions": 4054,
+      "conversions": 94,
+      "engagedSessions": 2195
+    },
+    "2025-11-15": {
+      "users": 2289,
+      "newUsers": 1459,
+      "sessions": 2670,
+      "conversions": 79,
+      "engagedSessions": 1389
+    },
+    "2025-11-16": {
+      "users": 2468,
+      "newUsers": 1602,
+      "sessions": 2967,
+      "conversions": 94,
+      "engagedSessions": 1566
+    },
+    "2025-11-17": {
+      "users": 3886,
+      "newUsers": 2288,
+      "sessions": 4812,
+      "conversions": 101,
+      "engagedSessions": 2607
+    },
+    "2025-11-18": {
+      "users": 3781,
+      "newUsers": 2286,
+      "sessions": 4516,
+      "conversions": 97,
+      "engagedSessions": 2418
+    },
+    "2025-11-19": {
+      "users": 4327,
+      "newUsers": 2547,
+      "sessions": 5316,
+      "conversions": 129,
+      "engagedSessions": 2583
+    },
+    "2025-11-20": {
+      "users": 3878,
+      "newUsers": 2279,
+      "sessions": 4656,
+      "conversions": 112,
+      "engagedSessions": 2473
+    },
+    "2025-11-21": {
+      "users": 4010,
+      "newUsers": 2505,
+      "sessions": 4866,
+      "conversions": 108,
+      "engagedSessions": 2550
+    },
+    "2025-11-22": {
+      "users": 2540,
+      "newUsers": 1580,
+      "sessions": 2904,
+      "conversions": 63,
+      "engagedSessions": 1523
+    },
+    "2025-11-23": {
+      "users": 2888,
+      "newUsers": 1782,
+      "sessions": 3519,
+      "conversions": 69,
+      "engagedSessions": 1783
+    },
+    "2025-11-24": {
+      "users": 3649,
+      "newUsers": 2128,
+      "sessions": 4429,
+      "conversions": 162,
+      "engagedSessions": 2399
+    },
+    "2025-11-25": {
+      "users": 3922,
+      "newUsers": 2507,
+      "sessions": 4749,
+      "conversions": 121,
+      "engagedSessions": 2419
+    },
+    "2025-11-26": {
+      "users": 3723,
+      "newUsers": 2237,
+      "sessions": 4527,
+      "conversions": 106,
+      "engagedSessions": 2462
+    },
+    "2025-11-27": {
+      "users": 3437,
+      "newUsers": 1999,
+      "sessions": 4208,
+      "conversions": 89,
+      "engagedSessions": 2214
+    },
+    "2025-11-28": {
+      "users": 3066,
+      "newUsers": 1695,
+      "sessions": 3843,
+      "conversions": 106,
+      "engagedSessions": 2027
+    },
+    "2025-11-29": {
+      "users": 2630,
+      "newUsers": 1564,
+      "sessions": 3095,
+      "conversions": 108,
+      "engagedSessions": 1522
+    },
+    "2025-11-30": {
+      "users": 2414,
+      "newUsers": 1446,
+      "sessions": 2849,
+      "conversions": 95,
+      "engagedSessions": 1429
+    },
+    "2025-12-01": {
+      "users": 3840,
+      "newUsers": 2203,
+      "sessions": 4642,
+      "conversions": 135,
+      "engagedSessions": 2414
+    },
+    "2025-12-02": {
+      "users": 4041,
+      "newUsers": 2475,
+      "sessions": 4731,
+      "conversions": 116,
+      "engagedSessions": 2356
+    },
+    "2025-12-03": {
+      "users": 3657,
+      "newUsers": 2162,
+      "sessions": 4471,
+      "conversions": 97,
+      "engagedSessions": 2221
+    },
+    "2025-12-04": {
+      "users": 4118,
+      "newUsers": 2349,
+      "sessions": 4978,
+      "conversions": 118,
+      "engagedSessions": 2579
+    },
+    "2025-12-05": {
+      "users": 3947,
+      "newUsers": 2345,
+      "sessions": 4804,
+      "conversions": 109,
+      "engagedSessions": 2406
+    },
+    "2025-12-06": {
+      "users": 2802,
+      "newUsers": 1766,
+      "sessions": 3275,
+      "conversions": 82,
+      "engagedSessions": 1415
+    },
+    "2025-12-07": {
+      "users": 2676,
+      "newUsers": 1786,
+      "sessions": 3048,
+      "conversions": 73,
+      "engagedSessions": 1338
+    },
+    "2025-12-08": {
+      "users": 2804,
+      "newUsers": 1798,
+      "sessions": 3227,
+      "conversions": 95,
+      "engagedSessions": 1491
+    },
+    "2025-12-09": {
+      "users": 3144,
+      "newUsers": 2020,
+      "sessions": 3686,
+      "conversions": 114,
+      "engagedSessions": 1744
+    },
+    "2025-12-10": {
+      "users": 3662,
+      "newUsers": 1987,
+      "sessions": 4670,
+      "conversions": 140,
+      "engagedSessions": 2400
+    },
+    "2025-12-11": {
+      "users": 3183,
+      "newUsers": 1637,
+      "sessions": 4116,
+      "conversions": 107,
+      "engagedSessions": 2282
+    },
+    "2025-12-12": {
+      "users": 2764,
+      "newUsers": 1407,
+      "sessions": 3386,
+      "conversions": 95,
+      "engagedSessions": 1914
+    },
+    "2025-12-13": {
+      "users": 2231,
+      "newUsers": 1149,
+      "sessions": 2673,
+      "conversions": 76,
+      "engagedSessions": 1470
+    },
+    "2025-12-14": {
+      "users": 2522,
+      "newUsers": 1373,
+      "sessions": 3177,
+      "conversions": 85,
+      "engagedSessions": 1862
+    },
+    "2025-12-15": {
+      "users": 3707,
+      "newUsers": 2006,
+      "sessions": 5014,
+      "conversions": 164,
+      "engagedSessions": 2887
+    },
+    "2025-12-16": {
+      "users": 4197,
+      "newUsers": 2186,
+      "sessions": 5874,
+      "conversions": 145,
+      "engagedSessions": 3418
+    },
+    "2025-12-17": {
+      "users": 3584,
+      "newUsers": 2088,
+      "sessions": 4484,
+      "conversions": 131,
+      "engagedSessions": 2280
+    },
+    "2025-12-18": {
+      "users": 3060,
+      "newUsers": 1838,
+      "sessions": 3604,
+      "conversions": 119,
+      "engagedSessions": 1800
+    },
+    "2025-12-19": {
+      "users": 2918,
+      "newUsers": 1685,
+      "sessions": 3509,
+      "conversions": 117,
+      "engagedSessions": 1709
+    },
+    "2025-12-20": {
+      "users": 2264,
+      "newUsers": 1484,
+      "sessions": 2545,
+      "conversions": 91,
+      "engagedSessions": 1159
+    },
+    "2025-12-21": {
+      "users": 2424,
+      "newUsers": 1647,
+      "sessions": 2710,
+      "conversions": 98,
+      "engagedSessions": 1237
+    },
+    "2025-12-22": {
+      "users": 3076,
+      "newUsers": 1928,
+      "sessions": 3671,
+      "conversions": 152,
+      "engagedSessions": 1831
+    },
+    "2025-12-23": {
+      "users": 2467,
+      "newUsers": 1547,
+      "sessions": 2908,
+      "conversions": 111,
+      "engagedSessions": 1400
+    },
+    "2025-12-24": {
+      "users": 1984,
+      "newUsers": 1436,
+      "sessions": 2171,
+      "conversions": 78,
+      "engagedSessions": 948
+    },
+    "2025-12-25": {
+      "users": 1986,
+      "newUsers": 1435,
+      "sessions": 2183,
+      "conversions": 84,
+      "engagedSessions": 1007
+    },
+    "2025-12-26": {
+      "users": 3662,
+      "newUsers": 2226,
+      "sessions": 4343,
+      "conversions": 153,
+      "engagedSessions": 2272
+    },
+    "2025-12-27": {
+      "users": 3089,
+      "newUsers": 1883,
+      "sessions": 3544,
+      "conversions": 120,
+      "engagedSessions": 1688
+    },
+    "2025-12-28": {
+      "users": 2734,
+      "newUsers": 1772,
+      "sessions": 3042,
+      "conversions": 116,
+      "engagedSessions": 1477
+    },
+    "2025-12-29": {
+      "users": 3600,
+      "newUsers": 2179,
+      "sessions": 4304,
+      "conversions": 169,
+      "engagedSessions": 2188
+    },
+    "2025-12-30": {
+      "users": 5029,
+      "newUsers": 2736,
+      "sessions": 5852,
+      "conversions": 131,
+      "engagedSessions": 2584
+    },
+    "2025-12-31": {
+      "users": 2541,
+      "newUsers": 1529,
+      "sessions": 2813,
+      "conversions": 88,
+      "engagedSessions": 1182
+    },
+    "2026-01-01": {
+      "users": 2129,
+      "newUsers": 1324,
+      "sessions": 2394,
+      "conversions": 51,
+      "engagedSessions": 1091
+    },
+    "2026-01-02": {
+      "users": 3699,
+      "newUsers": 1981,
+      "sessions": 4403,
+      "conversions": 163,
+      "engagedSessions": 2438
+    },
+    "2026-01-03": {
+      "users": 2587,
+      "newUsers": 1470,
+      "sessions": 3027,
+      "conversions": 96,
+      "engagedSessions": 1576
+    },
+    "2026-01-04": {
+      "users": 2678,
+      "newUsers": 1535,
+      "sessions": 3093,
+      "conversions": 116,
+      "engagedSessions": 1661
+    },
+    "2026-01-05": {
+      "users": 4462,
+      "newUsers": 2329,
+      "sessions": 5530,
+      "conversions": 205,
+      "engagedSessions": 3027
+    },
+    "2026-01-06": {
+      "users": 4458,
+      "newUsers": 2344,
+      "sessions": 5560,
+      "conversions": 154,
+      "engagedSessions": 2953
+    },
+    "2026-01-07": {
+      "users": 4164,
+      "newUsers": 2404,
+      "sessions": 5108,
+      "conversions": 183,
+      "engagedSessions": 2762
+    },
+    "2026-01-08": {
+      "users": 3698,
+      "newUsers": 2133,
+      "sessions": 4656,
+      "conversions": 167,
+      "engagedSessions": 2515
+    },
+    "2026-01-09": {
+      "users": 3945,
+      "newUsers": 2557,
+      "sessions": 4659,
+      "conversions": 186,
+      "engagedSessions": 2420
+    },
+    "2026-01-10": {
+      "users": 2828,
+      "newUsers": 1854,
+      "sessions": 3280,
+      "conversions": 156,
+      "engagedSessions": 1648
+    },
+    "2026-01-11": {
+      "users": 2696,
+      "newUsers": 1765,
+      "sessions": 2963,
+      "conversions": 143,
+      "engagedSessions": 1540
+    },
+    "2026-01-12": {
+      "users": 4035,
+      "newUsers": 2393,
+      "sessions": 4942,
+      "conversions": 207,
+      "engagedSessions": 2785
+    },
+    "2026-01-13": {
+      "users": 3959,
+      "newUsers": 2453,
+      "sessions": 4730,
+      "conversions": 185,
+      "engagedSessions": 2676
+    },
+    "2026-01-14": {
+      "users": 3563,
+      "newUsers": 2073,
+      "sessions": 4324,
+      "conversions": 111,
+      "engagedSessions": 2406
+    },
+    "2026-01-15": {
+      "users": 4798,
+      "newUsers": 3112,
+      "sessions": 5664,
+      "conversions": 208,
+      "engagedSessions": 3040
+    },
+    "2026-01-16": {
+      "users": 3502,
+      "newUsers": 2105,
+      "sessions": 4179,
+      "conversions": 134,
+      "engagedSessions": 2320
+    },
+    "2026-01-17": {
+      "users": 2517,
+      "newUsers": 1658,
+      "sessions": 2959,
+      "conversions": 114,
+      "engagedSessions": 1483
+    },
+    "2026-01-18": {
+      "users": 2353,
+      "newUsers": 1472,
+      "sessions": 2673,
+      "conversions": 70,
+      "engagedSessions": 1440
+    },
+    "2026-01-19": {
+      "users": 3936,
+      "newUsers": 2281,
+      "sessions": 4895,
+      "conversions": 165,
+      "engagedSessions": 2766
+    },
+    "2026-01-20": {
+      "users": 3868,
+      "newUsers": 2294,
+      "sessions": 4666,
+      "conversions": 142,
+      "engagedSessions": 2562
+    },
+    "2026-01-21": {
+      "users": 4106,
+      "newUsers": 2455,
+      "sessions": 5133,
+      "conversions": 132,
+      "engagedSessions": 2729
+    },
+    "2026-01-22": {
+      "users": 3945,
+      "newUsers": 2341,
+      "sessions": 4844,
+      "conversions": 146,
+      "engagedSessions": 2635
+    },
+    "2026-01-23": {
+      "users": 4437,
+      "newUsers": 2807,
+      "sessions": 5296,
+      "conversions": 118,
+      "engagedSessions": 2759
+    },
+    "2026-01-24": {
+      "users": 3310,
+      "newUsers": 2199,
+      "sessions": 3745,
+      "conversions": 168,
+      "engagedSessions": 1857
+    },
+    "2026-01-25": {
+      "users": 3395,
+      "newUsers": 2336,
+      "sessions": 3871,
+      "conversions": 146,
+      "engagedSessions": 1930
+    },
+    "2026-01-26": {
+      "users": 6563,
+      "newUsers": 3925,
+      "sessions": 7934,
+      "conversions": 339,
+      "engagedSessions": 4370
+    },
+    "2026-01-27": {
+      "users": 5252,
+      "newUsers": 2927,
+      "sessions": 6541,
+      "conversions": 278,
+      "engagedSessions": 3718
+    },
+    "2026-01-28": {
+      "users": 4724,
+      "newUsers": 2715,
+      "sessions": 5661,
+      "conversions": 203,
+      "engagedSessions": 3251
+    },
+    "2026-01-29": {
+      "users": 5070,
+      "newUsers": 3009,
+      "sessions": 6156,
+      "conversions": 250,
+      "engagedSessions": 3243
+    },
+    "2026-01-30": {
+      "users": 4888,
+      "newUsers": 2846,
+      "sessions": 5936,
+      "conversions": 295,
+      "engagedSessions": 3173
+    },
+    "2026-01-31": {
+      "users": 3629,
+      "newUsers": 2409,
+      "sessions": 4047,
+      "conversions": 187,
+      "engagedSessions": 1921
+    },
+    "2026-02-01": {
+      "users": 3367,
+      "newUsers": 2206,
+      "sessions": 3762,
+      "conversions": 143,
+      "engagedSessions": 1777
+    },
+    "2026-02-02": {
+      "users": 4938,
+      "newUsers": 2958,
+      "sessions": 6056,
+      "conversions": 276,
+      "engagedSessions": 3079
+    },
+    "2026-02-03": {
+      "users": 4946,
+      "newUsers": 3013,
+      "sessions": 6131,
+      "conversions": 249,
+      "engagedSessions": 3113
+    },
+    "2026-02-04": {
+      "users": 5247,
+      "newUsers": 3241,
+      "sessions": 6238,
+      "conversions": 316,
+      "engagedSessions": 3151
+    },
+    "2026-02-05": {
+      "users": 3981,
+      "newUsers": 2244,
+      "sessions": 4886,
+      "conversions": 187,
+      "engagedSessions": 2674
+    },
+    "2026-02-06": {
+      "users": 188,
+      "newUsers": 93,
+      "sessions": 203,
+      "conversions": 5,
+      "engagedSessions": 103
+    }
+  },
+  "dailyByChannel": {
+    "2025-11-08": {
+      "Organic Search": {
+        "sessions": 1592,
+        "users": 1338,
+        "conversions": 24
+      },
+      "Paid Search": {
+        "sessions": 298,
+        "users": 273,
+        "conversions": 57
+      },
+      "Direct": {
+        "sessions": 295,
+        "users": 260,
+        "conversions": 10
+      },
+      "Paid Social": {
+        "sessions": 277,
+        "users": 272,
+        "conversions": 12
+      },
+      "Cross-network": {
+        "sessions": 78,
+        "users": 75,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 76,
+        "users": 74,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 56,
+        "users": 50,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 51,
+        "users": 45,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 13,
+        "users": 13,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-09": {
+      "Organic Search": {
+        "sessions": 1602,
+        "users": 1374,
+        "conversions": 23
+      },
+      "Direct": {
+        "sessions": 286,
+        "users": 257,
+        "conversions": 5
+      },
+      "Paid Search": {
+        "sessions": 260,
+        "users": 247,
+        "conversions": 41
+      },
+      "Paid Social": {
+        "sessions": 252,
+        "users": 241,
+        "conversions": 9
+      },
+      "Cross-network": {
+        "sessions": 102,
+        "users": 96,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 83,
+        "users": 69,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 57,
+        "users": 46,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 57,
+        "users": 50,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 9,
+        "users": 9,
+        "conversions": 0
+      }
+    },
+    "2025-11-10": {
+      "Organic Search": {
+        "sessions": 2716,
+        "users": 2165,
+        "conversions": 27
+      },
+      "Direct": {
+        "sessions": 612,
+        "users": 526,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 382,
+        "users": 331,
+        "conversions": 95
+      },
+      "Paid Social": {
+        "sessions": 294,
+        "users": 286,
+        "conversions": 5
+      },
+      "Email": {
+        "sessions": 238,
+        "users": 169,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 136,
+        "users": 73,
+        "conversions": 12
+      },
+      "Organic Social": {
+        "sessions": 117,
+        "users": 114,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 88,
+        "users": 83,
+        "conversions": 4
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 20,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2025-11-11": {
+      "Organic Search": {
+        "sessions": 2734,
+        "users": 2224,
+        "conversions": 34
+      },
+      "Paid Social": {
+        "sessions": 563,
+        "users": 548,
+        "conversions": 11
+      },
+      "Direct": {
+        "sessions": 560,
+        "users": 473,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 320,
+        "users": 281,
+        "conversions": 49
+      },
+      "Email": {
+        "sessions": 171,
+        "users": 126,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 158,
+        "users": 105,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 94,
+        "users": 86,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 91,
+        "users": 89,
+        "conversions": 6
+      },
+      "Unassigned": {
+        "sessions": 37,
+        "users": 33,
+        "conversions": 4
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-11-12": {
+      "Organic Search": {
+        "sessions": 2593,
+        "users": 2167,
+        "conversions": 32
+      },
+      "Direct": {
+        "sessions": 527,
+        "users": 445,
+        "conversions": 3
+      },
+      "Paid Social": {
+        "sessions": 340,
+        "users": 333,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 304,
+        "users": 279,
+        "conversions": 35
+      },
+      "Email": {
+        "sessions": 254,
+        "users": 202,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 170,
+        "users": 157,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 136,
+        "users": 92,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 74,
+        "users": 69,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 19,
+        "users": 19,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-13": {
+      "Organic Search": {
+        "sessions": 2634,
+        "users": 2119,
+        "conversions": 19
+      },
+      "Direct": {
+        "sessions": 584,
+        "users": 499,
+        "conversions": 11
+      },
+      "Paid Social": {
+        "sessions": 291,
+        "users": 279,
+        "conversions": 14
+      },
+      "Paid Search": {
+        "sessions": 280,
+        "users": 248,
+        "conversions": 39
+      },
+      "Email": {
+        "sessions": 254,
+        "users": 202,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 142,
+        "users": 92,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 133,
+        "users": 123,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 92,
+        "users": 87,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 25,
+        "users": 23,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-11-14": {
+      "Organic Search": {
+        "sessions": 2421,
+        "users": 1980,
+        "conversions": 27
+      },
+      "Direct": {
+        "sessions": 478,
+        "users": 400,
+        "conversions": 7
+      },
+      "Paid Social": {
+        "sessions": 275,
+        "users": 261,
+        "conversions": 15
+      },
+      "Email": {
+        "sessions": 255,
+        "users": 201,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 247,
+        "users": 222,
+        "conversions": 32
+      },
+      "Referral": {
+        "sessions": 135,
+        "users": 80,
+        "conversions": 4
+      },
+      "Organic Social": {
+        "sessions": 102,
+        "users": 99,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 89,
+        "users": 85,
+        "conversions": 7
+      },
+      "Unassigned": {
+        "sessions": 16,
+        "users": 15,
+        "conversions": 1
+      }
+    },
+    "2025-11-15": {
+      "Organic Search": {
+        "sessions": 1552,
+        "users": 1293,
+        "conversions": 14
+      },
+      "Paid Search": {
+        "sessions": 289,
+        "users": 265,
+        "conversions": 49
+      },
+      "Direct": {
+        "sessions": 277,
+        "users": 244,
+        "conversions": 1
+      },
+      "Paid Social": {
+        "sessions": 246,
+        "users": 239,
+        "conversions": 12
+      },
+      "Email": {
+        "sessions": 85,
+        "users": 69,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 72,
+        "users": 66,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 71,
+        "users": 67,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 56,
+        "users": 45,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 15,
+        "users": 14,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 0
+      }
+    },
+    "2025-11-16": {
+      "Organic Search": {
+        "sessions": 1622,
+        "users": 1338,
+        "conversions": 25
+      },
+      "Direct": {
+        "sessions": 431,
+        "users": 393,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 302,
+        "users": 268,
+        "conversions": 53
+      },
+      "Paid Social": {
+        "sessions": 240,
+        "users": 232,
+        "conversions": 6
+      },
+      "Cross-network": {
+        "sessions": 96,
+        "users": 90,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 75,
+        "users": 62,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 54,
+        "users": 46,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 43,
+        "users": 41,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 26,
+        "users": 23,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-17": {
+      "Organic Search": {
+        "sessions": 2807,
+        "users": 2228,
+        "conversions": 38
+      },
+      "Direct": {
+        "sessions": 540,
+        "users": 428,
+        "conversions": 5
+      },
+      "Paid Social": {
+        "sessions": 497,
+        "users": 480,
+        "conversions": 8
+      },
+      "Paid Search": {
+        "sessions": 292,
+        "users": 259,
+        "conversions": 38
+      },
+      "Email": {
+        "sessions": 255,
+        "users": 192,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 159,
+        "users": 93,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 142,
+        "users": 129,
+        "conversions": 6
+      },
+      "Organic Social": {
+        "sessions": 108,
+        "users": 94,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 32,
+        "users": 29,
+        "conversions": 1
+      }
+    },
+    "2025-11-18": {
+      "Organic Search": {
+        "sessions": 2758,
+        "users": 2221,
+        "conversions": 24
+      },
+      "Direct": {
+        "sessions": 567,
+        "users": 484,
+        "conversions": 8
+      },
+      "Paid Social": {
+        "sessions": 510,
+        "users": 489,
+        "conversions": 8
+      },
+      "Paid Search": {
+        "sessions": 290,
+        "users": 255,
+        "conversions": 47
+      },
+      "Referral": {
+        "sessions": 128,
+        "users": 87,
+        "conversions": 2
+      },
+      "Email": {
+        "sessions": 114,
+        "users": 89,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 96,
+        "users": 90,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 85,
+        "users": 81,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 24,
+        "users": 24,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-19": {
+      "Organic Search": {
+        "sessions": 2647,
+        "users": 2126,
+        "conversions": 67
+      },
+      "Email": {
+        "sessions": 710,
+        "users": 572,
+        "conversions": 0
+      },
+      "Paid Social": {
+        "sessions": 667,
+        "users": 645,
+        "conversions": 11
+      },
+      "Direct": {
+        "sessions": 586,
+        "users": 491,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 284,
+        "users": 241,
+        "conversions": 38
+      },
+      "Referral": {
+        "sessions": 120,
+        "users": 77,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 112,
+        "users": 104,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 100,
+        "users": 98,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 29,
+        "users": 28,
+        "conversions": 0
+      },
+      "Organic Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-20": {
+      "Organic Search": {
+        "sessions": 2679,
+        "users": 2159,
+        "conversions": 43
+      },
+      "Direct": {
+        "sessions": 713,
+        "users": 604,
+        "conversions": 6
+      },
+      "Paid Social": {
+        "sessions": 458,
+        "users": 434,
+        "conversions": 8
+      },
+      "Paid Search": {
+        "sessions": 256,
+        "users": 222,
+        "conversions": 46
+      },
+      "Email": {
+        "sessions": 211,
+        "users": 172,
+        "conversions": 4
+      },
+      "Organic Social": {
+        "sessions": 124,
+        "users": 122,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 124,
+        "users": 81,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 103,
+        "users": 98,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 31,
+        "users": 29,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-21": {
+      "Organic Search": {
+        "sessions": 2399,
+        "users": 1922,
+        "conversions": 30
+      },
+      "Direct": {
+        "sessions": 949,
+        "users": 822,
+        "conversions": 12
+      },
+      "Paid Social": {
+        "sessions": 618,
+        "users": 593,
+        "conversions": 10
+      },
+      "Paid Search": {
+        "sessions": 302,
+        "users": 248,
+        "conversions": 47
+      },
+      "Email": {
+        "sessions": 228,
+        "users": 189,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 118,
+        "users": 108,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 111,
+        "users": 69,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 80,
+        "users": 77,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 35,
+        "users": 35,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 8,
+        "users": 8,
+        "conversions": 0
+      }
+    },
+    "2025-11-22": {
+      "Organic Search": {
+        "sessions": 1621,
+        "users": 1364,
+        "conversions": 22
+      },
+      "Paid Social": {
+        "sessions": 411,
+        "users": 389,
+        "conversions": 4
+      },
+      "Direct": {
+        "sessions": 361,
+        "users": 323,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 209,
+        "users": 187,
+        "conversions": 17
+      },
+      "Organic Social": {
+        "sessions": 87,
+        "users": 83,
+        "conversions": 5
+      },
+      "Email": {
+        "sessions": 77,
+        "users": 62,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 76,
+        "users": 73,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 52,
+        "users": 48,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 34,
+        "users": 31,
+        "conversions": 2
+      },
+      "Paid Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-23": {
+      "Organic Search": {
+        "sessions": 1860,
+        "users": 1532,
+        "conversions": 12
+      },
+      "Direct": {
+        "sessions": 525,
+        "users": 459,
+        "conversions": 7
+      },
+      "Paid Social": {
+        "sessions": 389,
+        "users": 377,
+        "conversions": 4
+      },
+      "Paid Search": {
+        "sessions": 206,
+        "users": 175,
+        "conversions": 38
+      },
+      "Email": {
+        "sessions": 131,
+        "users": 105,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 108,
+        "users": 100,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 90,
+        "users": 81,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 72,
+        "users": 62,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 30,
+        "users": 27,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-24": {
+      "Organic Search": {
+        "sessions": 2767,
+        "users": 2246,
+        "conversions": 69
+      },
+      "Direct": {
+        "sessions": 584,
+        "users": 490,
+        "conversions": 12
+      },
+      "Paid Social": {
+        "sessions": 315,
+        "users": 295,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 284,
+        "users": 247,
+        "conversions": 55
+      },
+      "Email": {
+        "sessions": 147,
+        "users": 104,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 132,
+        "users": 122,
+        "conversions": 9
+      },
+      "Referral": {
+        "sessions": 118,
+        "users": 86,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 86,
+        "users": 81,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 26,
+        "users": 24,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-25": {
+      "Organic Search": {
+        "sessions": 2666,
+        "users": 2125,
+        "conversions": 27
+      },
+      "Direct": {
+        "sessions": 762,
+        "users": 688,
+        "conversions": 10
+      },
+      "Paid Social": {
+        "sessions": 570,
+        "users": 551,
+        "conversions": 13
+      },
+      "Paid Search": {
+        "sessions": 252,
+        "users": 218,
+        "conversions": 59
+      },
+      "Email": {
+        "sessions": 129,
+        "users": 89,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 109,
+        "users": 79,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 101,
+        "users": 95,
+        "conversions": 6
+      },
+      "Organic Social": {
+        "sessions": 88,
+        "users": 85,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 34,
+        "users": 31,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-11-26": {
+      "Organic Search": {
+        "sessions": 2813,
+        "users": 2269,
+        "conversions": 38
+      },
+      "Direct": {
+        "sessions": 629,
+        "users": 546,
+        "conversions": 12
+      },
+      "Paid Social": {
+        "sessions": 413,
+        "users": 391,
+        "conversions": 6
+      },
+      "Paid Search": {
+        "sessions": 246,
+        "users": 212,
+        "conversions": 43
+      },
+      "Email": {
+        "sessions": 112,
+        "users": 84,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 108,
+        "users": 78,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 95,
+        "users": 92,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 80,
+        "users": 76,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 18,
+        "users": 17,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2025-11-27": {
+      "Organic Search": {
+        "sessions": 2696,
+        "users": 2120,
+        "conversions": 28
+      },
+      "Direct": {
+        "sessions": 555,
+        "users": 472,
+        "conversions": 8
+      },
+      "Paid Social": {
+        "sessions": 278,
+        "users": 267,
+        "conversions": 4
+      },
+      "Paid Search": {
+        "sessions": 255,
+        "users": 222,
+        "conversions": 41
+      },
+      "Organic Social": {
+        "sessions": 146,
+        "users": 135,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 99,
+        "users": 75,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 94,
+        "users": 91,
+        "conversions": 4
+      },
+      "Email": {
+        "sessions": 83,
+        "users": 65,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 30,
+        "users": 30,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2025-11-28": {
+      "Organic Search": {
+        "sessions": 2376,
+        "users": 1897,
+        "conversions": 41
+      },
+      "Direct": {
+        "sessions": 488,
+        "users": 416,
+        "conversions": 11
+      },
+      "Paid Social": {
+        "sessions": 266,
+        "users": 259,
+        "conversions": 9
+      },
+      "Paid Search": {
+        "sessions": 232,
+        "users": 205,
+        "conversions": 37
+      },
+      "Email": {
+        "sessions": 150,
+        "users": 121,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 96,
+        "users": 60,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 77,
+        "users": 74,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 58,
+        "users": 55,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 14,
+        "users": 13,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-29": {
+      "Organic Search": {
+        "sessions": 1672,
+        "users": 1400,
+        "conversions": 21
+      },
+      "Direct": {
+        "sessions": 517,
+        "users": 474,
+        "conversions": 12
+      },
+      "Paid Social": {
+        "sessions": 384,
+        "users": 356,
+        "conversions": 15
+      },
+      "Paid Search": {
+        "sessions": 207,
+        "users": 188,
+        "conversions": 44
+      },
+      "Cross-network": {
+        "sessions": 67,
+        "users": 63,
+        "conversions": 4
+      },
+      "Email": {
+        "sessions": 61,
+        "users": 47,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 61,
+        "users": 55,
+        "conversions": 6
+      },
+      "Referral": {
+        "sessions": 53,
+        "users": 47,
+        "conversions": 4
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 20,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-11-30": {
+      "Organic Search": {
+        "sessions": 1727,
+        "users": 1442,
+        "conversions": 21
+      },
+      "Paid Search": {
+        "sessions": 312,
+        "users": 270,
+        "conversions": 54
+      },
+      "Direct": {
+        "sessions": 275,
+        "users": 236,
+        "conversions": 7
+      },
+      "Paid Social": {
+        "sessions": 272,
+        "users": 257,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 90,
+        "users": 87,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 55,
+        "users": 53,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 52,
+        "users": 45,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 46,
+        "users": 37,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 9,
+        "users": 7,
+        "conversions": 0
+      },
+      "Paid Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-01": {
+      "Organic Search": {
+        "sessions": 2802,
+        "users": 2246,
+        "conversions": 47
+      },
+      "Paid Social": {
+        "sessions": 598,
+        "users": 571,
+        "conversions": 9
+      },
+      "Direct": {
+        "sessions": 519,
+        "users": 443,
+        "conversions": 9
+      },
+      "Paid Search": {
+        "sessions": 311,
+        "users": 257,
+        "conversions": 58
+      },
+      "Email": {
+        "sessions": 116,
+        "users": 87,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 110,
+        "users": 85,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 109,
+        "users": 105,
+        "conversions": 4
+      },
+      "Organic Social": {
+        "sessions": 73,
+        "users": 68,
+        "conversions": 6
+      },
+      "Unassigned": {
+        "sessions": 23,
+        "users": 23,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2025-12-02": {
+      "Organic Search": {
+        "sessions": 2739,
+        "users": 2191,
+        "conversions": 35
+      },
+      "Paid Social": {
+        "sessions": 815,
+        "users": 786,
+        "conversions": 13
+      },
+      "Direct": {
+        "sessions": 670,
+        "users": 570,
+        "conversions": 14
+      },
+      "Paid Search": {
+        "sessions": 228,
+        "users": 205,
+        "conversions": 43
+      },
+      "Cross-network": {
+        "sessions": 120,
+        "users": 114,
+        "conversions": 7
+      },
+      "Email": {
+        "sessions": 89,
+        "users": 57,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 86,
+        "users": 60,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 62,
+        "users": 60,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 27,
+        "users": 26,
+        "conversions": 1
+      },
+      "Organic Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-03": {
+      "Organic Search": {
+        "sessions": 2804,
+        "users": 2191,
+        "conversions": 39
+      },
+      "Paid Social": {
+        "sessions": 618,
+        "users": 598,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 501,
+        "users": 441,
+        "conversions": 10
+      },
+      "Paid Search": {
+        "sessions": 160,
+        "users": 138,
+        "conversions": 28
+      },
+      "Referral": {
+        "sessions": 97,
+        "users": 76,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 95,
+        "users": 86,
+        "conversions": 8
+      },
+      "Email": {
+        "sessions": 84,
+        "users": 68,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 80,
+        "users": 77,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 18,
+        "conversions": 0
+      }
+    },
+    "2025-12-04": {
+      "Organic Search": {
+        "sessions": 2633,
+        "users": 2061,
+        "conversions": 40
+      },
+      "Direct": {
+        "sessions": 942,
+        "users": 802,
+        "conversions": 15
+      },
+      "Paid Social": {
+        "sessions": 770,
+        "users": 742,
+        "conversions": 15
+      },
+      "Paid Search": {
+        "sessions": 205,
+        "users": 168,
+        "conversions": 41
+      },
+      "Email": {
+        "sessions": 147,
+        "users": 108,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 136,
+        "users": 95,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 97,
+        "users": 92,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 64,
+        "users": 63,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 28,
+        "users": 28,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 0
+      }
+    },
+    "2025-12-05": {
+      "Organic Search": {
+        "sessions": 2541,
+        "users": 1953,
+        "conversions": 42
+      },
+      "Direct": {
+        "sessions": 816,
+        "users": 711,
+        "conversions": 14
+      },
+      "Paid Social": {
+        "sessions": 802,
+        "users": 779,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 233,
+        "users": 187,
+        "conversions": 39
+      },
+      "Email": {
+        "sessions": 152,
+        "users": 121,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 104,
+        "users": 70,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 96,
+        "users": 91,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 72,
+        "users": 64,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 17,
+        "users": 17,
+        "conversions": 0
+      },
+      "Organic Shopping": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-06": {
+      "Organic Search": {
+        "sessions": 1701,
+        "users": 1329,
+        "conversions": 23
+      },
+      "Paid Social": {
+        "sessions": 832,
+        "users": 812,
+        "conversions": 15
+      },
+      "Direct": {
+        "sessions": 324,
+        "users": 283,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 189,
+        "users": 171,
+        "conversions": 37
+      },
+      "Email": {
+        "sessions": 78,
+        "users": 70,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 66,
+        "users": 61,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 54,
+        "users": 51,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 38,
+        "users": 30,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 12,
+        "users": 12,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-12-07": {
+      "Organic Search": {
+        "sessions": 1418,
+        "users": 1185,
+        "conversions": 14
+      },
+      "Paid Social": {
+        "sessions": 862,
+        "users": 832,
+        "conversions": 19
+      },
+      "Direct": {
+        "sessions": 288,
+        "users": 257,
+        "conversions": 5
+      },
+      "Paid Search": {
+        "sessions": 215,
+        "users": 194,
+        "conversions": 34
+      },
+      "Cross-network": {
+        "sessions": 64,
+        "users": 63,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 62,
+        "users": 60,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 58,
+        "users": 51,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 36,
+        "users": 34,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 15,
+        "users": 15,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-12-08": {
+      "Organic Search": {
+        "sessions": 1642,
+        "users": 1344,
+        "conversions": 29
+      },
+      "Paid Social": {
+        "sessions": 738,
+        "users": 719,
+        "conversions": 18
+      },
+      "Direct": {
+        "sessions": 354,
+        "users": 318,
+        "conversions": 2
+      },
+      "Paid Search": {
+        "sessions": 165,
+        "users": 143,
+        "conversions": 40
+      },
+      "Referral": {
+        "sessions": 97,
+        "users": 89,
+        "conversions": 1
+      },
+      "Email": {
+        "sessions": 89,
+        "users": 72,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 87,
+        "users": 87,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 51,
+        "users": 48,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 10,
+        "users": 9,
+        "conversions": 0
+      }
+    },
+    "2025-12-09": {
+      "Organic Search": {
+        "sessions": 1977,
+        "users": 1560,
+        "conversions": 23
+      },
+      "Paid Social": {
+        "sessions": 757,
+        "users": 739,
+        "conversions": 19
+      },
+      "Direct": {
+        "sessions": 392,
+        "users": 349,
+        "conversions": 8
+      },
+      "Paid Search": {
+        "sessions": 173,
+        "users": 155,
+        "conversions": 43
+      },
+      "Email": {
+        "sessions": 114,
+        "users": 101,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 101,
+        "users": 97,
+        "conversions": 13
+      },
+      "Organic Social": {
+        "sessions": 90,
+        "users": 88,
+        "conversions": 6
+      },
+      "Referral": {
+        "sessions": 67,
+        "users": 58,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 17,
+        "users": 17,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2025-12-10": {
+      "Organic Search": {
+        "sessions": 2896,
+        "users": 2203,
+        "conversions": 49
+      },
+      "Direct": {
+        "sessions": 524,
+        "users": 431,
+        "conversions": 13
+      },
+      "Paid Social": {
+        "sessions": 483,
+        "users": 465,
+        "conversions": 16
+      },
+      "Paid Search": {
+        "sessions": 238,
+        "users": 196,
+        "conversions": 53
+      },
+      "Email": {
+        "sessions": 202,
+        "users": 166,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 138,
+        "users": 101,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 84,
+        "users": 79,
+        "conversions": 6
+      },
+      "Organic Social": {
+        "sessions": 80,
+        "users": 69,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 18,
+        "users": 15,
+        "conversions": 0
+      }
+    },
+    "2025-12-11": {
+      "Organic Search": {
+        "sessions": 2778,
+        "users": 2142,
+        "conversions": 51
+      },
+      "Direct": {
+        "sessions": 534,
+        "users": 445,
+        "conversions": 6
+      },
+      "Paid Search": {
+        "sessions": 193,
+        "users": 165,
+        "conversions": 37
+      },
+      "Email": {
+        "sessions": 160,
+        "users": 123,
+        "conversions": 1
+      },
+      "Paid Social": {
+        "sessions": 147,
+        "users": 137,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 109,
+        "users": 70,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 72,
+        "users": 63,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 67,
+        "users": 61,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 21,
+        "users": 21,
+        "conversions": 3
+      }
+    },
+    "2025-12-12": {
+      "Organic Search": {
+        "sessions": 2304,
+        "users": 1814,
+        "conversions": 40
+      },
+      "Direct": {
+        "sessions": 467,
+        "users": 410,
+        "conversions": 5
+      },
+      "Paid Search": {
+        "sessions": 192,
+        "users": 165,
+        "conversions": 41
+      },
+      "Email": {
+        "sessions": 167,
+        "users": 129,
+        "conversions": 1
+      },
+      "Paid Social": {
+        "sessions": 106,
+        "users": 97,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 89,
+        "users": 70,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 65,
+        "users": 46,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 56,
+        "users": 55,
+        "conversions": 4
+      },
+      "Unassigned": {
+        "sessions": 16,
+        "users": 16,
+        "conversions": 1
+      }
+    },
+    "2025-12-13": {
+      "Organic Search": {
+        "sessions": 1628,
+        "users": 1349,
+        "conversions": 34
+      },
+      "Direct": {
+        "sessions": 351,
+        "users": 310,
+        "conversions": 11
+      },
+      "Email": {
+        "sessions": 208,
+        "users": 168,
+        "conversions": 1
+      },
+      "Paid Search": {
+        "sessions": 203,
+        "users": 188,
+        "conversions": 28
+      },
+      "Paid Social": {
+        "sessions": 138,
+        "users": 137,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 53,
+        "users": 53,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 40,
+        "users": 39,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 32,
+        "users": 28,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 14,
+        "users": 13,
+        "conversions": 0
+      }
+    },
+    "2025-12-14": {
+      "Organic Search": {
+        "sessions": 2018,
+        "users": 1594,
+        "conversions": 48
+      },
+      "Direct": {
+        "sessions": 301,
+        "users": 268,
+        "conversions": 9
+      },
+      "Paid Social": {
+        "sessions": 242,
+        "users": 237,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 209,
+        "users": 167,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 186,
+        "users": 170,
+        "conversions": 24
+      },
+      "Organic Social": {
+        "sessions": 65,
+        "users": 63,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 50,
+        "users": 49,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 32,
+        "users": 30,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 14,
+        "users": 14,
+        "conversions": 1
+      },
+      "Organic Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 1
+      }
+    },
+    "2025-12-15": {
+      "Organic Search": {
+        "sessions": 3410,
+        "users": 2348,
+        "conversions": 96
+      },
+      "Paid Social": {
+        "sessions": 484,
+        "users": 477,
+        "conversions": 2
+      },
+      "Direct": {
+        "sessions": 458,
+        "users": 389,
+        "conversions": 15
+      },
+      "Paid Search": {
+        "sessions": 245,
+        "users": 215,
+        "conversions": 41
+      },
+      "Email": {
+        "sessions": 131,
+        "users": 106,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 107,
+        "users": 100,
+        "conversions": 5
+      },
+      "Referral": {
+        "sessions": 70,
+        "users": 50,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 59,
+        "users": 56,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 23,
+        "users": 21,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2025-12-16": {
+      "Organic Search": {
+        "sessions": 3874,
+        "users": 2567,
+        "conversions": 59
+      },
+      "Paid Social": {
+        "sessions": 616,
+        "users": 598,
+        "conversions": 3
+      },
+      "Direct": {
+        "sessions": 449,
+        "users": 383,
+        "conversions": 17
+      },
+      "Paid Search": {
+        "sessions": 348,
+        "users": 297,
+        "conversions": 40
+      },
+      "Email": {
+        "sessions": 220,
+        "users": 157,
+        "conversions": 9
+      },
+      "Cross-network": {
+        "sessions": 152,
+        "users": 144,
+        "conversions": 12
+      },
+      "Referral": {
+        "sessions": 92,
+        "users": 60,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 86,
+        "users": 79,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 21,
+        "users": 21,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-12-17": {
+      "Organic Search": {
+        "sessions": 2443,
+        "users": 1917,
+        "conversions": 53
+      },
+      "Paid Social": {
+        "sessions": 800,
+        "users": 784,
+        "conversions": 15
+      },
+      "Direct": {
+        "sessions": 387,
+        "users": 335,
+        "conversions": 6
+      },
+      "Paid Search": {
+        "sessions": 216,
+        "users": 193,
+        "conversions": 30
+      },
+      "Email": {
+        "sessions": 148,
+        "users": 104,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 135,
+        "users": 126,
+        "conversions": 10
+      },
+      "Organic Social": {
+        "sessions": 104,
+        "users": 93,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 81,
+        "users": 58,
+        "conversions": 13
+      },
+      "Unassigned": {
+        "sessions": 19,
+        "users": 19,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-18": {
+      "Organic Search": {
+        "sessions": 1940,
+        "users": 1578,
+        "conversions": 43
+      },
+      "Paid Social": {
+        "sessions": 682,
+        "users": 655,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 397,
+        "users": 340,
+        "conversions": 5
+      },
+      "Paid Search": {
+        "sessions": 182,
+        "users": 162,
+        "conversions": 35
+      },
+      "Cross-network": {
+        "sessions": 138,
+        "users": 131,
+        "conversions": 10
+      },
+      "Email": {
+        "sessions": 101,
+        "users": 85,
+        "conversions": 12
+      },
+      "Organic Social": {
+        "sessions": 74,
+        "users": 71,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 69,
+        "users": 51,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 12,
+        "users": 12,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-19": {
+      "Organic Search": {
+        "sessions": 1934,
+        "users": 1537,
+        "conversions": 36
+      },
+      "Paid Social": {
+        "sessions": 669,
+        "users": 653,
+        "conversions": 15
+      },
+      "Direct": {
+        "sessions": 337,
+        "users": 293,
+        "conversions": 10
+      },
+      "Paid Search": {
+        "sessions": 184,
+        "users": 169,
+        "conversions": 33
+      },
+      "Cross-network": {
+        "sessions": 99,
+        "users": 93,
+        "conversions": 17
+      },
+      "Organic Social": {
+        "sessions": 84,
+        "users": 76,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 80,
+        "users": 48,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 74,
+        "users": 61,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 13,
+        "users": 11,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2025-12-20": {
+      "Organic Search": {
+        "sessions": 1157,
+        "users": 977,
+        "conversions": 17
+      },
+      "Paid Social": {
+        "sessions": 704,
+        "users": 672,
+        "conversions": 25
+      },
+      "Direct": {
+        "sessions": 228,
+        "users": 210,
+        "conversions": 5
+      },
+      "Paid Search": {
+        "sessions": 185,
+        "users": 164,
+        "conversions": 33
+      },
+      "Cross-network": {
+        "sessions": 130,
+        "users": 124,
+        "conversions": 9
+      },
+      "Organic Social": {
+        "sessions": 58,
+        "users": 55,
+        "conversions": 1
+      },
+      "Email": {
+        "sessions": 37,
+        "users": 33,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 21,
+        "users": 19,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 15,
+        "users": 15,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2025-12-21": {
+      "Organic Search": {
+        "sessions": 1260,
+        "users": 1078,
+        "conversions": 31
+      },
+      "Paid Social": {
+        "sessions": 714,
+        "users": 698,
+        "conversions": 11
+      },
+      "Direct": {
+        "sessions": 285,
+        "users": 246,
+        "conversions": 6
+      },
+      "Paid Search": {
+        "sessions": 199,
+        "users": 181,
+        "conversions": 44
+      },
+      "Cross-network": {
+        "sessions": 101,
+        "users": 100,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 57,
+        "users": 54,
+        "conversions": 2
+      },
+      "Email": {
+        "sessions": 41,
+        "users": 37,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 22,
+        "users": 16,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 20,
+        "users": 20,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 9,
+        "users": 9,
+        "conversions": 1
+      },
+      "Display": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2025-12-22": {
+      "Organic Search": {
+        "sessions": 1910,
+        "users": 1522,
+        "conversions": 54
+      },
+      "Paid Social": {
+        "sessions": 749,
+        "users": 712,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 379,
+        "users": 329,
+        "conversions": 16
+      },
+      "Paid Search": {
+        "sessions": 258,
+        "users": 215,
+        "conversions": 59
+      },
+      "Cross-network": {
+        "sessions": 111,
+        "users": 108,
+        "conversions": 10
+      },
+      "Organic Social": {
+        "sessions": 89,
+        "users": 81,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 76,
+        "users": 61,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 69,
+        "users": 48,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 17,
+        "users": 16,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 12,
+        "users": 12,
+        "conversions": 0
+      }
+    },
+    "2025-12-23": {
+      "Organic Search": {
+        "sessions": 1471,
+        "users": 1198,
+        "conversions": 36
+      },
+      "Paid Social": {
+        "sessions": 593,
+        "users": 580,
+        "conversions": 21
+      },
+      "Direct": {
+        "sessions": 281,
+        "users": 250,
+        "conversions": 6
+      },
+      "Paid Search": {
+        "sessions": 196,
+        "users": 175,
+        "conversions": 37
+      },
+      "Cross-network": {
+        "sessions": 123,
+        "users": 116,
+        "conversions": 7
+      },
+      "Referral": {
+        "sessions": 71,
+        "users": 40,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 69,
+        "users": 62,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 46,
+        "users": 44,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 18,
+        "users": 18,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 10,
+        "users": 9,
+        "conversions": 0
+      }
+    },
+    "2025-12-24": {
+      "Organic Search": {
+        "sessions": 924,
+        "users": 806,
+        "conversions": 11
+      },
+      "Paid Social": {
+        "sessions": 618,
+        "users": 595,
+        "conversions": 16
+      },
+      "Direct": {
+        "sessions": 241,
+        "users": 227,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 140,
+        "users": 127,
+        "conversions": 39
+      },
+      "Cross-network": {
+        "sessions": 128,
+        "users": 123,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 45,
+        "users": 44,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 30,
+        "users": 27,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 20,
+        "users": 19,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 16,
+        "users": 14,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 11,
+        "users": 10,
+        "conversions": 3
+      }
+    },
+    "2025-12-25": {
+      "Organic Search": {
+        "sessions": 905,
+        "users": 791,
+        "conversions": 17
+      },
+      "Paid Social": {
+        "sessions": 653,
+        "users": 632,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 200,
+        "users": 175,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 182,
+        "users": 171,
+        "conversions": 43
+      },
+      "Cross-network": {
+        "sessions": 122,
+        "users": 114,
+        "conversions": 5
+      },
+      "Organic Social": {
+        "sessions": 50,
+        "users": 49,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 31,
+        "users": 29,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 18,
+        "users": 16,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 12,
+        "users": 12,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 7,
+        "users": 6,
+        "conversions": 5
+      }
+    },
+    "2025-12-26": {
+      "Organic Search": {
+        "sessions": 2186,
+        "users": 1770,
+        "conversions": 66
+      },
+      "Paid Social": {
+        "sessions": 796,
+        "users": 773,
+        "conversions": 13
+      },
+      "Direct": {
+        "sessions": 396,
+        "users": 339,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 319,
+        "users": 277,
+        "conversions": 1
+      },
+      "Paid Search": {
+        "sessions": 234,
+        "users": 201,
+        "conversions": 51
+      },
+      "Cross-network": {
+        "sessions": 141,
+        "users": 132,
+        "conversions": 8
+      },
+      "Paid Other": {
+        "sessions": 125,
+        "users": 115,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 87,
+        "users": 85,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 55,
+        "users": 31,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 17,
+        "users": 16,
+        "conversions": 0
+      }
+    },
+    "2025-12-27": {
+      "Organic Search": {
+        "sessions": 1645,
+        "users": 1385,
+        "conversions": 46
+      },
+      "Paid Social": {
+        "sessions": 764,
+        "users": 735,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 291,
+        "users": 247,
+        "conversions": 5
+      },
+      "Paid Other": {
+        "sessions": 221,
+        "users": 208,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 202,
+        "users": 179,
+        "conversions": 43
+      },
+      "Email": {
+        "sessions": 197,
+        "users": 171,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 131,
+        "users": 126,
+        "conversions": 10
+      },
+      "Organic Social": {
+        "sessions": 51,
+        "users": 43,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 25,
+        "users": 19,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 13,
+        "users": 13,
+        "conversions": 1
+      }
+    },
+    "2025-12-28": {
+      "Organic Search": {
+        "sessions": 1307,
+        "users": 1116,
+        "conversions": 24
+      },
+      "Paid Social": {
+        "sessions": 699,
+        "users": 666,
+        "conversions": 29
+      },
+      "Paid Other": {
+        "sessions": 255,
+        "users": 239,
+        "conversions": 0
+      },
+      "Direct": {
+        "sessions": 250,
+        "users": 238,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 218,
+        "users": 190,
+        "conversions": 43
+      },
+      "Cross-network": {
+        "sessions": 134,
+        "users": 128,
+        "conversions": 10
+      },
+      "Email": {
+        "sessions": 93,
+        "users": 81,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 70,
+        "users": 68,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 20,
+        "users": 18,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 19,
+        "conversions": 1
+      }
+    },
+    "2025-12-29": {
+      "Organic Search": {
+        "sessions": 2161,
+        "users": 1714,
+        "conversions": 60
+      },
+      "Paid Social": {
+        "sessions": 610,
+        "users": 586,
+        "conversions": 22
+      },
+      "Direct": {
+        "sessions": 387,
+        "users": 333,
+        "conversions": 12
+      },
+      "Paid Other": {
+        "sessions": 360,
+        "users": 345,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 265,
+        "users": 245,
+        "conversions": 52
+      },
+      "Email": {
+        "sessions": 173,
+        "users": 135,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 140,
+        "users": 132,
+        "conversions": 19
+      },
+      "Organic Social": {
+        "sessions": 94,
+        "users": 86,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 68,
+        "users": 51,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 21,
+        "users": 19,
+        "conversions": 2
+      }
+    },
+    "2025-12-30": {
+      "Email": {
+        "sessions": 1905,
+        "users": 1603,
+        "conversions": 0
+      },
+      "Organic Search": {
+        "sessions": 1760,
+        "users": 1436,
+        "conversions": 43
+      },
+      "Paid Social": {
+        "sessions": 616,
+        "users": 584,
+        "conversions": 23
+      },
+      "Paid Other": {
+        "sessions": 452,
+        "users": 410,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 432,
+        "users": 409,
+        "conversions": 0
+      },
+      "Direct": {
+        "sessions": 378,
+        "users": 330,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 245,
+        "users": 217,
+        "conversions": 52
+      },
+      "Cross-network": {
+        "sessions": 121,
+        "users": 110,
+        "conversions": 6
+      },
+      "Referral": {
+        "sessions": 50,
+        "users": 36,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 16,
+        "users": 16,
+        "conversions": 0
+      },
+      "Mobile Push Notifications": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2025-12-31": {
+      "Organic Search": {
+        "sessions": 962,
+        "users": 806,
+        "conversions": 31
+      },
+      "Paid Social": {
+        "sessions": 513,
+        "users": 493,
+        "conversions": 11
+      },
+      "Email": {
+        "sessions": 469,
+        "users": 372,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 292,
+        "users": 275,
+        "conversions": 0
+      },
+      "Direct": {
+        "sessions": 271,
+        "users": 244,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 136,
+        "users": 123,
+        "conversions": 34
+      },
+      "Cross-network": {
+        "sessions": 134,
+        "users": 126,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 108,
+        "users": 101,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 22,
+        "users": 20,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 12,
+        "users": 12,
+        "conversions": 0
+      }
+    },
+    "2026-01-01": {
+      "Organic Search": {
+        "sessions": 1052,
+        "users": 916,
+        "conversions": 35
+      },
+      "Paid Other": {
+        "sessions": 419,
+        "users": 389,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 324,
+        "users": 287,
+        "conversions": 1
+      },
+      "Direct": {
+        "sessions": 257,
+        "users": 235,
+        "conversions": 2
+      },
+      "Paid Social": {
+        "sessions": 235,
+        "users": 225,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 45,
+        "users": 44,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 19,
+        "users": 17,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 13,
+        "users": 11,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 12,
+        "users": 10,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 11,
+        "users": 11,
+        "conversions": 0
+      },
+      "Organic Video": {
+        "sessions": 2,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-02": {
+      "Organic Search": {
+        "sessions": 2400,
+        "users": 1913,
+        "conversions": 109
+      },
+      "Email": {
+        "sessions": 709,
+        "users": 564,
+        "conversions": 3
+      },
+      "Direct": {
+        "sessions": 504,
+        "users": 434,
+        "conversions": 7
+      },
+      "Paid Other": {
+        "sessions": 436,
+        "users": 406,
+        "conversions": 12
+      },
+      "Paid Social": {
+        "sessions": 204,
+        "users": 198,
+        "conversions": 13
+      },
+      "Organic Social": {
+        "sessions": 108,
+        "users": 105,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 68,
+        "users": 63,
+        "conversions": 10
+      },
+      "Referral": {
+        "sessions": 60,
+        "users": 45,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 22,
+        "users": 21,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 0
+      }
+    },
+    "2026-01-03": {
+      "Organic Search": {
+        "sessions": 1586,
+        "users": 1318,
+        "conversions": 53
+      },
+      "Paid Other": {
+        "sessions": 432,
+        "users": 406,
+        "conversions": 2
+      },
+      "Email": {
+        "sessions": 330,
+        "users": 279,
+        "conversions": 0
+      },
+      "Direct": {
+        "sessions": 320,
+        "users": 294,
+        "conversions": 15
+      },
+      "Paid Social": {
+        "sessions": 207,
+        "users": 190,
+        "conversions": 10
+      },
+      "Organic Social": {
+        "sessions": 50,
+        "users": 48,
+        "conversions": 1
+      },
+      "Paid Search": {
+        "sessions": 44,
+        "users": 43,
+        "conversions": 12
+      },
+      "Referral": {
+        "sessions": 22,
+        "users": 20,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 12,
+        "users": 11,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 3,
+        "conversions": 1
+      }
+    },
+    "2026-01-04": {
+      "Organic Search": {
+        "sessions": 1652,
+        "users": 1386,
+        "conversions": 56
+      },
+      "Paid Other": {
+        "sessions": 460,
+        "users": 423,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 331,
+        "users": 291,
+        "conversions": 0
+      },
+      "Direct": {
+        "sessions": 279,
+        "users": 258,
+        "conversions": 22
+      },
+      "Paid Social": {
+        "sessions": 176,
+        "users": 170,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 87,
+        "users": 77,
+        "conversions": 13
+      },
+      "Organic Social": {
+        "sessions": 58,
+        "users": 55,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 30,
+        "users": 24,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 21,
+        "users": 18,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 3,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2026-01-05": {
+      "Organic Search": {
+        "sessions": 3243,
+        "users": 2574,
+        "conversions": 123
+      },
+      "Email": {
+        "sessions": 657,
+        "users": 505,
+        "conversions": 6
+      },
+      "Direct": {
+        "sessions": 655,
+        "users": 527,
+        "conversions": 17
+      },
+      "Paid Other": {
+        "sessions": 429,
+        "users": 412,
+        "conversions": 1
+      },
+      "Paid Social": {
+        "sessions": 215,
+        "users": 202,
+        "conversions": 19
+      },
+      "Paid Search": {
+        "sessions": 115,
+        "users": 106,
+        "conversions": 34
+      },
+      "Organic Social": {
+        "sessions": 113,
+        "users": 104,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 107,
+        "users": 72,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 23,
+        "users": 22,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2026-01-06": {
+      "Organic Search": {
+        "sessions": 3212,
+        "users": 2527,
+        "conversions": 80
+      },
+      "Email": {
+        "sessions": 640,
+        "users": 486,
+        "conversions": 6
+      },
+      "Direct": {
+        "sessions": 613,
+        "users": 546,
+        "conversions": 11
+      },
+      "Paid Other": {
+        "sessions": 551,
+        "users": 519,
+        "conversions": 4
+      },
+      "Paid Social": {
+        "sessions": 177,
+        "users": 163,
+        "conversions": 13
+      },
+      "Organic Social": {
+        "sessions": 110,
+        "users": 102,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 109,
+        "users": 79,
+        "conversions": 14
+      },
+      "Paid Search": {
+        "sessions": 94,
+        "users": 85,
+        "conversions": 26
+      },
+      "Unassigned": {
+        "sessions": 17,
+        "users": 17,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 0
+      }
+    },
+    "2026-01-07": {
+      "Organic Search": {
+        "sessions": 2994,
+        "users": 2361,
+        "conversions": 92
+      },
+      "Direct": {
+        "sessions": 665,
+        "users": 585,
+        "conversions": 18
+      },
+      "Email": {
+        "sessions": 356,
+        "users": 259,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 346,
+        "users": 332,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 262,
+        "users": 242,
+        "conversions": 1
+      },
+      "Paid Social": {
+        "sessions": 207,
+        "users": 196,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 152,
+        "users": 133,
+        "conversions": 42
+      },
+      "Referral": {
+        "sessions": 107,
+        "users": 70,
+        "conversions": 14
+      },
+      "Unassigned": {
+        "sessions": 38,
+        "users": 35,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-08": {
+      "Organic Search": {
+        "sessions": 2672,
+        "users": 2109,
+        "conversions": 78
+      },
+      "Direct": {
+        "sessions": 616,
+        "users": 520,
+        "conversions": 18
+      },
+      "Paid Social": {
+        "sessions": 267,
+        "users": 257,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 264,
+        "users": 234,
+        "conversions": 46
+      },
+      "Email": {
+        "sessions": 222,
+        "users": 167,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 221,
+        "users": 212,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 187,
+        "users": 171,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 81,
+        "users": 56,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 19,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 5
+      },
+      "Organic Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-09": {
+      "Organic Search": {
+        "sessions": 2320,
+        "users": 1855,
+        "conversions": 82
+      },
+      "Direct": {
+        "sessions": 655,
+        "users": 570,
+        "conversions": 20
+      },
+      "Paid Search": {
+        "sessions": 595,
+        "users": 540,
+        "conversions": 63
+      },
+      "Paid Social": {
+        "sessions": 567,
+        "users": 548,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 204,
+        "users": 165,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 137,
+        "users": 132,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 100,
+        "users": 92,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 76,
+        "users": 50,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 29,
+        "users": 27,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 11,
+        "users": 9,
+        "conversions": 1
+      }
+    },
+    "2026-01-10": {
+      "Organic Search": {
+        "sessions": 1565,
+        "users": 1298,
+        "conversions": 48
+      },
+      "Paid Social": {
+        "sessions": 558,
+        "users": 546,
+        "conversions": 18
+      },
+      "Direct": {
+        "sessions": 417,
+        "users": 361,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 374,
+        "users": 341,
+        "conversions": 63
+      },
+      "Paid Other": {
+        "sessions": 137,
+        "users": 127,
+        "conversions": 1
+      },
+      "Email": {
+        "sessions": 105,
+        "users": 91,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 57,
+        "users": 55,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 31,
+        "users": 26,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 15,
+        "users": 15,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 4
+      }
+    },
+    "2026-01-11": {
+      "Organic Search": {
+        "sessions": 1396,
+        "users": 1204,
+        "conversions": 53
+      },
+      "Paid Social": {
+        "sessions": 513,
+        "users": 495,
+        "conversions": 18
+      },
+      "Paid Search": {
+        "sessions": 431,
+        "users": 400,
+        "conversions": 55
+      },
+      "Direct": {
+        "sessions": 349,
+        "users": 308,
+        "conversions": 5
+      },
+      "Paid Other": {
+        "sessions": 124,
+        "users": 117,
+        "conversions": 6
+      },
+      "Email": {
+        "sessions": 112,
+        "users": 89,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 74,
+        "users": 73,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 23,
+        "users": 19,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 15,
+        "users": 14,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2026-01-12": {
+      "Organic Search": {
+        "sessions": 2713,
+        "users": 2161,
+        "conversions": 59
+      },
+      "Direct": {
+        "sessions": 669,
+        "users": 587,
+        "conversions": 17
+      },
+      "Paid Search": {
+        "sessions": 531,
+        "users": 475,
+        "conversions": 83
+      },
+      "Paid Social": {
+        "sessions": 368,
+        "users": 358,
+        "conversions": 30
+      },
+      "Email": {
+        "sessions": 272,
+        "users": 192,
+        "conversions": 4
+      },
+      "Paid Other": {
+        "sessions": 132,
+        "users": 117,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 108,
+        "users": 99,
+        "conversions": 7
+      },
+      "Referral": {
+        "sessions": 95,
+        "users": 59,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 29,
+        "users": 28,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 14,
+        "users": 12,
+        "conversions": 6
+      }
+    },
+    "2026-01-13": {
+      "Organic Search": {
+        "sessions": 2507,
+        "users": 2027,
+        "conversions": 50
+      },
+      "Direct": {
+        "sessions": 961,
+        "users": 862,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 460,
+        "users": 419,
+        "conversions": 87
+      },
+      "Paid Social": {
+        "sessions": 241,
+        "users": 230,
+        "conversions": 22
+      },
+      "Email": {
+        "sessions": 228,
+        "users": 179,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 122,
+        "users": 111,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 117,
+        "users": 106,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 112,
+        "users": 78,
+        "conversions": 10
+      },
+      "Unassigned": {
+        "sessions": 18,
+        "users": 17,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2026-01-14": {
+      "Organic Search": {
+        "sessions": 2661,
+        "users": 2103,
+        "conversions": 59
+      },
+      "Direct": {
+        "sessions": 609,
+        "users": 529,
+        "conversions": 20
+      },
+      "Paid Social": {
+        "sessions": 469,
+        "users": 446,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 146,
+        "users": 125,
+        "conversions": 6
+      },
+      "Organic Social": {
+        "sessions": 139,
+        "users": 133,
+        "conversions": 5
+      },
+      "Paid Other": {
+        "sessions": 131,
+        "users": 127,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 113,
+        "users": 71,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 37,
+        "users": 32,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 28,
+        "users": 27,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 2
+      }
+    },
+    "2026-01-15": {
+      "Organic Search": {
+        "sessions": 2616,
+        "users": 2061,
+        "conversions": 70
+      },
+      "Paid Social": {
+        "sessions": 1247,
+        "users": 1207,
+        "conversions": 31
+      },
+      "Direct": {
+        "sessions": 769,
+        "users": 684,
+        "conversions": 19
+      },
+      "Paid Search": {
+        "sessions": 497,
+        "users": 446,
+        "conversions": 81
+      },
+      "Email": {
+        "sessions": 173,
+        "users": 135,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 148,
+        "users": 143,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 97,
+        "users": 68,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 82,
+        "users": 79,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 27,
+        "users": 26,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 8,
+        "users": 8,
+        "conversions": 0
+      }
+    },
+    "2026-01-16": {
+      "Organic Search": {
+        "sessions": 2063,
+        "users": 1641,
+        "conversions": 51
+      },
+      "Paid Social": {
+        "sessions": 652,
+        "users": 599,
+        "conversions": 10
+      },
+      "Direct": {
+        "sessions": 647,
+        "users": 564,
+        "conversions": 10
+      },
+      "Paid Search": {
+        "sessions": 486,
+        "users": 436,
+        "conversions": 55
+      },
+      "Email": {
+        "sessions": 150,
+        "users": 115,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 121,
+        "users": 110,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 70,
+        "users": 55,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 23,
+        "users": 23,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 8,
+        "users": 8,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2026-01-17": {
+      "Organic Search": {
+        "sessions": 1225,
+        "users": 1033,
+        "conversions": 33
+      },
+      "Paid Social": {
+        "sessions": 638,
+        "users": 584,
+        "conversions": 17
+      },
+      "Paid Search": {
+        "sessions": 419,
+        "users": 381,
+        "conversions": 53
+      },
+      "Direct": {
+        "sessions": 407,
+        "users": 362,
+        "conversions": 8
+      },
+      "Email": {
+        "sessions": 86,
+        "users": 71,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 74,
+        "users": 67,
+        "conversions": 0
+      },
+      "Referral": {
+        "sessions": 35,
+        "users": 31,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 13,
+        "users": 13,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 9,
+        "users": 9,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2026-01-18": {
+      "Organic Search": {
+        "sessions": 1304,
+        "users": 1125,
+        "conversions": 22
+      },
+      "Paid Search": {
+        "sessions": 466,
+        "users": 427,
+        "conversions": 39
+      },
+      "Paid Social": {
+        "sessions": 334,
+        "users": 316,
+        "conversions": 2
+      },
+      "Direct": {
+        "sessions": 323,
+        "users": 288,
+        "conversions": 1
+      },
+      "Email": {
+        "sessions": 101,
+        "users": 86,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 76,
+        "users": 70,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 30,
+        "users": 28,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 16,
+        "users": 15,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 9,
+        "users": 9,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 6,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2026-01-19": {
+      "Organic Search": {
+        "sessions": 2631,
+        "users": 2049,
+        "conversions": 47
+      },
+      "Direct": {
+        "sessions": 761,
+        "users": 670,
+        "conversions": 14
+      },
+      "Paid Social": {
+        "sessions": 538,
+        "users": 506,
+        "conversions": 16
+      },
+      "Paid Search": {
+        "sessions": 484,
+        "users": 420,
+        "conversions": 77
+      },
+      "Email": {
+        "sessions": 191,
+        "users": 144,
+        "conversions": 1
+      },
+      "Organic Social": {
+        "sessions": 138,
+        "users": 115,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 106,
+        "users": 71,
+        "conversions": 4
+      },
+      "Unassigned": {
+        "sessions": 18,
+        "users": 17,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 9,
+        "users": 9,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 4,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-20": {
+      "Organic Search": {
+        "sessions": 2754,
+        "users": 2185,
+        "conversions": 78
+      },
+      "Direct": {
+        "sessions": 726,
+        "users": 637,
+        "conversions": 25
+      },
+      "Paid Social": {
+        "sessions": 670,
+        "users": 627,
+        "conversions": 26
+      },
+      "Email": {
+        "sessions": 201,
+        "users": 147,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 178,
+        "users": 167,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 129,
+        "users": 84,
+        "conversions": 2
+      },
+      "Paid Search": {
+        "sessions": 51,
+        "users": 38,
+        "conversions": 4
+      },
+      "Unassigned": {
+        "sessions": 14,
+        "users": 14,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 9,
+        "users": 5,
+        "conversions": 2
+      }
+    },
+    "2026-01-21": {
+      "Organic Search": {
+        "sessions": 2804,
+        "users": 2209,
+        "conversions": 76
+      },
+      "Paid Social": {
+        "sessions": 792,
+        "users": 730,
+        "conversions": 21
+      },
+      "Direct": {
+        "sessions": 725,
+        "users": 617,
+        "conversions": 14
+      },
+      "Organic Social": {
+        "sessions": 296,
+        "users": 272,
+        "conversions": 12
+      },
+      "Email": {
+        "sessions": 199,
+        "users": 152,
+        "conversions": 5
+      },
+      "Referral": {
+        "sessions": 166,
+        "users": 93,
+        "conversions": 3
+      },
+      "Paid Search": {
+        "sessions": 33,
+        "users": 29,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 23,
+        "users": 21,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 1
+      },
+      "Mobile Push Notifications": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-22": {
+      "Organic Search": {
+        "sessions": 2560,
+        "users": 2068,
+        "conversions": 66
+      },
+      "Paid Social": {
+        "sessions": 652,
+        "users": 605,
+        "conversions": 9
+      },
+      "Direct": {
+        "sessions": 625,
+        "users": 527,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 386,
+        "users": 351,
+        "conversions": 51
+      },
+      "Organic Social": {
+        "sessions": 236,
+        "users": 218,
+        "conversions": 1
+      },
+      "Email": {
+        "sessions": 179,
+        "users": 128,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 132,
+        "users": 77,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 29,
+        "users": 27,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 5,
+        "users": 4,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 2,
+        "users": 2,
+        "conversions": 0
+      }
+    },
+    "2026-01-23": {
+      "Organic Search": {
+        "sessions": 2444,
+        "users": 1949,
+        "conversions": 44
+      },
+      "Direct": {
+        "sessions": 1182,
+        "users": 1106,
+        "conversions": 13
+      },
+      "Paid Social": {
+        "sessions": 560,
+        "users": 533,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 406,
+        "users": 377,
+        "conversions": 40
+      },
+      "Email": {
+        "sessions": 347,
+        "users": 270,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 205,
+        "users": 188,
+        "conversions": 7
+      },
+      "Referral": {
+        "sessions": 85,
+        "users": 58,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 19,
+        "users": 19,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 7,
+        "users": 3,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2026-01-24": {
+      "Organic Search": {
+        "sessions": 1536,
+        "users": 1295,
+        "conversions": 29
+      },
+      "Paid Social": {
+        "sessions": 1032,
+        "users": 994,
+        "conversions": 12
+      },
+      "Paid Search": {
+        "sessions": 499,
+        "users": 454,
+        "conversions": 110
+      },
+      "Direct": {
+        "sessions": 297,
+        "users": 269,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 182,
+        "users": 172,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 100,
+        "users": 87,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 40,
+        "users": 35,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 22,
+        "users": 22,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 10,
+        "users": 10,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 7,
+        "users": 7,
+        "conversions": 3
+      },
+      "Organic Video": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-25": {
+      "Organic Search": {
+        "sessions": 1567,
+        "users": 1340,
+        "conversions": 39
+      },
+      "Paid Social": {
+        "sessions": 1052,
+        "users": 1000,
+        "conversions": 14
+      },
+      "Paid Search": {
+        "sessions": 554,
+        "users": 500,
+        "conversions": 72
+      },
+      "Direct": {
+        "sessions": 357,
+        "users": 333,
+        "conversions": 12
+      },
+      "Organic Social": {
+        "sessions": 118,
+        "users": 110,
+        "conversions": 3
+      },
+      "Email": {
+        "sessions": 95,
+        "users": 82,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 46,
+        "users": 36,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 16,
+        "users": 16,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 7,
+        "users": 7,
+        "conversions": 4
+      },
+      "Paid Other": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2026-01-26": {
+      "Organic Search": {
+        "sessions": 3235,
+        "users": 2623,
+        "conversions": 97
+      },
+      "Email": {
+        "sessions": 1554,
+        "users": 1268,
+        "conversions": 4
+      },
+      "Paid Social": {
+        "sessions": 1238,
+        "users": 1180,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 676,
+        "users": 605,
+        "conversions": 193
+      },
+      "Direct": {
+        "sessions": 631,
+        "users": 566,
+        "conversions": 23
+      },
+      "Organic Social": {
+        "sessions": 442,
+        "users": 406,
+        "conversions": 11
+      },
+      "Referral": {
+        "sessions": 93,
+        "users": 72,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 36,
+        "users": 34,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 14,
+        "users": 13,
+        "conversions": 2
+      },
+      "Paid Other": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 0
+      }
+    },
+    "2026-01-27": {
+      "Organic Search": {
+        "sessions": 3415,
+        "users": 2662,
+        "conversions": 96
+      },
+      "Direct": {
+        "sessions": 899,
+        "users": 763,
+        "conversions": 22
+      },
+      "Email": {
+        "sessions": 640,
+        "users": 523,
+        "conversions": 11
+      },
+      "Paid Search": {
+        "sessions": 609,
+        "users": 516,
+        "conversions": 119
+      },
+      "Paid Social": {
+        "sessions": 574,
+        "users": 554,
+        "conversions": 17
+      },
+      "Organic Social": {
+        "sessions": 262,
+        "users": 245,
+        "conversions": 5
+      },
+      "Referral": {
+        "sessions": 103,
+        "users": 73,
+        "conversions": 6
+      },
+      "Unassigned": {
+        "sessions": 40,
+        "users": 38,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 6,
+        "users": 4,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-28": {
+      "Organic Search": {
+        "sessions": 2767,
+        "users": 2198,
+        "conversions": 54
+      },
+      "Direct": {
+        "sessions": 917,
+        "users": 804,
+        "conversions": 16
+      },
+      "Paid Social": {
+        "sessions": 642,
+        "users": 617,
+        "conversions": 25
+      },
+      "Paid Search": {
+        "sessions": 513,
+        "users": 444,
+        "conversions": 82
+      },
+      "Email": {
+        "sessions": 462,
+        "users": 375,
+        "conversions": 5
+      },
+      "Organic Social": {
+        "sessions": 271,
+        "users": 250,
+        "conversions": 4
+      },
+      "Referral": {
+        "sessions": 115,
+        "users": 78,
+        "conversions": 11
+      },
+      "Unassigned": {
+        "sessions": 26,
+        "users": 24,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 13,
+        "users": 13,
+        "conversions": 5
+      }
+    },
+    "2026-01-29": {
+      "Organic Search": {
+        "sessions": 2859,
+        "users": 2250,
+        "conversions": 73
+      },
+      "Paid Social": {
+        "sessions": 955,
+        "users": 924,
+        "conversions": 25
+      },
+      "Direct": {
+        "sessions": 895,
+        "users": 770,
+        "conversions": 20
+      },
+      "Paid Search": {
+        "sessions": 672,
+        "users": 575,
+        "conversions": 109
+      },
+      "Email": {
+        "sessions": 392,
+        "users": 313,
+        "conversions": 9
+      },
+      "Organic Social": {
+        "sessions": 250,
+        "users": 231,
+        "conversions": 9
+      },
+      "Referral": {
+        "sessions": 106,
+        "users": 67,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 30,
+        "users": 27,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 14,
+        "users": 11,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-30": {
+      "Organic Search": {
+        "sessions": 2702,
+        "users": 2165,
+        "conversions": 80
+      },
+      "Paid Social": {
+        "sessions": 1119,
+        "users": 1079,
+        "conversions": 43
+      },
+      "Paid Search": {
+        "sessions": 693,
+        "users": 608,
+        "conversions": 128
+      },
+      "Direct": {
+        "sessions": 673,
+        "users": 589,
+        "conversions": 17
+      },
+      "Email": {
+        "sessions": 332,
+        "users": 262,
+        "conversions": 4
+      },
+      "Organic Social": {
+        "sessions": 188,
+        "users": 174,
+        "conversions": 12
+      },
+      "Referral": {
+        "sessions": 115,
+        "users": 74,
+        "conversions": 5
+      },
+      "Unassigned": {
+        "sessions": 34,
+        "users": 30,
+        "conversions": 3
+      },
+      "Cross-network": {
+        "sessions": 11,
+        "users": 10,
+        "conversions": 3
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-01-31": {
+      "Organic Search": {
+        "sessions": 1571,
+        "users": 1322,
+        "conversions": 48
+      },
+      "Paid Social": {
+        "sessions": 1198,
+        "users": 1158,
+        "conversions": 25
+      },
+      "Paid Search": {
+        "sessions": 569,
+        "users": 521,
+        "conversions": 94
+      },
+      "Direct": {
+        "sessions": 408,
+        "users": 377,
+        "conversions": 9
+      },
+      "Email": {
+        "sessions": 149,
+        "users": 130,
+        "conversions": 3
+      },
+      "Organic Social": {
+        "sessions": 104,
+        "users": 95,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 48,
+        "users": 42,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 18,
+        "users": 16,
+        "conversions": 0
+      },
+      "Cross-network": {
+        "sessions": 11,
+        "users": 11,
+        "conversions": 2
+      }
+    },
+    "2026-02-01": {
+      "Organic Search": {
+        "sessions": 1779,
+        "users": 1519,
+        "conversions": 54
+      },
+      "Paid Social": {
+        "sessions": 1183,
+        "users": 1148,
+        "conversions": 61
+      },
+      "Direct": {
+        "sessions": 421,
+        "users": 381,
+        "conversions": 10
+      },
+      "Email": {
+        "sessions": 159,
+        "users": 128,
+        "conversions": 2
+      },
+      "Organic Social": {
+        "sessions": 131,
+        "users": 118,
+        "conversions": 10
+      },
+      "Paid Search": {
+        "sessions": 48,
+        "users": 40,
+        "conversions": 1
+      },
+      "Referral": {
+        "sessions": 38,
+        "users": 34,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 20,
+        "users": 19,
+        "conversions": 4
+      },
+      "Paid Other": {
+        "sessions": 3,
+        "users": 3,
+        "conversions": 0
+      }
+    },
+    "2026-02-02": {
+      "Organic Search": {
+        "sessions": 2980,
+        "users": 2330,
+        "conversions": 76
+      },
+      "Paid Social": {
+        "sessions": 1151,
+        "users": 1090,
+        "conversions": 50
+      },
+      "Direct": {
+        "sessions": 674,
+        "users": 597,
+        "conversions": 16
+      },
+      "Paid Search": {
+        "sessions": 517,
+        "users": 459,
+        "conversions": 103
+      },
+      "Email": {
+        "sessions": 295,
+        "users": 234,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 185,
+        "users": 176,
+        "conversions": 7
+      },
+      "Referral": {
+        "sessions": 116,
+        "users": 74,
+        "conversions": 2
+      },
+      "Unassigned": {
+        "sessions": 35,
+        "users": 33,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 11,
+        "users": 11,
+        "conversions": 10
+      },
+      "Paid Other": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 0
+      }
+    },
+    "2026-02-03": {
+      "Organic Search": {
+        "sessions": 2748,
+        "users": 2166,
+        "conversions": 74
+      },
+      "Paid Social": {
+        "sessions": 1156,
+        "users": 1110,
+        "conversions": 29
+      },
+      "Paid Search": {
+        "sessions": 725,
+        "users": 644,
+        "conversions": 115
+      },
+      "Direct": {
+        "sessions": 712,
+        "users": 625,
+        "conversions": 16
+      },
+      "Email": {
+        "sessions": 326,
+        "users": 244,
+        "conversions": 6
+      },
+      "Organic Social": {
+        "sessions": 147,
+        "users": 138,
+        "conversions": 2
+      },
+      "Referral": {
+        "sessions": 95,
+        "users": 68,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 19,
+        "users": 18,
+        "conversions": 1
+      },
+      "Unassigned": {
+        "sessions": 15,
+        "users": 15,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 9,
+        "users": 6,
+        "conversions": 2
+      }
+    },
+    "2026-02-04": {
+      "Organic Search": {
+        "sessions": 2815,
+        "users": 2194,
+        "conversions": 80
+      },
+      "Paid Social": {
+        "sessions": 1356,
+        "users": 1322,
+        "conversions": 34
+      },
+      "Paid Search": {
+        "sessions": 751,
+        "users": 654,
+        "conversions": 146
+      },
+      "Direct": {
+        "sessions": 686,
+        "users": 610,
+        "conversions": 24
+      },
+      "Email": {
+        "sessions": 352,
+        "users": 278,
+        "conversions": 8
+      },
+      "Organic Social": {
+        "sessions": 184,
+        "users": 177,
+        "conversions": 13
+      },
+      "Referral": {
+        "sessions": 94,
+        "users": 65,
+        "conversions": 7
+      },
+      "Unassigned": {
+        "sessions": 24,
+        "users": 24,
+        "conversions": 4
+      },
+      "Cross-network": {
+        "sessions": 6,
+        "users": 6,
+        "conversions": 0
+      },
+      "Paid Other": {
+        "sessions": 5,
+        "users": 5,
+        "conversions": 0
+      }
+    },
+    "2026-02-05": {
+      "Organic Search": {
+        "sessions": 2713,
+        "users": 2165,
+        "conversions": 76
+      },
+      "Direct": {
+        "sessions": 536,
+        "users": 473,
+        "conversions": 13
+      },
+      "Paid Social": {
+        "sessions": 520,
+        "users": 511,
+        "conversions": 14
+      },
+      "Email": {
+        "sessions": 386,
+        "users": 310,
+        "conversions": 17
+      },
+      "Organic Social": {
+        "sessions": 252,
+        "users": 242,
+        "conversions": 7
+      },
+      "Paid Search": {
+        "sessions": 232,
+        "users": 207,
+        "conversions": 53
+      },
+      "Referral": {
+        "sessions": 149,
+        "users": 99,
+        "conversions": 5
+      },
+      "Unassigned": {
+        "sessions": 32,
+        "users": 27,
+        "conversions": 1
+      },
+      "Cross-network": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 1
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-02-06": {
+      "Organic Search": {
+        "sessions": 117,
+        "users": 106,
+        "conversions": 2
+      },
+      "Direct": {
+        "sessions": 28,
+        "users": 27,
+        "conversions": 0
+      },
+      "Paid Social": {
+        "sessions": 20,
+        "users": 20,
+        "conversions": 0
+      },
+      "Email": {
+        "sessions": 17,
+        "users": 15,
+        "conversions": 0
+      },
+      "Organic Social": {
+        "sessions": 8,
+        "users": 8,
+        "conversions": 0
+      },
+      "Paid Search": {
+        "sessions": 8,
+        "users": 7,
+        "conversions": 3
+      },
+      "Referral": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 0
+      },
+      "Unassigned": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    }
+  },
+  "trafficSources": [
+    {
+      "source": "google",
+      "medium": "organic",
+      "sessions": 196346,
+      "users": 99669,
+      "conversions": 4173,
+      "engagementRate": 0.6035060556364784
+    },
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "sessions": 45579,
+      "users": 33017,
+      "conversions": 963,
+      "engagementRate": 0.46707913732201234
+    },
+    {
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 31481,
+      "users": 23357,
+      "conversions": 4824,
+      "engagementRate": 0.6265366411486293
+    },
+    {
+      "source": "hs_email",
+      "medium": "email",
+      "sessions": 19475,
+      "users": 8490,
+      "conversions": 131,
+      "engagementRate": 0.42670089858793325
+    },
+    {
+      "source": "facebook",
+      "medium": "cpc",
+      "sessions": 18723,
+      "users": 15542,
+      "conversions": 538,
+      "engagementRate": 0.2525770442770923
+    },
+    {
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 16043,
+      "users": 13823,
+      "conversions": 460,
+      "engagementRate": 0.2760082278875522
+    },
+    {
+      "source": "tiktok",
+      "medium": "paid",
+      "sessions": 7015,
+      "users": 6718,
+      "conversions": 38,
+      "engagementRate": 0.05645046329294369
+    },
+    {
+      "source": "fb",
+      "medium": "paid",
+      "sessions": 6112,
+      "users": 5352,
+      "conversions": 183,
+      "engagementRate": 0.3160994764397906
+    },
+    {
+      "source": "an",
+      "medium": "paid",
+      "sessions": 5940,
+      "users": 4813,
+      "conversions": 50,
+      "engagementRate": 0.20067340067340067
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 3719,
+      "users": 2027,
+      "conversions": 73,
+      "engagementRate": 0.628125840279645
+    },
+    {
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "sessions": 3400,
+      "users": 3160,
+      "conversions": 77,
+      "engagementRate": 0.32735294117647057
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 2080,
+      "users": 1450,
+      "conversions": 70,
+      "engagementRate": 0.6274038461538461
+    },
+    {
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "sessions": 1595,
+      "users": 1383,
+      "conversions": 46,
+      "engagementRate": 0.7009404388714734
+    },
+    {
+      "source": "tiktok",
+      "medium": "cpc",
+      "sessions": 1539,
+      "users": 1459,
+      "conversions": 20,
+      "engagementRate": 0.07017543859649122
+    },
+    {
+      "source": "pe.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 1503,
+      "users": 752,
+      "conversions": 33,
+      "engagementRate": 0.603459747172322
+    },
+    {
+      "source": "ucsp.bitrix24.es",
+      "medium": "referral",
+      "sessions": 1417,
+      "users": 55,
+      "conversions": 81,
+      "engagementRate": 0.7134791813690896
+    },
+    {
+      "source": "ig",
+      "medium": "paid",
+      "sessions": 1409,
+      "users": 1218,
+      "conversions": 60,
+      "engagementRate": 0.41163946061036194
+    },
+    {
+      "source": "facebook",
+      "medium": "paid_social",
+      "sessions": 1300,
+      "users": 1144,
+      "conversions": 0,
+      "engagementRate": 0.11846153846153847
+    },
+    {
+      "source": "hs_automation",
+      "medium": "email",
+      "sessions": 1267,
+      "users": 755,
+      "conversions": 83,
+      "engagementRate": 0.5382794001578532
+    },
+    {
+      "source": "l.instagram.com",
+      "medium": "referral",
+      "sessions": 1264,
+      "users": 1084,
+      "conversions": 16,
+      "engagementRate": 0.5664556962025317
+    }
+  ],
+  "channels": [
+    {
+      "channel": "Organic Search",
+      "sessions": 203657,
+      "users": 102693,
+      "newUsers": 80595,
+      "conversions": 4285,
+      "engagementRate": 0.6007060891597146
+    },
+    {
+      "channel": "Paid Social",
+      "sessions": 52577,
+      "users": 44180,
+      "newUsers": 41088,
+      "conversions": 1299,
+      "engagementRate": 0.23538809745706296
+    },
+    {
+      "channel": "Direct",
+      "sessions": 45579,
+      "users": 33017,
+      "newUsers": 30034,
+      "conversions": 963,
+      "engagementRate": 0.46707913732201234
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 26032,
+      "users": 19206,
+      "newUsers": 14530,
+      "conversions": 4574,
+      "engagementRate": 0.6800476336816226
+    },
+    {
+      "channel": "Email",
+      "sessions": 21646,
+      "users": 9609,
+      "newUsers": 3748,
+      "conversions": 217,
+      "engagementRate": 0.4382795897625427
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 10318,
+      "users": 8866,
+      "newUsers": 7554,
+      "conversions": 227,
+      "engagementRate": 0.5287846481876333
+    },
+    {
+      "channel": "Referral",
+      "sessions": 7354,
+      "users": 3599,
+      "newUsers": 2640,
+      "conversions": 209,
+      "engagementRate": 0.6091922763122111
+    },
+    {
+      "channel": "Paid Other",
+      "sessions": 6117,
+      "users": 4974,
+      "newUsers": 4761,
+      "conversions": 52,
+      "engagementRate": 0.1971554683668465
+    },
+    {
+      "channel": "Cross-network",
+      "sessions": 5615,
+      "users": 4812,
+      "newUsers": 3886,
+      "conversions": 351,
+      "engagementRate": 0.40801424755120214
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 1875,
+      "users": 1566,
+      "newUsers": 672,
+      "conversions": 94,
+      "engagementRate": 0.3642666666666667
+    },
+    {
+      "channel": "Organic Video",
+      "sessions": 7,
+      "users": 6,
+      "newUsers": 2,
+      "conversions": 1,
+      "engagementRate": 0.8571428571428571
+    },
+    {
+      "channel": "Display",
+      "sessions": 2,
+      "users": 2,
+      "newUsers": 2,
+      "conversions": 0,
+      "engagementRate": 0
+    },
+    {
+      "channel": "Mobile Push Notifications",
+      "sessions": 2,
+      "users": 2,
+      "newUsers": 2,
+      "conversions": 0,
+      "engagementRate": 0
+    },
+    {
+      "channel": "Paid Video",
+      "sessions": 2,
+      "users": 1,
+      "newUsers": 0,
+      "conversions": 0,
+      "engagementRate": 1
+    },
+    {
+      "channel": "Organic Shopping",
+      "sessions": 1,
+      "users": 1,
+      "newUsers": 1,
+      "conversions": 0,
+      "engagementRate": 1
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "title": "Tus Decisiones te Hacen Grande | UCSP",
+      "pageViews": 67630,
+      "users": 47790,
+      "avgSessionDuration": 73.88169033531926,
+      "bounceRate": 0.5633800296996047
+    },
+    {
+      "path": "/",
+      "title": "UCSP | Carreras, Maestrías, Diplomados, Cursos, PED",
+      "pageViews": 48026,
+      "users": 22990,
+      "avgSessionDuration": 108.55544297114591,
+      "bounceRate": 0.39666123586219926
+    },
+    {
+      "path": "/",
+      "title": "Admisión Universidad San Pablo | Carreras de Pregrado",
+      "pageViews": 30008,
+      "users": 16302,
+      "avgSessionDuration": 112.21397338524277,
+      "bounceRate": 0.3576156112558179
+    },
+    {
+      "path": "/carreras/",
+      "title": "Carreras Profesionales | Universidad Católica San Pablo",
+      "pageViews": 14414,
+      "users": 6577,
+      "avgSessionDuration": 100.66403230449438,
+      "bounceRate": 0.11510611735330836
+    },
+    {
+      "path": "/search",
+      "title": "Resultados de búsqueda - Escuela de Postgrado de la Universidad Católica San Pablo",
+      "pageViews": 13483,
+      "users": 1270,
+      "avgSessionDuration": 105.9039712547043,
+      "bounceRate": 0.0907258064516129
+    },
+    {
+      "path": "/inscripcion/",
+      "title": "Inscripción - Admisión Universidad San Pablo | Carreras de Pregrado",
+      "pageViews": 12582,
+      "users": 5817,
+      "avgSessionDuration": 139.27942969427323,
+      "bounceRate": 0.20481208987870353
+    },
+    {
+      "path": "/",
+      "title": "Universidad Católica San Pablo | Escuela de Postgrado",
+      "pageViews": 11643,
+      "users": 6860,
+      "avgSessionDuration": 102.66734247620495,
+      "bounceRate": 0.21537059538274606
+    },
+    {
+      "path": "/resultados/",
+      "title": "Resultados de examen de Admisión de la UCSP",
+      "pageViews": 9783,
+      "users": 3227,
+      "avgSessionDuration": 191.46470596202528,
+      "bounceRate": 0.20732124529592885
+    },
+    {
+      "path": "/",
+      "title": "UCSP Landing Simulacro",
+      "pageViews": 9747,
+      "users": 6831,
+      "avgSessionDuration": 88.63750625703385,
+      "bounceRate": 0.49213161659513593
+    },
+    {
+      "path": "/vive-san-pablo/universidad/transparencia/reglamento-de-admision-en-pregrado/",
+      "title": "Reglamento de Admisión en Pregrado - Universidad Catolica San Pablo",
+      "pageViews": 8682,
+      "users": 3292,
+      "avgSessionDuration": 194.1821359643445,
+      "bounceRate": 0.2172243554580362
+    },
+    {
+      "path": "/cuotas-educativas/",
+      "title": "Cuotas Educativas | Universidad Católica San Pablo",
+      "pageViews": 8662,
+      "users": 5303,
+      "avgSessionDuration": 108.76510547133961,
+      "bounceRate": 0.06897652882005428
+    },
+    {
+      "path": "/arequipa/",
+      "title": "Expo Carreras San Pablo | Conoce tu carrera y elige tu futuro",
+      "pageViews": 8361,
+      "users": 5570,
+      "avgSessionDuration": 74.23960592394407,
+      "bounceRate": 0.627425799086758
+    },
+    {
+      "path": "/",
+      "title": "Centro de Idiomas en Arequipa | Idiomas UCSP",
+      "pageViews": 8280,
+      "users": 3740,
+      "avgSessionDuration": 123.57494886673435,
+      "bounceRate": 0.22592807424593966
+    },
+    {
+      "path": "/admision-informacion/",
+      "title": "Información sobre Admisión | Universidad Católica San Pablo",
+      "pageViews": 7736,
+      "users": 4455,
+      "avgSessionDuration": 137.19961018869643,
+      "bounceRate": 0.19340625949559404
+    },
+    {
+      "path": "/vive-san-pablo/universidad/transparencia/calendario-academico/",
+      "title": "Calendario Académico - Universidad Catolica San Pablo",
+      "pageViews": 7484,
+      "users": 4041,
+      "avgSessionDuration": 92.79220751365283,
+      "bounceRate": 0.6309556979660073
+    },
+    {
+      "path": "/",
+      "title": "La Pre San Pablo | UCSP",
+      "pageViews": 6987,
+      "users": 5214,
+      "avgSessionDuration": 67.13223522503726,
+      "bounceRate": 0.5868521278357344
+    },
+    {
+      "path": "/presanpablo/",
+      "title": "Academia preuniversitaria en Arequipa | UCSP",
+      "pageViews": 5751,
+      "users": 3116,
+      "avgSessionDuration": 133.77405580054585,
+      "bounceRate": 0.17989538321582899
+    },
+    {
+      "path": "/programa-cat/cursos/",
+      "title": "Cursos y Programas Especializados | Postgrado UCSP",
+      "pageViews": 5653,
+      "users": 3403,
+      "avgSessionDuration": 145.08194592319086,
+      "bounceRate": 0.15446466356326705
+    },
+    {
+      "path": "/agenda/",
+      "title": "Agenda - Universidad Catolica San Pablo",
+      "pageViews": 5102,
+      "users": 1737,
+      "avgSessionDuration": 132.07599542406072,
+      "bounceRate": 0.13908872901678657
+    },
+    {
+      "path": "/cursos/ingles-intensivo/",
+      "title": "Curso Super Intensivo de Inglés | Matrícula Abierta | Idiomas UCSP",
+      "pageViews": 5040,
+      "users": 2175,
+      "avgSessionDuration": 158.31822815518822,
+      "bounceRate": 0.29155188246097336
+    },
+    {
+      "path": "/arequipa/",
+      "title": "Universidad Católica San Pablo: Expo Carreras",
+      "pageViews": 4745,
+      "users": 3444,
+      "avgSessionDuration": 56.70178427202323,
+      "bounceRate": 0.8117134559535334
+    },
+    {
+      "path": "/cuota-educativa-medicina/",
+      "title": "Costo de la carrera de Medicina Humana | San Pablo",
+      "pageViews": 3997,
+      "users": 2939,
+      "avgSessionDuration": 121.38654047722221,
+      "bounceRate": 0.16944444444444445
+    },
+    {
+      "path": "/cursos/ingles-regular/",
+      "title": "Curso de Inglés Regular | Idiomas UCSP",
+      "pageViews": 3953,
+      "users": 1687,
+      "avgSessionDuration": 147.9187550801969,
+      "bounceRate": 0.23885350318471338
+    },
+    {
+      "path": "/modalidades-de-ingreso/",
+      "title": "Conoce las Modalidades de Ingreso | Universidad San Pablo",
+      "pageViews": 3931,
+      "users": 2379,
+      "avgSessionDuration": 160.44753625699354,
+      "bounceRate": 0.14724869351367967
+    },
+    {
+      "path": "/carreras/medicina/",
+      "title": "Carrera profesional de Medicina Humana | UCSP",
+      "pageViews": 3758,
+      "users": 1768,
+      "avgSessionDuration": 128.3259545081585,
+      "bounceRate": 0.11468531468531469
+    },
+    {
+      "path": "/vive-san-pablo/universidad/transparencia/tramites-academicos-pregrado/",
+      "title": "Trámites académicos pregrado - Universidad Catolica San Pablo",
+      "pageViews": 3624,
+      "users": 2406,
+      "avgSessionDuration": 103.46001932861357,
+      "bounceRate": 0.4616519174041298
+    },
+    {
+      "path": "/programa-cat/maestrias/",
+      "title": "Maestrías de especialización | Postgrado UCSP",
+      "pageViews": 3556,
+      "users": 2220,
+      "avgSessionDuration": 105.77147465016725,
+      "bounceRate": 0.1060200668896321
+    },
+    {
+      "path": "/programa-cat/diplomados/",
+      "title": "Diplomados de especialización | Postgrado UCSP",
+      "pageViews": 3549,
+      "users": 2337,
+      "avgSessionDuration": 113.12559601472,
+      "bounceRate": 0.11616
+    },
+    {
+      "path": "/tp/",
+      "title": "Gracias | Tus Decisiones te Hacen Grande | UCSP",
+      "pageViews": 3457,
+      "users": 2736,
+      "avgSessionDuration": 85.95307061822194,
+      "bounceRate": 0.03373266078184111
+    },
+    {
+      "path": "/vive-san-pablo/universidad/transparencia/calendario-academico-pregrado/",
+      "title": "Calendario Académico Pregrado - Universidad Catolica San Pablo",
+      "pageViews": 3334,
+      "users": 2393,
+      "avgSessionDuration": 71.19303661583277,
+      "bounceRate": 0.37868403015764224
+    }
+  ],
+  "landingPages": [
+    {
+      "page": "/",
+      "sessions": 133776,
+      "users": 93440,
+      "conversions": 7494,
+      "bounceRate": 0.513425427580433,
+      "engagementRate": 0.48657457241956703
+    },
+    {
+      "page": "(not set)",
+      "sessions": 22766,
+      "users": 16026,
+      "conversions": 61,
+      "bounceRate": 0.9638935254326627,
+      "engagementRate": 0.03610647456733726
+    },
+    {
+      "page": "/arequipa",
+      "sessions": 11459,
+      "users": 9347,
+      "conversions": 11,
+      "bounceRate": 0.7091369229426652,
+      "engagementRate": 0.29086307705733483
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico",
+      "sessions": 6223,
+      "users": 3806,
+      "conversions": 1,
+      "bounceRate": 0.6728266109593444,
+      "engagementRate": 0.3271733890406556
+    },
+    {
+      "page": "/inscripcion",
+      "sessions": 4226,
+      "users": 2758,
+      "conversions": 156,
+      "bounceRate": 0.35754850922858494,
+      "engagementRate": 0.6424514907714151
+    },
+    {
+      "page": "/cuotas-educativas",
+      "sessions": 3985,
+      "users": 3508,
+      "conversions": 191,
+      "bounceRate": 0.09761606022584693,
+      "engagementRate": 0.9023839397741531
+    },
+    {
+      "page": "/resultados",
+      "sessions": 3946,
+      "users": 2275,
+      "conversions": 96,
+      "bounceRate": 0.29472883933096805,
+      "engagementRate": 0.705271160669032
+    },
+    {
+      "page": "/carreras",
+      "sessions": 3476,
+      "users": 2967,
+      "conversions": 112,
+      "bounceRate": 0.19505178365937859,
+      "engagementRate": 0.8049482163406214
+    },
+    {
+      "page": "/admision-informacion",
+      "sessions": 3269,
+      "users": 2379,
+      "conversions": 268,
+      "bounceRate": 0.3322116855307434,
+      "engagementRate": 0.6677883144692567
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/tramites-academicos-pregrado",
+      "sessions": 2397,
+      "users": 1857,
+      "conversions": 1,
+      "bounceRate": 0.5894868585732165,
+      "engagementRate": 0.41051314142678347
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico-pregrado",
+      "sessions": 2352,
+      "users": 2011,
+      "conversions": 15,
+      "bounceRate": 0.43579931972789115,
+      "engagementRate": 0.5642006802721088
+    },
+    {
+      "page": "/programa-cat/cursos",
+      "sessions": 2341,
+      "users": 1866,
+      "conversions": 47,
+      "bounceRate": 0.224263135412217,
+      "engagementRate": 0.775736864587783
+    },
+    {
+      "page": "/biblioteca/biblioteca-digital",
+      "sessions": 2064,
+      "users": 1237,
+      "conversions": 0,
+      "bounceRate": 0.41908914728682173,
+      "engagementRate": 0.5809108527131783
+    },
+    {
+      "page": "/cursos/ingles-intensivo",
+      "sessions": 1970,
+      "users": 1196,
+      "conversions": 74,
+      "bounceRate": 0.5126903553299492,
+      "engagementRate": 0.4873096446700508
+    },
+    {
+      "page": "/agenda/club-de-robotica",
+      "sessions": 1937,
+      "users": 1473,
+      "conversions": 15,
+      "bounceRate": 0.33608673205988643,
+      "engagementRate": 0.6639132679401136
+    },
+    {
+      "page": "/contenidos-la-evaluacion-proceso-admision",
+      "sessions": 1822,
+      "users": 891,
+      "conversions": 54,
+      "bounceRate": 0.5499451152579583,
+      "engagementRate": 0.4500548847420417
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/reglamento-de-admision-en-pregrado",
+      "sessions": 1784,
+      "users": 1226,
+      "conversions": 23,
+      "bounceRate": 0.6418161434977578,
+      "engagementRate": 0.35818385650224216
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/plan-de-estudios-derecho",
+      "sessions": 1728,
+      "users": 806,
+      "conversions": 0,
+      "bounceRate": 0.6030092592592593,
+      "engagementRate": 0.39699074074074076
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/disposiciones-particulares-sobre-cursos-de-verano",
+      "sessions": 1646,
+      "users": 1265,
+      "conversions": 1,
+      "bounceRate": 0.5917375455650061,
+      "engagementRate": 0.4082624544349939
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/malla-curricular-administracion-negocios",
+      "sessions": 1577,
+      "users": 1002,
+      "conversions": 4,
+      "bounceRate": 0.43056436271401394,
+      "engagementRate": 0.569435637285986
+    }
+  ],
+  "geography": {
+    "all": [
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 46506,
+        "sessions": 69126,
+        "conversions": 2477
+      },
+      {
+        "city": "Arequipa",
+        "region": "Arequipa",
+        "users": 45326,
+        "sessions": 89140,
+        "conversions": 2582
+      },
+      {
+        "city": "Cerro Colorado",
+        "region": "Arequipa",
+        "users": 16847,
+        "sessions": 26623,
+        "conversions": 902
+      },
+      {
+        "city": "Cusco",
+        "region": "Cusco",
+        "users": 12695,
+        "sessions": 16789,
+        "conversions": 732
+      },
+      {
+        "city": "Paucarpata",
+        "region": "Arequipa",
+        "users": 10271,
+        "sessions": 16339,
+        "conversions": 497
+      },
+      {
+        "city": "Jose Luis Bustamante",
+        "region": "Arequipa",
+        "users": 9416,
+        "sessions": 14441,
+        "conversions": 430
+      },
+      {
+        "city": "Juliaca",
+        "region": "Puno",
+        "users": 7318,
+        "sessions": 10622,
+        "conversions": 753
+      },
+      {
+        "city": "Cayma",
+        "region": "Arequipa",
+        "users": 6041,
+        "sessions": 9701,
+        "conversions": 313
+      },
+      {
+        "city": "Trujillo",
+        "region": "La Libertad",
+        "users": 5388,
+        "sessions": 6719,
+        "conversions": 216
+      },
+      {
+        "city": "(not set)",
+        "region": "Arequipa",
+        "users": 4409,
+        "sessions": 7196,
+        "conversions": 322
+      },
+      {
+        "city": "Piura",
+        "region": "Piura",
+        "users": 4395,
+        "sessions": 6017,
+        "conversions": 156
+      },
+      {
+        "city": "Tacna",
+        "region": "Tacna",
+        "users": 4276,
+        "sessions": 6043,
+        "conversions": 269
+      },
+      {
+        "city": "Alto Selva Alegre",
+        "region": "Arequipa",
+        "users": 3923,
+        "sessions": 6390,
+        "conversions": 214
+      },
+      {
+        "city": "(not set)",
+        "region": "(not set)",
+        "users": 3276,
+        "sessions": 3399,
+        "conversions": 10
+      },
+      {
+        "city": "Miraflores",
+        "region": "Arequipa",
+        "users": 3166,
+        "sessions": 4507,
+        "conversions": 130
+      },
+      {
+        "city": "Puno",
+        "region": "Puno",
+        "users": 2690,
+        "sessions": 3786,
+        "conversions": 244
+      },
+      {
+        "city": "Jacobo Hunter",
+        "region": "Arequipa",
+        "users": 2511,
+        "sessions": 4051,
+        "conversions": 94
+      },
+      {
+        "city": "Socabaya",
+        "region": "Arequipa",
+        "users": 2483,
+        "sessions": 3876,
+        "conversions": 114
+      },
+      {
+        "city": "Huancayo",
+        "region": "Junin",
+        "users": 2136,
+        "sessions": 2572,
+        "conversions": 67
+      },
+      {
+        "city": "Mariano Melgar",
+        "region": "Arequipa",
+        "users": 2106,
+        "sessions": 3247,
+        "conversions": 95
+      }
+    ],
+    "peru": [
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 46506,
+        "sessions": 69126,
+        "conversions": 2477
+      },
+      {
+        "city": "Arequipa",
+        "region": "Arequipa",
+        "users": 45326,
+        "sessions": 89140,
+        "conversions": 2582
+      },
+      {
+        "city": "Cerro Colorado",
+        "region": "Arequipa",
+        "users": 16847,
+        "sessions": 26623,
+        "conversions": 902
+      },
+      {
+        "city": "Cusco",
+        "region": "Cusco",
+        "users": 12695,
+        "sessions": 16789,
+        "conversions": 732
+      },
+      {
+        "city": "Paucarpata",
+        "region": "Arequipa",
+        "users": 10271,
+        "sessions": 16339,
+        "conversions": 497
+      },
+      {
+        "city": "Jose Luis Bustamante",
+        "region": "Arequipa",
+        "users": 9416,
+        "sessions": 14441,
+        "conversions": 430
+      },
+      {
+        "city": "Juliaca",
+        "region": "Puno",
+        "users": 7318,
+        "sessions": 10622,
+        "conversions": 753
+      },
+      {
+        "city": "Cayma",
+        "region": "Arequipa",
+        "users": 6041,
+        "sessions": 9701,
+        "conversions": 313
+      },
+      {
+        "city": "(not set)",
+        "region": "Arequipa",
+        "users": 4409,
+        "sessions": 7196,
+        "conversions": 322
+      },
+      {
+        "city": "Tacna",
+        "region": "Tacna",
+        "users": 4276,
+        "sessions": 6043,
+        "conversions": 269
+      },
+      {
+        "city": "Alto Selva Alegre",
+        "region": "Arequipa",
+        "users": 3923,
+        "sessions": 6390,
+        "conversions": 214
+      },
+      {
+        "city": "Miraflores",
+        "region": "Arequipa",
+        "users": 3166,
+        "sessions": 4507,
+        "conversions": 130
+      },
+      {
+        "city": "Puno",
+        "region": "Puno",
+        "users": 2690,
+        "sessions": 3786,
+        "conversions": 244
+      },
+      {
+        "city": "Jacobo Hunter",
+        "region": "Arequipa",
+        "users": 2511,
+        "sessions": 4051,
+        "conversions": 94
+      },
+      {
+        "city": "Socabaya",
+        "region": "Arequipa",
+        "users": 2483,
+        "sessions": 3876,
+        "conversions": 114
+      },
+      {
+        "city": "Mariano Melgar",
+        "region": "Arequipa",
+        "users": 2106,
+        "sessions": 3247,
+        "conversions": 95
+      },
+      {
+        "city": "Ilo",
+        "region": "Moquegua",
+        "users": 1682,
+        "sessions": 2552,
+        "conversions": 102
+      },
+      {
+        "city": "Yanahuara",
+        "region": "Arequipa",
+        "users": 1651,
+        "sessions": 2519,
+        "conversions": 68
+      },
+      {
+        "city": "Moquegua",
+        "region": "Moquegua",
+        "users": 1642,
+        "sessions": 2529,
+        "conversions": 141
+      },
+      {
+        "city": "Sachaca",
+        "region": "Arequipa",
+        "users": 1590,
+        "sessions": 2696,
+        "conversions": 60
+      }
+    ]
+  },
+  "devices": [
+    {
+      "device": "mobile",
+      "users": 133356,
+      "sessions": 204083,
+      "conversions": 9155,
+      "engagementRate": 0.48857572654263215
+    },
+    {
+      "device": "desktop",
+      "users": 84097,
+      "sessions": 172050,
+      "conversions": 3055,
+      "engagementRate": 0.570834059866318
+    },
+    {
+      "device": "tablet",
+      "users": 2087,
+      "sessions": 3088,
+      "conversions": 62,
+      "engagementRate": 0.45531088082901555
+    },
+    {
+      "device": "smart tv",
+      "users": 4,
+      "sessions": 4,
+      "conversions": 0,
+      "engagementRate": 0.5
+    }
+  ],
+  "campaigns": [
+    {
+      "campaign": "(organic)",
+      "source": "google",
+      "medium": "organic",
+      "sessions": 196346,
+      "users": 99669,
+      "conversions": 4173,
+      "engagementRate": 0.6035060556364784
+    },
+    {
+      "campaign": "(direct)",
+      "source": "(direct)",
+      "medium": "(none)",
+      "sessions": 45579,
+      "users": 33017,
+      "conversions": 963,
+      "engagementRate": 0.46707913732201234
+    },
+    {
+      "campaign": "admision",
+      "source": "facebook",
+      "medium": "cpc",
+      "sessions": 17411,
+      "users": 14366,
+      "conversions": 537,
+      "engagementRate": 0.23915915226006548
+    },
+    {
+      "campaign": "admision",
+      "source": "tiktok",
+      "medium": "paid",
+      "sessions": 7015,
+      "users": 6718,
+      "conversions": 38,
+      "engagementRate": 0.05645046329294369
+    },
+    {
+      "campaign": "Search - UCSP",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 6851,
+      "users": 5203,
+      "conversions": 1254,
+      "engagementRate": 0.7025251788060137
+    },
+    {
+      "campaign": "Search Admisión",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 6403,
+      "users": 4617,
+      "conversions": 1081,
+      "engagementRate": 0.7095111666406372
+    },
+    {
+      "campaign": "ADM_FEB_2026_TRAFICO_PATROCINIOS_18_25_REGION_SUR_23012026",
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 5870,
+      "users": 5323,
+      "conversions": 36,
+      "engagementRate": 0.2080068143100511
+    },
+    {
+      "campaign": "Youtube - Branding #2",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 3880,
+      "users": 3382,
+      "conversions": 52,
+      "engagementRate": 0.2809278350515464
+    },
+    {
+      "campaign": "(organic)",
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 3719,
+      "users": 2027,
+      "conversions": 73,
+      "engagementRate": 0.628125840279645
+    },
+    {
+      "campaign": "6990577397230",
+      "source": "an",
+      "medium": "paid",
+      "sessions": 3576,
+      "users": 2960,
+      "conversions": 0,
+      "engagementRate": 0.16806487695749442
+    },
+    {
+      "campaign": "ADM_FEB_2026_CONVERSIONES_AON_18_25_2312025",
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 3403,
+      "users": 2816,
+      "conversions": 328,
+      "engagementRate": 0.3091389950044079
+    },
+    {
+      "campaign": "(referral)",
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "sessions": 3400,
+      "users": 3160,
+      "conversions": 77,
+      "engagementRate": 0.32735294117647057
+    },
+    {
+      "campaign": "(organic)",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 3340,
+      "users": 2515,
+      "conversions": 733,
+      "engagementRate": 0.7392215568862276
+    },
+    {
+      "campaign": "(referral)",
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 2080,
+      "users": 1450,
+      "conversions": 70,
+      "engagementRate": 0.6274038461538461
+    },
+    {
+      "campaign": "WANTED_PLANIFICACION_SEARCH_AON_PROCESO",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 2028,
+      "users": 1669,
+      "conversions": 490,
+      "engagementRate": 0.7440828402366864
+    },
+    {
+      "campaign": "6990577397230",
+      "source": "fb",
+      "medium": "paid",
+      "sessions": 1851,
+      "users": 1732,
+      "conversions": 0,
+      "engagementRate": 0.12479740680713128
+    },
+    {
+      "campaign": "EVENTO_2026_CONVERSIONES_EXAMEN_SIMULACRO_EVE_16_24_12012026",
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 1833,
+      "users": 1614,
+      "conversions": 2,
+      "engagementRate": 0.5090016366612111
+    },
+    {
+      "campaign": "(referral)",
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "sessions": 1595,
+      "users": 1383,
+      "conversions": 46,
+      "engagementRate": 0.7009404388714734
+    },
+    {
+      "campaign": "admision",
+      "source": "tiktok",
+      "medium": "cpc",
+      "sessions": 1537,
+      "users": 1458,
+      "conversions": 20,
+      "engagementRate": 0.07026675341574495
+    },
+    {
+      "campaign": "WANTED_SEARCH_AON_BRAND_UNIVERSIDAD",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 1511,
+      "users": 1217,
+      "conversions": 361,
+      "engagementRate": 0.7974851091992058
+    },
+    {
+      "campaign": "(referral)",
+      "source": "pe.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 1503,
+      "users": 752,
+      "conversions": 33,
+      "engagementRate": 0.603459747172322
+    },
+    {
+      "campaign": "PMAX - Admisión",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 1422,
+      "users": 1123,
+      "conversions": 198,
+      "engagementRate": 0.6392405063291139
+    },
+    {
+      "campaign": "(referral)",
+      "source": "ucsp.bitrix24.es",
+      "medium": "referral",
+      "sessions": 1417,
+      "users": 55,
+      "conversions": 81,
+      "engagementRate": 0.7134791813690896
+    },
+    {
+      "campaign": "(referral)",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 1368,
+      "users": 1217,
+      "conversions": 30,
+      "engagementRate": 0.40423976608187134
+    },
+    {
+      "campaign": "6992533190230",
+      "source": "an",
+      "medium": "paid",
+      "sessions": 1330,
+      "users": 942,
+      "conversions": 1,
+      "engagementRate": 0.2729323308270677
+    },
+    {
+      "campaign": "proceso_feb2026_ucsp",
+      "source": "facebook",
+      "medium": "paid_social",
+      "sessions": 1300,
+      "users": 1144,
+      "conversions": 0,
+      "engagementRate": 0.11846153846153847
+    },
+    {
+      "campaign": "(referral)",
+      "source": "l.instagram.com",
+      "medium": "referral",
+      "sessions": 1264,
+      "users": 1084,
+      "conversions": 16,
+      "engagementRate": 0.5664556962025317
+    },
+    {
+      "campaign": "WANTED_PLANIFICACION_PMAX_AON_BRAND_ADMISIÓN",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 1256,
+      "users": 1035,
+      "conversions": 244,
+      "engagementRate": 0.696656050955414
+    }
+  ],
+  "events": {
+    "all": [
+      {
+        "event": "page_view",
+        "count": 727312,
+        "users": 217246,
+        "conversions": 0
+      },
+      {
+        "event": "user_engagement",
+        "count": 442860,
+        "users": 129732,
+        "conversions": 0
+      },
+      {
+        "event": "session_start",
+        "count": 377857,
+        "users": 217207,
+        "conversions": 0
+      },
+      {
+        "event": "scroll",
+        "count": 204103,
+        "users": 80158,
+        "conversions": 0
+      },
+      {
+        "event": "first_visit",
+        "count": 189515,
+        "users": 191382,
+        "conversions": 0
+      },
+      {
+        "event": "click",
+        "count": 51800,
+        "users": 21763,
+        "conversions": 0
+      },
+      {
+        "event": "click_whatsapp",
+        "count": 5810,
+        "users": 4586,
+        "conversions": 5810
+      },
+      {
+        "event": "form_admision",
+        "count": 5173,
+        "users": 3787,
+        "conversions": 5173
+      },
+      {
+        "event": "liderazgo_form_contacto",
+        "count": 3867,
+        "users": 1573,
+        "conversions": 0
+      },
+      {
+        "event": "file_download",
+        "count": 3675,
+        "users": 2443,
+        "conversions": 0
+      },
+      {
+        "event": "video_progress",
+        "count": 1217,
+        "users": 306,
+        "conversions": 0
+      },
+      {
+        "event": "click_email",
+        "count": 1086,
+        "users": 632,
+        "conversions": 0
+      },
+      {
+        "event": "view_search_results",
+        "count": 496,
+        "users": 255,
+        "conversions": 0
+      },
+      {
+        "event": "click_telefono",
+        "count": 418,
+        "users": 274,
+        "conversions": 0
+      },
+      {
+        "event": "video_start",
+        "count": 379,
+        "users": 334,
+        "conversions": 0
+      },
+      {
+        "event": "click_wsp_idiomas",
+        "count": 367,
+        "users": 312,
+        "conversions": 367
+      },
+      {
+        "event": "form_contacto_web",
+        "count": 362,
+        "users": 307,
+        "conversions": 362
+      },
+      {
+        "event": "form_informacion_postgrado",
+        "count": 345,
+        "users": 278,
+        "conversions": 345
+      },
+      {
+        "event": "video_complete",
+        "count": 200,
+        "users": 185,
+        "conversions": 0
+      },
+      {
+        "event": "solicitar_información",
+        "count": 86,
+        "users": 79,
+        "conversions": 0
+      }
+    ],
+    "conversions": [
+      {
+        "event": "click_whatsapp",
+        "count": 5810,
+        "users": 4586,
+        "conversions": 5810
+      },
+      {
+        "event": "form_admision",
+        "count": 5173,
+        "users": 3787,
+        "conversions": 5173
+      },
+      {
+        "event": "liderazgo_form_contacto",
+        "count": 3867,
+        "users": 1573,
+        "conversions": 0
+      },
+      {
+        "event": "click_wsp_idiomas",
+        "count": 367,
+        "users": 312,
+        "conversions": 367
+      },
+      {
+        "event": "form_contacto_web",
+        "count": 362,
+        "users": 307,
+        "conversions": 362
+      },
+      {
+        "event": "form_informacion_postgrado",
+        "count": 345,
+        "users": 278,
+        "conversions": 345
+      },
+      {
+        "event": "solicitar_información",
+        "count": 86,
+        "users": 79,
+        "conversions": 0
+      },
+      {
+        "event": "form_contacto",
+        "count": 66,
+        "users": 57,
+        "conversions": 66
+      },
+      {
+        "event": "form_idiomas",
+        "count": 57,
+        "users": 46,
+        "conversions": 57
+      },
+      {
+        "event": "form_blog",
+        "count": 39,
+        "users": 27,
+        "conversions": 39
+      },
+      {
+        "event": "form_webinar",
+        "count": 33,
+        "users": 25,
+        "conversions": 33
+      },
+      {
+        "event": "form_agenda",
+        "count": 13,
+        "users": 11,
+        "conversions": 13
+      },
+      {
+        "event": "form_campaña_descubre",
+        "count": 7,
+        "users": 7,
+        "conversions": 7
+      },
+      {
+        "event": "form_opendayadspro_informacion",
+        "count": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    ]
+  },
+  "metadata": {
+    "method": "Google Analytics Data API v1beta",
+    "lookback_days": 90,
+    "mode": "full"
+  }
+}
