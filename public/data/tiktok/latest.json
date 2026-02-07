@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-06T14:00:38.497Z",
+  "timestamp": "2026-02-07T13:41:47.786Z",
   "source": "TikTok Trends via Apify",
   "region": "PE",
   "category": "Education",
@@ -9,7 +9,7 @@
       {
         "hashtag": "#voltaasaulas",
         "views": "0",
-        "posts": "123.8K",
+        "posts": "130.6K",
         "growth": "+0%",
         "relevanceScore": 98,
         "region": "LATAM",
@@ -20,7 +20,7 @@
       {
         "hashtag": "#materialescolar",
         "views": "0",
-        "posts": "79.9K",
+        "posts": "82.0K",
         "growth": "+0%",
         "relevanceScore": 96,
         "region": "LATAM",
@@ -31,7 +31,7 @@
       {
         "hashtag": "#enem",
         "views": "0",
-        "posts": "34.7K",
+        "posts": "36.3K",
         "growth": "+0%",
         "relevanceScore": 94,
         "region": "LATAM",
@@ -42,7 +42,7 @@
       {
         "hashtag": "#inss",
         "views": "0",
-        "posts": "24.3K",
+        "posts": "26.0K",
         "growth": "+0%",
         "relevanceScore": 92,
         "region": "LATAM",
@@ -53,7 +53,7 @@
       {
         "hashtag": "#vestibular",
         "views": "0",
-        "posts": "14.9K",
+        "posts": "16.0K",
         "growth": "+0%",
         "relevanceScore": 90,
         "region": "LATAM",
@@ -64,7 +64,7 @@
       {
         "hashtag": "#soja",
         "views": "0",
-        "posts": "9.4K",
+        "posts": "9.9K",
         "growth": "+0%",
         "relevanceScore": 88,
         "region": "LATAM",
@@ -75,7 +75,7 @@
       {
         "hashtag": "#estojo",
         "views": "0",
-        "posts": "6.7K",
+        "posts": "6.9K",
         "growth": "+0%",
         "relevanceScore": 86,
         "region": "LATAM",
@@ -86,7 +86,7 @@
       {
         "hashtag": "#cadernointeligente",
         "views": "0",
-        "posts": "5.7K",
+        "posts": "5.8K",
         "growth": "+0%",
         "relevanceScore": 84,
         "region": "LATAM",
@@ -97,7 +97,7 @@
       {
         "hashtag": "#goodthing",
         "views": "0",
-        "posts": "8.5K",
+        "posts": "8.7K",
         "growth": "+0%",
         "relevanceScore": 82,
         "region": "LATAM",
@@ -108,7 +108,7 @@
       {
         "hashtag": "#maquina",
         "views": "0",
-        "posts": "5.0K",
+        "posts": "5.2K",
         "growth": "+0%",
         "relevanceScore": 80,
         "region": "LATAM",
@@ -119,7 +119,7 @@
       {
         "hashtag": "#detran",
         "views": "0",
-        "posts": "3.1K",
+        "posts": "3.4K",
         "growth": "+0%",
         "relevanceScore": 78,
         "region": "LATAM",
@@ -130,7 +130,7 @@
       {
         "hashtag": "#aprovação",
         "views": "0",
-        "posts": "3.4K",
+        "posts": "3.6K",
         "growth": "+0%",
         "relevanceScore": 76,
         "region": "LATAM",
@@ -141,7 +141,7 @@
       {
         "hashtag": "#manutenção",
         "views": "0",
-        "posts": "4.0K",
+        "posts": "4.1K",
         "growth": "+0%",
         "relevanceScore": 74,
         "region": "LATAM",
@@ -152,7 +152,7 @@
       {
         "hashtag": "#estrela",
         "views": "0",
-        "posts": "2.6K",
+        "posts": "2.7K",
         "growth": "+0%",
         "relevanceScore": 72,
         "region": "LATAM",
@@ -163,7 +163,7 @@
       {
         "hashtag": "#lifehacks",
         "views": "0",
-        "posts": "2.6K",
+        "posts": "2.7K",
         "growth": "+0%",
         "relevanceScore": 70,
         "region": "LATAM",
@@ -174,7 +174,7 @@
       {
         "hashtag": "#psicanálise",
         "views": "0",
-        "posts": "4.3K",
+        "posts": "4.5K",
         "growth": "+0%",
         "relevanceScore": 68,
         "region": "LATAM",
@@ -185,7 +185,7 @@
       {
         "hashtag": "#factory",
         "views": "0",
-        "posts": "2.2K",
+        "posts": "2.3K",
         "growth": "+0%",
         "relevanceScore": 66,
         "region": "LATAM",
@@ -196,7 +196,7 @@
       {
         "hashtag": "#estojoescolar",
         "views": "0",
-        "posts": "3.2K",
+        "posts": "3.3K",
         "growth": "+0%",
         "relevanceScore": 64,
         "region": "LATAM",
@@ -207,7 +207,7 @@
       {
         "hashtag": "#salariomaternidade",
         "views": "0",
-        "posts": "3.6K",
+        "posts": "3.8K",
         "growth": "+0%",
         "relevanceScore": 62,
         "region": "LATAM",
@@ -240,6 +240,16 @@
       },
       {
         "soundName": "Unknown",
+        "author": "Trim",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
         "author": "Se'Kret",
         "usage": "0",
         "growth": "+0%",
@@ -251,16 +261,6 @@
       {
         "soundName": "Unknown",
         "author": "Bktherula",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Trim",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -310,16 +310,6 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Dominic Fike",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
         "author": "Melissa Colorado",
         "usage": "0",
         "growth": "+0%",
@@ -340,7 +330,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "MusicBox",
+        "author": "Dominic Fike",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -360,27 +350,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Stunna Girl & Vanessa Doll",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
         "author": "Rihanna",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Icy Light",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -410,6 +380,16 @@
       },
       {
         "soundName": "Unknown",
+        "author": "Bad Bunny",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
         "author": "K's note",
         "usage": "0",
         "growth": "+0%",
@@ -421,6 +401,26 @@
       {
         "soundName": "Unknown",
         "author": "Young Nudy",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Root Canal Years",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Jey One & Yailin La Mas Viral",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
