@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-08T13:42:14.344Z",
+  "timestamp": "2026-02-09T14:17:04.651Z",
   "source": "TikTok Trends via Apify",
   "region": "PE",
   "category": "Education",
@@ -9,7 +9,7 @@
       {
         "hashtag": "#voltaasaulas",
         "views": "0",
-        "posts": "129.5K",
+        "posts": "127.0K",
         "growth": "+0%",
         "relevanceScore": 98,
         "region": "LATAM",
@@ -20,7 +20,7 @@
       {
         "hashtag": "#materialescolar",
         "views": "0",
-        "posts": "81.1K",
+        "posts": "79.8K",
         "growth": "+0%",
         "relevanceScore": 96,
         "region": "LATAM",
@@ -31,7 +31,7 @@
       {
         "hashtag": "#enem",
         "views": "0",
-        "posts": "36.4K",
+        "posts": "36.5K",
         "growth": "+0%",
         "relevanceScore": 94,
         "region": "LATAM",
@@ -42,7 +42,7 @@
       {
         "hashtag": "#inss",
         "views": "0",
-        "posts": "26.4K",
+        "posts": "26.2K",
         "growth": "+0%",
         "relevanceScore": 92,
         "region": "LATAM",
@@ -64,7 +64,7 @@
       {
         "hashtag": "#soja",
         "views": "0",
-        "posts": "10.1K",
+        "posts": "10.3K",
         "growth": "+0%",
         "relevanceScore": 88,
         "region": "LATAM",
@@ -75,7 +75,7 @@
       {
         "hashtag": "#estojo",
         "views": "0",
-        "posts": "6.8K",
+        "posts": "6.7K",
         "growth": "+0%",
         "relevanceScore": 86,
         "region": "LATAM",
@@ -86,7 +86,7 @@
       {
         "hashtag": "#cadernointeligente",
         "views": "0",
-        "posts": "5.7K",
+        "posts": "5.5K",
         "growth": "+0%",
         "relevanceScore": 84,
         "region": "LATAM",
@@ -97,7 +97,7 @@
       {
         "hashtag": "#goodthing",
         "views": "0",
-        "posts": "8.6K",
+        "posts": "8.5K",
         "growth": "+0%",
         "relevanceScore": 82,
         "region": "LATAM",
@@ -108,7 +108,7 @@
       {
         "hashtag": "#maquina",
         "views": "0",
-        "posts": "5.3K",
+        "posts": "5.2K",
         "growth": "+0%",
         "relevanceScore": 80,
         "region": "LATAM",
@@ -130,7 +130,7 @@
       {
         "hashtag": "#aprovação",
         "views": "0",
-        "posts": "3.6K",
+        "posts": "3.7K",
         "growth": "+0%",
         "relevanceScore": 76,
         "region": "LATAM",
@@ -174,7 +174,7 @@
       {
         "hashtag": "#psicanálise",
         "views": "0",
-        "posts": "4.5K",
+        "posts": "4.4K",
         "growth": "+0%",
         "relevanceScore": 68,
         "region": "LATAM",
@@ -185,7 +185,7 @@
       {
         "hashtag": "#factory",
         "views": "0",
-        "posts": "2.2K",
+        "posts": "2.1K",
         "growth": "+0%",
         "relevanceScore": 66,
         "region": "LATAM",
@@ -196,7 +196,7 @@
       {
         "hashtag": "#estojoescolar",
         "views": "0",
-        "posts": "3.3K",
+        "posts": "3.2K",
         "growth": "+0%",
         "relevanceScore": 64,
         "region": "LATAM",
@@ -218,7 +218,7 @@
       {
         "hashtag": "#freidamcfadden",
         "views": "0",
-        "posts": "2.1K",
+        "posts": "2.0K",
         "growth": "+0%",
         "relevanceScore": 60,
         "region": "LATAM",
@@ -250,7 +250,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Se'Kret",
+        "author": "Chihei Hatakeyama",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -270,37 +270,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Chihei Hatakeyama",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
         "author": "The Stylistics",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "Wolf Parade",
-        "usage": "0",
-        "growth": "+0%",
-        "duration": 0,
-        "category": "Music",
-        "region": "PE",
-        "regionNote": "Tendencias globales para Peru"
-      },
-      {
-        "soundName": "Unknown",
-        "author": "yasuhiro soda",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -320,7 +290,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Big Boogie",
+        "author": "yasuhiro soda",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -330,7 +300,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Dominic Fike",
+        "author": "Big Boogie",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -350,7 +320,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Rihanna",
+        "author": "Bad Bunny",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -380,7 +350,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Bad Bunny",
+        "author": "Taylor Swift",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -390,7 +360,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "K's note",
+        "author": "Dominic Fike",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -400,7 +370,7 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Young Nudy",
+        "author": "Jey One & Yailin La Mas Viral",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
@@ -420,7 +390,37 @@
       },
       {
         "soundName": "Unknown",
-        "author": "Jey One & Yailin La Mas Viral",
+        "author": "Flatsound",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Babyface Ray",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "Bella Kay",
+        "usage": "0",
+        "growth": "+0%",
+        "duration": 0,
+        "category": "Music",
+        "region": "PE",
+        "regionNote": "Tendencias globales para Peru"
+      },
+      {
+        "soundName": "Unknown",
+        "author": "dunsky & danvy",
         "usage": "0",
         "growth": "+0%",
         "duration": 0,
