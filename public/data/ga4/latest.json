@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-09T14:53:48.000Z",
+  "timestamp": "2026-02-10T14:23:31.409Z",
   "source": "Google Analytics 4 API",
   "property_id": "310975508",
   "client": "UCSP - Universidad Católica San Pablo",
@@ -8,16 +8,16 @@
     "endDate": "2026-02-09"
   },
   "overview": {
-    "totalUsers": 216961,
-    "newUsers": 188663,
-    "sessions": 378057,
-    "screenPageViews": 732342,
-    "averageSessionDuration": 197.6764315708002,
-    "bounceRate": 0.47441258857791285,
-    "engagedSessions": 198702,
-    "engagementRate": 0.5255874114220871,
-    "conversions": 12382,
-    "eventCount": 2028538
+    "totalUsers": 321119,
+    "newUsers": 15423,
+    "sessions": 387229,
+    "screenPageViews": 75744,
+    "averageSessionDuration": 237.31200068697706,
+    "bounceRate": 0.42216544055708427,
+    "engagedSessions": 20579,
+    "engagementRate": 0.5778345594429157,
+    "conversions": 12645,
+    "eventCount": 210741
   },
   "daily": {
     "2025-11-11": {
@@ -651,11 +651,18 @@
       "engagedSessions": 2359
     },
     "2026-02-09": {
-      "users": 269,
-      "newUsers": 109,
-      "sessions": 295,
-      "conversions": 13,
-      "engagedSessions": 191
+      "users": 5074,
+      "newUsers": 2216,
+      "sessions": 7067,
+      "conversions": 265,
+      "engagedSessions": 4817
+    },
+    "2026-02-10": {
+      "users": 328,
+      "newUsers": 174,
+      "sessions": 342,
+      "conversions": 11,
+      "engagedSessions": 234
     }
   },
   "dailyByChannel": {
@@ -5316,48 +5323,95 @@
     },
     "2026-02-09": {
       "Organic Search": {
-        "sessions": 216,
-        "users": 197,
+        "sessions": 4930,
+        "users": 3383,
+        "conversions": 123
+      },
+      "Email": {
+        "sessions": 641,
+        "users": 491,
+        "conversions": 9
+      },
+      "Direct": {
+        "sessions": 597,
+        "users": 533,
+        "conversions": 15
+      },
+      "Paid Search": {
+        "sessions": 366,
+        "users": 290,
+        "conversions": 62
+      },
+      "Organic Social": {
+        "sessions": 281,
+        "users": 257,
+        "conversions": 14
+      },
+      "Paid Social": {
+        "sessions": 176,
+        "users": 162,
+        "conversions": 33
+      },
+      "Referral": {
+        "sessions": 122,
+        "users": 76,
+        "conversions": 3
+      },
+      "Unassigned": {
+        "sessions": 57,
+        "users": 48,
+        "conversions": 2
+      },
+      "Cross-network": {
+        "sessions": 7,
+        "users": 7,
+        "conversions": 4
+      },
+      "Paid Other": {
+        "sessions": 1,
+        "users": 1,
+        "conversions": 0
+      }
+    },
+    "2026-02-10": {
+      "Organic Search": {
+        "sessions": 208,
+        "users": 196,
         "conversions": 8
       },
       "Direct": {
-        "sessions": 21,
-        "users": 20,
+        "sessions": 92,
+        "users": 91,
         "conversions": 0
-      },
-      "Paid Search": {
-        "sessions": 16,
-        "users": 13,
-        "conversions": 3
       },
       "Email": {
-        "sessions": 14,
-        "users": 14,
+        "sessions": 15,
+        "users": 15,
         "conversions": 0
-      },
-      "Paid Social": {
-        "sessions": 13,
-        "users": 13,
-        "conversions": 2
       },
       "Organic Social": {
         "sessions": 9,
         "users": 9,
         "conversions": 0
       },
-      "Unassigned": {
-        "sessions": 3,
-        "users": 3,
-        "conversions": 0
+      "Paid Search": {
+        "sessions": 8,
+        "users": 7,
+        "conversions": 3
       },
       "Referral": {
-        "sessions": 2,
-        "users": 2,
+        "sessions": 4,
+        "users": 4,
         "conversions": 0
       },
-      "Cross-network": {
-        "sessions": 1,
-        "users": 1,
+      "Unassigned": {
+        "sessions": 4,
+        "users": 4,
+        "conversions": 0
+      },
+      "Paid Social": {
+        "sessions": 2,
+        "users": 2,
         "conversions": 0
       }
     }
@@ -5366,1004 +5420,972 @@
     {
       "source": "google",
       "medium": "organic",
-      "sessions": 196980,
-      "users": 99802,
-      "conversions": 4248,
-      "engagementRate": 0.604035942735303
+      "sessions": 19556,
+      "users": 11931,
+      "conversions": 494,
+      "engagementRate": 0.6395991000204541
     },
     {
       "source": "(direct)",
       "medium": "(none)",
-      "sessions": 45433,
-      "users": 33160,
-      "conversions": 990,
-      "engagementRate": 0.46778773138467633
+      "sessions": 3864,
+      "users": 3183,
+      "conversions": 113,
+      "engagementRate": 0.46221532091097306
+    },
+    {
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 2851,
+      "users": 2632,
+      "conversions": 162,
+      "engagementRate": 0.2918274289722904
     },
     {
       "source": "google",
       "medium": "cpc",
-      "sessions": 30888,
-      "users": 22926,
-      "conversions": 4765,
-      "engagementRate": 0.62506475006475
+      "sessions": 2782,
+      "users": 2168,
+      "conversions": 522,
+      "engagementRate": 0.6772106398274622
     },
     {
       "source": "hs_email",
       "medium": "email",
-      "sessions": 19615,
-      "users": 8490,
-      "conversions": 138,
-      "engagementRate": 0.42844761661993375
-    },
-    {
-      "source": "facebook",
-      "medium": "cpc",
-      "sessions": 17984,
-      "users": 15043,
-      "conversions": 512,
-      "engagementRate": 0.25522686832740216
-    },
-    {
-      "source": "facebook",
-      "medium": "paid",
-      "sessions": 16530,
-      "users": 14089,
-      "conversions": 522,
-      "engagementRate": 0.27852389594676347
-    },
-    {
-      "source": "tiktok",
-      "medium": "paid",
-      "sessions": 6921,
-      "users": 6622,
-      "conversions": 38,
-      "engagementRate": 0.055916775032509754
-    },
-    {
-      "source": "fb",
-      "medium": "paid",
-      "sessions": 6138,
-      "users": 5382,
-      "conversions": 184,
-      "engagementRate": 0.31932225480612575
-    },
-    {
-      "source": "an",
-      "medium": "paid",
-      "sessions": 5940,
-      "users": 4813,
-      "conversions": 50,
-      "engagementRate": 0.20067340067340067
-    },
-    {
-      "source": "bing",
-      "medium": "organic",
-      "sessions": 3691,
-      "users": 2004,
-      "conversions": 71,
-      "engagementRate": 0.6272013004605798
-    },
-    {
-      "source": "m.facebook.com",
-      "medium": "referral",
-      "sessions": 3537,
-      "users": 3269,
-      "conversions": 84,
-      "engagementRate": 0.332767882386203
-    },
-    {
-      "source": "chatgpt.com",
-      "medium": "referral",
-      "sessions": 2046,
-      "users": 1434,
-      "conversions": 69,
-      "engagementRate": 0.6344086021505376
-    },
-    {
-      "source": "lm.facebook.com",
-      "medium": "referral",
-      "sessions": 1641,
-      "users": 1422,
-      "conversions": 51,
-      "engagementRate": 0.7020109689213894
-    },
-    {
-      "source": "tiktok",
-      "medium": "cpc",
-      "sessions": 1524,
-      "users": 1444,
-      "conversions": 20,
-      "engagementRate": 0.07086614173228346
-    },
-    {
-      "source": "pe.search.yahoo.com",
-      "medium": "referral",
-      "sessions": 1517,
-      "users": 756,
-      "conversions": 36,
-      "engagementRate": 0.6031641397495056
+      "sessions": 1867,
+      "users": 1176,
+      "conversions": 35,
+      "engagementRate": 0.45688269951794325
     },
     {
       "source": "sendgrid.com",
       "medium": "email",
-      "sessions": 1426,
-      "users": 792,
-      "conversions": 5,
-      "engagementRate": 0.5315568022440392
+      "sessions": 834,
+      "users": 488,
+      "conversions": 6,
+      "engagementRate": 0.5371702637889688
     },
     {
-      "source": "ig",
-      "medium": "paid",
-      "sessions": 1417,
-      "users": 1225,
-      "conversions": 60,
-      "engagementRate": 0.4142554693013409
-    },
-    {
-      "source": "ucsp.bitrix24.es",
+      "source": "m.facebook.com",
       "medium": "referral",
-      "sessions": 1394,
-      "users": 55,
-      "conversions": 76,
-      "engagementRate": 0.7137733142037302
+      "sessions": 519,
+      "users": 505,
+      "conversions": 18,
+      "engagementRate": 0.41811175337186895
+    },
+    {
+      "source": "fb",
+      "medium": "paid",
+      "sessions": 489,
+      "users": 463,
+      "conversions": 6,
+      "engagementRate": 0.2903885480572597
+    },
+    {
+      "source": "facebook",
+      "medium": "cpc",
+      "sessions": 396,
+      "users": 396,
+      "conversions": 0,
+      "engagementRate": 0.3282828282828283
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 329,
+      "users": 217,
+      "conversions": 5,
+      "engagementRate": 0.6352583586626139
+    },
+    {
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "sessions": 199,
+      "users": 181,
+      "conversions": 14,
+      "engagementRate": 0.7135678391959799
     },
     {
       "source": "hs_automation",
       "medium": "email",
-      "sessions": 1312,
-      "users": 769,
-      "conversions": 83,
-      "engagementRate": 0.5411585365853658
+      "sessions": 177,
+      "users": 119,
+      "conversions": 11,
+      "engagementRate": 0.6045197740112994
     },
     {
-      "source": "facebook",
-      "medium": "paid_social",
-      "sessions": 1304,
-      "users": 1145,
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 156,
+      "users": 114,
+      "conversions": 6,
+      "engagementRate": 0.6602564102564102
+    },
+    {
+      "source": "facebook.com",
+      "medium": "referral",
+      "sessions": 147,
+      "users": 146,
       "conversions": 0,
-      "engagementRate": 0.11809815950920245
+      "engagementRate": 0.6870748299319728
+    },
+    {
+      "source": "pe.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 132,
+      "users": 84,
+      "conversions": 6,
+      "engagementRate": 0.6287878787878788
+    },
+    {
+      "source": "Facebook Instagram",
+      "medium": "Leads UCSP",
+      "sessions": 126,
+      "users": 115,
+      "conversions": 11,
+      "engagementRate": 0.6984126984126984
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(not set)",
+      "sessions": 124,
+      "users": 95,
+      "conversions": 5,
+      "engagementRate": 0.7338709677419355
+    },
+    {
+      "source": "l.facebook.com",
+      "medium": "referral",
+      "sessions": 122,
+      "users": 85,
+      "conversions": 5,
+      "engagementRate": 0.5491803278688525
+    },
+    {
+      "source": "ucsp.bitrix24.es",
+      "medium": "referral",
+      "sessions": 117,
+      "users": 21,
+      "conversions": 15,
+      "engagementRate": 0.6837606837606838
+    },
+    {
+      "source": "l.instagram.com",
+      "medium": "referral",
+      "sessions": 107,
+      "users": 99,
+      "conversions": 5,
+      "engagementRate": 0.5233644859813084
     }
   ],
   "channels": [
     {
       "channel": "Organic Search",
-      "sessions": 204167,
-      "users": 102875,
-      "newUsers": 80154,
-      "conversions": 4361,
-      "engagementRate": 0.603021056292153
-    },
-    {
-      "channel": "Paid Social",
-      "sessions": 52413,
-      "users": 43826,
-      "newUsers": 40784,
-      "conversions": 1336,
-      "engagementRate": 0.2369068742487551
+      "sessions": 20029,
+      "users": 12294,
+      "newUsers": 6834,
+      "conversions": 505,
+      "engagementRate": 0.6391232712566778
     },
     {
       "channel": "Direct",
-      "sessions": 45433,
-      "users": 33160,
-      "newUsers": 30114,
-      "conversions": 990,
-      "engagementRate": 0.46778773138467633
+      "sessions": 3864,
+      "users": 3183,
+      "newUsers": 2588,
+      "conversions": 113,
+      "engagementRate": 0.46221532091097306
     },
     {
-      "channel": "Paid Search",
-      "sessions": 25740,
-      "users": 18903,
-      "newUsers": 14250,
-      "conversions": 4521,
-      "engagementRate": 0.6754467754467754
+      "channel": "Paid Social",
+      "sessions": 3840,
+      "users": 3545,
+      "newUsers": 3003,
+      "conversions": 171,
+      "engagementRate": 0.29661458333333335
     },
     {
       "channel": "Email",
-      "sessions": 22517,
-      "users": 9960,
-      "newUsers": 3901,
-      "conversions": 226,
-      "engagementRate": 0.4400675045521162
+      "sessions": 2902,
+      "users": 1766,
+      "newUsers": 433,
+      "conversions": 52,
+      "engagementRate": 0.4862164024810475
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 2772,
+      "users": 2160,
+      "newUsers": 1276,
+      "conversions": 519,
+      "engagementRate": 0.6778499278499278
     },
     {
       "channel": "Organic Social",
-      "sessions": 10469,
-      "users": 9049,
-      "newUsers": 7689,
-      "conversions": 245,
-      "engagementRate": 0.5314738752507403
+      "sessions": 1319,
+      "users": 1203,
+      "newUsers": 959,
+      "conversions": 55,
+      "engagementRate": 0.5489006823351024
     },
     {
       "channel": "Referral",
-      "sessions": 7280,
-      "users": 3566,
-      "newUsers": 2596,
-      "conversions": 205,
-      "engagementRate": 0.6105769230769231
-    },
-    {
-      "channel": "Paid Other",
-      "sessions": 6134,
-      "users": 4977,
-      "newUsers": 4764,
-      "conversions": 52,
-      "engagementRate": 0.1964460384740789
-    },
-    {
-      "channel": "Cross-network",
-      "sessions": 5389,
-      "users": 4592,
-      "newUsers": 3713,
-      "conversions": 345,
-      "engagementRate": 0.40731118946001116
+      "sessions": 624,
+      "users": 362,
+      "newUsers": 208,
+      "conversions": 28,
+      "engagementRate": 0.592948717948718
     },
     {
       "channel": "Unassigned",
-      "sessions": 1917,
-      "users": 1594,
-      "newUsers": 691,
-      "conversions": 100,
-      "engagementRate": 0.3688054251434533
+      "sessions": 213,
+      "users": 181,
+      "newUsers": 71,
+      "conversions": 13,
+      "engagementRate": 0.4413145539906103
+    },
+    {
+      "channel": "Cross-network",
+      "sessions": 49,
+      "users": 47,
+      "newUsers": 34,
+      "conversions": 11,
+      "engagementRate": 0.8367346938775511
+    },
+    {
+      "channel": "Paid Other",
+      "sessions": 26,
+      "users": 21,
+      "newUsers": 17,
+      "conversions": 2,
+      "engagementRate": 0.2692307692307692
     },
     {
       "channel": "Organic Video",
-      "sessions": 8,
-      "users": 7,
-      "newUsers": 2,
-      "conversions": 1,
-      "engagementRate": 0.75
-    },
-    {
-      "channel": "Display",
-      "sessions": 2,
-      "users": 2,
-      "newUsers": 2,
-      "conversions": 0,
-      "engagementRate": 0
-    },
-    {
-      "channel": "Mobile Push Notifications",
-      "sessions": 2,
-      "users": 2,
-      "newUsers": 2,
-      "conversions": 0,
-      "engagementRate": 0
-    },
-    {
-      "channel": "Paid Video",
-      "sessions": 2,
+      "sessions": 1,
       "users": 1,
       "newUsers": 0,
       "conversions": 0,
-      "engagementRate": 1
-    },
-    {
-      "channel": "Organic Shopping",
-      "sessions": 1,
-      "users": 1,
-      "newUsers": 1,
-      "conversions": 0,
-      "engagementRate": 1
+      "engagementRate": 0
     }
   ],
   "topPages": [
     {
       "path": "/",
-      "title": "Tus Decisiones te Hacen Grande | UCSP",
-      "pageViews": 67058,
-      "users": 47312,
-      "avgSessionDuration": 74.02595461104893,
-      "bounceRate": 0.5661491243906842
-    },
-    {
-      "path": "/",
-      "title": "UCSP | Carreras, Maestrías, Diplomados, Cursos, PED",
-      "pageViews": 47712,
-      "users": 22917,
-      "avgSessionDuration": 108.6261723827452,
-      "bounceRate": 0.3929091212750221
-    },
-    {
-      "path": "/",
       "title": "Admisión Universidad San Pablo | Carreras de Pregrado",
-      "pageViews": 31068,
-      "users": 16633,
-      "avgSessionDuration": 123.43181733738315,
-      "bounceRate": 0.3536510028417281
-    },
-    {
-      "path": "/carreras/",
-      "title": "Carreras Profesionales | Universidad Católica San Pablo",
-      "pageViews": 14561,
-      "users": 6611,
-      "avgSessionDuration": 99.94026371232368,
-      "bounceRate": 0.11766889383815887
-    },
-    {
-      "path": "/search",
-      "title": "Resultados de búsqueda - Escuela de Postgrado de la Universidad Católica San Pablo",
-      "pageViews": 13491,
-      "users": 1268,
-      "avgSessionDuration": 106.0372771852349,
-      "bounceRate": 0.08993288590604027
-    },
-    {
-      "path": "/inscripcion/",
-      "title": "Inscripción - Admisión Universidad San Pablo | Carreras de Pregrado",
-      "pageViews": 12625,
-      "users": 5850,
-      "avgSessionDuration": 137.67632245565235,
-      "bounceRate": 0.2097604434765393
-    },
-    {
-      "path": "/",
-      "title": "Universidad Católica San Pablo | Escuela de Postgrado",
-      "pageViews": 11642,
-      "users": 6866,
-      "avgSessionDuration": 102.86848363049883,
-      "bounceRate": 0.20928578685360155
+      "pageViews": 6352,
+      "users": 3721,
+      "avgSessionDuration": 160.7350920848633,
+      "bounceRate": 0.38657690738474093
     },
     {
       "path": "/resultados/",
       "title": "Resultados de examen de Admisión de la UCSP",
-      "pageViews": 11242,
-      "users": 3716,
-      "avgSessionDuration": 197.45976859704172,
-      "bounceRate": 0.2060361571791424
+      "pageViews": 5680,
+      "users": 1917,
+      "avgSessionDuration": 231.3768208023256,
+      "bounceRate": 0.14137086903304774
     },
     {
       "path": "/",
-      "title": "UCSP Landing Simulacro",
-      "pageViews": 9830,
-      "users": 6912,
-      "avgSessionDuration": 88.92558464961002,
-      "bounceRate": 0.49409123138737887
+      "title": "Tus Decisiones te Hacen Grande | UCSP",
+      "pageViews": 4841,
+      "users": 3330,
+      "avgSessionDuration": 92.37658920224426,
+      "bounceRate": 0.4052713987473904
+    },
+    {
+      "path": "/",
+      "title": "UCSP | Carreras, Maestrías, Diplomados, Cursos, PED",
+      "pageViews": 3927,
+      "users": 2393,
+      "avgSessionDuration": 123.79196515149644,
+      "bounceRate": 0.27923480407281703
     },
     {
       "path": "/vive-san-pablo/universidad/transparencia/reglamento-de-admision-en-pregrado/",
       "title": "Reglamento de Admisión en Pregrado - Universidad Catolica San Pablo",
-      "pageViews": 9331,
-      "users": 3526,
-      "avgSessionDuration": 185.00758153920265,
-      "bounceRate": 0.24767441860465117
-    },
-    {
-      "path": "/cuotas-educativas/",
-      "title": "Cuotas Educativas | Universidad Católica San Pablo",
-      "pageViews": 8739,
-      "users": 5351,
-      "avgSessionDuration": 107.05861294891544,
-      "bounceRate": 0.0726186733731531
-    },
-    {
-      "path": "/arequipa/",
-      "title": "Expo Carreras San Pablo | Conoce tu carrera y elige tu futuro",
-      "pageViews": 8363,
-      "users": 5570,
-      "avgSessionDuration": 74.23960592394407,
-      "bounceRate": 0.627425799086758
+      "pageViews": 2018,
+      "users": 922,
+      "avgSessionDuration": 150.7216174561028,
+      "bounceRate": 0.31334760885082086
     },
     {
       "path": "/admision-informacion/",
       "title": "Información sobre Admisión | Universidad Católica San Pablo",
-      "pageViews": 8333,
-      "users": 4779,
-      "avgSessionDuration": 132.20903184612166,
-      "bounceRate": 0.1982421875
+      "pageViews": 1935,
+      "users": 1193,
+      "avgSessionDuration": 135.91092940953627,
+      "bounceRate": 0.12540822991508818
+    },
+    {
+      "path": "/inscripcion/",
+      "title": "Inscripción - Admisión Universidad San Pablo | Carreras de Pregrado",
+      "pageViews": 1647,
+      "users": 939,
+      "avgSessionDuration": 133.30246136480363,
+      "bounceRate": 0.1933534743202417
+    },
+    {
+      "path": "/carreras/",
+      "title": "Carreras Profesionales | Universidad Católica San Pablo",
+      "pageViews": 1324,
+      "users": 621,
+      "avgSessionDuration": 101.12124868975471,
+      "bounceRate": 0.08802308802308802
     },
     {
       "path": "/",
-      "title": "Centro de Idiomas en Arequipa | Idiomas UCSP",
-      "pageViews": 8275,
-      "users": 3749,
-      "avgSessionDuration": 123.08328950339744,
-      "bounceRate": 0.2279890125777071
+      "title": "Universidad Católica San Pablo | Escuela de Postgrado",
+      "pageViews": 1125,
+      "users": 729,
+      "avgSessionDuration": 107.83876112738854,
+      "bounceRate": 0.21019108280254778
     },
     {
-      "path": "/vive-san-pablo/universidad/transparencia/calendario-academico/",
-      "title": "Calendario Académico - Universidad Catolica San Pablo",
-      "pageViews": 7739,
-      "users": 4132,
-      "avgSessionDuration": 94.09331286404341,
-      "bounceRate": 0.6259158751696066
-    },
-    {
-      "path": "/",
-      "title": "La Pre San Pablo | UCSP",
-      "pageViews": 6703,
-      "users": 4981,
-      "avgSessionDuration": 67.8370700658868,
-      "bounceRate": 0.5874763461207638
-    },
-    {
-      "path": "/presanpablo/",
-      "title": "Academia preuniversitaria en Arequipa | UCSP",
-      "pageViews": 5874,
-      "users": 3182,
-      "avgSessionDuration": 132.34304609563085,
-      "bounceRate": 0.17298261257244762
-    },
-    {
-      "path": "/programa-cat/cursos/",
-      "title": "Cursos y Programas Especializados | Postgrado UCSP",
-      "pageViews": 5720,
-      "users": 3411,
-      "avgSessionDuration": 144.85193604252657,
-      "bounceRate": 0.15447154471544716
-    },
-    {
-      "path": "/agenda/",
-      "title": "Agenda - Universidad Catolica San Pablo",
-      "pageViews": 5181,
-      "users": 1774,
-      "avgSessionDuration": 131.46415586476866,
-      "bounceRate": 0.1368129695531831
-    },
-    {
-      "path": "/cursos/ingles-intensivo/",
-      "title": "Curso Super Intensivo de Inglés | Matrícula Abierta | Idiomas UCSP",
-      "pageViews": 5063,
-      "users": 2182,
-      "avgSessionDuration": 158.3715974190824,
-      "bounceRate": 0.2898881533896371
-    },
-    {
-      "path": "/arequipa/",
-      "title": "Universidad Católica San Pablo: Expo Carreras",
-      "pageViews": 4745,
-      "users": 3444,
-      "avgSessionDuration": 56.70178427202323,
-      "bounceRate": 0.8117134559535334
-    },
-    {
-      "path": "/modalidades-de-ingreso/",
-      "title": "Conoce las Modalidades de Ingreso | Universidad San Pablo",
-      "pageViews": 4078,
-      "users": 2453,
-      "avgSessionDuration": 158.18368336195587,
-      "bounceRate": 0.12939773404889685
-    },
-    {
-      "path": "/cuota-educativa-medicina/",
-      "title": "Costo de la carrera de Medicina Humana | San Pablo",
-      "pageViews": 4051,
-      "users": 2979,
-      "avgSessionDuration": 120.17415755704882,
-      "bounceRate": 0.17306637410861217
-    },
-    {
-      "path": "/cursos/ingles-regular/",
-      "title": "Curso de Inglés Regular | Idiomas UCSP",
-      "pageViews": 3959,
-      "users": 1691,
-      "avgSessionDuration": 148.0087604932257,
-      "bounceRate": 0.2392620351686365
-    },
-    {
-      "path": "/carreras/medicina/",
-      "title": "Carrera profesional de Medicina Humana | UCSP",
-      "pageViews": 3814,
-      "users": 1781,
-      "avgSessionDuration": 127.14743748798519,
-      "bounceRate": 0.11737523105360444
-    },
-    {
-      "path": "/vive-san-pablo/universidad/transparencia/tramites-academicos-pregrado/",
-      "title": "Trámites académicos pregrado - Universidad Catolica San Pablo",
-      "pageViews": 3677,
-      "users": 2432,
-      "avgSessionDuration": 102.55607410844418,
-      "bounceRate": 0.4650086755349913
+      "path": "/nuevos-nombres-edificios/",
+      "title": "Nuevos nombres de edificios en campus San Lázaro - Universidad Catolica San Pablo",
+      "pageViews": 1017,
+      "users": 548,
+      "avgSessionDuration": 190.7434247092883,
+      "bounceRate": 0.40530759951749096
     },
     {
       "path": "/vive-san-pablo/universidad/transparencia/calendario-academico-pregrado/",
       "title": "Calendario Académico Pregrado - Universidad Catolica San Pablo",
-      "pageViews": 3644,
-      "users": 2590,
-      "avgSessionDuration": 72.13993208426785,
-      "bounceRate": 0.3671900032041012
+      "pageViews": 848,
+      "users": 615,
+      "avgSessionDuration": 66.07341278792342,
+      "bounceRate": 0.32989690721649484
     },
     {
-      "path": "/programa-cat/maestrias/",
-      "title": "Maestrías de especialización | Postgrado UCSP",
-      "pageViews": 3591,
-      "users": 2239,
-      "avgSessionDuration": 104.75596278545454,
-      "bounceRate": 0.10743801652892562
+      "path": "/cuotas-educativas/",
+      "title": "Cuotas Educativas | Universidad Católica San Pablo",
+      "pageViews": 820,
+      "users": 530,
+      "avgSessionDuration": 116.10053960304053,
+      "bounceRate": 0.08783783783783784
     },
     {
-      "path": "/programa-cat/diplomados/",
-      "title": "Diplomados de especialización | Postgrado UCSP",
-      "pageViews": 3587,
-      "users": 2341,
-      "avgSessionDuration": 113.86460614068922,
-      "bounceRate": 0.12298450837812204
+      "path": "/vive-san-pablo/universidad/transparencia/calendario-academico/",
+      "title": "Calendario Académico - Universidad Catolica San Pablo",
+      "pageViews": 797,
+      "users": 549,
+      "avgSessionDuration": 112.67172260629923,
+      "bounceRate": 0.5866141732283464
+    },
+    {
+      "path": "/contenidos-la-evaluacion-proceso-admision/",
+      "title": "Contenidos y Temas del Proceso de Admisión | San Pablo",
+      "pageViews": 772,
+      "users": 370,
+      "avgSessionDuration": 145.5188066088957,
+      "bounceRate": 0.4294478527607362
+    },
+    {
+      "path": "/reingresantes/",
+      "title": "Proceso de Reingresantes | Pregrado | Admisión 13 Febrero",
+      "pageViews": 673,
+      "users": 452,
+      "avgSessionDuration": 98.64910987606113,
+      "bounceRate": 0.10526315789473684
+    },
+    {
+      "path": "/presanpablo/",
+      "title": "Academia preuniversitaria en Arequipa | UCSP",
+      "pageViews": 672,
+      "users": 442,
+      "avgSessionDuration": 109.04940934194832,
+      "bounceRate": 0.08548707753479125
+    },
+    {
+      "path": "/modalidades-de-ingreso/",
+      "title": "Conoce las Modalidades de Ingreso | Universidad San Pablo",
+      "pageViews": 605,
+      "users": 397,
+      "avgSessionDuration": 139.43852752301257,
+      "bounceRate": 0.11506276150627615
+    },
+    {
+      "path": "/segundas-especialidades/educacion-religiosa/",
+      "title": "Segunda Especialidad en Educación Religiosa | Postgrado UCSP",
+      "pageViews": 596,
+      "users": 417,
+      "avgSessionDuration": 182.8286366525912,
+      "bounceRate": 0.2629558541266795
+    },
+    {
+      "path": "/agenda/",
+      "title": "Agenda - Universidad Catolica San Pablo",
+      "pageViews": 537,
+      "users": 278,
+      "avgSessionDuration": 80.08613493059939,
+      "bounceRate": 0.11987381703470032
+    },
+    {
+      "path": "/",
+      "title": "Centro de Idiomas en Arequipa | Idiomas UCSP",
+      "pageViews": 531,
+      "users": 376,
+      "avgSessionDuration": 99.30676409635974,
+      "bounceRate": 0.291220556745182
+    },
+    {
+      "path": "/programa-cat/cursos/",
+      "title": "Cursos y Programas Especializados | Postgrado UCSP",
+      "pageViews": 521,
+      "users": 346,
+      "avgSessionDuration": 143.9793537326087,
+      "bounceRate": 0.14782608695652175
+    },
+    {
+      "path": "/search",
+      "title": "Resultados de búsqueda - Escuela de Postgrado de la Universidad Católica San Pablo",
+      "pageViews": 464,
+      "users": 124,
+      "avgSessionDuration": 90.42399972789116,
+      "bounceRate": 0.09523809523809523
+    },
+    {
+      "path": "/cuota-educativa-medicina/",
+      "title": "Costo de la carrera de Medicina Humana | San Pablo",
+      "pageViews": 450,
+      "users": 360,
+      "avgSessionDuration": 108.77507802736318,
+      "bounceRate": 0.17412935323383086
+    },
+    {
+      "path": "/pregrado/ciencia-computacion/",
+      "title": "Carrera de Ciencia de la Computación | UCSP",
+      "pageViews": 419,
+      "users": 202,
+      "avgSessionDuration": 152.36748816356877,
+      "bounceRate": 0.3048327137546468
     },
     {
       "path": "/tp/",
       "title": "Gracias | Tus Decisiones te Hacen Grande | UCSP",
-      "pageViews": 3442,
-      "users": 2719,
-      "avgSessionDuration": 84.93814333018271,
-      "bounceRate": 0.039067422810333964
+      "pageViews": 395,
+      "users": 325,
+      "avgSessionDuration": 64.68417587165776,
+      "bounceRate": 0.045454545454545456
+    },
+    {
+      "path": "/",
+      "title": "UCSP Landing Simulacro",
+      "pageViews": 367,
+      "users": 315,
+      "avgSessionDuration": 64.54882893030303,
+      "bounceRate": 0.603030303030303
+    },
+    {
+      "path": "/medicina-humana/",
+      "title": "Medicina Humana | Tus Decisiones te Hacen Grande | UCSP",
+      "pageViews": 367,
+      "users": 291,
+      "avgSessionDuration": 134.81134195625,
+      "bounceRate": 0.08125
+    },
+    {
+      "path": "/eventos/charla-presentacion-del-curso-forecasting-con-ia/",
+      "title": "Charla Presentación del Curso Forecasting con IA - Departamento de Ciencia de la Computación | UCSP",
+      "pageViews": 363,
+      "users": 299,
+      "avgSessionDuration": 76.29397349421966,
+      "bounceRate": 0.6445086705202312
+    },
+    {
+      "path": "/guia-del-postulante-ucsp/",
+      "title": "Guía de admisión del postulante | Universidad San Pablo",
+      "pageViews": 360,
+      "users": 216,
+      "avgSessionDuration": 166.13161360062892,
+      "bounceRate": 0.3018867924528302
+    },
+    {
+      "path": "/carreras/medicina/",
+      "title": "Carrera profesional de Medicina Humana | UCSP",
+      "pageViews": 356,
+      "users": 176,
+      "avgSessionDuration": 88.10814807142857,
+      "bounceRate": 0.11224489795918367
     }
   ],
   "landingPages": [
     {
       "page": "/",
-      "sessions": 131882,
-      "users": 92350,
-      "conversions": 7503,
-      "bounceRate": 0.5108051136622132,
-      "engagementRate": 0.4891948863377868
-    },
-    {
-      "page": "(not set)",
-      "sessions": 22727,
-      "users": 15956,
-      "conversions": 61,
-      "bounceRate": 0.9630395564746776,
-      "engagementRate": 0.0369604435253223
-    },
-    {
-      "page": "/arequipa",
-      "sessions": 11457,
-      "users": 9345,
-      "conversions": 11,
-      "bounceRate": 0.7094352797416427,
-      "engagementRate": 0.29056472025835733
-    },
-    {
-      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico",
-      "sessions": 6380,
-      "users": 3873,
-      "conversions": 3,
-      "bounceRate": 0.6713166144200627,
-      "engagementRate": 0.3286833855799373
+      "sessions": 10564,
+      "users": 8673,
+      "conversions": 831,
+      "bounceRate": 0.43260128739113973,
+      "engagementRate": 0.5673987126088603
     },
     {
       "page": "/resultados",
-      "sessions": 4618,
-      "users": 2690,
-      "conversions": 102,
-      "bounceRate": 0.2867042009527934,
-      "engagementRate": 0.7132957990472066
+      "sessions": 2415,
+      "users": 1474,
+      "conversions": 39,
+      "bounceRate": 0.19337474120082815,
+      "engagementRate": 0.8066252587991718
     },
     {
-      "page": "/inscripcion",
-      "sessions": 4275,
-      "users": 2780,
-      "conversions": 163,
-      "bounceRate": 0.3618713450292398,
-      "engagementRate": 0.6381286549707602
-    },
-    {
-      "page": "/cuotas-educativas",
-      "sessions": 4029,
-      "users": 3548,
-      "conversions": 190,
-      "bounceRate": 0.10027302060064532,
-      "engagementRate": 0.8997269793993546
-    },
-    {
-      "page": "/admision-informacion",
-      "sessions": 3537,
-      "users": 2565,
-      "conversions": 279,
-      "bounceRate": 0.32965790217698615,
-      "engagementRate": 0.6703420978230139
-    },
-    {
-      "page": "/carreras",
-      "sessions": 3506,
-      "users": 2996,
-      "conversions": 114,
-      "bounceRate": 0.20108385624643468,
-      "engagementRate": 0.7989161437535653
-    },
-    {
-      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico-pregrado",
-      "sessions": 2557,
-      "users": 2193,
-      "conversions": 17,
-      "bounceRate": 0.42588971450919044,
-      "engagementRate": 0.5741102854908096
-    },
-    {
-      "page": "/vive-san-pablo/universidad/transparencia/tramites-academicos-pregrado",
-      "sessions": 2426,
-      "users": 1870,
-      "conversions": 1,
-      "bounceRate": 0.589035449299258,
-      "engagementRate": 0.41096455070074195
-    },
-    {
-      "page": "/programa-cat/cursos",
-      "sessions": 2377,
-      "users": 1881,
-      "conversions": 49,
-      "bounceRate": 0.22297013041649139,
-      "engagementRate": 0.7770298695835086
+      "page": "(not set)",
+      "sessions": 1671,
+      "users": 1452,
+      "conversions": 7,
+      "bounceRate": 0.9515260323159784,
+      "engagementRate": 0.04847396768402154
     },
     {
       "page": "/vive-san-pablo/universidad/transparencia/reglamento-de-admision-en-pregrado",
-      "sessions": 2198,
-      "users": 1497,
-      "conversions": 23,
-      "bounceRate": 0.6328480436760692,
-      "engagementRate": 0.36715195632393083
+      "sessions": 722,
+      "users": 560,
+      "conversions": 7,
+      "bounceRate": 0.592797783933518,
+      "engagementRate": 0.407202216066482
     },
     {
-      "page": "/cursos/ingles-intensivo",
-      "sessions": 1971,
-      "users": 1202,
-      "conversions": 75,
-      "bounceRate": 0.5083713850837138,
-      "engagementRate": 0.4916286149162861
-    },
-    {
-      "page": "/agenda/club-de-robotica",
-      "sessions": 1947,
-      "users": 1483,
-      "conversions": 15,
-      "bounceRate": 0.3364149974319466,
-      "engagementRate": 0.6635850025680534
-    },
-    {
-      "page": "/biblioteca/biblioteca-digital",
-      "sessions": 1947,
-      "users": 1180,
+      "page": "/nuevos-nombres-edificios",
+      "sessions": 667,
+      "users": 491,
       "conversions": 0,
-      "bounceRate": 0.41859270672829996,
-      "engagementRate": 0.5814072932717
+      "bounceRate": 0.46476761619190404,
+      "engagementRate": 0.5352323838080959
+    },
+    {
+      "page": "/admision-informacion",
+      "sessions": 634,
+      "users": 533,
+      "conversions": 42,
+      "bounceRate": 0.24132492113564669,
+      "engagementRate": 0.7586750788643533
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico",
+      "sessions": 583,
+      "users": 446,
+      "conversions": 2,
+      "bounceRate": 0.7015437392795884,
+      "engagementRate": 0.29845626072041165
+    },
+    {
+      "page": "/vive-san-pablo/universidad/transparencia/calendario-academico-pregrado",
+      "sessions": 579,
+      "users": 537,
+      "conversions": 4,
+      "bounceRate": 0.3609671848013817,
+      "engagementRate": 0.6390328151986183
+    },
+    {
+      "page": "/inscripcion",
+      "sessions": 555,
+      "users": 426,
+      "conversions": 33,
+      "bounceRate": 0.3279279279279279,
+      "engagementRate": 0.6720720720720721
+    },
+    {
+      "page": "/segundas-especialidades/educacion-religiosa",
+      "sessions": 432,
+      "users": 381,
+      "conversions": 30,
+      "bounceRate": 0.26157407407407407,
+      "engagementRate": 0.7384259259259259
     },
     {
       "page": "/contenidos-la-evaluacion-proceso-admision",
-      "sessions": 1932,
-      "users": 929,
-      "conversions": 59,
-      "bounceRate": 0.55175983436853,
-      "engagementRate": 0.44824016563146996
+      "sessions": 404,
+      "users": 244,
+      "conversions": 13,
+      "bounceRate": 0.5693069306930693,
+      "engagementRate": 0.4306930693069307
     },
     {
-      "page": "/vive-san-pablo/universidad/transparencia/plan-de-estudios-derecho",
-      "sessions": 1743,
-      "users": 809,
+      "page": "",
+      "sessions": 394,
+      "users": 365,
       "conversions": 0,
-      "bounceRate": 0.6024096385542169,
-      "engagementRate": 0.39759036144578314
+      "bounceRate": 0.9568527918781726,
+      "engagementRate": 0.04314720812182741
     },
     {
-      "page": "/vive-san-pablo/universidad/transparencia/disposiciones-particulares-sobre-cursos-de-verano",
-      "sessions": 1651,
-      "users": 1265,
+      "page": "/cuotas-educativas",
+      "sessions": 347,
+      "users": 319,
+      "conversions": 14,
+      "bounceRate": 0.12968299711815562,
+      "engagementRate": 0.8703170028818443
+    },
+    {
+      "page": "/eventos/charla-presentacion-del-curso-forecasting-con-ia",
+      "sessions": 306,
+      "users": 278,
+      "conversions": 26,
+      "bounceRate": 0.6862745098039216,
+      "engagementRate": 0.3137254901960784
+    },
+    {
+      "page": "/carreras",
+      "sessions": 288,
+      "users": 265,
+      "conversions": 10,
+      "bounceRate": 0.1736111111111111,
+      "engagementRate": 0.8263888888888888
+    },
+    {
+      "page": "/noticias/san-pablo-universidad-mas-becas-beneficios-economicos-nivel-nacional",
+      "sessions": 274,
+      "users": 255,
       "conversions": 1,
-      "bounceRate": 0.5923682616596002,
-      "engagementRate": 0.4076317383403998
+      "bounceRate": 0.5474452554744526,
+      "engagementRate": 0.45255474452554745
     },
     {
-      "page": "/vive-san-pablo/universidad/transparencia/malla-curricular-administracion-negocios",
-      "sessions": 1568,
-      "users": 999,
-      "conversions": 4,
-      "bounceRate": 0.42857142857142855,
-      "engagementRate": 0.5714285714285714
+      "page": "/programa-cat/cursos",
+      "sessions": 201,
+      "users": 172,
+      "conversions": 10,
+      "bounceRate": 0.21393034825870647,
+      "engagementRate": 0.7860696517412935
+    },
+    {
+      "page": "/cursos",
+      "sessions": 194,
+      "users": 185,
+      "conversions": 12,
+      "bounceRate": 0.25773195876288657,
+      "engagementRate": 0.7422680412371134
+    },
+    {
+      "page": "/ped/ped-modificacion-conductual-ninos-adolescentes-tea-tdah-di",
+      "sessions": 170,
+      "users": 136,
+      "conversions": 8,
+      "bounceRate": 0.35294117647058826,
+      "engagementRate": 0.6470588235294118
+    },
+    {
+      "page": "/guia-del-postulante-ucsp",
+      "sessions": 152,
+      "users": 105,
+      "conversions": 6,
+      "bounceRate": 0.4934210526315789,
+      "engagementRate": 0.506578947368421
     }
   ],
   "geography": {
     "all": [
       {
-        "city": "(not set)",
-        "region": "Lima Province",
-        "users": 46318,
-        "sessions": 68626,
-        "conversions": 2494
-      },
-      {
         "city": "Arequipa",
         "region": "Arequipa",
-        "users": 45330,
-        "sessions": 89435,
-        "conversions": 2626
+        "users": 5072,
+        "sessions": 8364,
+        "conversions": 349
+      },
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 3794,
+        "sessions": 4871,
+        "conversions": 235
       },
       {
         "city": "Cerro Colorado",
         "region": "Arequipa",
-        "users": 16865,
-        "sessions": 26975,
-        "conversions": 914
-      },
-      {
-        "city": "Cusco",
-        "region": "Cusco",
-        "users": 12666,
-        "sessions": 16864,
-        "conversions": 722
+        "users": 1873,
+        "sessions": 2686,
+        "conversions": 132
       },
       {
         "city": "Paucarpata",
         "region": "Arequipa",
-        "users": 10320,
-        "sessions": 16476,
-        "conversions": 508
+        "users": 1175,
+        "sessions": 1681,
+        "conversions": 59
+      },
+      {
+        "city": "Cusco",
+        "region": "Cusco",
+        "users": 1072,
+        "sessions": 1275,
+        "conversions": 65
       },
       {
         "city": "Jose Luis Bustamante",
         "region": "Arequipa",
-        "users": 9469,
-        "sessions": 14694,
-        "conversions": 446
+        "users": 1025,
+        "sessions": 1495,
+        "conversions": 78
+      },
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 979,
+        "sessions": 1236,
+        "conversions": 56
       },
       {
         "city": "Juliaca",
         "region": "Puno",
-        "users": 7277,
-        "sessions": 10644,
-        "conversions": 752
+        "users": 652,
+        "sessions": 931,
+        "conversions": 76
       },
       {
         "city": "Cayma",
         "region": "Arequipa",
-        "users": 6138,
-        "sessions": 9929,
-        "conversions": 306
+        "users": 634,
+        "sessions": 904,
+        "conversions": 29
       },
       {
         "city": "Trujillo",
         "region": "La Libertad",
-        "users": 5422,
-        "sessions": 6796,
-        "conversions": 219
-      },
-      {
-        "city": "(not set)",
-        "region": "Arequipa",
-        "users": 4433,
-        "sessions": 7269,
-        "conversions": 315
+        "users": 628,
+        "sessions": 751,
+        "conversions": 19
       },
       {
         "city": "Piura",
         "region": "Piura",
-        "users": 4409,
-        "sessions": 6081,
-        "conversions": 156
-      },
-      {
-        "city": "Tacna",
-        "region": "Tacna",
-        "users": 4242,
-        "sessions": 6024,
-        "conversions": 270
+        "users": 481,
+        "sessions": 618,
+        "conversions": 20
       },
       {
         "city": "Alto Selva Alegre",
         "region": "Arequipa",
-        "users": 3972,
-        "sessions": 6468,
-        "conversions": 212
+        "users": 430,
+        "sessions": 602,
+        "conversions": 23
+      },
+      {
+        "city": "(not set)",
+        "region": "Arequipa",
+        "users": 404,
+        "sessions": 554,
+        "conversions": 14
+      },
+      {
+        "city": "Tacna",
+        "region": "Tacna",
+        "users": 347,
+        "sessions": 509,
+        "conversions": 33
+      },
+      {
+        "city": "Jacobo Hunter",
+        "region": "Arequipa",
+        "users": 302,
+        "sessions": 410,
+        "conversions": 17
+      },
+      {
+        "city": "Miraflores",
+        "region": "Arequipa",
+        "users": 292,
+        "sessions": 438,
+        "conversions": 21
       },
       {
         "city": "(not set)",
         "region": "(not set)",
-        "users": 3291,
-        "sessions": 3408,
-        "conversions": 9
-      },
-      {
-        "city": "Miraflores",
-        "region": "Arequipa",
-        "users": 3187,
-        "sessions": 4513,
-        "conversions": 132
-      },
-      {
-        "city": "Puno",
-        "region": "Puno",
-        "users": 2670,
-        "sessions": 3769,
-        "conversions": 247
-      },
-      {
-        "city": "Jacobo Hunter",
-        "region": "Arequipa",
-        "users": 2540,
-        "sessions": 4079,
-        "conversions": 96
+        "users": 270,
+        "sessions": 270,
+        "conversions": 2
       },
       {
         "city": "Socabaya",
         "region": "Arequipa",
-        "users": 2493,
-        "sessions": 3911,
-        "conversions": 114
+        "users": 263,
+        "sessions": 368,
+        "conversions": 14
+      },
+      {
+        "city": "Puno",
+        "region": "Puno",
+        "users": 244,
+        "sessions": 312,
+        "conversions": 12
       },
       {
         "city": "Huancayo",
         "region": "Junin",
-        "users": 2139,
-        "sessions": 2575,
-        "conversions": 70
-      },
-      {
-        "city": "Mariano Melgar",
-        "region": "Arequipa",
-        "users": 2113,
-        "sessions": 3280,
-        "conversions": 103
+        "users": 231,
+        "sessions": 263,
+        "conversions": 10
       }
     ],
     "peru": [
       {
-        "city": "(not set)",
-        "region": "Lima Province",
-        "users": 46318,
-        "sessions": 68626,
-        "conversions": 2494
-      },
-      {
         "city": "Arequipa",
         "region": "Arequipa",
-        "users": 45330,
-        "sessions": 89435,
-        "conversions": 2626
+        "users": 5072,
+        "sessions": 8364,
+        "conversions": 349
+      },
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 3794,
+        "sessions": 4871,
+        "conversions": 235
       },
       {
         "city": "Cerro Colorado",
         "region": "Arequipa",
-        "users": 16865,
-        "sessions": 26975,
-        "conversions": 914
-      },
-      {
-        "city": "Cusco",
-        "region": "Cusco",
-        "users": 12666,
-        "sessions": 16864,
-        "conversions": 722
+        "users": 1873,
+        "sessions": 2686,
+        "conversions": 132
       },
       {
         "city": "Paucarpata",
         "region": "Arequipa",
-        "users": 10320,
-        "sessions": 16476,
-        "conversions": 508
+        "users": 1175,
+        "sessions": 1681,
+        "conversions": 59
+      },
+      {
+        "city": "Cusco",
+        "region": "Cusco",
+        "users": 1072,
+        "sessions": 1275,
+        "conversions": 65
       },
       {
         "city": "Jose Luis Bustamante",
         "region": "Arequipa",
-        "users": 9469,
-        "sessions": 14694,
-        "conversions": 446
+        "users": 1025,
+        "sessions": 1495,
+        "conversions": 78
+      },
+      {
+        "city": "(not set)",
+        "region": "Lima Province",
+        "users": 979,
+        "sessions": 1236,
+        "conversions": 56
       },
       {
         "city": "Juliaca",
         "region": "Puno",
-        "users": 7277,
-        "sessions": 10644,
-        "conversions": 752
+        "users": 652,
+        "sessions": 931,
+        "conversions": 76
       },
       {
         "city": "Cayma",
         "region": "Arequipa",
-        "users": 6138,
-        "sessions": 9929,
-        "conversions": 306
-      },
-      {
-        "city": "(not set)",
-        "region": "Arequipa",
-        "users": 4433,
-        "sessions": 7269,
-        "conversions": 315
-      },
-      {
-        "city": "Tacna",
-        "region": "Tacna",
-        "users": 4242,
-        "sessions": 6024,
-        "conversions": 270
+        "users": 634,
+        "sessions": 904,
+        "conversions": 29
       },
       {
         "city": "Alto Selva Alegre",
         "region": "Arequipa",
-        "users": 3972,
-        "sessions": 6468,
-        "conversions": 212
+        "users": 430,
+        "sessions": 602,
+        "conversions": 23
       },
       {
-        "city": "Miraflores",
+        "city": "(not set)",
         "region": "Arequipa",
-        "users": 3187,
-        "sessions": 4513,
-        "conversions": 132
+        "users": 404,
+        "sessions": 554,
+        "conversions": 14
       },
       {
-        "city": "Puno",
-        "region": "Puno",
-        "users": 2670,
-        "sessions": 3769,
-        "conversions": 247
+        "city": "Tacna",
+        "region": "Tacna",
+        "users": 347,
+        "sessions": 509,
+        "conversions": 33
       },
       {
         "city": "Jacobo Hunter",
         "region": "Arequipa",
-        "users": 2540,
-        "sessions": 4079,
-        "conversions": 96
+        "users": 302,
+        "sessions": 410,
+        "conversions": 17
+      },
+      {
+        "city": "Miraflores",
+        "region": "Arequipa",
+        "users": 292,
+        "sessions": 438,
+        "conversions": 21
       },
       {
         "city": "Socabaya",
         "region": "Arequipa",
-        "users": 2493,
-        "sessions": 3911,
-        "conversions": 114
+        "users": 263,
+        "sessions": 368,
+        "conversions": 14
+      },
+      {
+        "city": "Puno",
+        "region": "Puno",
+        "users": 244,
+        "sessions": 312,
+        "conversions": 12
       },
       {
         "city": "Mariano Melgar",
         "region": "Arequipa",
-        "users": 2113,
-        "sessions": 3280,
-        "conversions": 103
-      },
-      {
-        "city": "Ilo",
-        "region": "Moquegua",
-        "users": 1663,
-        "sessions": 2547,
-        "conversions": 100
-      },
-      {
-        "city": "Yanahuara",
-        "region": "Arequipa",
-        "users": 1656,
-        "sessions": 2521,
-        "conversions": 69
-      },
-      {
-        "city": "Moquegua",
-        "region": "Moquegua",
-        "users": 1640,
-        "sessions": 2541,
-        "conversions": 144
+        "users": 179,
+        "sessions": 269,
+        "conversions": 14
       },
       {
         "city": "Sachaca",
         "region": "Arequipa",
-        "users": 1615,
-        "sessions": 2749,
-        "conversions": 62
+        "users": 171,
+        "sessions": 262,
+        "conversions": 8
+      },
+      {
+        "city": "Santa Rosa",
+        "region": "Lima Region",
+        "users": 168,
+        "sessions": 185,
+        "conversions": 5
+      },
+      {
+        "city": "Moquegua",
+        "region": "Moquegua",
+        "users": 161,
+        "sessions": 223,
+        "conversions": 18
+      },
+      {
+        "city": "Yanahuara",
+        "region": "Arequipa",
+        "users": 155,
+        "sessions": 206,
+        "conversions": 11
       }
     ]
   },
   "devices": [
     {
       "device": "mobile",
-      "users": 133018,
-      "sessions": 206139,
-      "conversions": 9261,
-      "engagementRate": 0.4915809235515841
+      "users": 14247,
+      "sessions": 20433,
+      "conversions": 1100,
+      "engagementRate": 0.5746586404345911
     },
     {
       "device": "desktop",
-      "users": 83210,
-      "sessions": 170755,
-      "conversions": 3065,
-      "engagementRate": 0.577289098415859
+      "users": 9105,
+      "sessions": 14895,
+      "conversions": 361,
+      "engagementRate": 0.5879825444780128
     },
     {
       "device": "tablet",
-      "users": 2079,
-      "sessions": 3091,
-      "conversions": 56,
-      "engagementRate": 0.4548689744419282
-    },
-    {
-      "device": "smart tv",
-      "users": 4,
-      "sessions": 4,
-      "conversions": 0,
-      "engagementRate": 0.5
+      "users": 195,
+      "sessions": 258,
+      "conversions": 8,
+      "engagementRate": 0.6085271317829457
     }
   ],
   "campaigns": [
@@ -6371,469 +6393,442 @@
       "campaign": "(organic)",
       "source": "google",
       "medium": "organic",
-      "sessions": 196980,
-      "users": 99802,
-      "conversions": 4248,
-      "engagementRate": 0.604035942735303
+      "sessions": 19556,
+      "users": 11931,
+      "conversions": 494,
+      "engagementRate": 0.6395991000204541
     },
     {
       "campaign": "(direct)",
       "source": "(direct)",
       "medium": "(none)",
-      "sessions": 45433,
-      "users": 33160,
-      "conversions": 990,
-      "engagementRate": 0.46778773138467633
-    },
-    {
-      "campaign": "admision",
-      "source": "facebook",
-      "medium": "cpc",
-      "sessions": 16663,
-      "users": 13836,
-      "conversions": 511,
-      "engagementRate": 0.24017283802436537
-    },
-    {
-      "campaign": "admision",
-      "source": "tiktok",
-      "medium": "paid",
-      "sessions": 6921,
-      "users": 6622,
-      "conversions": 38,
-      "engagementRate": 0.055916775032509754
-    },
-    {
-      "campaign": "Search - UCSP",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 6358,
-      "users": 4827,
-      "conversions": 1160,
-      "engagementRate": 0.7050959421201636
-    },
-    {
-      "campaign": "Search Admisión",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 5933,
-      "users": 4281,
-      "conversions": 983,
-      "engagementRate": 0.7092533288386988
+      "sessions": 3864,
+      "users": 3183,
+      "conversions": 113,
+      "engagementRate": 0.46221532091097306
     },
     {
       "campaign": "ADM_FEB_2026_TRAFICO_PATROCINIOS_18_25_REGION_SUR_23012026",
       "source": "facebook",
       "medium": "paid",
-      "sessions": 5870,
-      "users": 5324,
-      "conversions": 36,
-      "engagementRate": 0.2080068143100511
-    },
-    {
-      "campaign": "Youtube - Branding #2",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 3741,
-      "users": 3273,
-      "conversions": 49,
-      "engagementRate": 0.28120823309275594
-    },
-    {
-      "campaign": "(organic)",
-      "source": "bing",
-      "medium": "organic",
-      "sessions": 3691,
-      "users": 2004,
-      "conversions": 71,
-      "engagementRate": 0.6272013004605798
-    },
-    {
-      "campaign": "6990577397230",
-      "source": "an",
-      "medium": "paid",
-      "sessions": 3576,
-      "users": 2960,
-      "conversions": 0,
-      "engagementRate": 0.16806487695749442
-    },
-    {
-      "campaign": "(referral)",
-      "source": "m.facebook.com",
-      "medium": "referral",
-      "sessions": 3537,
-      "users": 3269,
-      "conversions": 84,
-      "engagementRate": 0.332767882386203
-    },
-    {
-      "campaign": "ADM_FEB_2026_CONVERSIONES_AON_18_25_2312025",
-      "source": "facebook",
-      "medium": "paid",
-      "sessions": 3404,
-      "users": 2816,
-      "conversions": 328,
-      "engagementRate": 0.3096357226792009
-    },
-    {
-      "campaign": "(organic)",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 3354,
-      "users": 2515,
-      "conversions": 734,
-      "engagementRate": 0.7376267143709004
+      "sessions": 1236,
+      "users": 1164,
+      "conversions": 5,
+      "engagementRate": 0.22006472491909385
     },
     {
       "campaign": "WANTED_PLANIFICACION_SEARCH_AON_PROCESO",
       "source": "google",
       "medium": "cpc",
-      "sessions": 2400,
-      "users": 1942,
-      "conversions": 579,
-      "engagementRate": 0.73375
-    },
-    {
-      "campaign": "(referral)",
-      "source": "chatgpt.com",
-      "medium": "referral",
-      "sessions": 2046,
-      "users": 1434,
-      "conversions": 69,
-      "engagementRate": 0.6344086021505376
-    },
-    {
-      "campaign": "6990577397230",
-      "source": "fb",
-      "medium": "paid",
-      "sessions": 1851,
-      "users": 1732,
-      "conversions": 0,
-      "engagementRate": 0.12479740680713128
-    },
-    {
-      "campaign": "EVENTO_2026_CONVERSIONES_EXAMEN_SIMULACRO_EVE_16_24_12012026",
-      "source": "facebook",
-      "medium": "paid",
-      "sessions": 1838,
-      "users": 1617,
-      "conversions": 3,
-      "engagementRate": 0.5081610446137106
-    },
-    {
-      "campaign": "(referral)",
-      "source": "lm.facebook.com",
-      "medium": "referral",
-      "sessions": 1641,
-      "users": 1422,
-      "conversions": 51,
-      "engagementRate": 0.7020109689213894
-    },
-    {
-      "campaign": "WANTED_SEARCH_AON_BRAND_UNIVERSIDAD",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 1543,
-      "users": 1219,
-      "conversions": 363,
-      "engagementRate": 0.7913156189241737
-    },
-    {
-      "campaign": "admision",
-      "source": "tiktok",
-      "medium": "cpc",
-      "sessions": 1522,
-      "users": 1443,
-      "conversions": 20,
-      "engagementRate": 0.07095926412614981
-    },
-    {
-      "campaign": "(referral)",
-      "source": "pe.search.yahoo.com",
-      "medium": "referral",
-      "sessions": 1517,
-      "users": 756,
-      "conversions": 36,
-      "engagementRate": 0.6031641397495056
+      "sessions": 1133,
+      "users": 933,
+      "conversions": 263,
+      "engagementRate": 0.7175639894086496
     },
     {
       "campaign": "website",
       "source": "sendgrid.com",
       "medium": "email",
-      "sessions": 1426,
-      "users": 792,
-      "conversions": 5,
-      "engagementRate": 0.5315568022440392
+      "sessions": 834,
+      "users": 488,
+      "conversions": 6,
+      "engagementRate": 0.5371702637889688
     },
     {
-      "campaign": "(referral)",
-      "source": "ucsp.bitrix24.es",
-      "medium": "referral",
-      "sessions": 1394,
-      "users": 55,
-      "conversions": 76,
-      "engagementRate": 0.7137733142037302
-    },
-    {
-      "campaign": "(referral)",
-      "source": "google",
-      "medium": "cpc",
-      "sessions": 1373,
-      "users": 1217,
-      "conversions": 30,
-      "engagementRate": 0.40349599417334303
-    },
-    {
-      "campaign": "6992533190230",
-      "source": "an",
-      "medium": "paid",
-      "sessions": 1330,
-      "users": 942,
-      "conversions": 1,
-      "engagementRate": 0.2729323308270677
-    },
-    {
-      "campaign": "proceso_feb2026_ucsp",
+      "campaign": "ADM_MAR_2026_CONVERSIONES_AON_18_50_05022026",
       "source": "facebook",
-      "medium": "paid_social",
-      "sessions": 1304,
-      "users": 1145,
-      "conversions": 0,
-      "engagementRate": 0.11809815950920245
+      "medium": "paid",
+      "sessions": 684,
+      "users": 597,
+      "conversions": 99,
+      "engagementRate": 0.4342105263157895
     },
     {
-      "campaign": "PMAX - Admisión",
+      "campaign": "ADM_FEB_2026_CONVERSIONES_AON_18_25_2312025",
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 642,
+      "users": 599,
+      "conversions": 55,
+      "engagementRate": 0.2819314641744548
+    },
+    {
+      "campaign": "(referral)",
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "sessions": 519,
+      "users": 505,
+      "conversions": 18,
+      "engagementRate": 0.41811175337186895
+    },
+    {
+      "campaign": "WANTED_SEARCH_AON_BRAND_COMPETENCIA",
       "source": "google",
       "medium": "cpc",
-      "sessions": 1302,
-      "users": 1011,
-      "conversions": 195,
-      "engagementRate": 0.6536098310291859
+      "sessions": 384,
+      "users": 320,
+      "conversions": 66,
+      "engagementRate": 0.7578125
+    },
+    {
+      "campaign": "WANTED_SEARCH_AON_BRAND_UNIVERSIDAD",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 361,
+      "users": 272,
+      "conversions": 85,
+      "engagementRate": 0.7700831024930748
+    },
+    {
+      "campaign": "52503728053834",
+      "source": "fb",
+      "medium": "paid",
+      "sessions": 344,
+      "users": 341,
+      "conversions": 0,
+      "engagementRate": 0.15988372093023256
+    },
+    {
+      "campaign": "(organic)",
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 329,
+      "users": 217,
+      "conversions": 5,
+      "engagementRate": 0.6352583586626139
     },
     {
       "campaign": "WANTED_PLANIFICACION_PMAX_AON_BRAND_ADMISIÓN",
       "source": "google",
       "medium": "cpc",
-      "sessions": 1296,
-      "users": 1059,
-      "conversions": 256,
-      "engagementRate": 0.6952160493827161
+      "sessions": 327,
+      "users": 269,
+      "conversions": 55,
+      "engagementRate": 0.6391437308868502
+    },
+    {
+      "campaign": "simulacro",
+      "source": "facebook",
+      "medium": "cpc",
+      "sessions": 206,
+      "users": 206,
+      "conversions": 0,
+      "engagementRate": 0.25728155339805825
+    },
+    {
+      "campaign": "(referral)",
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "sessions": 199,
+      "users": 181,
+      "conversions": 14,
+      "engagementRate": 0.7135678391959799
+    },
+    {
+      "campaign": "WANTED_VIDEO_CONV_AON_BRAND",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 188,
+      "users": 168,
+      "conversions": 5,
+      "engagementRate": 0.2712765957446808
+    },
+    {
+      "campaign": "UCSP_FormaciónContinua_Febrero_Tráfico_ForecastingConIA_030226",
+      "source": "facebook",
+      "medium": "paid",
+      "sessions": 187,
+      "users": 181,
+      "conversions": 0,
+      "engagementRate": 0.1657754010695187
+    },
+    {
+      "campaign": "WANTED_PLANIFICACION_PMAX_AON_BRAND_CARRERAS",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 175,
+      "users": 158,
+      "conversions": 25,
+      "engagementRate": 0.64
+    },
+    {
+      "campaign": "admision",
+      "source": "facebook",
+      "medium": "cpc",
+      "sessions": 159,
+      "users": 159,
+      "conversions": 0,
+      "engagementRate": 0.4025157232704403
+    },
+    {
+      "campaign": "(referral)",
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 156,
+      "users": 114,
+      "conversions": 6,
+      "engagementRate": 0.6602564102564102
+    },
+    {
+      "campaign": "(referral)",
+      "source": "facebook.com",
+      "medium": "referral",
+      "sessions": 147,
+      "users": 146,
+      "conversions": 0,
+      "engagementRate": 0.6870748299319728
+    },
+    {
+      "campaign": "(referral)",
+      "source": "pe.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 132,
+      "users": 84,
+      "conversions": 6,
+      "engagementRate": 0.6287878787878788
+    },
+    {
+      "campaign": "Campaña Leads UCSP Formacion Continua FB IG 2022",
+      "source": "Facebook Instagram",
+      "medium": "Leads UCSP",
+      "sessions": 126,
+      "users": 115,
+      "conversions": 11,
+      "engagementRate": 0.6984126984126984
+    },
+    {
+      "campaign": "(referral)",
+      "source": "l.facebook.com",
+      "medium": "referral",
+      "sessions": 122,
+      "users": 85,
+      "conversions": 5,
+      "engagementRate": 0.5491803278688525
+    },
+    {
+      "campaign": "(referral)",
+      "source": "ucsp.bitrix24.es",
+      "medium": "referral",
+      "sessions": 117,
+      "users": 21,
+      "conversions": 15,
+      "engagementRate": 0.6837606837606838
+    },
+    {
+      "campaign": "(referral)",
+      "source": "l.instagram.com",
+      "medium": "referral",
+      "sessions": 107,
+      "users": 99,
+      "conversions": 5,
+      "engagementRate": 0.5233644859813084
+    },
+    {
+      "campaign": "WANTED_SEARCH_REFUERZO_ADMISION",
+      "source": "google",
+      "medium": "cpc",
+      "sessions": 92,
+      "users": 58,
+      "conversions": 13,
+      "engagementRate": 0.7065217391304348
     }
   ],
   "events": {
     "all": [
       {
         "event": "page_view",
-        "count": 732342,
-        "users": 216593,
+        "count": 75744,
+        "users": 23262,
         "conversions": 0
       },
       {
         "event": "user_engagement",
-        "count": 446280,
-        "users": 129163,
+        "count": 48971,
+        "users": 14599,
         "conversions": 0
       },
       {
         "event": "session_start",
-        "count": 378777,
-        "users": 216569,
+        "count": 35415,
+        "users": 23289,
         "conversions": 0
       },
       {
         "event": "scroll",
-        "count": 205508,
-        "users": 80497,
+        "count": 21631,
+        "users": 9579,
         "conversions": 0
       },
       {
         "event": "first_visit",
-        "count": 188663,
-        "users": 190269,
+        "count": 15423,
+        "users": 15381,
         "conversions": 0
       },
       {
         "event": "click",
-        "count": 53148,
-        "users": 22049,
+        "count": 11357,
+        "users": 3631,
         "conversions": 0
       },
       {
         "event": "click_whatsapp",
-        "count": 5867,
-        "users": 4638,
-        "conversions": 5867
+        "count": 729,
+        "users": 599,
+        "conversions": 729
       },
       {
         "event": "form_admision",
-        "count": 5185,
-        "users": 3777,
-        "conversions": 5185
-      },
-      {
-        "event": "liderazgo_form_contacto",
-        "count": 3853,
-        "users": 1562,
-        "conversions": 0
+        "count": 565,
+        "users": 433,
+        "conversions": 565
       },
       {
         "event": "file_download",
-        "count": 3699,
-        "users": 2465,
+        "count": 396,
+        "users": 280,
         "conversions": 0
       },
       {
         "event": "video_progress",
-        "count": 1223,
-        "users": 309,
-        "conversions": 0
-      },
-      {
-        "event": "click_email",
-        "count": 1077,
-        "users": 628,
-        "conversions": 0
-      },
-      {
-        "event": "view_search_results",
-        "count": 496,
-        "users": 253,
-        "conversions": 0
-      },
-      {
-        "event": "click_telefono",
-        "count": 422,
-        "users": 282,
-        "conversions": 0
-      },
-      {
-        "event": "video_start",
-        "count": 380,
-        "users": 337,
+        "count": 115,
+        "users": 30,
         "conversions": 0
       },
       {
         "event": "form_informacion_postgrado",
-        "count": 375,
-        "users": 295,
-        "conversions": 375
+        "count": 84,
+        "users": 65,
+        "conversions": 84
       },
       {
-        "event": "form_contacto_web",
-        "count": 368,
-        "users": 311,
-        "conversions": 368
-      },
-      {
-        "event": "click_wsp_idiomas",
-        "count": 365,
-        "users": 311,
-        "conversions": 365
-      },
-      {
-        "event": "video_complete",
-        "count": 201,
-        "users": 188,
+        "event": "click_email",
+        "count": 76,
+        "users": 45,
         "conversions": 0
       },
       {
-        "event": "solicitar_información",
-        "count": 86,
-        "users": 79,
+        "event": "click_telefono",
+        "count": 40,
+        "users": 32,
+        "conversions": 0
+      },
+      {
+        "event": "view_search_results",
+        "count": 40,
+        "users": 30,
+        "conversions": 0
+      },
+      {
+        "event": "form_webinar",
+        "count": 36,
+        "users": 27,
+        "conversions": 36
+      },
+      {
+        "event": "video_start",
+        "count": 34,
+        "users": 33,
+        "conversions": 0
+      },
+      {
+        "event": "form_contacto_web",
+        "count": 30,
+        "users": 26,
+        "conversions": 30
+      },
+      {
+        "event": "click_wsp_idiomas",
+        "count": 17,
+        "users": 16,
+        "conversions": 17
+      },
+      {
+        "event": "video_complete",
+        "count": 16,
+        "users": 15,
+        "conversions": 0
+      },
+      {
+        "event": "liderazgo_form_contacto",
+        "count": 9,
+        "users": 7,
         "conversions": 0
       }
     ],
     "conversions": [
       {
         "event": "click_whatsapp",
-        "count": 5867,
-        "users": 4638,
-        "conversions": 5867
+        "count": 729,
+        "users": 599,
+        "conversions": 729
       },
       {
         "event": "form_admision",
-        "count": 5185,
-        "users": 3777,
-        "conversions": 5185
-      },
-      {
-        "event": "liderazgo_form_contacto",
-        "count": 3853,
-        "users": 1562,
-        "conversions": 0
+        "count": 565,
+        "users": 433,
+        "conversions": 565
       },
       {
         "event": "form_informacion_postgrado",
-        "count": 375,
-        "users": 295,
-        "conversions": 375
+        "count": 84,
+        "users": 65,
+        "conversions": 84
+      },
+      {
+        "event": "form_webinar",
+        "count": 36,
+        "users": 27,
+        "conversions": 36
       },
       {
         "event": "form_contacto_web",
-        "count": 368,
-        "users": 311,
-        "conversions": 368
+        "count": 30,
+        "users": 26,
+        "conversions": 30
       },
       {
         "event": "click_wsp_idiomas",
-        "count": 365,
-        "users": 311,
-        "conversions": 365
+        "count": 17,
+        "users": 16,
+        "conversions": 17
+      },
+      {
+        "event": "liderazgo_form_contacto",
+        "count": 9,
+        "users": 7,
+        "conversions": 0
       },
       {
         "event": "solicitar_información",
-        "count": 86,
-        "users": 79,
+        "count": 5,
+        "users": 5,
         "conversions": 0
       },
       {
         "event": "form_contacto",
-        "count": 67,
-        "users": 58,
-        "conversions": 67
+        "count": 3,
+        "users": 3,
+        "conversions": 3
       },
       {
         "event": "form_idiomas",
-        "count": 57,
-        "users": 46,
-        "conversions": 57
-      },
-      {
-        "event": "form_webinar",
-        "count": 43,
-        "users": 32,
-        "conversions": 43
-      },
-      {
-        "event": "form_blog",
-        "count": 35,
-        "users": 26,
-        "conversions": 35
+        "count": 3,
+        "users": 3,
+        "conversions": 3
       },
       {
         "event": "form_agenda",
-        "count": 13,
-        "users": 11,
-        "conversions": 13
-      },
-      {
-        "event": "form_campaña_descubre",
-        "count": 7,
-        "users": 7,
-        "conversions": 7
-      },
-      {
-        "event": "form_opendayadspro_informacion",
-        "count": 1,
-        "users": 1,
-        "conversions": 0
+        "count": 2,
+        "users": 2,
+        "conversions": 2
       }
     ]
   },
   "metadata": {
     "method": "Google Analytics Data API v1beta",
-    "lookback_days": 90,
-    "mode": "full",
+    "lookback_days": 7,
+    "mode": "incremental",
     "last_full_run": "2026-02-09T14:53:48.000Z"
   }
 }

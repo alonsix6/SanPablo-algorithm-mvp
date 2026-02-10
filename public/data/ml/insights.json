@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-02-09T14:53:48.110Z",
+  "generated_at": "2026-02-10T14:23:31.519Z",
   "insights": [
     {
       "id": "tiktok_top_hashtag",
       "type": "tiktok",
       "priority": "medium",
       "title": "#voltaasaulas lidera en TikTok",
-      "description": "0 visualizaciones y 127.0K posts",
+      "description": "0 visualizaciones y 120.0K posts",
       "action": "Crear contenido usando este hashtag trending",
       "growth": "+0%",
       "confidence": 0.75,
