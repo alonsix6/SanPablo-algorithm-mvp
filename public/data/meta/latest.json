@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-11T14:16:09.769Z",
+  "timestamp": "2026-02-12T14:10:18.258Z",
   "source": "Meta/Facebook Social Listening",
   "region": "LATAM",
   "category": "Social Listening",
@@ -14,7 +14,7 @@
           "topic": "Admisión 2026",
           "mentions": 0,
           "engagement_score": 5,
-          "growth": "-87%",
+          "growth": "-100%",
           "sentiment": "neutral",
           "top_brands": [
             "UCSP",
@@ -45,7 +45,7 @@
           "topic": "Carreras Universitarias",
           "mentions": 0,
           "engagement_score": 5,
-          "growth": "-71%",
+          "growth": "-77%",
           "sentiment": "neutral",
           "top_brands": [],
           "avg_reactions": 0,
@@ -56,7 +56,7 @@
           "topic": "Vida Universitaria",
           "mentions": 0,
           "engagement_score": 5,
-          "growth": "-81%",
+          "growth": "-88%",
           "sentiment": "neutral",
           "top_brands": [],
           "avg_reactions": 0,
@@ -67,7 +67,7 @@
           "topic": "Investigación y Posgrado",
           "mentions": 0,
           "engagement_score": 5,
-          "growth": "-71%",
+          "growth": "-91%",
           "sentiment": "neutral",
           "top_brands": [],
           "avg_reactions": 0,
@@ -79,7 +79,7 @@
         "pages_monitored": [
           "https://www.facebook.com/UCSPoficial"
         ],
-        "total_posts_analyzed": 0,
+        "total_posts_analyzed": 1,
         "total_comments_analyzed": 0,
         "timeframe": "Last 30 days"
       }
@@ -90,7 +90,7 @@
       "topic": "Admisión 2026",
       "mentions": 0,
       "engagement_score": 5,
-      "growth": "-87%",
+      "growth": "-100%",
       "sentiment": "neutral",
       "top_brands": [
         "UCSP",
@@ -121,7 +121,7 @@
       "topic": "Carreras Universitarias",
       "mentions": 0,
       "engagement_score": 5,
-      "growth": "-71%",
+      "growth": "-77%",
       "sentiment": "neutral",
       "top_brands": [],
       "avg_reactions": 0,
@@ -132,7 +132,7 @@
       "topic": "Vida Universitaria",
       "mentions": 0,
       "engagement_score": 5,
-      "growth": "-81%",
+      "growth": "-88%",
       "sentiment": "neutral",
       "top_brands": [],
       "avg_reactions": 0,
@@ -143,7 +143,7 @@
       "topic": "Investigación y Posgrado",
       "mentions": 0,
       "engagement_score": 5,
-      "growth": "-71%",
+      "growth": "-91%",
       "sentiment": "neutral",
       "top_brands": [],
       "avg_reactions": 0,
@@ -156,7 +156,7 @@
     "actor": "social-listening-meta",
     "note": "Datos reales de Facebook via scraping",
     "timeframe": "Last 30 days",
-    "posts_analyzed": 0,
+    "posts_analyzed": 1,
     "comments_analyzed": 0,
     "pages_analyzed": 1,
     "topics_configured": 5
