@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-13T14:03:30.622Z",
+  "timestamp": "2026-02-14T13:44:29.157Z",
   "source": "HubSpot CRM API",
   "region": "PE",
   "category": "CRM Data",
   "client": "UCSP - Universidad Católica San Pablo",
   "contacts": {
-    "total": 154982,
+    "total": 155018,
     "lifecycle_distribution": {
       "opportunity": 89185,
       "marketingqualifiedlead": 230,
@@ -16,14 +16,14 @@
       "salesqualifiedlead": 3
     },
     "source_distribution": {
-      "DIRECT_TRAFFIC": 37097,
-      "PAID_SOCIAL": 58829,
-      "PAID_SEARCH": 10464,
-      "ORGANIC_SEARCH": 9345,
-      "AI_REFERRALS": 61,
-      "SOCIAL_MEDIA": 2749,
-      "EMAIL_MARKETING": 232,
-      "OFFLINE": 35301,
+      "DIRECT_TRAFFIC": 37098,
+      "PAID_SOCIAL": 58841,
+      "PAID_SEARCH": 10473,
+      "ORGANIC_SEARCH": 9349,
+      "AI_REFERRALS": 62,
+      "SOCIAL_MEDIA": 2750,
+      "EMAIL_MARKETING": 233,
+      "OFFLINE": 35308,
       "REFERRALS": 733,
       "OTHER_CAMPAIGNS": 171
     },
@@ -31,7 +31,7 @@
     "avg_conversions_per_contact": 1.05,
     "monthly_creation": {
       "2026-01": 7223,
-      "2026-02": 1458,
+      "2026-02": 1494,
       "2025-12": 1858,
       "2025-11": 3836,
       "2025-10": 5193,
@@ -85,7 +85,7 @@
       "2026-02-04": 93,
       "2026-02-05": 61,
       "2026-02-06": 61,
-      "2026-02-07": 140,
+      "2026-02-07": 57,
       "2026-02-08": 127,
       "2026-02-09": 145,
       "2025-12-11": 70,
@@ -775,10 +775,11 @@
       "2024-02-17": 117,
       "2024-02-18": 145,
       "2024-02-19": 241,
-      "2026-02-10": 123,
-      "2026-02-11": 144,
-      "2026-02-12": 132,
-      "2026-02-13": 82
+      "2026-02-10": 122,
+      "2026-02-11": 143,
+      "2026-02-12": 131,
+      "2026-02-13": 138,
+      "2026-02-14": 66
     },
     "daily_by_source": {
       "2026-01-10": {
@@ -1040,11 +1041,11 @@
         "AI_REFERRALS": 1
       },
       "2026-02-07": {
-        "DIRECT_TRAFFIC": 7,
-        "PAID_SOCIAL": 101,
-        "OFFLINE": 7,
-        "PAID_SEARCH": 15,
-        "ORGANIC_SEARCH": 10
+        "PAID_SOCIAL": 31,
+        "ORGANIC_SEARCH": 8,
+        "DIRECT_TRAFFIC": 3,
+        "OFFLINE": 5,
+        "PAID_SEARCH": 10
       },
       "2026-02-08": {
         "PAID_SOCIAL": 108,
@@ -6900,9 +6901,9 @@
       "2026-02-10": {
         "ORGANIC_SEARCH": 14,
         "PAID_SOCIAL": 90,
-        "OFFLINE": 9,
-        "PAID_SEARCH": 4,
-        "DIRECT_TRAFFIC": 4,
+        "OFFLINE": 8,
+        "PAID_SEARCH": 5,
+        "DIRECT_TRAFFIC": 3,
         "REFERRALS": 2
       },
       "2026-02-11": {
@@ -6910,76 +6911,85 @@
         "ORGANIC_SEARCH": 12,
         "OFFLINE": 12,
         "DIRECT_TRAFFIC": 10,
-        "PAID_SEARCH": 9,
+        "PAID_SEARCH": 8,
         "SOCIAL_MEDIA": 2,
         "AI_REFERRALS": 1
       },
       "2026-02-12": {
         "PAID_SOCIAL": 98,
-        "DIRECT_TRAFFIC": 6,
+        "DIRECT_TRAFFIC": 5,
         "ORGANIC_SEARCH": 8,
         "OFFLINE": 9,
         "PAID_SEARCH": 10,
         "AI_REFERRALS": 1
       },
       "2026-02-13": {
-        "ORGANIC_SEARCH": 4,
-        "PAID_SOCIAL": 69,
-        "PAID_SEARCH": 5,
-        "DIRECT_TRAFFIC": 4
+        "ORGANIC_SEARCH": 8,
+        "PAID_SOCIAL": 94,
+        "PAID_SEARCH": 12,
+        "DIRECT_TRAFFIC": 11,
+        "OFFLINE": 10,
+        "SOCIAL_MEDIA": 1,
+        "AI_REFERRALS": 1,
+        "EMAIL_MARKETING": 1
+      },
+      "2026-02-14": {
+        "PAID_SOCIAL": 57,
+        "ORGANIC_SEARCH": 2,
+        "PAID_SEARCH": 7
       }
     }
   },
   "deals": {
-    "total": 191485,
+    "total": 191538,
     "pipeline_distribution": {
-      "Formación Continua": 43542,
-      "Pregrado": 71598,
-      "Centro de Idiomas": 15056,
-      "Postgrado PED": 3152,
-      "Postgrado Maestrías": 26446,
+      "Formación Continua": 43530,
+      "Pregrado": 71631,
+      "Centro de Idiomas": 15063,
+      "Postgrado PED": 3163,
+      "Postgrado Maestrías": 26459,
       "Postgrado Diplomados": 24648,
-      "CENDES": 3573,
+      "CENDES": 3574,
       "Pregrado Matrículas": 2025,
       "Pregrado Colegios": 1445
     },
     "stage_distribution": {
       "Formación Continua": {
-        "Nuevo Lead": 34697,
+        "Nuevo Lead": 34675,
         "Cierre perdido": 2373,
-        "Cierres ganados": 6265,
+        "Cierres ganados": 6270,
         "En seguimiento de cobranza": 61,
-        "Interesado": 133,
+        "Interesado": 138,
         "Ficha Inscripción Enviada y canales de pago": 9,
         "Pagado/ Enviados enlaces de conexión": 1,
         "unknown": 3
       },
       "Pregrado": {
-        "En Seguimiento": 3679,
-        "Nuevo Lead": 55193,
-        "Pagada Pre matrícula/ganado": 10768,
-        "Aplicaciones/Documentos correctos": 684,
-        "Inscrito en aplicaciones": 135,
+        "En Seguimiento": 3697,
+        "Nuevo Lead": 55205,
+        "Pagada Pre matrícula/ganado": 10769,
+        "Aplicaciones/Documentos correctos": 688,
+        "Inscrito en aplicaciones": 134,
         "Cierre perdido": 597,
-        "Pre-inscritos sin pago": 542
+        "Pre-inscritos sin pago": 541
       },
       "Centro de Idiomas": {
-        "Nuevo Lead": 11697,
+        "Nuevo Lead": 11700,
         "Cierre ganado": 2409,
         "Cierre perdido": 931,
         "En seguimiento de cobranza": 3,
-        "Interesado": 18
+        "Interesado": 22
       },
       "Postgrado PED": {
         "Cierre perdido": 150,
         "Cierre ganado": 228,
-        "Nuevo Lead": 2753,
-        "Interesado": 20,
+        "Nuevo Lead": 2765,
+        "Interesado": 19,
         "En Seguimiento de Cobranza": 1
       },
       "Postgrado Maestrías": {
-        "Nuevo Lead": 25034,
-        "Interesado": 40,
+        "Nuevo Lead": 25048,
+        "Interesado": 39,
         "En proceso de Admisión": 15,
         "Cierre perdido": 787,
         "Ficha y Requisitos enviados": 1,
@@ -6987,8 +6997,8 @@
         "En seguimiento de Cobranza": 1
       },
       "Postgrado Diplomados": {
-        "Nuevo Lead": 23119,
-        "Interesado": 27,
+        "Nuevo Lead": 23120,
+        "Interesado": 26,
         "Cierre ganado": 725,
         "Cierre perdido": 774,
         "En seguimiento de cobranza": 3
@@ -6996,7 +7006,7 @@
       "CENDES": {
         "No adjudicado": 625,
         "Ejecutado": 1605,
-        "En evaluación": 76,
+        "En evaluación": 77,
         "En proceso": 10,
         "En ejecución": 8,
         "No cotizado": 458,
@@ -7006,13 +7016,13 @@
         "Stand by": 50
       },
       "Pregrado Matrículas": {
-        "Cierre perdido": 557,
-        "Pago sin matrícula": 251,
+        "Cierre perdido": 565,
+        "Pago sin matrícula": 275,
         "Matrícula documentaria": 144,
         "Validación de documentos": 36,
-        "Ingresante": 903,
-        "Contactado": 43,
-        "Interesado": 91
+        "Ingresante": 762,
+        "Contactado": 44,
+        "Interesado": 199
       },
       "Pregrado Colegios": {
         "Contactos ganados": 1441,
@@ -7022,29 +7032,29 @@
     },
     "won_lost_by_pipeline": {
       "Formación Continua": {
-        "won": 6265,
+        "won": 6270,
         "lost": 2373,
-        "total": 43542
+        "total": 43530
       },
       "Pregrado": {
-        "won": 10768,
+        "won": 10769,
         "lost": 597,
-        "total": 71598
+        "total": 71631
       },
       "Centro de Idiomas": {
         "won": 2409,
         "lost": 931,
-        "total": 15056
+        "total": 15063
       },
       "Postgrado PED": {
         "won": 228,
         "lost": 150,
-        "total": 3152
+        "total": 3163
       },
       "Postgrado Maestrías": {
         "won": 568,
         "lost": 787,
-        "total": 26446
+        "total": 26459
       },
       "Postgrado Diplomados": {
         "won": 725,
@@ -7054,11 +7064,11 @@
       "CENDES": {
         "won": 1623,
         "lost": 0,
-        "total": 3573
+        "total": 3574
       },
       "Pregrado Matrículas": {
         "won": 0,
-        "lost": 557,
+        "lost": 565,
         "total": 2025
       },
       "Pregrado Colegios": {
@@ -7069,11 +7079,11 @@
     },
     "source_by_pipeline": {
       "Formación Continua": {
-        "OFFLINE": 7274,
-        "ORGANIC_SEARCH": 2588,
-        "PAID_SOCIAL": 29731,
-        "PAID_SEARCH": 735,
-        "DIRECT_TRAFFIC": 1905,
+        "OFFLINE": 7273,
+        "ORGANIC_SEARCH": 2593,
+        "PAID_SOCIAL": 29718,
+        "PAID_SEARCH": 734,
+        "DIRECT_TRAFFIC": 1903,
         "AI_REFERRALS": 15,
         "EMAIL_MARKETING": 73,
         "SOCIAL_MEDIA": 859,
@@ -7082,35 +7092,35 @@
         "unknown": 46
       },
       "Pregrado": {
-        "DIRECT_TRAFFIC": 22080,
-        "PAID_SEARCH": 15342,
-        "PAID_SOCIAL": 9296,
-        "ORGANIC_SEARCH": 9011,
+        "DIRECT_TRAFFIC": 22087,
+        "PAID_SEARCH": 15353,
+        "PAID_SOCIAL": 9301,
+        "ORGANIC_SEARCH": 9017,
         "OTHER_CAMPAIGNS": 99,
-        "OFFLINE": 12963,
+        "OFFLINE": 12966,
         "SOCIAL_MEDIA": 2092,
-        "REFERRALS": 565,
+        "REFERRALS": 566,
         "EMAIL_MARKETING": 80,
         "AI_REFERRALS": 12,
         "unknown": 58
       },
       "Centro de Idiomas": {
-        "PAID_SOCIAL": 8153,
-        "OFFLINE": 4246,
+        "PAID_SOCIAL": 8156,
+        "OFFLINE": 4248,
         "DIRECT_TRAFFIC": 787,
         "PAID_SEARCH": 293,
-        "ORGANIC_SEARCH": 1218,
+        "ORGANIC_SEARCH": 1219,
         "SOCIAL_MEDIA": 144,
         "REFERRALS": 171,
         "OTHER_CAMPAIGNS": 10,
-        "EMAIL_MARKETING": 13,
+        "EMAIL_MARKETING": 14,
         "unknown": 23
       },
       "Postgrado PED": {
-        "PAID_SOCIAL": 2336,
-        "OFFLINE": 429,
+        "PAID_SOCIAL": 2345,
+        "OFFLINE": 432,
         "DIRECT_TRAFFIC": 106,
-        "ORGANIC_SEARCH": 195,
+        "ORGANIC_SEARCH": 194,
         "SOCIAL_MEDIA": 28,
         "AI_REFERRALS": 4,
         "REFERRALS": 12,
@@ -7120,33 +7130,33 @@
         "unknown": 1
       },
       "Postgrado Maestrías": {
-        "PAID_SOCIAL": 22017,
+        "PAID_SOCIAL": 22030,
         "OFFLINE": 2235,
-        "DIRECT_TRAFFIC": 538,
-        "SOCIAL_MEDIA": 235,
+        "DIRECT_TRAFFIC": 536,
+        "SOCIAL_MEDIA": 236,
         "ORGANIC_SEARCH": 1043,
         "OTHER_CAMPAIGNS": 79,
         "PAID_SEARCH": 248,
-        "AI_REFERRALS": 4,
+        "AI_REFERRALS": 5,
         "REFERRALS": 39,
         "unknown": 5,
         "EMAIL_MARKETING": 3
       },
       "Postgrado Diplomados": {
-        "OFFLINE": 1958,
-        "PAID_SOCIAL": 20729,
-        "DIRECT_TRAFFIC": 476,
+        "OFFLINE": 1955,
+        "PAID_SOCIAL": 20730,
+        "DIRECT_TRAFFIC": 477,
         "PAID_SEARCH": 222,
         "ORGANIC_SEARCH": 1017,
         "OTHER_CAMPAIGNS": 29,
-        "REFERRALS": 41,
+        "REFERRALS": 42,
         "SOCIAL_MEDIA": 155,
         "AI_REFERRALS": 1,
         "unknown": 14,
         "EMAIL_MARKETING": 6
       },
       "CENDES": {
-        "OFFLINE": 1333,
+        "OFFLINE": 1334,
         "unknown": 2164,
         "PAID_SEARCH": 21,
         "PAID_SOCIAL": 22,
@@ -7172,26 +7182,26 @@
       }
     },
     "revenue": {
-      "total": 631293821.952385,
+      "total": 631489460.952385,
       "by_pipeline": {
-        "Formación Continua": 30250999.252385017,
-        "Centro de Idiomas": 9455638.5,
-        "Postgrado PED": 7614056.52,
-        "Postgrado Maestrías": 456218724.5,
-        "Postgrado Diplomados": 101628867.94999999,
-        "Pregrado": 10692954,
+        "Formación Continua": 30253690.252385017,
+        "Centro de Idiomas": 9460868.5,
+        "Postgrado PED": 7638474.52,
+        "Postgrado Maestrías": 456331654.5,
+        "Postgrado Diplomados": 101624632.94999999,
+        "Pregrado": 10696819,
         "CENDES": 14508731.23,
-        "Pregrado Matrículas": 923350,
+        "Pregrado Matrículas": 974090,
         "Pregrado Colegios": 500
       },
-      "avg_deal_value": 3296.83
+      "avg_deal_value": 3296.94
     },
     "win_rate": 79.6,
-    "won_deals": 24027,
-    "lost_deals": 6169,
+    "won_deals": 24033,
+    "lost_deals": 6177,
     "monthly_deals": {
       "2026-01": 10250,
-      "2026-02": 3509,
+      "2026-02": 3562,
       "2025-12": 4735,
       "2025-11": 3810,
       "2025-10": 6149,
@@ -7938,13 +7948,14 @@
       "2024-02-17": 215,
       "2024-02-18": 227,
       "2024-02-19": 409,
-      "2026-02-07": 262,
+      "2026-02-07": 118,
       "2026-02-08": 215,
       "2026-02-09": 340,
-      "2026-02-10": 290,
-      "2026-02-11": 319,
+      "2026-02-10": 289,
+      "2026-02-11": 318,
       "2026-02-12": 681,
-      "2026-02-13": 137
+      "2026-02-13": 228,
+      "2026-02-14": 108
     },
     "daily_by_pipeline": {
       "2026-01-10": {
@@ -13600,11 +13611,11 @@
         "Postgrado PED": 16
       },
       "2026-02-07": {
-        "Postgrado Maestrías": 93,
-        "Formación Continua": 51,
-        "Pregrado": 60,
-        "Postgrado Diplomados": 32,
-        "Postgrado PED": 26
+        "Postgrado PED": 13,
+        "Postgrado Maestrías": 38,
+        "Pregrado": 40,
+        "Formación Continua": 14,
+        "Postgrado Diplomados": 13
       },
       "2026-02-08": {
         "Postgrado PED": 29,
@@ -13624,7 +13635,7 @@
         "CENDES": 53
       },
       "2026-02-10": {
-        "Pregrado": 125,
+        "Pregrado": 124,
         "Postgrado Maestrías": 77,
         "Postgrado PED": 26,
         "Postgrado Diplomados": 20,
@@ -13633,7 +13644,7 @@
         "CENDES": 1
       },
       "2026-02-11": {
-        "Pregrado": 111,
+        "Pregrado": 110,
         "Postgrado PED": 33,
         "Postgrado Maestrías": 93,
         "Formación Continua": 23,
@@ -13652,12 +13663,21 @@
         "CENDES": 37
       },
       "2026-02-13": {
-        "Postgrado PED": 17,
-        "Pregrado": 24,
-        "Postgrado Diplomados": 15,
-        "Postgrado Maestrías": 64,
-        "Formación Continua": 13,
-        "Centro de Idiomas": 4
+        "Postgrado PED": 25,
+        "Pregrado": 58,
+        "Postgrado Diplomados": 26,
+        "Postgrado Maestrías": 80,
+        "Formación Continua": 29,
+        "Centro de Idiomas": 9,
+        "CENDES": 1
+      },
+      "2026-02-14": {
+        "Postgrado Maestrías": 52,
+        "Pregrado": 21,
+        "Postgrado PED": 16,
+        "Formación Continua": 9,
+        "Postgrado Diplomados": 8,
+        "Centro de Idiomas": 2
       }
     },
     "daily_by_pipeline_stage": {
@@ -17327,13 +17347,13 @@
           "Cierres ganados": 15
         },
         "2026-02-07": {
-          "Nuevo Lead": 48,
-          "Interesado": 2,
+          "Nuevo Lead": 12,
+          "Interesado": 1,
           "Cierres ganados": 1
         },
         "2026-02-08": {
-          "Nuevo Lead": 43,
-          "Interesado": 1,
+          "Nuevo Lead": 42,
+          "Interesado": 2,
           "Cierres ganados": 1
         },
         "2026-02-09": {
@@ -17354,13 +17374,18 @@
           "En seguimiento de cobranza": 1
         },
         "2026-02-12": {
-          "Nuevo Lead": 20,
-          "Cierres ganados": 3,
-          "Interesado": 2,
+          "Nuevo Lead": 18,
+          "Cierres ganados": 4,
+          "Interesado": 3,
           "En seguimiento de cobranza": 1
         },
         "2026-02-13": {
-          "Nuevo Lead": 13
+          "Nuevo Lead": 21,
+          "Cierres ganados": 4,
+          "Interesado": 4
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 9
         }
       },
       "Pregrado": {
@@ -21694,11 +21719,10 @@
           "Cierre perdido": 3
         },
         "2026-02-07": {
-          "En Seguimiento": 26,
-          "Nuevo Lead": 30,
-          "Pagada Pre matrícula/ganado": 2,
-          "Inscrito en aplicaciones": 1,
-          "Aplicaciones/Documentos correctos": 1
+          "En Seguimiento": 20,
+          "Aplicaciones/Documentos correctos": 2,
+          "Nuevo Lead": 17,
+          "Pagada Pre matrícula/ganado": 1
         },
         "2026-02-08": {
           "En Seguimiento": 16,
@@ -21709,35 +21733,38 @@
         "2026-02-09": {
           "En Seguimiento": 38,
           "Pagada Pre matrícula/ganado": 34,
-          "Nuevo Lead": 39,
-          "Aplicaciones/Documentos correctos": 6
+          "Nuevo Lead": 38,
+          "Aplicaciones/Documentos correctos": 7
         },
         "2026-02-10": {
-          "Pagada Pre matrícula/ganado": 41,
+          "Pagada Pre matrícula/ganado": 43,
           "Nuevo Lead": 35,
-          "En Seguimiento": 39,
+          "En Seguimiento": 38,
           "Cierre perdido": 2,
-          "Aplicaciones/Documentos correctos": 7,
-          "Pre-inscritos sin pago": 1
+          "Aplicaciones/Documentos correctos": 6
         },
         "2026-02-11": {
           "Cierre perdido": 1,
-          "Aplicaciones/Documentos correctos": 7,
+          "Aplicaciones/Documentos correctos": 8,
           "Pagada Pre matrícula/ganado": 41,
           "En Seguimiento": 25,
-          "Nuevo Lead": 36,
-          "Inscrito en aplicaciones": 1
+          "Nuevo Lead": 35
         },
         "2026-02-12": {
           "Aplicaciones/Documentos correctos": 6,
-          "Nuevo Lead": 21,
-          "En Seguimiento": 29,
+          "Nuevo Lead": 20,
+          "En Seguimiento": 30,
           "Pagada Pre matrícula/ganado": 5,
           "Inscrito en aplicaciones": 2
         },
         "2026-02-13": {
-          "Nuevo Lead": 20,
-          "En Seguimiento": 4
+          "En Seguimiento": 28,
+          "Nuevo Lead": 27,
+          "Aplicaciones/Documentos correctos": 2,
+          "Inscrito en aplicaciones": 1
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 21
         }
       },
       "Centro de Idiomas": {
@@ -24830,11 +24857,16 @@
           "Nuevo Lead": 11
         },
         "2026-02-12": {
-          "Nuevo Lead": 9,
+          "Nuevo Lead": 8,
+          "Interesado": 1,
           "Cierre ganado": 2
         },
         "2026-02-13": {
-          "Nuevo Lead": 4
+          "Nuevo Lead": 6,
+          "Interesado": 3
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 2
         }
       },
       "Postgrado PED": {
@@ -26371,8 +26403,7 @@
           "Cierre perdido": 2
         },
         "2026-02-07": {
-          "Nuevo Lead": 25,
-          "Interesado": 1
+          "Nuevo Lead": 13
         },
         "2026-02-08": {
           "Nuevo Lead": 28,
@@ -26393,7 +26424,10 @@
           "Cierre ganado": 1
         },
         "2026-02-13": {
-          "Nuevo Lead": 17
+          "Nuevo Lead": 25
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 16
         }
       },
       "Postgrado Maestrías": {
@@ -28987,8 +29021,7 @@
           "Pagado/Cierre ganado": 2
         },
         "2026-02-07": {
-          "Nuevo Lead": 87,
-          "Interesado": 2,
+          "Nuevo Lead": 34,
           "En proceso de Admisión": 4
         },
         "2026-02-08": {
@@ -29011,7 +29044,11 @@
           "Interesado": 4
         },
         "2026-02-13": {
-          "Nuevo Lead": 64
+          "Nuevo Lead": 79,
+          "Interesado": 1
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 52
         }
       },
       "Postgrado Diplomados": {
@@ -31446,8 +31483,7 @@
           "Nuevo Lead": 24
         },
         "2026-02-07": {
-          "Nuevo Lead": 31,
-          "Interesado": 1
+          "Nuevo Lead": 13
         },
         "2026-02-08": {
           "Nuevo Lead": 17
@@ -31468,7 +31504,10 @@
           "Interesado": 1
         },
         "2026-02-13": {
-          "Nuevo Lead": 15
+          "Nuevo Lead": 26
+        },
+        "2026-02-14": {
+          "Nuevo Lead": 8
         }
       },
       "CENDES": {
@@ -32476,6 +32515,9 @@
         },
         "2026-02-12": {
           "Ejecutado": 37
+        },
+        "2026-02-13": {
+          "En evaluación": 1
         }
       },
       "Pregrado Matrículas": {
@@ -32489,11 +32531,12 @@
           "Interesado": 16
         },
         "2026-02-12": {
-          "Ingresante": 322,
-          "Interesado": 75,
-          "Cierre perdido": 20,
+          "Interesado": 183,
+          "Ingresante": 181,
+          "Cierre perdido": 28,
+          "Pago sin matrícula": 27,
           "Matrícula documentaria": 1,
-          "Pago sin matrícula": 3
+          "Contactado": 1
         }
       },
       "Pregrado Colegios": {
@@ -38414,10 +38457,8 @@
           "EMAIL_MARKETING": 1
         },
         "2026-02-07": {
-          "PAID_SEARCH": 1,
-          "PAID_SOCIAL": 40,
-          "OFFLINE": 7,
-          "DIRECT_TRAFFIC": 2,
+          "PAID_SOCIAL": 11,
+          "OFFLINE": 2,
           "ORGANIC_SEARCH": 1
         },
         "2026-02-08": {
@@ -38454,8 +38495,14 @@
           "OFFLINE": 2
         },
         "2026-02-13": {
-          "PAID_SOCIAL": 12,
-          "PAID_SEARCH": 1
+          "PAID_SOCIAL": 20,
+          "PAID_SEARCH": 1,
+          "OFFLINE": 4,
+          "ORGANIC_SEARCH": 4
+        },
+        "2026-02-14": {
+          "PAID_SOCIAL": 8,
+          "ORGANIC_SEARCH": 1
         }
       },
       "Pregrado": {
@@ -44551,12 +44598,12 @@
           "REFERRALS": 2
         },
         "2026-02-07": {
-          "DIRECT_TRAFFIC": 8,
-          "PAID_SEARCH": 21,
-          "OFFLINE": 13,
-          "PAID_SOCIAL": 7,
-          "ORGANIC_SEARCH": 9,
-          "SOCIAL_MEDIA": 2
+          "ORGANIC_SEARCH": 8,
+          "OFFLINE": 8,
+          "PAID_SEARCH": 13,
+          "SOCIAL_MEDIA": 2,
+          "PAID_SOCIAL": 4,
+          "DIRECT_TRAFFIC": 5
         },
         "2026-02-08": {
           "PAID_SOCIAL": 13,
@@ -44577,10 +44624,10 @@
           "OTHER_CAMPAIGNS": 2
         },
         "2026-02-10": {
-          "PAID_SEARCH": 25,
-          "OFFLINE": 50,
+          "PAID_SEARCH": 26,
+          "OFFLINE": 49,
           "ORGANIC_SEARCH": 24,
-          "DIRECT_TRAFFIC": 13,
+          "DIRECT_TRAFFIC": 12,
           "PAID_SOCIAL": 11,
           "REFERRALS": 2
         },
@@ -44589,25 +44636,32 @@
           "OFFLINE": 37,
           "ORGANIC_SEARCH": 15,
           "DIRECT_TRAFFIC": 23,
-          "PAID_SEARCH": 24,
+          "PAID_SEARCH": 23,
           "SOCIAL_MEDIA": 3,
           "REFERRALS": 1
         },
         "2026-02-12": {
           "OFFLINE": 18,
-          "DIRECT_TRAFFIC": 12,
+          "DIRECT_TRAFFIC": 11,
           "PAID_SEARCH": 17,
-          "ORGANIC_SEARCH": 7,
+          "ORGANIC_SEARCH": 8,
           "PAID_SOCIAL": 7,
           "SOCIAL_MEDIA": 2
         },
         "2026-02-13": {
-          "ORGANIC_SEARCH": 4,
-          "OFFLINE": 1,
-          "PAID_SEARCH": 8,
-          "DIRECT_TRAFFIC": 6,
-          "PAID_SOCIAL": 4,
-          "REFERRALS": 1
+          "ORGANIC_SEARCH": 7,
+          "OFFLINE": 8,
+          "PAID_SEARCH": 18,
+          "DIRECT_TRAFFIC": 15,
+          "PAID_SOCIAL": 8,
+          "REFERRALS": 2
+        },
+        "2026-02-14": {
+          "OFFLINE": 2,
+          "ORGANIC_SEARCH": 3,
+          "PAID_SEARCH": 9,
+          "DIRECT_TRAFFIC": 3,
+          "PAID_SOCIAL": 4
         }
       },
       "Centro de Idiomas": {
@@ -48697,7 +48751,13 @@
           "OFFLINE": 3
         },
         "2026-02-13": {
-          "PAID_SOCIAL": 4
+          "PAID_SOCIAL": 5,
+          "EMAIL_MARKETING": 1,
+          "OFFLINE": 2,
+          "ORGANIC_SEARCH": 1
+        },
+        "2026-02-14": {
+          "PAID_SOCIAL": 2
         }
       },
       "Postgrado PED": {
@@ -50473,8 +50533,7 @@
           "PAID_SEARCH": 1
         },
         "2026-02-07": {
-          "PAID_SOCIAL": 21,
-          "ORGANIC_SEARCH": 2,
+          "PAID_SOCIAL": 10,
           "DIRECT_TRAFFIC": 1,
           "OFFLINE": 2
         },
@@ -50507,8 +50566,13 @@
           "DIRECT_TRAFFIC": 1
         },
         "2026-02-13": {
-          "OFFLINE": 2,
-          "PAID_SOCIAL": 15
+          "OFFLINE": 3,
+          "PAID_SOCIAL": 21,
+          "ORGANIC_SEARCH": 1
+        },
+        "2026-02-14": {
+          "PAID_SOCIAL": 14,
+          "OFFLINE": 2
         }
       },
       "Postgrado Maestrías": {
@@ -54139,10 +54203,9 @@
           "ORGANIC_SEARCH": 1
         },
         "2026-02-07": {
-          "OFFLINE": 11,
-          "PAID_SOCIAL": 74,
-          "ORGANIC_SEARCH": 6,
-          "DIRECT_TRAFFIC": 2
+          "PAID_SOCIAL": 27,
+          "ORGANIC_SEARCH": 5,
+          "OFFLINE": 6
         },
         "2026-02-08": {
           "PAID_SOCIAL": 73,
@@ -54180,9 +54243,15 @@
           "DIRECT_TRAFFIC": 2
         },
         "2026-02-13": {
-          "PAID_SOCIAL": 60,
-          "OFFLINE": 3,
-          "SOCIAL_MEDIA": 1
+          "PAID_SOCIAL": 73,
+          "OFFLINE": 4,
+          "SOCIAL_MEDIA": 2,
+          "AI_REFERRALS": 1
+        },
+        "2026-02-14": {
+          "PAID_SOCIAL": 47,
+          "OFFLINE": 4,
+          "ORGANIC_SEARCH": 1
         }
       },
       "Postgrado Diplomados": {
@@ -57475,8 +57544,8 @@
           "OFFLINE": 1
         },
         "2026-02-07": {
-          "OFFLINE": 6,
-          "PAID_SOCIAL": 26
+          "PAID_SOCIAL": 12,
+          "OFFLINE": 1
         },
         "2026-02-08": {
           "PAID_SOCIAL": 16,
@@ -57504,8 +57573,14 @@
         },
         "2026-02-13": {
           "ORGANIC_SEARCH": 1,
-          "PAID_SOCIAL": 13,
-          "OFFLINE": 1
+          "PAID_SOCIAL": 22,
+          "OFFLINE": 2,
+          "DIRECT_TRAFFIC": 1
+        },
+        "2026-02-14": {
+          "PAID_SOCIAL": 6,
+          "OFFLINE": 1,
+          "REFERRALS": 1
         }
       },
       "CENDES": {
@@ -58320,6 +58395,9 @@
           "unknown": 21,
           "OFFLINE": 13,
           "PAID_SEARCH": 3
+        },
+        "2026-02-13": {
+          "OFFLINE": 1
         }
       },
       "Pregrado Matrículas": {
@@ -64224,11 +64302,11 @@
         "Postgrado PED": 39800
       },
       "2026-02-07": {
-        "Postgrado Maestrías": 690700,
-        "Formación Continua": 22150,
-        "Postgrado Diplomados": 146890,
-        "Postgrado PED": 56636,
-        "Pregrado": 2670
+        "Postgrado PED": 28018,
+        "Postgrado Maestrías": 239560,
+        "Pregrado": 2080,
+        "Formación Continua": 6195,
+        "Postgrado Diplomados": 58500
       },
       "2026-02-08": {
         "Postgrado PED": 63659,
@@ -64244,11 +64322,11 @@
         "Postgrado PED": 71375,
         "Centro de Idiomas": 3418,
         "Postgrado Diplomados": 94980,
-        "Pregrado": 23645,
+        "Pregrado": 24095,
         "CENDES": 15342
       },
       "2026-02-10": {
-        "Pregrado": 30340,
+        "Pregrado": 30790,
         "Postgrado Maestrías": 607110,
         "Postgrado PED": 57118,
         "Postgrado Diplomados": 91315,
@@ -64267,19 +64345,27 @@
       "2026-02-12": {
         "Postgrado Diplomados": 85735,
         "Postgrado PED": 55759,
-        "Pregrado": 8600,
+        "Pregrado": 9190,
         "Postgrado Maestrías": 707730,
         "Formación Continua": 12718,
         "Centro de Idiomas": 5345,
-        "Pregrado Matrículas": 69620,
+        "Pregrado Matrículas": 120360,
         "CENDES": 6073
       },
       "2026-02-13": {
-        "Postgrado PED": 36418,
-        "Postgrado Diplomados": 70310,
-        "Postgrado Maestrías": 501910,
-        "Formación Continua": 8820,
-        "Centro de Idiomas": 1894
+        "Postgrado PED": 54418,
+        "Postgrado Diplomados": 117295,
+        "Postgrado Maestrías": 679730,
+        "Formación Continua": 22906,
+        "Centro de Idiomas": 6014,
+        "Pregrado": 2965
+      },
+      "2026-02-14": {
+        "Postgrado Maestrías": 386250,
+        "Postgrado PED": 35036,
+        "Formación Continua": 4560,
+        "Postgrado Diplomados": 37170,
+        "Centro de Idiomas": 1110
       }
     }
   },
@@ -64287,30 +64373,30 @@
     "total": 134,
     "active_count": 46,
     "total_budget": 357282.502,
-    "total_spend": 543245.3400000001,
-    "budget_utilization": 152,
+    "total_spend": 543598.2840000001,
+    "budget_utilization": 152.1,
     "daily_spend": {
-      "2026-02-06": 577.99,
-      "2026-02-07": 577.99,
-      "2026-02-08": 577.99,
-      "2026-02-09": 432.78,
-      "2026-02-10": 432.78,
-      "2026-02-11": 432.78,
-      "2026-02-12": 432.78,
-      "2026-02-13": 432.78,
-      "2026-02-14": 432.78,
-      "2026-02-15": 432.78,
-      "2026-02-16": 432.78,
-      "2026-02-17": 432.78,
-      "2026-02-18": 432.78,
-      "2026-02-19": 432.78,
-      "2026-02-20": 432.78,
-      "2026-02-21": 432.78,
-      "2026-02-22": 432.78,
-      "2026-02-23": 432.78,
-      "2026-02-24": 432.78,
-      "2026-02-25": 432.78,
-      "2026-02-26": 432.78,
+      "2026-02-06": 594.8,
+      "2026-02-07": 594.8,
+      "2026-02-08": 594.8,
+      "2026-02-09": 449.59,
+      "2026-02-10": 449.59,
+      "2026-02-11": 449.59,
+      "2026-02-12": 449.59,
+      "2026-02-13": 449.59,
+      "2026-02-14": 449.59,
+      "2026-02-15": 449.59,
+      "2026-02-16": 449.59,
+      "2026-02-17": 449.59,
+      "2026-02-18": 449.59,
+      "2026-02-19": 449.59,
+      "2026-02-20": 449.59,
+      "2026-02-21": 449.59,
+      "2026-02-22": 449.59,
+      "2026-02-23": 449.59,
+      "2026-02-24": 449.59,
+      "2026-02-25": 449.59,
+      "2026-02-26": 449.59,
       "2025-12-11": 145.21,
       "2025-12-12": 145.21,
       "2025-12-13": 145.21,
@@ -66492,7 +66578,7 @@
         "start_date": "2026-02-06",
         "end_date": "2026-02-26",
         "budget": 12198,
-        "spend": 9088.422,
+        "spend": 9441.366,
         "utm": "37675155-Admisión Marzo 2026"
       },
       {
@@ -66594,7 +66680,7 @@
         "start_date": "2026-02-06",
         "end_date": "2026-02-26",
         "budget": 12198,
-        "spend": 9088.422,
+        "spend": 9441.366,
         "utm": "37675155-Admisión Marzo 2026"
       },
       {
@@ -66800,8 +66886,8 @@
       "budget": 7041.4,
       "revenue": null,
       "contacts_attributed": 7365,
-      "deals_attributed": 10268,
-      "revenue_attributed": 1139808.27,
+      "deals_attributed": 10275,
+      "revenue_attributed": 1141321.21,
       "ad_campaigns": [
         {
           "id": "23862206308300066",
@@ -66822,9 +66908,9 @@
       "spend": 265961.506,
       "budget": 12471.599999999999,
       "revenue": null,
-      "contacts_attributed": 6547,
-      "deals_attributed": 9516,
-      "revenue_attributed": 830305.94,
+      "contacts_attributed": 6545,
+      "deals_attributed": 9519,
+      "revenue_attributed": 830558.64,
       "ad_campaigns": [
         {
           "id": "120210886931650067",
@@ -66850,8 +66936,8 @@
       "budget": 0,
       "revenue": null,
       "contacts_attributed": 6066,
-      "deals_attributed": 8499,
-      "revenue_attributed": 598587.21,
+      "deals_attributed": 8501,
+      "revenue_attributed": 598778.69,
       "ad_campaigns": []
     },
     {
@@ -66863,9 +66949,9 @@
       "spend": 0,
       "budget": 0,
       "revenue": null,
-      "contacts_attributed": 8919,
-      "deals_attributed": 12280,
-      "revenue_attributed": 528297.71,
+      "contacts_attributed": 8917,
+      "deals_attributed": 12281,
+      "revenue_attributed": 528499.28,
       "ad_campaigns": []
     },
     {
@@ -66882,12 +66968,12 @@
       "revenue_attributed": 169871.39,
       "ad_campaigns": [
         {
-          "id": "120215079953770649",
-          "name": "UCSP_Postgrado_Maestria_Junio_2025_Conversiones_DirecciónDeLaConstrucción_PautaAbierta_271224"
-        },
-        {
           "id": "23849539096460648",
           "name": "UCSP_Postgrado_Maestría_Febrero_ClientesPotenciales_DireccióndelaConstrucción_090222"
+        },
+        {
+          "id": "120215079953770649",
+          "name": "UCSP_Postgrado_Maestria_Junio_2025_Conversiones_DirecciónDeLaConstrucción_PautaAbierta_271224"
         },
         {
           "id": "120218201596910649",
@@ -66940,8 +67026,8 @@
       "budget": 0,
       "revenue": null,
       "contacts_attributed": 1493,
-      "deals_attributed": 2063,
-      "revenue_attributed": 122602.24,
+      "deals_attributed": 2064,
+      "revenue_attributed": 122627.73,
       "ad_campaigns": []
     },
     {
@@ -67168,8 +67254,8 @@
       "budget": 23753.534,
       "revenue": null,
       "contacts_attributed": 626,
-      "deals_attributed": 946,
-      "revenue_attributed": 78366.08,
+      "deals_attributed": 947,
+      "revenue_attributed": 78380.4,
       "ad_campaigns": [
         {
           "id": "120213427748340081",
@@ -67184,12 +67270,12 @@
           "name": "UCSP_Admisión_OpenDay_Setiembre_2024_Conversiones_CampañaGeneral_PautaAbierta_290824"
         },
         {
-          "id": "120213426211930081",
-          "name": "UCSP_Admisión_OpenDay_Setiembre_2024_Conversiones_CampañaGeneral_PautaRemarketing_290824"
-        },
-        {
           "id": "120213590009870081",
           "name": "UCSP_Admisión_OpenDay_Setiembre_2024_Alcance_CampañaPostulantes_PautaAbierta_050924"
+        },
+        {
+          "id": "120213426211930081",
+          "name": "UCSP_Admisión_OpenDay_Setiembre_2024_Conversiones_CampañaGeneral_PautaRemarketing_290824"
         },
         {
           "id": "120213427020490081",
@@ -67218,9 +67304,9 @@
       "spend": 8693.032,
       "budget": 12597,
       "revenue": null,
-      "contacts_attributed": 84,
-      "deals_attributed": 98,
-      "revenue_attributed": 67085.54,
+      "contacts_attributed": 85,
+      "deals_attributed": 99,
+      "revenue_attributed": 67250.76,
       "ad_campaigns": [
         {
           "id": "120215360956760075",
@@ -67295,20 +67381,20 @@
           "name": "UCSP_Postgrado_Maestria_Julio_2025_ClientesPotenciales_CienciaDeDatos_PautaAbierta_Acelerada_130325"
         },
         {
-          "id": "120225953302710075",
-          "name": "UCSP_Postgrado_Maestria_Julio_2025_ClientesPotenciales_CienciaDeDatos_PautaAbierta_Acelerada_040625"
-        },
-        {
           "id": "120218178665000075",
           "name": "UCSP_Postgrado_Maestria_Julio_2025_Conversiones_CienciaDeDatos_PautaAbierta_3_200125"
         },
         {
-          "id": "120223944808600075",
-          "name": "UCSP_Postgrado_Maestria_Julio_2025_ClientesPotenciales_CienciaDeDatos_PautaAbierta_Acelerada_060525"
+          "id": "120225953302710075",
+          "name": "UCSP_Postgrado_Maestria_Julio_2025_ClientesPotenciales_CienciaDeDatos_PautaAbierta_Acelerada_040625"
         },
         {
           "id": "120225949521610075",
           "name": "UCSP_Postgrado_Charla_Maestria_Junio_2025_Conversiones_CienciaDeDatos_100625"
+        },
+        {
+          "id": "120223944808600075",
+          "name": "UCSP_Postgrado_Maestria_Julio_2025_ClientesPotenciales_CienciaDeDatos_PautaAbierta_Acelerada_060525"
         },
         {
           "id": "120214923172140075",
@@ -67371,8 +67457,8 @@
       "budget": 0,
       "revenue": null,
       "contacts_attributed": 509,
-      "deals_attributed": 672,
-      "revenue_attributed": 50178.22,
+      "deals_attributed": 673,
+      "revenue_attributed": 50208.5,
       "ad_campaigns": []
     },
     {
@@ -67386,7 +67472,7 @@
       "revenue": null,
       "contacts_attributed": 586,
       "deals_attributed": 973,
-      "revenue_attributed": 49775.93,
+      "revenue_attributed": 49788.11,
       "ad_campaigns": [
         {
           "id": "120206024429310067",
@@ -67471,9 +67557,9 @@
       "spend": 0,
       "budget": 0,
       "revenue": null,
-      "contacts_attributed": 410,
-      "deals_attributed": 529,
-      "revenue_attributed": 39407.74,
+      "contacts_attributed": 411,
+      "deals_attributed": 530,
+      "revenue_attributed": 39412.74,
       "ad_campaigns": []
     },
     {
@@ -67485,9 +67571,9 @@
       "spend": 13841.119999999999,
       "budget": 6251,
       "revenue": null,
-      "contacts_attributed": 496,
-      "deals_attributed": 665,
-      "revenue_attributed": 37326.58,
+      "contacts_attributed": 495,
+      "deals_attributed": 663,
+      "revenue_attributed": 37263.55,
       "ad_campaigns": [
         {
           "id": "120201598809050067",
@@ -67513,8 +67599,8 @@
       "budget": 12557.974,
       "revenue": null,
       "contacts_attributed": 103,
-      "deals_attributed": 153,
-      "revenue_attributed": 35496.87,
+      "deals_attributed": 154,
+      "revenue_attributed": 35499.88,
       "ad_campaigns": [
         {
           "id": "120206885029520075",
@@ -67856,12 +67942,12 @@
           "name": "UCSP_PED_Febrero_ClientesPotenciales_PED_GestióndelTalentoHumano_030222"
         },
         {
-          "id": "23849775978140252",
-          "name": "UCSP_PED_Febrero_ClientesPotenciales_PED_GestiónTributaria_030222"
-        },
-        {
           "id": "23849774712170252",
           "name": "UCSP_PED_Febrero_ClientesPotenciales_PED_GestiónLogística_030222"
+        },
+        {
+          "id": "23849775978140252",
+          "name": "UCSP_PED_Febrero_ClientesPotenciales_PED_GestiónTributaria_030222"
         },
         {
           "id": "23849776015900252",
@@ -67909,8 +67995,8 @@
       "budget": 0,
       "revenue": null,
       "contacts_attributed": 167,
-      "deals_attributed": 198,
-      "revenue_attributed": 18742.75,
+      "deals_attributed": 199,
+      "revenue_attributed": 18969.68,
       "ad_campaigns": []
     },
     {
@@ -68135,8 +68221,8 @@
       "budget": 0,
       "revenue": null,
       "contacts_attributed": 189,
-      "deals_attributed": 201,
-      "revenue_attributed": 15765.16,
+      "deals_attributed": 203,
+      "revenue_attributed": 15891.55,
       "ad_campaigns": [
         {
           "id": "6995517879430",
@@ -68236,20 +68322,20 @@
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - RTB - Impacto en la sociedad   [27.07 al 04.08]"
         },
         {
-          "id": "23847883092470066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Carreras Bajas - Ing Industrial  [12.07 al 25.07]"
-        },
-        {
           "id": "23847975711060066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 -  Cierre de inscripciones - [26.07 al 04.08]"
         },
         {
-          "id": "23847883103630066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - RTB - Internacional  [13.07 al 16.07]"
+          "id": "23847883092470066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Carreras Bajas - Ing Industrial  [12.07 al 25.07]"
         },
         {
           "id": "23847947951470066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Pronto pago 2 meme - [19.07 al 27.07]"
+        },
+        {
+          "id": "23847883103630066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - RTB - Internacional  [13.07 al 16.07]"
         },
         {
           "id": "23847947963570066",
@@ -68260,20 +68346,20 @@
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Inicio de inscripciones - [07.07 al 15.07]"
         },
         {
-          "id": "23847867074480066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - RTB - Formacion Humanista [07.07 al 12.07]"
-        },
-        {
           "id": "23847917627040066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Testimonio 1 - Alto Desempeño - [15.07 al 24.07]"
         },
         {
-          "id": "23847917711750066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Pronto pago 2 - [19.07 al 27.07]"
+          "id": "23847867074480066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - RTB - Formacion Humanista [07.07 al 12.07]"
         },
         {
           "id": "23847867119560066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Pronto pago 1 - [07.07 al 16.07]"
+        },
+        {
+          "id": "23847917711750066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Pronto pago 2 - [19.07 al 27.07]"
         },
         {
           "id": "23847917723420066",
@@ -68440,7 +68526,7 @@
       "revenue": null,
       "contacts_attributed": 175,
       "deals_attributed": 228,
-      "revenue_attributed": 13998.36,
+      "revenue_attributed": 14002.04,
       "ad_campaigns": []
     },
     {
@@ -68468,7 +68554,7 @@
       "revenue": null,
       "contacts_attributed": 190,
       "deals_attributed": 274,
-      "revenue_attributed": 11745.73,
+      "revenue_attributed": 11745.86,
       "ad_campaigns": [
         {
           "id": "23854457426090066",
@@ -68479,12 +68565,12 @@
           "name": "UCSP_Pregrado_Admision_Agosto_2023_Conversiones_CampañaGeneral_PautaAbierta_050623"
         },
         {
-          "id": "23854457933810066",
-          "name": "UCSP_Pregrado_Admision_Agosto_2023_Conversiones_Padres_PautaAbierta_050623"
-        },
-        {
           "id": "23854458074390066",
           "name": "UCSP_Pregrado_Admision_Agosto_2023_Conversiones_ExcelenciaAcadémica_PautaRemarketing_050623"
+        },
+        {
+          "id": "23854457933810066",
+          "name": "UCSP_Pregrado_Admision_Agosto_2023_Conversiones_Padres_PautaAbierta_050623"
         },
         {
           "id": "23854457577650066",
@@ -68838,12 +68924,12 @@
       "status": "in_progress",
       "start_date": "2026-02-06",
       "end_date": "2026-02-26",
-      "spend": 9088.422,
+      "spend": 9441.366,
       "budget": 12198,
       "revenue": null,
-      "contacts_attributed": 62,
-      "deals_attributed": 68,
-      "revenue_attributed": 3128.81,
+      "contacts_attributed": 64,
+      "deals_attributed": 70,
+      "revenue_attributed": 3290.33,
       "ad_campaigns": [
         {
           "id": "52508535235434",
@@ -68948,7 +69034,7 @@
       "revenue": null,
       "contacts_attributed": 140,
       "deals_attributed": 171,
-      "revenue_attributed": 2157.24,
+      "revenue_attributed": 2156.89,
       "ad_campaigns": []
     },
     {
@@ -68997,12 +69083,12 @@
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Dia 2 - San Pablo Weekk - [07.07 al 13.07]"
         },
         {
-          "id": "23847881380850066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Meme 1 - San Pablo Week [09.07 al 14.07]"
-        },
-        {
           "id": "23847867208720066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Dia 3 - San Pablo Weekk - [07.07 al 14.07]"
+        },
+        {
+          "id": "23847881380850066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Meme 1 - San Pablo Week [09.07 al 14.07]"
         },
         {
           "id": "23847867220450066",
@@ -69025,12 +69111,12 @@
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - San Pablo Week [01.07 al 10.07]"
         },
         {
-          "id": "23847881421870066",
-          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Meme 2 - San Pablo Week - [09.07 al 14.07]"
-        },
-        {
           "id": "23847867143550066",
           "name": "Link Ad - UCSP - Admisión Agosto 2021 - Video Invitación - San Pablo Week - [07.07 al 12.07]"
+        },
+        {
+          "id": "23847881421870066",
+          "name": "Link Ad - UCSP - Admisión Agosto 2021 - Meme 2 - San Pablo Week - [09.07 al 14.07]"
         },
         {
           "id": "23847867169760066",
